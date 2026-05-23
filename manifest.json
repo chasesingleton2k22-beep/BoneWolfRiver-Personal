@@ -1,0 +1,17 @@
+{
+  "name": "Bone Wolf River — Personal Companion",
+  "short_name": "BWR Personal",
+  "description": "Personal writing companion for The Bone Wolf River by Chase Singleton",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#060e19",
+  "theme_color": "#060e19",
+  "icons": [
+    {
+      "src": "cover.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
