@@ -44,7 +44,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 
 /* APP */
 #app{position:fixed;top:50px;bottom:0;left:0;right:0}
-.panel{display:none;width:100%;height:100%}
+.panel{display:none;width:100%;height:100%;position:relative}
 .panel.on{display:flex}
 
 /* READING */
@@ -115,7 +115,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 .sb-item.wt .sb-title{color:rgba(201,168,76,.55);font-style:italic}
 .sb-item.wt{background:rgba(6,13,24,.4)}
 
-#reader{flex:1;height:100%;overflow-y:auto;
+#reader{flex:1;height:100%;overflow-y:auto;position:relative;
   scrollbar-width:thin;scrollbar-color:var(--gold-dim) transparent}
 #reader::-webkit-scrollbar{width:4px}
 #reader::-webkit-scrollbar-thumb{background:var(--gold-dim)}
@@ -136,6 +136,24 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
   box-shadow:568px 149px #FFF, 267px 257px #FFF, 358px 113px #FFF, 1354px 27px #FFF, 270px 16px #FFF, 734px 244px #FFF, 1206px 332px #FFF, 33px 179px #FFF, 544px 54px #FFF, 260px 432px #FFF, 1078px 117px #FFF, 131px 488px #FFF, 919px 371px #FFF, 1052px 112px #FFF, 926px 516px #FFF, 454px 45px #FFF, 1350px 309px #FFF, 939px 32px #FFF, 125px 491px #FFF, 823px 437px #FFF, 222px 503px #FFF, 909px 76px #FFF, 166px 330px #FFF, 1246px 152px #FFF, 135px 130px #FFF, 564px 333px #FFF, 781px 302px #FFF, 930px 518px #FFF, 1240px 441px #FFF, 204px 118px #FFF, 1341px 221px #FFF, 881px 463px #FFF, 468px 424px #FFF, 695px 465px #FFF, 817px 426px #FFF, 195px 321px #FFF, 875px 321px #FFF, 1363px 262px #FFF, 767px 157px #FFF, 972px 69px #FFF, 187px 88px #FFF, 191px 443px #FFF, 198px 382px #FFF, 267px 62px #FFF, 1202px 338px #FFF, 1373px 126px #FFF, 842px 363px #FFF, 1363px 434px #FFF, 106px 295px #FFF, 1230px 320px #FFF, 721px 107px #FFF, 1184px 520px #FFF, 436px 159px #FFF, 1345px 494px #FFF, 460px 111px #FFF, 718px 377px #FFF, 236px 286px #FFF, 1176px 232px #FFF, 879px 27px #FFF, 1248px 274px #FFF, 60px 185px #FFF, 560px 317px #FFF, 696px 360px #FFF, 13px 186px #FFF, 294px 411px #FFF, 143px 146px #FFF, 1297px 32px #FFF, 188px 221px #FFF, 771px 430px #FFF, 930px 350px #FFF, 323px 379px #FFF, 639px 333px #FFF, 1163px 87px #FFF, 108px 160px #FFF, 323px 51px #FFF, 1381px 84px #FFF, 558px 454px #FFF, 1356px 435px #FFF, 995px 453px #FFF, 849px 280px #FFF, 442px 117px #FFF, 707px 441px #FFF, 228px 291px #FFF, 1389px 499px #FFF, 1080px 316px #FFF, 94px 226px #FFF, 810px 57px #FFF, 16px 210px #FFF, 618px 217px #FFF, 282px 262px #FFF, 593px 336px #FFF, 246px 8px #FFF, 1019px 441px #FFF, 360px 133px #FFF, 779px 236px #FFF, 1025px 363px #FFF, 148px 407px #FFF, 87px 447px #FFF, 39px 471px #FFF, 160px 321px #FFF;opacity:.65;animation:twinkle-s 4s ease-in-out 1.5s infinite alternate}
 .star-lg{position:absolute;width:3px;height:3px;background:transparent;border-radius:50%;top:0;left:0;
   box-shadow:1180px 440px #FFF, 1175px 415px #FFF, 1312px 428px #FFF, 593px 118px #FFF, 830px 22px #FFF, 666px 176px #FFF, 1266px 472px #FFF, 742px 91px #FFF, 895px 109px #FFF, 499px 447px #FFF, 1207px 411px #FFF, 1074px 81px #FFF, 811px 318px #FFF, 696px 227px #FFF, 683px 173px #FFF, 157px 117px #FFF, 1087px 199px #FFF, 716px 360px #FFF, 1322px 152px #FFF, 484px 106px #FFF, 300px 263px #FFF, 405px 178px #FFF, 1234px 157px #FFF, 1343px 78px #FFF, 363px 506px #FFF;opacity:.8;animation:twinkle-s 5s ease-in-out 3s infinite alternate}
+/* Hero star extension — fills lower half of hero (~y 500-1000) */
+.star-ext{position:absolute;width:1px;height:1px;background:transparent;top:0;left:0;
+  box-shadow:45px 534px #FFF,178px 612px #FFF,678px 789px #FFF,1123px 523px #FFF,345px 867px #FFF,912px 623px #FFF,1267px 756px #FFF,156px 745px #FFF,567px 534px #FFF,1034px 867px #FFF,789px 634px #FFF,234px 934px #FFF,456px 756px #FFF,1189px 845px #FFF,678px 923px #FFF,891px 512px #FFF,1356px 678px #FFF,45px 823px #FFF,567px 645px #FFF,1099px 734px #FFF,345px 712px #FFF,789px 856px #FFF,1178px 623px #FFF,234px 878px #FFF,678px 545px #FFF,1023px 912px #FFF,456px 823px #FFF,891px 756px #FFF,1289px 534px #FFF,123px 967px #FFF,734px 578px #FFF,1400px 812px #FFF,567px 990px #FFF,890px 545px #FFF,1145px 890px #FFF;
+  opacity:.38;animation:twinkle-s 8s ease-in-out .5s infinite alternate}
+/* Panel ambient stars (all panels get faint background stars) */
+.panel::before{content:'';position:absolute;width:1px;height:1px;top:0;left:0;
+  pointer-events:none;z-index:0;
+  box-shadow:67px 43px #FFF,234px 187px #FFF,891px 23px #FFF,1203px 156px #FFF,445px 534px #FFF,78px 421px #FFF,1109px 612px #FFF,756px 312px #FFF,1050px 445px #FFF,23px 645px #FFF,456px 112px #FFF,1356px 545px #FFF,789px 778px #FFF,912px 223px #FFF,567px 667px #FFF,89px 556px #FFF,432px 878px #FFF,678px 445px #FFF,1010px 556px #FFF,156px 223px #FFF,1390px 223px #FFF,890px 667px #FFF,345px 445px #FFF,1123px 778px #FFF,567px 334px #FFF,234px 712px #FFF,845px 123px #FFF,1267px 389px #FFF,478px 823px #FFF,1000px 678px #FFF;
+  opacity:.09;animation:twinkle-s 13s ease-in-out 5s infinite alternate}
+/* Reader star layer — scrolls with content, fills full chapter height */
+#reader-stars{position:absolute;top:0;left:0;right:0;height:5000px;
+  pointer-events:none;overflow:hidden;z-index:0}
+#reader-stars::before{content:'';position:absolute;width:1px;height:1px;top:0;left:0;
+  box-shadow:12px 234px #FFF,45px 678px #FFF,23px 912px #FFF,34px 1234px #FFF,56px 1567px #FFF,18px 1890px #FFF,67px 2123px #FFF,29px 2567px #FFF,45px 3012px #FFF,23px 3456px #FFF,1050px 123px #FFF,967px 456px #FFF,978px 789px #FFF,1023px 1056px #FFF,989px 1345px #FFF,1045px 1678px #FFF,998px 2345px #FFF,1012px 2789px #FFF,978px 3234px #FFF,1034px 3678px #FFF,512px 345px #FFF,456px 923px #FFF,678px 1345px #FFF,234px 1789px #FFF,789px 2123px #FFF,345px 2567px #FFF,890px 2890px #FFF,456px 3234px #FFF,678px 3567px #FFF,123px 3890px #FFF,789px 456px #FFF,567px 1678px #FFF,234px 2234px #FFF,890px 2678px #FFF,345px 3123px #FFF,678px 3456px #FFF,912px 678px #FFF,456px 2012px #FFF,234px 3345px #FFF,789px 1012px #FFF,1100px 567px #FFF,1089px 1234px #FFF,1120px 2345px #FFF,1067px 3456px #FFF;
+  opacity:.1;animation:twinkle-s 16s ease-in-out 8s infinite alternate}
+#reader-stars::after{content:'';position:absolute;width:2px;height:2px;border-radius:50%;top:0;left:0;
+  box-shadow:89px 456px #FFF,1034px 234px #FFF,456px 1234px #FFF,912px 1890px #FFF,234px 2456px #FFF,1089px 2890px #FFF,567px 3456px #FFF,789px 4123px #FFF;
+  opacity:.07;animation:twinkle-s 20s ease-in-out 12s infinite alternate}
 @keyframes twinkle-s{0%{opacity:.35}100%{opacity:.8}}
 .comet-el{position:absolute;top:28%;left:-160px;width:3px;height:3px;border-radius:50%;
   background:rgba(255,240,190,.95);
@@ -660,7 +678,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 /* ═══ ARCHITECTURE VISUAL MAP ══════════════════════════════════════════════ */
 
 /* Arch panel layout */
-#p-arch{flex-direction:column;overflow-y:auto;padding:28px 32px 40px}
+#p-arch{flex-direction:column;overflow-y:auto;padding:0 32px 40px}
 
 /* Header stats row */
 .arch-header{display:flex;gap:28px;margin-bottom:6px;
@@ -669,15 +687,25 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   letter-spacing:.18em;text-transform:uppercase}
 
 /* Architecture hero comet banner */
-.arch-hero{position:relative;overflow:hidden;padding:32px 24px 26px;text-align:center;
-  border-bottom:1px solid rgba(201,168,76,.1);margin-bottom:20px;
+.arch-hero{position:relative;padding:32px 24px 32px;text-align:center;
+  border-bottom:1px solid rgba(201,168,76,.1);margin-bottom:0;
   background:radial-gradient(ellipse at 50% 110%,rgba(201,168,76,.05) 0%,transparent 68%)}
+.arch-hero-comet-clip{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .arch-hero-name{font-family:var(--font-h);font-size:30px;letter-spacing:.28em;
   color:var(--gold);line-height:1;margin-bottom:8px;text-transform:uppercase}
 .arch-hero-sub{font-size:11.5px;letter-spacing:.13em;color:var(--gold-dim);
   text-transform:uppercase;margin-bottom:12px;font-style:italic;opacity:.75}
-.arch-hero-date{font-family:var(--font-h);font-size:11px;letter-spacing:.35em;
-  color:rgba(201,168,76,.38);text-transform:uppercase}
+.arch-hero-date{font-family:var(--font-h);font-size:12px;letter-spacing:.22em;
+  color:rgba(201,168,76,.6);text-transform:uppercase}
+
+/* Architecture hero lore — centered atmospheric text below hero */
+.arch-hero-lore{padding:26px 0 32px;text-align:center;
+  border-bottom:1px solid rgba(201,168,76,.07);
+  background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.025) 0%,transparent 70%)}
+.arch-lore-line{color:rgba(201,168,76,.52);font-style:italic;line-height:2.1;
+  font-size:13px;max-width:500px;margin:0 auto}
+.arch-lore-accent{font-family:var(--font-h);font-size:8.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(201,168,76,.22);margin-top:14px;display:block;text-align:center}
 @keyframes comet-arc{
   0%{transform:translateX(-140px) translateY(8px) rotate(-14deg);opacity:0}
   8%{opacity:1}
@@ -851,6 +879,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <button id="btn-mis-hl" title="Highlight overused phrases, hedge words, and AI tells in this chapter">&#9679; Mistakes</button>
   <div id="mis-hl-legend"><span class="legend-swatch" style="background:rgba(201,168,76,.65)"></span>Overused phrase&nbsp;&nbsp;<span class="legend-swatch" style="background:rgba(200,120,50,.6)"></span>Hedge word&nbsp;&nbsp;<span class="legend-swatch" style="background:rgba(170,70,70,.55)"></span>AI tell</div>
   <div id="reader">
+    <div id="reader-stars" aria-hidden="true"></div>
     <div id="read-progress"></div>
     <div id="edit-bar">
       <button class="edit-bar-btn" id="btn-add-para">+ Add Paragraph</button>
@@ -864,6 +893,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
         <div class="star-sm"></div>
         <div class="star-md"></div>
         <div class="star-lg"></div>
+        <div class="star-ext"></div>
         <div class="comet-el"></div>
       </div>
       <div class="hero-inner">
@@ -1276,10 +1306,17 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 </div>
 <div id="p-arch" class="panel">
   <div class="arch-hero">
-    <div class="arch-comet"></div>
+    <div class="arch-hero-comet-clip"><div class="arch-comet"></div></div>
     <div class="arch-hero-name">Carter</div>
     <div class="arch-hero-sub">Born under the brightest comet in thirteen years</div>
     <div class="arch-hero-date">October 13</div>
+  </div>
+  <div class="arch-hero-lore">
+    <div class="arch-lore-line">Not Orbus. Not yet.</div>
+    <div class="arch-lore-line">The pull. The gravitational lean of old things toward something lit.</div>
+    <div class="arch-lore-line">It is not metaphor. It is something in him that predates metaphor.</div>
+    <div class="arch-lore-line">The thirteen thousand years recognized it the moment he arrived.</div>
+    <span class="arch-lore-accent">· That is why the comet came ·</span>
   </div>
   <div class="arch-header">
     <div class="arch-stat" id="arch-total-wc"></div>
