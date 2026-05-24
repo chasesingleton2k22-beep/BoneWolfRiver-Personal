@@ -195,6 +195,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
   letter-spacing:.3em;text-transform:uppercase;text-align:center;margin:28px 0 14px}
 .chapter.wt .pb,.chapter.wt .pi{color:rgba(242,237,228,.82)}
 .chapter.wt .pb+.pb{text-indent:1.75em}
+/* Reading glow — active paragraph */
+.pb.reading,.pd.reading,.pp.reading,.pi.reading,.pq.reading{
+  text-shadow:0 0 28px rgba(201,168,76,.18),0 0 8px rgba(201,168,76,.08);
+  transition:text-shadow .4s ease}
+.pb,.pd,.pp,.pi,.pq{transition:text-shadow .6s ease}
 .search-hit{background:rgba(201,168,76,.18);border-radius:2px;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
 
 /* AUTHOR MODE edit styles */
@@ -662,6 +667,29 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   align-items:baseline;flex-wrap:wrap}
 .arch-stat{font-family:var(--font-h);font-size:9px;color:var(--gold-dim);
   letter-spacing:.18em;text-transform:uppercase}
+
+/* Architecture hero comet banner */
+.arch-hero{position:relative;overflow:hidden;padding:32px 24px 26px;text-align:center;
+  border-bottom:1px solid rgba(201,168,76,.1);margin-bottom:20px;
+  background:radial-gradient(ellipse at 50% 110%,rgba(201,168,76,.05) 0%,transparent 68%)}
+.arch-hero-name{font-family:var(--font-h);font-size:30px;letter-spacing:.28em;
+  color:var(--gold);line-height:1;margin-bottom:8px;text-transform:uppercase}
+.arch-hero-sub{font-size:11.5px;letter-spacing:.13em;color:var(--gold-dim);
+  text-transform:uppercase;margin-bottom:12px;font-style:italic;opacity:.75}
+.arch-hero-date{font-family:var(--font-h);font-size:11px;letter-spacing:.35em;
+  color:rgba(201,168,76,.38);text-transform:uppercase}
+@keyframes comet-arc{
+  0%{transform:translateX(-140px) translateY(8px) rotate(-14deg);opacity:0}
+  8%{opacity:1}
+  88%{opacity:.65}
+  100%{transform:translateX(calc(100% + 180px)) translateY(-22px) rotate(-14deg);opacity:0}
+}
+.arch-comet{position:absolute;top:34px;left:0;width:110px;height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,.7) 40%,rgba(255,248,200,.95) 85%,transparent 100%);
+  animation:comet-arc 6s ease-in-out infinite;animation-delay:2s;pointer-events:none}
+.arch-comet::after{content:'';position:absolute;right:-1px;top:-3px;width:7px;height:7px;
+  background:rgba(255,248,200,.92);border-radius:50%;
+  box-shadow:0 0 6px 2px rgba(201,168,76,.55),0 0 2px rgba(255,255,255,.8);}
 
 /* Legend row */
 .arch-legend{display:flex;gap:18px;margin-bottom:28px;flex-wrap:wrap}
@@ -1247,6 +1275,12 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div id="voice-results"><div class="empty">Paste a passage and click Check Voice.</div></div>
 </div>
 <div id="p-arch" class="panel">
+  <div class="arch-hero">
+    <div class="arch-comet"></div>
+    <div class="arch-hero-name">Carter</div>
+    <div class="arch-hero-sub">Born under the brightest comet in thirteen years</div>
+    <div class="arch-hero-date">October 13</div>
+  </div>
   <div class="arch-header">
     <div class="arch-stat" id="arch-total-wc"></div>
     <div class="arch-stat" id="arch-chapter-count"></div>
@@ -1367,7 +1401,18 @@ document.addEventListener('DOMContentLoaded', function() {
     runSignal(chTitle);
   });
   var bMisScan = document.getElementById('btn-mis-scan');
-  if (bMisScan) bMisScan.addEventListener('click', function() { scanCurrentChapter('mis-in'); });
+  if (bMisScan) bMisScan.addEventListener('click', function() {
+    scanCurrentChapter('mis-in');
+    var ch = document.querySelector('#reader .chapter.on');
+    var chTitle = '';
+    if (ch) {
+      var chId = ch.id.replace('ch-', '');
+      for (var _bi2 = 0; _bi2 < BOOK.length; _bi2++) {
+        if (BOOK[_bi2].id === chId) { chTitle = BOOK[_bi2].title; break; }
+      }
+    }
+    runMistake(chTitle);
+  });
 
   // Edit bar buttons
   var bAdd = document.getElementById('btn-add-para');
@@ -1394,12 +1439,26 @@ document.addEventListener('DOMContentLoaded', function() {
     si.addEventListener('input', function() { clearTimeout(st); st = setTimeout(doSearch, 250); });
   }
 
-  // Progress bar
+  // Progress bar + reading glow
   var reader = document.getElementById('reader');
+  var _lastReadingPara = null;
   if (reader) reader.addEventListener('scroll', function() {
     var max = reader.scrollHeight - reader.clientHeight;
     var bar = document.getElementById('read-progress');
     if (bar) bar.style.width = (max > 0 ? (reader.scrollTop / max * 100).toFixed(1) : 0) + '%';
+    // Reading glow — highlight nearest paragraph to 40% down the viewport
+    var paras = reader.querySelectorAll('.pb,.pd,.pp,.pi,.pq');
+    var center = reader.scrollTop + reader.clientHeight * 0.4;
+    var closest = null, closestDist = Infinity;
+    for (var _rp = 0; _rp < paras.length; _rp++) {
+      var dist = Math.abs(paras[_rp].offsetTop - center);
+      if (dist < closestDist) { closestDist = dist; closest = paras[_rp]; }
+    }
+    if (closest !== _lastReadingPara) {
+      if (_lastReadingPara) _lastReadingPara.classList.remove('reading');
+      if (closest) closest.classList.add('reading');
+      _lastReadingPara = closest;
+    }
   });
 
   buildReader();
@@ -1425,7 +1484,18 @@ document.addEventListener('DOMContentLoaded', function() {
   var bVoiceC = document.getElementById('btn-voice-clr');
   if (bVoiceC) bVoiceC.addEventListener('click', clearVoiceCheck);
   var bVoiceScan = document.getElementById('btn-voice-scan');
-  if (bVoiceScan) bVoiceScan.addEventListener('click', function() { scanCurrentChapter('voice-in'); });
+  if (bVoiceScan) bVoiceScan.addEventListener('click', function() {
+    scanCurrentChapter('voice-in');
+    var ch = document.querySelector('#reader .chapter.on');
+    var chTitle = '';
+    if (ch) {
+      var chId = ch.id.replace('ch-', '');
+      for (var _bi3 = 0; _bi3 < BOOK.length; _bi3++) {
+        if (BOOK[_bi3].id === chId) { chTitle = BOOK[_bi3].title; break; }
+      }
+    }
+    runVoiceCheck(chTitle);
+  });
   initIdeasFilter();
   populateIdeaChapters();
   buildArchitecture();
@@ -2133,16 +2203,29 @@ function toggleMistakeHL() {
   }
 }
 
-function runMistake() {
+function runMistake(chapterTitle) {
   var text = document.getElementById('mis-in').value.trim();
   if (!text) return;
   var lower = text.toLowerCase();
   var checks = getMistakeChecks(text, lower);
   var total = 0;
   for (var i = 0; i < checks.length; i++) total += checks[i].finds.length;
-  var summary = total === 0
-    ? '<div style="font-family:var(--font-h);font-size:11px;color:#5dba8a;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px">&#10003; No issues detected</div>'
-    : '<div style="font-family:var(--font-h);font-size:11px;color:#d97777;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px">' + total + ' potential issue' + (total > 1 ? 's' : '') + ' found</div>';
+  var banner = '';
+  if (chapterTitle) {
+    var mColor = total === 0 ? '#5dba8a' : '#d97777';
+    var mRgb = total === 0 ? '93,186,138' : '217,119,119';
+    var mLabel = total === 0 ? 'No issues detected' : total + ' potential issue' + (total > 1 ? 's' : '') + ' found';
+    banner = '<div class="sig-summary" style="border-color:rgba(' + mRgb + ',.35);margin-bottom:16px">'
+      + '<div style="min-width:52px;text-align:center;font-family:var(--font-h);font-size:40px;line-height:1;color:' + mColor + '">' + (total === 0 ? '&#10003;' : total) + '</div>'
+      + '<div style="flex:1">'
+      + '<div style="font-family:var(--font-h);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px">' + esc(chapterTitle) + '</div>'
+      + '<div style="font-size:13px;color:' + mColor + ';font-weight:500;letter-spacing:.03em">' + mLabel + '</div>'
+      + '</div></div>';
+  } else {
+    banner = total === 0
+      ? '<div style="font-family:var(--font-h);font-size:11px;color:#5dba8a;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px">&#10003; No issues detected</div>'
+      : '<div style="font-family:var(--font-h);font-size:11px;color:#d97777;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px">' + total + ' potential issue' + (total > 1 ? 's' : '') + ' found</div>';
+  }
   var grid = '<div class="mis-grid">';
   for (var i = 0; i < checks.length; i++) {
     var c = checks[i], bad = c.finds.length > 0;
@@ -2159,7 +2242,7 @@ function runMistake() {
   }
   grid += '</div>';
   var res = document.getElementById('mis-results');
-  if (res) res.innerHTML = summary + grid;
+  if (res) res.innerHTML = banner + grid;
 }
 function getMistakeChecks(text, lower) {
   var checks = [];
@@ -2558,7 +2641,7 @@ function getVoiceChecks(text) {
   return checks;
 }
 
-function runVoiceCheck() {
+function runVoiceCheck(chapterTitle) {
   var inp = document.getElementById("voice-in");
   var out = document.getElementById("voice-results");
   if (!inp || !out) return;
@@ -2566,11 +2649,26 @@ function runVoiceCheck() {
   if (!text) { out.innerHTML = "<div class=\"empty\">Paste a passage first.</div>"; return; }
   var checks = getVoiceChecks(text);
   var wc = text.split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+  var h = '';
+  if (chapterTitle) {
+    var vClean = checks.length === 0;
+    var vColor = vClean ? '#5dba8a' : '#c9a84c';
+    var vRgb = vClean ? '93,186,138' : '201,168,76';
+    var vLabel = vClean ? 'Voice reads as human' : checks.length + ' issue group' + (checks.length === 1 ? '' : 's') + ' found';
+    h = '<div class="sig-summary" style="border-color:rgba(' + vRgb + ',.35);margin-bottom:16px">'
+      + '<div style="min-width:52px;text-align:center;font-family:var(--font-h);font-size:40px;line-height:1;color:' + vColor + '">' + (vClean ? '&#10003;' : checks.length) + '</div>'
+      + '<div style="flex:1">'
+      + '<div style="font-family:var(--font-h);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px">' + esc(chapterTitle) + '</div>'
+      + '<div style="font-size:13px;color:' + vColor + ';font-weight:500;letter-spacing:.03em">' + wc + ' words — ' + vLabel + '</div>'
+      + '</div></div>';
+  } else {
+    h = "<div class=\"voice-summary\">" + wc + " words analyzed &mdash; " + (checks.length === 0 ? "no issues found" : checks.length + " issue group" + (checks.length === 1 ? "" : "s") + " found") + "</div>";
+  }
   if (checks.length === 0) {
-    out.innerHTML = "<div class=\"voice-clean\">" + wc + " words analyzed. No major AI tells or prose habits detected. Voice reads as human.</div>";
+    h += "<div class=\"voice-clean\">No major AI tells or prose habits detected. Voice reads as human.</div>";
+    out.innerHTML = h;
     return;
   }
-  var h = "<div class=\"voice-summary\">" + wc + " words analyzed &mdash; " + checks.length + " issue group" + (checks.length === 1 ? "" : "s") + " found</div>";
   for (var i = 0; i < checks.length; i++) {
     var c = checks[i];
     h += "<div class=\"voice-card " + c.severity + "\">";
