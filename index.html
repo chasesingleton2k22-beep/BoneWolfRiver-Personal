@@ -59,7 +59,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 #btn-wide:hover{color:var(--gold);border-color:var(--gold-dim)}
 
 /* Edit mode button — top-right of reading area */
-#btn-edit{position:absolute;top:10px;right:12px;z-index:50;
+#btn-edit{position:absolute;top:10px;right:12px;z-index:50;min-width:102px;text-align:center;
   background:rgba(6,14,25,.92);border:1px solid rgba(201,168,76,.22);
   border-radius:3px;color:var(--gold-dim);padding:5px 13px;
   cursor:pointer;font-family:var(--font-h);font-size:8.5px;letter-spacing:.14em;
@@ -527,6 +527,251 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 .cmp-summary-panel{background:rgba(255,255,255,.012);border:1px solid var(--gold);padding:22px 24px;margin-top:18px;display:none}
 .cmp-summary-title{font-family:var(--font-h);font-size:8.5px;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px}
 .cmp-summary-body{font-family:var(--font-b);font-size:15px;color:var(--cream);font-style:italic;line-height:1.75;white-space:pre-wrap}
+
+/* ═══ MISTAKE HIGHLIGHTS IN READER ════════════════════════════════════════ */
+
+/* Overused/signature phrase glow — amber */
+.mis-hl-over{
+  background:rgba(201,168,76,.13);
+  border-bottom:1.5px solid rgba(201,168,76,.65);
+  border-radius:2px;
+  text-shadow:0 0 7px rgba(201,168,76,.28);
+  cursor:default}
+
+/* Hedge words — warm orange */
+.mis-hl-hedge{
+  background:rgba(200,120,50,.12);
+  border-bottom:1.5px solid rgba(200,120,50,.6);
+  border-radius:2px;
+  cursor:default}
+
+/* AI-tell phrases — muted rose */
+.mis-hl-ai{
+  background:rgba(170,70,70,.11);
+  border-bottom:1.5px solid rgba(170,70,70,.55);
+  border-radius:2px;
+  cursor:default}
+
+/* Toggle button — matches #btn-edit style */
+#btn-mis-hl{position:absolute;top:10px;right:122px;z-index:50;min-width:115px;text-align:center;
+  background:rgba(6,14,25,.92);border:1px solid rgba(201,168,76,.22);
+  border-radius:3px;color:var(--gold-dim);padding:5px 13px;
+  cursor:pointer;font-family:var(--font-h);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;transition:all .15s;white-space:nowrap}
+#btn-mis-hl:hover{color:var(--gold);border-color:var(--gold-dim)}
+#btn-mis-hl.on{color:var(--gold);border-color:var(--gold);
+  background:rgba(201,168,76,.07);
+  box-shadow:0 0 8px rgba(201,168,76,.15)}
+
+/* Highlight legend tooltip (appears below button when active) */
+#mis-hl-legend{
+  position:absolute;top:44px;right:122px;z-index:49;
+  background:rgba(6,14,25,.96);border:1px solid rgba(201,168,76,.2);
+  padding:7px 11px;font-family:var(--font-b);font-size:10px;
+  line-height:1.7;color:var(--cream-dim);white-space:nowrap;
+  display:none;pointer-events:none}
+#btn-mis-hl.on ~ #mis-hl-legend{display:block}
+.legend-swatch{display:inline-block;width:28px;height:2px;
+  vertical-align:middle;margin-right:5px;border-radius:1px}
+
+/* ═══ IDEAS IN READER ═══════════════════════════════════════════════════════ */
+
+/* Ideas indicator button — same family as btn-mis-hl */
+#btn-ideas-hl{position:absolute;top:10px;right:245px;z-index:50;min-width:95px;text-align:center;
+  background:rgba(6,14,25,.92);border:1px solid rgba(201,168,76,.22);
+  border-radius:3px;color:var(--gold-dim);padding:5px 13px;
+  cursor:pointer;font-family:var(--font-h);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;transition:all .15s;white-space:nowrap}
+#btn-ideas-hl:hover{color:var(--gold);border-color:var(--gold-dim)}
+#btn-ideas-hl.has-ideas{color:var(--gold);border-color:rgba(201,168,76,.45)}
+#btn-ideas-hl.open{color:var(--gold);border-color:var(--gold);
+  background:rgba(201,168,76,.07)}
+
+/* Chapter ideas slide-down panel */
+#ch-ideas-panel{
+  display:none;position:absolute;
+  top:44px;right:245px;z-index:400;
+  width:300px;max-height:340px;
+  background:var(--navy-dark);
+  border:1px solid rgba(201,168,76,.25);
+  box-shadow:0 8px 32px rgba(0,0,0,.55);
+  overflow:hidden;flex-direction:column}
+#ch-ideas-panel.open{display:flex}
+
+#ch-ideas-panel-hd{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px 8px;
+  border-bottom:1px solid rgba(201,168,76,.12);
+  flex-shrink:0}
+#ch-ideas-panel-title{
+  font-family:var(--font-h);font-size:8px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(201,168,76,.55)}
+#ch-ideas-close{
+  background:transparent;border:none;color:rgba(201,168,76,.35);
+  font-size:14px;cursor:pointer;padding:0 2px;line-height:1;
+  transition:color .13s}
+#ch-ideas-close:hover{color:var(--gold)}
+
+#ch-ideas-list{overflow-y:auto;flex:1;padding:8px 0}
+
+.ch-idea-item{
+  padding:9px 14px;
+  border-bottom:1px solid rgba(201,168,76,.07);
+  cursor:default}
+.ch-idea-item:last-child{border-bottom:none}
+.ch-idea-item-title{
+  font-family:var(--font-h);font-size:8.5px;letter-spacing:.1em;
+  color:var(--gold);margin-bottom:4px;text-transform:uppercase}
+.ch-idea-item-body{
+  font-family:var(--font-b);font-size:12px;
+  color:var(--cream-dim);line-height:1.5}
+.ch-idea-item-tag{
+  display:inline-block;margin-top:5px;
+  font-family:var(--font-h);font-size:7px;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(201,168,76,.38);
+  border:1px solid rgba(201,168,76,.18);border-radius:2px;padding:1px 5px}
+
+#ch-ideas-footer{
+  flex-shrink:0;padding:9px 14px;
+  border-top:1px solid rgba(201,168,76,.12)}
+#ch-ideas-goto{
+  background:transparent;border:none;padding:0;
+  font-family:var(--font-h);font-size:8px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(201,168,76,.45);
+  cursor:pointer;transition:color .13s}
+#ch-ideas-goto:hover{color:var(--gold)}
+
+.ch-ideas-empty{
+  padding:18px 14px;font-family:var(--font-b);
+  font-size:12px;font-style:italic;color:rgba(201,168,76,.3);
+  text-align:center}
+
+/* ═══ ARCHITECTURE VISUAL MAP ══════════════════════════════════════════════ */
+
+/* Arch panel layout */
+#p-arch{flex-direction:column;overflow-y:auto;padding:28px 32px 40px}
+
+/* Header stats row */
+.arch-header{display:flex;gap:28px;margin-bottom:6px;
+  align-items:baseline;flex-wrap:wrap}
+.arch-stat{font-family:var(--font-h);font-size:9px;color:var(--gold-dim);
+  letter-spacing:.18em;text-transform:uppercase}
+
+/* Legend row */
+.arch-legend{display:flex;gap:18px;margin-bottom:28px;flex-wrap:wrap}
+.arch-legend-item{display:flex;align-items:center;gap:6px;
+  font-family:var(--font-b);font-size:10.5px;color:var(--cream-dim)}
+.arch-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.arch-legend-dot.scanned{background:var(--gold);box-shadow:0 0 5px rgba(201,168,76,.4)}
+.arch-legend-dot.unscanned{background:rgba(201,168,76,.18)}
+
+/* Each chapter row */
+.arch-row{padding:12px 0 10px;border-bottom:1px solid rgba(201,168,76,.08);
+  max-width:680px}
+.arch-row-top{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.arch-title{font-family:var(--font-h);font-size:9px;color:var(--cream);
+  letter-spacing:.1em;text-transform:uppercase;flex:1}
+.arch-sub{font-family:var(--font-b);font-size:11px;
+  color:rgba(201,168,76,.35);margin-bottom:6px}
+.arch-meta{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.arch-wc{font-family:var(--font-h);font-size:8.5px;color:var(--gold-dim);
+  letter-spacing:.1em}
+.arch-mins{font-family:var(--font-b);font-size:10px;color:rgba(201,168,76,.35)}
+.arch-pct{font-family:var(--font-b);font-size:10px;color:rgba(201,168,76,.3)}
+
+/* Scan status dot */
+.arch-scan-dot{width:8px;height:8px;border-radius:50%;
+  flex-shrink:0;transition:background .3s,box-shadow .3s}
+.arch-scan-dot.unscanned{background:rgba(201,168,76,.15)}
+.arch-scan-dot.scanned{background:var(--gold);
+  box-shadow:0 0 7px rgba(201,168,76,.45)}
+
+/* Word count bar */
+.arch-bar-wrap{width:100%;height:3px;
+  background:rgba(201,168,76,.08);border-radius:2px;margin-top:4px}
+.arch-bar{height:100%;border-radius:2px;
+  background:linear-gradient(to right,rgba(122,95,38,.7),var(--gold));
+  transition:width .5s ease}
+
+/* ═══ CROSS-CHAPTER SEARCH ══════════════════════════════════════════════════ */
+
+#arch-search-wrap{
+  display:flex;gap:8px;align-items:center;
+  margin-bottom:20px;max-width:680px;flex-wrap:wrap}
+.arch-search-input{
+  flex:1;min-width:180px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,168,76,.22);
+  color:var(--cream);font-family:var(--font-b);font-size:13px;
+  padding:7px 12px;outline:none;transition:border-color .15s}
+.arch-search-input:focus{border-color:rgba(201,168,76,.5)}
+.arch-search-input::placeholder{color:rgba(201,168,76,.3)}
+
+#arch-search-results{margin-bottom:28px;max-width:680px}
+.arch-sr-summary{
+  font-family:var(--font-h);font-size:8px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:16px}
+.arch-sr-ch{margin-bottom:22px}
+.arch-sr-ch-title{
+  font-family:var(--font-h);font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+  display:flex;align-items:baseline;gap:10px}
+.arch-sr-count{
+  font-family:var(--font-b);font-size:10px;letter-spacing:0;
+  text-transform:none;color:rgba(201,168,76,.38)}
+.arch-sr-item{
+  font-family:var(--font-b);font-size:12.5px;line-height:1.7;
+  color:var(--cream-dim);padding:7px 0;
+  border-top:1px solid rgba(201,168,76,.07)}
+.arch-search-mark{
+  background:rgba(201,168,76,.22);color:var(--gold);
+  border-radius:2px;padding:0 2px;font-style:normal}
+.arch-sr-none{
+  font-family:var(--font-b);font-size:12px;font-style:italic;
+  color:rgba(201,168,76,.3);padding:16px 0}
+
+/* ═══ IDEAS BOARD LAYOUT — grid gets generous space ════════════════════════ */
+
+/* Override tool-panel scroll on this panel only */
+#p-ideas{
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  padding:24px 32px 0!important;
+  gap:0!important}
+
+/* Compose section stays compact, does not grow */
+#p-ideas .idea-compose{flex-shrink:0;margin-bottom:0;padding-bottom:16px}
+
+/* Header row */
+#p-ideas > div:first-child{flex-shrink:0;margin-bottom:14px}
+
+/* Filter bar stays compact */
+#p-ideas .ideas-filter-bar{flex-shrink:0;margin-bottom:10px}
+
+/* Ideas grid gets all remaining space and scrolls on its own */
+#ideas-grid{
+  flex:1!important;
+  min-height:0!important;    /* critical: lets flexbox child shrink + scroll */
+  overflow-y:auto!important;
+  padding-bottom:24px!important;
+  align-content:start}
+
+/* ═══ WORLD REFERENCE — NARRATIVE BLOCKS ════════════════════════════════════ */
+.ref-lede{
+  font-family:var(--font-h);font-size:8px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(201,168,76,.5);
+  margin:20px 0 8px;padding-bottom:5px;
+  border-bottom:1px solid rgba(201,168,76,.12)}
+.ref-item{
+  background:rgba(255,255,255,.03);border-left:2px solid rgba(201,168,76,.18);
+  padding:11px 13px;font-size:13px;color:var(--cream-dim);line-height:1.75;
+  margin-bottom:6px}
+.ref-item strong{
+  color:var(--gold);font-family:var(--font-h);font-size:8.5px;
+  letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:5px}
+.ref-single{
+  grid-column:1/-1}
 </style>
 </head>
 
@@ -559,6 +804,19 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   </nav>
   <button id="btn-wide" title="Hide sidebar">&#9664;</button>
   <button id="btn-edit" title="Toggle author editing mode">&#9998; Author Mode</button>
+  <button id="btn-ideas-hl" title="Ideas pinned to this chapter">&#128161; Ideas</button>
+  <div id="ch-ideas-panel">
+    <div id="ch-ideas-panel-hd">
+      <span id="ch-ideas-panel-title">Chapter Ideas</span>
+      <button id="ch-ideas-close" onclick="closeChapterIdeas()">&#10005;</button>
+    </div>
+    <div id="ch-ideas-list"></div>
+    <div id="ch-ideas-footer">
+      <button id="ch-ideas-goto" onclick="goToIdeasBoard()">Open Ideas Board &#8594;</button>
+    </div>
+  </div>
+  <button id="btn-mis-hl" title="Highlight overused phrases, hedge words, and AI tells in this chapter">&#9679; Mistakes</button>
+  <div id="mis-hl-legend"><span class="legend-swatch" style="background:rgba(201,168,76,.65)"></span>Overused phrase&nbsp;&nbsp;<span class="legend-swatch" style="background:rgba(200,120,50,.6)"></span>Hedge word&nbsp;&nbsp;<span class="legend-swatch" style="background:rgba(170,70,70,.55)"></span>AI tell</div>
   <div id="reader">
     <div id="read-progress"></div>
     <div id="edit-bar">
@@ -601,6 +859,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div class="row">
     <button class="btn" id="btn-sig">Check Signals</button>
     <button class="btn btn-dim" id="btn-sig-clr">Clear</button>
+    <button class="btn btn-dim" id="btn-sig-scan" title="Pull current chapter from the reader">&#9654; Scan Chapter</button>
     <span class="score-lbl" id="sig-score"></span>
   </div>
   <div id="sig-results"><div class="empty">Paste a passage and click Check Signals.</div></div>
@@ -713,13 +972,119 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
         </div>
       </div>
       <div class="myth-item"><strong>The Comet = Herald</strong>Five vessels born under a comet. Always October. Always the 13th. The Oort Cloud breathes &#8212; and then something falls.</div>
+      <div class="myth-item"><strong>The Sequence Is a Forecast</strong>Nicole has been reading 1&#8901;1&#8901;2&#8901;3&#8901;5&#8901;8&#8901;13 as history. It is a forecast. Not describing what happened &#8212; predicting what comes next. The intervals are the gaps between Orbus surfacing. They are getting shorter. He is getting stronger. The next number is 21. Carter is eighteen months old. The convergence happens when Carter is 21. Nicole alone at 2am flips the sequence. Treats it as forecast. Does the math forward. When the number settles she covers her mouth. She calls Anthony at four in the morning. &ldquo;I know when. I know exactly when.&rdquo; The rest of the story is the race.</div>
       <div class="myth-item"><strong>The Crown Appears</strong>In fire. In shadow. In blood drying in the dust. The light doing what it shouldn&#8217;t do.</div>
-      <div class="myth-item"><strong>14 Names of Orbus</strong>Moloch. Lamashtu. Crom Cruach. Tezcatlipoca. The Burning One. Plus nine more. One face. One crown. One hunger.</div>
+      <div class="myth-item"><strong>14 Names of Orbus</strong>Moloch. Lamashtu. Crom Cruach. Tezcatlipoca. The Burning One. Plus eight more across fourteen cultures. One face. One crown. One hunger. Nicole finds thirteen. The fourteenth is the name no culture ever learned &#8212; the name his brothers and his father used for him before the casting out. The name that predates all mythology. Nobody in thirteen thousand years has called him by it.</div>
       <div class="myth-item"><strong>&#8220;I Was Not Always This.&#8221;</strong>Four words planned for Watching 2. The question lives forever after. The crack in the monster that makes him something more.</div>
       <div class="myth-item"><strong>The &#352;&#250;&#331;ka Wa Sees Orbus</strong>One ice blue eye fixed on something Carter cannot see. He doesn&#8217;t know it&#8217;s Orbus. The reader does. The most important dramatic irony in the novel.</div>
       <div class="myth-item"><strong>Descent to Madness</strong>Those who carried the gift without temperance descended to madness. Every one. Mrs. Wetherbee. Always the same ending without control.</div>
     </div>
   </div>
+  <div class="ref-sec">
+    <div class="ref-h">Orbus the Bereft &#8212; Complete Mythology</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>Origin</strong>Orbus came from beyond the Oort Cloud. A world of thirteen godlike beings ruled by one father. Twelve brothers. Orbus was the thirteenth &#8212; his nature was chaos. He sowed madness among his brothers. He rose up against his father and would have killed him. His brothers and father combined and cast him out. They sealed him inside a comet and sent him here.</div>
+      <div class="myth-item ref-single"><strong>Arrival</strong>He arrived with the Younger Dryas comet impact approximately 12,900 years ago. The impact nearly destroyed Earth. Ended the ice age. Killed the megafauna. Destroyed civilizations that existed before recorded history. When he arrived he was still strong. He bent the survivors to his will. Demanded the blood of their brightest children.</div>
+      <div class="myth-item ref-single"><strong>What He Is Now</strong>Weakened over thirteen thousand years. He hides in the seams of things. The edges of firelight. The dark between stars. He lies dormant for centuries and surfaces when the chosen one&#8217;s flame burns bright enough to pull him up.</div>
+      <div class="myth-item ref-single"><strong>His Cycle</strong>When he surfaces he feeds on the Kindled &#8212; the bright-blooded &#8212; through the Fenton bloodline. Gets to functional strength. Then focuses entirely on the chosen one. Tries to inhabit them completely. Has failed twice. This is the third attempt.</div>
+      <div class="myth-item ref-single"><strong>His Motive</strong>He believes if he inhabits the chosen one completely he can use their power to nudge a comet &#8212; NASA confirms a tiny push is all it takes &#8212; and the impact will thin the seams between this world and his father&#8217;s world enough for him to step through and go home. Whether Earth survives is not his concern.</div>
+      <div class="myth-item ref-single"><strong>What the Legends Say</strong>The ancient traditions &#8212; including the medicine woman&#8217;s &#8212; say yes the comet thins the seams. But what steps through is not a god going home. It is something coming in. Orbus has never addressed this. He only knows what he knows.</div>
+      <div class="myth-item ref-single"><strong>His Nature</strong>He is the Bereft. Not because he chose evil. Because thirteen thousand years of isolation and hunger and diminishment has made him monstrous. He was cast out because his nature was chaos. The isolation turned the chaos inward. He is the man on the street corner with newspapers taped to his body counting things in the air that nobody else can see. Completely certain. Completely alone. Completely lost. He was not always this.</div>
+      <div class="myth-item ref-single"><strong>His Appearance</strong>Featureless. Plain. A face the eye cannot hold. Nothing to name, nothing to keep. Only the eyes are distinct &#8212; burning, half filled with sorrow, half filled with something older than hate. A crown of light appears above his head near the gifted. Not a symbol of power. A wound that never healed taking the shape of what he once thought he deserved. He is the king of madness and loneliness.</div>
+      <div class="myth-item ref-single"><strong>As He Feeds</strong>His featureless face flickers. Not becoming something. Just flickering like a candle in wind. In those flickers &#8212; faces. Young faces. Adolescents. Children. Even babies. The faces of everyone he has ever consumed passing across his featureless face like reflections on disturbed water. He is not haunted by them. They are simply part of what he is now.</div>
+      <div class="myth-item ref-single"><strong>Ancient Depictions</strong>The Urfa Man &#8212; oldest life-size statue ever found, 9000 BC, no mouth, black obsidian eyes. Found near G&#246;bekli Tepe. The survivors made a statue of him. The Sphinx &#8212; original form was a wolf, built during the wet Sahara period after his arrival, facing east. Pillar 43 at G&#246;bekli Tepe &#8212; the vulture stone &#8212; depicts the Younger Dryas comet impact date. Other pillars depict a featureless figure holding a child. The wolf stone depicts a wolf-man figure. In the ancient traditions he is sometimes called the Lonely Wolf &#8212; the figure that moves through the dark between the fires.</div>
+    </div>
+    <div class="ref-lede">The Two Tiers</div>
+    <div class="myth-grid">
+      <div class="myth-item"><strong>Tier One &#8212; The Kindled</strong>Children up to age thirteen with natural gifts. Charisma, athletic ability, intelligence, the specific quality that makes rooms notice them. The Fenton bloodline hunts these and delivers them. Their essence sustains Orbus during dormancy. The cutoff is thirteen &#8212; after that the gift settles into the person and closes.</div>
+      <div class="myth-item"><strong>Tier Two &#8212; The Chosen</strong>The vessels. Britannia. Carter Walks-With-Fire. Modern Carter. These carry the actual gift &#8212; the Bone Calm. Orbus cultivates them across generations. Every time the gift is used he steps further inside. Eventually they go mad from the combination of grief, his deepening presence, and Fenton acceleration.</div>
+    </div>
+    <div class="ref-lede">What Drives the Chosen Mad &#8212; Three Forces</div>
+    <div class="myth-grid">
+      <div class="myth-item"><strong>One &#8212; The Cost</strong>Something beloved is always taken when the gift is used. The grief accumulates.</div>
+      <div class="myth-item"><strong>Two &#8212; Orbus Deepening</strong>Every use of the gift lets him step further inside. The Bone Calm they feel IS him. The voice on the wind Carter always thought was himself &#8212; it&#8217;s Orbus getting louder.</div>
+      <div class="myth-item ref-single"><strong>Three &#8212; Fenton Acceleration</strong>The Fenton rituals near a chosen one push Orbus deeper faster. When Eira was taken &#8212; a Fenton ritual &#8212; it pushed Orbus deeper into Britannia at the exact moment it broke her heart.</div>
+    </div>
+    <div class="ref-lede">The Wolf Connection</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>The &#352;&#250;&#331;ka Wa Watches</strong>The wolf doesn&#8217;t serve Orbus. The wolf watches Orbus. The wolf is the alarm system the bloodline developed against him across ten thousand years. Archie watching the empty armchair. The &#352;&#250;&#331;ka Wa going still on the plains. They see what humans can&#8217;t.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">The Book &#8212; The Self-Writing Record</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>Origin</strong>Made by the medicine man at G&#246;bekli Tepe approximately 9600 BC. He was the most holy person his people had ever produced. He spent three days fashioning it from a fragment of the comet that brought Orbus &#8212; the impact debris, still faintly warm, humming at a frequency felt in the back teeth, animals unwilling to approach it. He wove his medicine into the binding using rituals that died with him. No living tradition knows what he did those three days.</div>
+      <div class="myth-item ref-single"><strong>What It Does</strong>The book writes itself. It records the chosen ones &#8212; their story, what happened to them, what Orbus did, what it cost &#8212; in the language of each era it records. Nobody writes in it. The entries simply appear. Each section in the language closest to the chosen one it describes.</div>
+      <div class="myth-item ref-single"><strong>How It Moves</strong>The book moves to the chosen one when the time comes. Nobody sends it. It finds its way. The same gravity that moves the chair toward Brittany. The same gravity that moves the two bloodlines toward each other.</div>
+      <div class="myth-item ref-single"><strong>How It Helps</strong>It shows the chosen one what came before. Every chosen one who ever lived. Their story already written. So they know they are not the first. So they know the pattern. So they know what Orbus is doing before he finishes doing it.</div>
+      <div class="myth-item ref-single"><strong>Arrival</strong>The book arrived addressed to Carter. Carter is eighteen months old. The hibachi chef &#8212; a medicine woman whose tradition has known about the book for generations &#8212; found it and sent it to the household when she saw Carter put his hands in the flame and the crown appeared above his shadow. She knew the time had come.</div>
+      <div class="myth-item ref-single"><strong>Contents</strong>Approximately thirteen sections. Each in a different language. The front section is G&#246;bekli Tepe proto-script &#8212; the oldest written language on Earth. Nicole eventually identifies it and gets partial translation through an archaeologist contact. Middle sections in various ancient and medieval languages. One section in archaic English that Anthony can barely parse &#8212; this is Michaela Marie&#8217;s section, the one he finds when he flips through at midnight. The last pages &#8212; mostly blank. In the bottom corner of the final page: Carter&#8217;s name and birthday. October 13 2024. Written in no hand that belongs to anyone.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">Ancient Sites &#8212; The Survivors&#8217; Monuments</div>
+    <div class="myth-grid">
+      <div class="myth-item"><strong>G&#246;bekli Tepe &#8212; 9600&#8211;8200 BC</strong>Southeastern Turkey. The oldest temple ever found. Pre-dates any other megalithic site by 6,000 years. Deliberately buried by its builders. T-shaped pillars with animal carvings. Pillar 43 &#8212; the vulture stone &#8212; encodes the date of the Younger Dryas impact as a star map. The first written word found here means God. LIDAR has detected 15&#8211;20 additional structures beneath the hill not yet excavated.</div>
+      <div class="myth-item"><strong>Karahan Tepe &#8212; Same Period</strong>45 kilometers east of G&#246;bekli Tepe. Sister site. 250 obelisks. A human face carved emerging from bedrock on a serpent-like neck. Deliberately buried. LIDAR revealing T-shaped pillars inside a ritual well. In 1999 during early excavations something was disturbed. The Fenton bloodline activity in Nicole&#8217;s research spikes noticeably in the early 2000s.</div>
+      <div class="myth-item"><strong>The Urfa Man &#8212; 9000 BC</strong>Found near G&#246;bekli Tepe. Oldest life-size human statue ever found. No mouth. Eyes originally emphasized by black obsidian sunk into deep holes. The obsidian comes from a geological formation buried under the Younger Dryas impact debris. The survivors used a piece of what brought him here to make his eyes.</div>
+      <div class="myth-item"><strong>The Sphinx &#8212; 10,000&#8211;12,000 BC</strong>Built during the wet Sahara period after the impact. Original form was a wolf &#8212; not a lion, not a human face. The head was recarved by later civilizations who found it and didn&#8217;t understand what they were looking at. Faces east. Watching the sky where the comet came from. Dr. Robert Schoch&#8217;s water erosion evidence dates it to this period.</div>
+      <div class="myth-item"><strong>Tell Qaramel &#8212; Syria &#8212; 10,500 BC</strong>Five stone towers. The earliest structures built by the survivors. Before the full theology developed. Just towers watching the sky.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">Brittany&#8217;s Bloodline</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>What Orbus Senses</strong>He has been working the women in Brittany&#8217;s bloodline specifically. Not the Bone Calm &#8212; that lives in Anthony&#8217;s bloodline. A receptiveness to the supernatural. A sensitivity. The women in Brittany&#8217;s bloodline don&#8217;t carry the gift. They carry something that makes them see what others can&#8217;t. That sensitivity is what Orbus needed in the vessel that would birth the final chosen one.</div>
+      <div class="myth-item"><strong>Brittany&#8217;s Mother</strong>Single mother. Started seeing things when Brittany was young. One night grabbed Brittany &#8212; age eight or nine &#8212; eyes wrong, voice wrong. Said Brittany would be the bearer. That the prince from beyond the stars was promised through her daughter. Then blinked back. Held Brittany. Cried. Never spoke of it again. Killed herself when Brittany was fifteen.</div>
+      <div class="myth-item"><strong>Brittany After</strong>Went to live with her grandparents &#8212; the judge and his wife &#8212; until she was eighteen. Left immediately to be with Anthony. They had been together since she was sixteen. He was her anchor. The first solid thing.</div>
+      <div class="myth-item"><strong>The Judge&#8217;s Wife</strong>Brittany&#8217;s blood grandmother. Started seeing Orbus through proximity to the chair &#8212; unfiltered, no bloodline protection. Told the judge very calmly one night what she had seen. Michaela Marie. Britannia. The full history. Three days later killed herself in the sunroom in the chair.</div>
+      <div class="myth-item"><strong>The Judge</strong>Cleared of wrongdoing. Deteriorated quietly. One morning walked into Prentice Cooper State Forest north of Chattanooga. Left his phone on the counter. Wallet on the table. Keys by the door. Father&#8217;s .38 revolver. His body was never found. House went through the estate. Sat on the market for years. Price dropped multiple times.</div>
+      <div class="myth-item"><strong>The Realtor</strong>Called Brittany specifically. She never signed up for any list. Something off about him. She tries to describe his face afterward and can&#8217;t. Just the eyes. Something burning in them she files away as intensity.</div>
+      <div class="myth-item"><strong>Brittany as a Child</strong>Used to walk past the Victorian house on her way to school. Obsessed with it. Specifically the sunroom. Drew pictures of it over and over. Always the chair with the dragon heads. She had never been inside. Never seen the chair up close. Drew it exactly right every time.</div>
+      <div class="myth-item"><strong>Moving In</strong>The chair was already there. In the sunroom. Exactly where she always drew it. She stood in the doorway for a long time. Didn&#8217;t tell Anthony.</div>
+      <div class="myth-item"><strong>The Hidden Room</strong>During renovation they knock on a wall that sounds hollow. Open it up. Small room. No windows. Sealed from inside. Old wood smell. Something left behind by whoever sealed it. What&#8217;s inside is workshopped.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">Cole Fenton &#8212; Complete</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>The Bloodline Theology</strong>Appalachian mountain family. The theology passed father to son for generations. They believe Orbus is God. Not a god. God. The one true thing. Every other religion has a version of him. The Fentons are the only ones who have actually met him. Done his work. Firsthand. They call the marked children the Kindled. The fire in those children is wrong fire. The devil&#8217;s mark. They believe they are doing holy work by delivering them. Purifying them.</div>
+      <div class="myth-item ref-single"><strong>Cole&#8217;s Origin</strong>Cole Fenton&#8217;s father took his baby brother away one day. Said he was going to stay with relatives in Texas. Cole never met them. Never heard of them. His brother never came back. Cole knew his father killed him. Spent years waiting to be old enough to do something about it. Then his father sat him down and explained everything. The theology. The Kindled. The holy work. What his brother was. Why it had to happen. Cole made his choice.</div>
+      <div class="myth-item"><strong>Physical Description</strong>Not large but takes up space. Pale &#8212; not from being indoors but from something older. Dark lank hair pushed back from a face of angles. Jaw and cheekbone and the hollow under the eye of a man who eats when he remembers to and forgets often. Big hands for his frame. Calloused from patient work done in the dark over a long time. Eyes that burned with the demented certainty of divine purpose.</div>
+      <div class="myth-item"><strong>Cole Sees Ghosts</strong>The shadows of the children. Not haunting him. Just residue. Little flickering presences at the edge of vision. He sees them in mirrors. Small shapes. The suggestion of a face. He thinks it&#8217;s the cost of the holy work. That you carry what you do. He accepts it. But they&#8217;re getting more frequent. And lately one of them has been looking back at him.</div>
+      <div class="myth-item ref-single"><strong>Nicole&#8217;s Discovery</strong>She maps the Fenton bloodline across centuries through missing children clusters. Same signature. Same age range &#8212; under thirteen. Most gifted child in the community. No body. No explanation. The Fenton name appears in records going back to 1887. The clusters spike when Orbus surfaces. Go dormant when he sleeps. The dots are moving toward Chattanooga.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">Story Architecture &#8212; Locked</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>The Ending &#8212; Locked</strong>Carter does not destroy Orbus. He sees him. The Bone Calm was never a weapon. Every Chosen before Carter used it as one and none of them broke the cycle. The Bone Calm is the ability to be completely present with something in its fullest most terrifying form and not flinch. Nobody has ever been fully present with Orbus. Not in thirteen thousand years. Every Chosen either burned against him or collapsed. Carter goes completely still. Not submission. Not resistance. Presence. He holds the full weight of thirteen thousand years of Orbus&#8217;s grief and loneliness and does not break. Being truly witnessed by something that isn&#8217;t afraid of what it sees &#8212; does to Orbus what thirteen millennia of waiting never could.</div>
+      <div class="myth-item"><strong>Dark Ending</strong>Orbus burns away because he finally, briefly, was not alone. That is the only mercy available to something that broken.</div>
+      <div class="myth-item"><strong>Light Ending</strong>Whatever Orbus was before the isolation surfaces for a single moment. The chaos freed becomes something else entirely.</div>
+      <div class="myth-item ref-single"><strong>Final Image &#8212; Both Versions</strong>The Book closes itself. On the last page new text appears in the original hand. The same script as the very first page. Two words only: <em>He remembered.</em></div>
+      <div class="myth-item ref-single"><strong>When Anthony Believes &#8212; 60% Mark &#8212; Locked</strong>Not convinced by anyone. Not frightened into it. Anthony wakes at 3am with no reason &#8212; parental radar. Carter is gone. He finds him on the back porch in Brittany&#8217;s chair. Archie pressed against the chair leg, one ice blue eye open. Carter is four or five. Feet not reaching the floor. Sitting in the throne the way children sit in thrones &#8212; without self-consciousness. Like it is simply where he belongs. Anthony starts toward the door. Stops. Carter is talking. Full sentences. His own voice. But with the certainty of a child who has never once second-guessed himself. Anthony cannot make out the words. Just Carter&#8217;s profile. Moonlight finding him. The Wetherbee name burned into the back of the chair above his son&#8217;s head. Carter is speaking to whatever is in the yard. Then the Bone Calm still. The night shifts slightly &#8212; not a shape, not a sound, just the air changing. Carter nods. Like he received an answer. Then he turns and looks directly at Anthony through the glass. He knew Anthony was there the entire time. Carter says one sentence. In his own small four-year-old voice. Something from inside Anthony&#8217;s childhood. Something Anthony has never spoken aloud. Not to Brittany. Not to Nicole. Not to anyone. Something buried so completely he forgot the act of burying it. Something Carter has no way to know. Anthony slides down the glass door and sits on the kitchen floor with his back against it. Not going outside. Just sitting in the dark with his face in his hands. Not afraid. He has been bracing for frightening for years. His son is on the back porch having a conversation with something ancient in a thousand-year-old chair with a wolf at his feet. And it is the most natural thing Anthony has ever seen. Carter pads back inside. Stops in front of his father on the floor. Leans forward and puts his forehead against Anthony&#8217;s. Anthony puts his hand on the back of his son&#8217;s head. Neither of them says anything. [What Carter says is yours to find. Only you know what is locked in Anthony.]</div>
+      <div class="myth-item ref-single"><strong>The Emotional Center &#8212; Not The Mythology</strong>The scene where Anthony understands that Brittany has known, has been watching, has been protecting their entire marriage. A husband and wife in a kitchen at 3am with the rain coming down in Chattanooga and the Book on the table between them and thirteen thousand years of weight in the room.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">Hidden Mysteries &#8212; Seeded &amp; Locked</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>Roxy Is In The House &#8212; Locked</strong>The presence Archie watches in the empty armchair is not only Orbus. It is Roxy. She got there first. She has been in that Victorian house since Carter arrived and she is the reason Orbus has not been able to move into Carter the way he moved into the others before. There is already a woman in the room watching the fire. And she was the one who said burn bright my fire at the edge of her life. The question that runs through the modern timeline &#8212; is the presence in the house Orbus or Roxy &#8212; is the Paranormal Activity engine. Anthony cannot be sure. The reader cannot be sure. Not until the ending.</div>
+      <div class="myth-item ref-single"><strong>Brittany Already Knows &#8212; Locked</strong>She has always known. Not everything. But enough. The Wetherbee women have been passing it down quietly for a thousand years &#8212; grandmother to mother to daughter. She married Anthony because of what Carter was going to be. Not arranged. Not sinister. Something older and simpler: the bloodline that protects and the bloodline that carries the gift have been intersecting for a thousand years. Marie protected Britannia. Roxy protected Carter Walks-With-Fire. Brittany is designed to be beside this Carter. She has not told Anthony because she knows he cannot hear it yet. She has been patient because she knows he will believe when he needs to. Telling him before would only push him further away.</div>
+      <div class="myth-item ref-single"><strong>The Wetherbee Chair IS the Viking Chair &#8212; Locked</strong>Marie&#8217;s chair in the Norse hall in 900 AD is the same chair Brittany bought at a yard sale in Chattanooga for forty dollars. It is a thousand years old. It crossed the Atlantic with the bloodline. It survived everything the bloodline survived. The Wetherbee name burned into the back is not a craftsman&#8217;s mark. It is the family name of the bloodline that has carried and protected it across a millennium. The chair found Brittany the same way the Book found Anthony. The same gravity. The same timing.</div>
+      <div class="myth-item ref-single"><strong>Marie&#8217;s Compartment &#8212; Hidden Mystery &#8212; Locked</strong>Chapter One. Page two. Her mind drifted to the compartment. To what it held. To the reason it was there at all. Never mentioned again. What it holds: something Britannia put there specifically for the third Chosen. Not the Book &#8212; the Book travels separately. Something personal. A single line in Britannia&#8217;s hand. Something the Book never says outright. What the ending requires Carter to know. The mechanism: Carter lays his hand on the armrest in the dark. The dragon&#8217;s mouth under his palm &#8212; the open teeth, the things that bite back &#8212; clicks open. Not a mechanism. Just open. The way things open when they have been waiting for the right person. What is inside has been there since a Norse hall in 900 AD. What it contains is yours to find. It must be the most personal thing in the book.</div>
+      <div class="myth-item ref-single"><strong>Carter&#8217;s Temple Birthmark &#8212; Ready to Seed</strong>In the Brazos River chapter Blood On His Claws throws a stone at Carter Walks-With-Fire&#8217;s temple. Carter goes down instantly. Modern Carter has a faint mark above his left eye &#8212; light red, almost pink in certain light. Always looked more like a scar to Anthony than a birthmark. Strangely like a scar. But there since birth. The body remembers across lifetimes. Seed this in the hibachi chapter: the warm restaurant light catching it. Anthony noticing it the way he sometimes noticed it &#8212; filing it away, not understanding it yet.</div>
+      <div class="myth-item ref-single"><strong>The Book Smells Like Fire &#8212; Locked</strong>The package smelled like fire and ash. Not because it came from somewhere burning. Carter Walks-With-Fire held this book in 1876. His hands were in the pages. The fire of his hands is in the parchment forever. What Anthony smelled on his doorstep in the rain was the residue of a man from a Texas clearing who died on those plains whose hands never burned. A century and a half later still in the ink.</div>
+      <div class="myth-item ref-single"><strong>The 14th Name &#8212; Locked</strong>Nicole counts thirteen cultures with thirteen names. She does not know the fourteenth. The fourteenth is the name Orbus&#8217;s brothers and father used for him before the casting out. Before the chaos. Before any of this. His true name. The one that predates all mythology and all human record. The Book&#8217;s final page &#8212; the one that writes itself in real time in front of Anthony &#8212; contains only that name. In the original script. Not translated. When Carter says it aloud at the ending &#8212; not as a weapon, as recognition &#8212; it is the only thing no one has offered Orbus in thirteen thousand years. His own name. Said by something that is not afraid of what it sees.</div>
+    </div>
+  </div>
+
   <div class="ref-sec">
     <div class="ref-h">Still To Build</div>
     <table class="tbl"><thead><tr><th>Section</th><th>Placement</th><th>Notes</th></tr></thead><tbody>
@@ -743,6 +1108,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div class="row">
     <button class="btn" id="btn-mis">Find Mistakes</button>
     <button class="btn btn-dim" id="btn-mis-clr">Clear</button>
+    <button class="btn btn-dim" id="btn-mis-scan" title="Pull current chapter from the reader">&#9654; Scan Chapter</button>
   </div>
   <div id="mis-results"><div class="empty">Paste a passage and click Find Mistakes.</div></div>
 </div>
@@ -769,7 +1135,18 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
         <option value="pinned-from-chat">Pinned from Chat</option>
       </select>
       <select id="idea-chapter" class="idea-tag-sel" style="flex:1;min-width:120px">
-        <option value="">No chapter</option>
+        <option value="">Any Chapter</option>
+        <option value="opening">Opening Page</option>
+        <option value="watching1">The Watching I</option>
+        <option value="chapter1">Chapter One</option>
+        <option value="chapter2">Chapter Two</option>
+        <option value="chapter3">Chapter Three</option>
+        <option value="watching2">The Watching II</option>
+        <option value="brazos">The Brazos River</option>
+        <option value="chapter4">Chapter Four</option>
+        <option value="chapter5">Chapter Five</option>
+        <option value="scary">Scary Chapter</option>
+        <option value="redwedding">Red Wedding Scene</option>
       </select>
       <select id="idea-status" class="idea-status-sel">
         <option value="pending">Pending</option>
@@ -842,6 +1219,12 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
     <div class="arch-stat" id="arch-total-wc"></div>
     <div class="arch-stat" id="arch-chapter-count"></div>
   </div>
+  <div id="arch-search-wrap">
+    <input type="text" id="arch-search-in" class="arch-search-input" placeholder="Search all chapters…" autocomplete="off">
+    <button class="btn" id="btn-arch-search">&#9656; Search</button>
+    <button class="btn btn-dim" id="btn-arch-search-clr">Clear</button>
+  </div>
+  <div id="arch-search-results"></div>
   <div id="arch-list"></div>
 </div>
 </div><!-- /app -->
@@ -869,6 +1252,7 @@ function triggerOrbusOverlay() {
 
 // ── AUTHOR MODE STATE ─────────────────────────────────────────────────────
 var authorMode = false;
+var mistakeHlActive = false;
 var EDITS = {};
 function loadEdits() { try { EDITS = JSON.parse(localStorage.getItem('bwr-edits') || '{}'); } catch(e) { EDITS = {}; } }
 function getEdit(key) { return EDITS.hasOwnProperty(key) ? EDITS[key] : null; }
@@ -917,6 +1301,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Author mode
   var bEdit = document.getElementById('btn-edit');
   if (bEdit) bEdit.addEventListener('click', toggleAuthorMode);
+
+  // Mistake highlight toggle
+  var bIdeasHL = document.getElementById('btn-ideas-hl');
+  if (bIdeasHL) bIdeasHL.addEventListener('click', toggleChapterIdeas);
+  setTimeout(updateChapterIdeasBtn, 100);
+
+  var bMisHL = document.getElementById('btn-mis-hl');
+  if (bMisHL) bMisHL.addEventListener('click', toggleMistakeHL);
+
+  // Scan Chapter buttons on Signal Bible and Mistake Finder
+  // Architecture cross-chapter search
+  var bArchSearch = document.getElementById('btn-arch-search');
+  if (bArchSearch) bArchSearch.addEventListener('click', searchAllChapters);
+  var bArchClr = document.getElementById('btn-arch-search-clr');
+  if (bArchClr) bArchClr.addEventListener('click', clearArchSearch);
+  var archIn = document.getElementById('arch-search-in');
+  if (archIn) archIn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') searchAllChapters();
+  });
+
+  var bSigScan = document.getElementById('btn-sig-scan');
+  if (bSigScan) bSigScan.addEventListener('click', function() { scanCurrentChapter('sig-in'); });
+  var bMisScan = document.getElementById('btn-mis-scan');
+  if (bMisScan) bMisScan.addEventListener('click', function() { scanCurrentChapter('mis-in'); });
 
   // Edit bar buttons
   var bAdd = document.getElementById('btn-add-para');
@@ -978,6 +1386,7 @@ document.addEventListener('DOMContentLoaded', function() {
   populateIdeaChapters();
   buildArchitecture();
   loadIdeas();
+  seedDefaultIdeas();
   renderIdeas();
   initCompass();
 
@@ -1011,20 +1420,32 @@ function toggleWide() {
 function toggleAuthorMode() {
   authorMode = !authorMode;
   var reader = document.getElementById('reader');
-  var btn = document.getElementById('btn-edit');
-  var bar = document.getElementById('edit-bar');
+  var btn    = document.getElementById('btn-edit');
+  var bar    = document.getElementById('edit-bar');
+  // Preserve scroll position — layout reflow from edit-bar appearing/disappearing
+  // can knock the reader to a different spot without this save/restore
+  var savedScroll = reader ? reader.scrollTop : 0;
+
   if (authorMode) {
     reader.classList.add('edit-mode');
-    if (btn) { btn.classList.add('on'); btn.innerHTML = '✔ Reading Mode'; }
+    if (btn) { btn.classList.add('on'); btn.innerHTML = '\u2714 Reading Mode'; }
     if (bar) bar.classList.add('show');
     enableEditingInChapter();
+    // Restore scroll immediately after layout settles
+    if (reader) reader.scrollTop = savedScroll;
+    // Re-apply highlights so they show on the now-editable paragraphs
+    if (mistakeHlActive) setTimeout(applyMistakeHighlights, 30);
   } else {
     reader.classList.remove('edit-mode');
-    if (btn) { btn.classList.remove('on'); btn.innerHTML = '✎ Author Mode'; }
+    if (btn) { btn.classList.remove('on'); btn.innerHTML = '\u270e Author Mode'; }
     if (bar) bar.classList.remove('show');
     // Remove contenteditable from all paragraphs and header fields
     var editables = document.querySelectorAll('#chapters [contenteditable="true"]');
     for (var i = 0; i < editables.length; i++) editables[i].contentEditable = 'false';
+    // Restore scroll (edit-bar hiding shifts layout back)
+    if (reader) reader.scrollTop = savedScroll;
+    // Re-apply highlights on the now-plain paragraphs
+    if (mistakeHlActive) setTimeout(applyMistakeHighlights, 30);
   }
 }
 
@@ -1382,6 +1803,9 @@ function showChapter(id) {
   try { localStorage.setItem('bwr-chapter', id); } catch(e) {}
   // If in author mode, wire up editing for new chapter
   if (authorMode) setTimeout(enableEditingInChapter, 50);
+  if (mistakeHlActive) { clearMistakeHighlights(); setTimeout(applyMistakeHighlights, 80); }
+  closeChapterIdeas();
+  setTimeout(updateChapterIdeasBtn, 20);
 }
 
 function esc(s) {
@@ -1441,6 +1865,208 @@ function clearSignal() {
 function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
 // ── MISTAKE FINDER ────────────────────────────────────────────────────────
+
+
+// ── IDEAS IN READER ───────────────────────────────────────────────────────────
+
+function getCurrentChapterId() {
+  var ch = document.querySelector('.chapter.on');
+  return ch ? ch.id.replace('ch-', '') : '';
+}
+
+function updateChapterIdeasBtn() {
+  var btn = document.getElementById('btn-ideas-hl');
+  if (!btn) return;
+  var chId = getCurrentChapterId();
+  var count = 0;
+  for (var i = 0; i < IDEAS.length; i++) {
+    if (IDEAS[i].chapter === chId) count++;
+  }
+  if (count > 0) {
+    btn.innerHTML = '&#128161; ' + count + ' Idea' + (count !== 1 ? 's' : '');
+    btn.classList.add('has-ideas');
+  } else {
+    btn.innerHTML = '&#128161; Ideas';
+    btn.classList.remove('has-ideas');
+  }
+}
+
+function renderChapterIdeasPanel() {
+  var list = document.getElementById('ch-ideas-list');
+  if (!list) return;
+  var chId = getCurrentChapterId();
+  var matching = [];
+  for (var i = 0; i < IDEAS.length; i++) {
+    if (IDEAS[i].chapter === chId) matching.push(IDEAS[i]);
+  }
+  if (matching.length === 0) {
+    list.innerHTML = '<div class="ch-ideas-empty">No ideas pinned to this chapter yet.</div>';
+    return;
+  }
+  var h = '';
+  for (var i = 0; i < matching.length; i++) {
+    var idea = matching[i];
+    var titleHtml = idea.title
+      ? '<div class="ch-idea-item-title">' + esc(idea.title) + '</div>'
+      : '';
+    var bodyTxt = idea.text.length > 140 ? idea.text.slice(0, 137) + '...' : idea.text;
+    h += '<div class="ch-idea-item">';
+    h += titleHtml;
+    h += '<div class="ch-idea-item-body">' + esc(bodyTxt) + '</div>';
+    h += '<span class="ch-idea-item-tag">' + esc(idea.tag) + '</span>';
+    h += '</div>';
+  }
+  list.innerHTML = h;
+}
+
+function toggleChapterIdeas() {
+  var panel = document.getElementById('ch-ideas-panel');
+  var btn   = document.getElementById('btn-ideas-hl');
+  if (!panel) return;
+  if (panel.classList.contains('open')) {
+    panel.classList.remove('open');
+    if (btn) btn.classList.remove('open');
+  } else {
+    renderChapterIdeasPanel();
+    panel.classList.add('open');
+    if (btn) btn.classList.add('open');
+  }
+}
+
+function closeChapterIdeas() {
+  var panel = document.getElementById('ch-ideas-panel');
+  var btn   = document.getElementById('btn-ideas-hl');
+  if (panel) panel.classList.remove('open');
+  if (btn)   btn.classList.remove('open');
+}
+
+function goToIdeasBoard() {
+  closeChapterIdeas();
+  showPanel('p-ideas');
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('on');
+  var t = document.querySelector('[data-panel="p-ideas"]');
+  if (t) t.classList.add('on');
+}
+
+// Close panel when clicking outside of it
+document.addEventListener('click', function(e) {
+  var panel = document.getElementById('ch-ideas-panel');
+  var btn   = document.getElementById('btn-ideas-hl');
+  if (!panel || !panel.classList.contains('open')) return;
+  if (!panel.contains(e.target) && e.target !== btn) closeChapterIdeas();
+});
+
+// ── MISTAKE HIGHLIGHTS IN READER ─────────────────────────────────────────────
+
+function escRx(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+function getHighlightPhrases(ch) {
+  var paras = ch.querySelectorAll('.pb,.pd,.pp,.pi,.pq');
+  var parts = [];
+  for (var i = 0; i < paras.length; i++) {
+    var t = paras[i].textContent.trim();
+    if (t && t.indexOf('\u2736') < 0) parts.push(t);
+  }
+  var text = parts.join(' ');
+  var lower = text.toLowerCase();
+  var result = [], seen = {};
+
+  function add(ph, cls) {
+    var key = ph.toLowerCase();
+    if (!seen[key]) { seen[key] = true; result.push({ ph: ph, cls: cls }); }
+  }
+
+  // Overused signature phrases
+  var ops = [
+    { ph:'that specific',thr:2 },{ ph:'had no business',thr:2 },
+    { ph:'something older',thr:2 },{ ph:'something ancient',thr:2 },
+    { ph:'specific quality',thr:2 },{ ph:'no business',thr:2 },
+    { ph:'in a way that',thr:3 },{ ph:'the way',thr:6 },
+    { ph:'ancient',thr:4 },{ ph:'patient',thr:4 },{ ph:'already',thr:6 }
+  ];
+  for (var i = 0; i < ops.length; i++) {
+    var cnt = 0, ix = lower.indexOf(ops[i].ph);
+    while (ix >= 0) { cnt++; ix = lower.indexOf(ops[i].ph, ix + 1); }
+    if (cnt >= ops[i].thr) add(ops[i].ph, 'mis-hl-over');
+  }
+
+  // Hedge words
+  if ((text.match(/\bseemed\b/gi) || []).length > 1) add('seemed', 'mis-hl-hedge');
+  if ((lower.match(/\bsort of\b/g) || []).length > 0) add('sort of', 'mis-hl-hedge');
+  if ((lower.match(/\bkind of\b/g) || []).length > 0) add('kind of', 'mis-hl-hedge');
+
+  // AI-tell phrases
+  var aiTells = [
+    'it is worth noting',"it's worth noting",'notably,','importantly,',
+    'furthermore,','additionally,','in conclusion,','in summary,',
+    'delve into','tapestry of','testament to','game-changer',
+    'paradigm shift','multifaceted','in the realm of',
+    'at the end of the day','wholesome','unpack'
+  ];
+  for (var i = 0; i < aiTells.length; i++) {
+    if (lower.indexOf(aiTells[i]) >= 0) add(aiTells[i], 'mis-hl-ai');
+  }
+
+  // Sort longest first to avoid shorter phrase matching inside longer
+  result.sort(function(a, b) { return b.ph.length - a.ph.length; });
+  return result;
+}
+
+function applyMistakeHighlights() {
+  var reader = document.getElementById('reader');
+  if (!reader) return;
+  var ch = reader.querySelector('.chapter.on');
+  if (!ch) return;
+  var phrases = getHighlightPhrases(ch);
+  if (phrases.length === 0) return;
+
+  var paras = ch.querySelectorAll('.pb,.pd,.pp,.pi,.pq');
+  for (var i = 0; i < paras.length; i++) {
+    var p = paras[i];
+    // Always read fresh textContent — strips any existing highlight spans cleanly,
+    // and works correctly on both read-only and contenteditable paragraphs.
+    var plainText = p.textContent;
+    var hlHtml = plainText;
+    for (var j = 0; j < phrases.length; j++) {
+      var _ph = phrases[j].ph;
+      var _lb = /^\w/.test(_ph) ? '\\b' : '';
+      var _rb = /\w$/.test(_ph) ? '\\b' : '';
+      var rx = new RegExp(_lb + '(' + escRx(_ph) + ')' + _rb, 'gi');
+      var cls = phrases[j].cls;
+      hlHtml = hlHtml.replace(rx, '<span class="' + cls + '">$1</span>');
+    }
+    // Only touch the DOM if something actually matched
+    if (hlHtml !== plainText) p.innerHTML = hlHtml;
+  }
+}
+
+function clearMistakeHighlights() {
+  var hls = document.querySelectorAll('.mis-hl-over, .mis-hl-hedge, .mis-hl-ai');
+  for (var i = 0; i < hls.length; i++) {
+    var parent = hls[i].parentNode;
+    if (parent) {
+      parent.replaceChild(document.createTextNode(hls[i].textContent), hls[i]);
+      parent.normalize();
+    }
+  }
+  // Also clear stored originals
+  var marked = document.querySelectorAll('[data-hl-orig]');
+  for (var i = 0; i < marked.length; i++) marked[i].removeAttribute('data-hl-orig');
+}
+
+function toggleMistakeHL() {
+  mistakeHlActive = !mistakeHlActive;
+  var btn = document.getElementById('btn-mis-hl');
+  if (mistakeHlActive) {
+    applyMistakeHighlights();
+    if (btn) { btn.classList.add('on'); btn.innerHTML = '&#9679; Mistakes On'; }
+  } else {
+    clearMistakeHighlights();
+    if (btn) { btn.classList.remove('on'); btn.innerHTML = '&#9679; Mistakes'; }
+  }
+}
+
 function runMistake() {
   var text = document.getElementById('mis-in').value.trim();
   if (!text) return;
@@ -1529,6 +2155,7 @@ function clearMistake() {
 
 
 var IDEAS = [];
+var ARCH_SCANNED = {};
 function loadIdeas() { try { IDEAS = JSON.parse(localStorage.getItem('bwr-ideas') || '[]'); } catch(e) { IDEAS = []; } }
 function saveIdeas() { try { localStorage.setItem('bwr-ideas', JSON.stringify(IDEAS)); } catch(e) {} }
 
@@ -1555,12 +2182,14 @@ function pinIdea() {
   if (titleEl) titleEl.value = '';
   if (textEl)  textEl.value = '';
   renderIdeas();
+  updateChapterIdeasBtn();
 }
 
 function deleteIdea(id) {
   IDEAS = IDEAS.filter(function(x) { return x.id !== id; });
   saveIdeas();
   renderIdeas();
+  updateChapterIdeasBtn();
 }
 
 function updatePendingCount() {
@@ -1903,6 +2532,7 @@ function scanCurrentChapter(targetId) {
   var reader = document.getElementById('reader');
   if (!reader) return;
   var ch = reader.querySelector('.chapter.on');
+  if (ch) recordChapterScanned(ch.id.replace('ch-', '')); // track in arch map
   if (!ch) { target.value = ''; target.placeholder = 'No chapter currently visible.'; return; }
   var parts = [];
   var paras = ch.querySelectorAll('.pb,.pd,.pp,.pi,.pq');
@@ -1937,28 +2567,276 @@ function populateIdeaChapters() {
 }
 
 
+
+
+// ── CROSS-CHAPTER SEARCH ──────────────────────────────────────────────────────
+
+function searchAllChapters() {
+  var input   = document.getElementById('arch-search-in');
+  var results = document.getElementById('arch-search-results');
+  if (!input || !results) return;
+  var query = input.value.trim();
+  if (query.length < 2) {
+    results.innerHTML = '<div class="arch-sr-none">Enter at least 2 characters to search.</div>';
+    return;
+  }
+  var lower = query.toLowerCase();
+  var totalFound = 0;
+  var html2 = '';
+
+  for (var c = 0; c < BOOK.length; c++) {
+    var ch = BOOK[c];
+    var matches = [];
+    for (var p = 0; p < ch.paras.length; p++) {
+      var para = ch.paras[p];
+      if (!para.text) continue;
+      var pLower = para.text.toLowerCase();
+      var ix = pLower.indexOf(lower);
+      if (ix < 0) continue;
+      // Build context snippet around first match
+      var start   = Math.max(0, ix - 45);
+      var end2    = Math.min(para.text.length, ix + query.length + 90);
+      var snippet = (start > 0 ? '\u2026' : '') +
+                    para.text.slice(start, end2) +
+                    (end2 < para.text.length ? '\u2026' : '');
+      // Highlight all matches in snippet
+      var highlighted = snippet.replace(
+        new RegExp('(' + escRx(query) + ')', 'gi'),
+        '<mark class="arch-search-mark">$1</mark>'
+      );
+      matches.push(highlighted);
+      totalFound++;
+    }
+    if (matches.length > 0) {
+      html2 += '<div class="arch-sr-ch">';
+      html2 += '<div class="arch-sr-ch-title">' +
+                esc(ch.title) +
+                '<span class="arch-sr-count">' + matches.length +
+                ' match' + (matches.length !== 1 ? 'es' : '') + '</span></div>';
+      for (var m = 0; m < matches.length; m++) {
+        html2 += '<div class="arch-sr-item">' + matches[m] + '</div>';
+      }
+      html2 += '</div>';
+    }
+  }
+
+  if (totalFound === 0) {
+    results.innerHTML = '<div class="arch-sr-none">No matches found for “' + esc(query) + '” across any chapter.</div>';
+  } else {
+    results.innerHTML =
+      '<div class="arch-sr-summary">' + totalFound +
+      ' match' + (totalFound !== 1 ? 'es' : '') +
+      ' for “' + esc(query) + '”</div>' + html2;
+  }
+}
+
+function clearArchSearch() {
+  var input   = document.getElementById('arch-search-in');
+  var results = document.getElementById('arch-search-results');
+  if (input)   input.value = '';
+  if (results) results.innerHTML = '';
+}
+
+
+// ── DEFAULT IDEAS SEED ────────────────────────────────────────────────────────
+function seedDefaultIdeas() {
+  try {
+    if (localStorage.getItem('bwr-ideas-seeded-v1')) return;
+  } catch(e) { return; }
+
+  var defaults = [
+    {
+      id: 1700000001,
+      title: 'The Judge Scene',
+      text: 'Brittany visits the judge in whatever facility he ended up in — or visits the house and finds his notes. She goes for closure. She hated him for years. But she knew him across too many summers to believe he was that kind of man.\n\nHe tells her: The chair. What his wife said that night at the kitchen table. The drawings going back generations — women in the bloodline drawing the same images. The chair. The crown. The sunroom. All of them drawn by women who had never seen each other\'s drawings.\n\nHe tells her: The house chose you. It was always yours. It was waiting for you to come back to it.\n\nHe looks at her for a long moment.\n\n"You have her eyes."\n\nHe means the grandmother. But he also means something older.',
+      tag: 'plot',
+      chapter: '',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000002,
+      title: 'The Medicine Woman Scene',
+      text: 'Native American medicine woman who worked at the hibachi restaurant. Her father was the medicine man before her. Her people have carried the knowledge of what arrived with the Younger Dryas comet for generations through oral tradition — thirteen ancient beings, one cast here.\n\nShe saw the mark above Carter at the hibachi restaurant. She recognized it immediately. She left that night and didn\'t come back because she had work to do. She found the book and sent it to the household.\n\nWhen Brittany finds her: Three days of watching her. Brittany gets out of the Mercedes at the curb. Catches the elbow of her jacket.\n\nThe woman spins. "You don\'t touch me."\n\n"I\'m sorry. I\'m just worried about my son."\n\nHer eyes so brown they were almost black in that light. Long black hair in a tortoiseshell clip. Many braids falling down her back.\n\n"I saw the mark above your child. And he is chosen."\n\nShe is the Angels and Demons discovery scene. She explains Orbus completely — not through research but through knowledge passed down for twelve thousand years.',
+      tag: 'character',
+      chapter: 'chapter2',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000003,
+      title: 'Knox Chapter — Bar Scene',
+      text: 'Knox modeled on the Texas Rangers from Empire of the Summer Moon — first group to adopt the Colt Walker revolver in 1847. Six shots without reloading. The specific confidence that gives men in 1855 Texas.\n\nKnox in the bar scene — approximately 1855-1858. Carter would be 13-16. Knox has been searching for years. Drinking heavily since losing Roxy and Carter. Deep down he knows Roxy is gone. He can feel it the way you feel a death you haven\'t been told about yet.\n\nThe three men: They snake lazily through the bar. Knox sees them coming. Knox has always seen them coming. They stop a barstool space away. Knox does not look up. Three almost identical long sweeping mustaches. Two big sombreros. Pink rugged white men. Big hairy hands resting on six shooter pistols. Red bandanas at their necks. "So this is him."\n\nThe bar: Smoke gathered at the top from cigars and the fireplace. The timber and hay smell reeked of sweat and blood and soot and the memories of a lifetime. Knox\'s eyes weary and sunk into his face. The look of a man who couldn\'t find sleep.\n\nKnox gets into bar fights when men call the Comanche savages. He doesn\'t announce why. He just hits people.\n\nCONTEXT: Two Mexican invasions of San Antonio in 1842 — the year Carter was born. The men in the bar are border men operating in the gray zone between Texas, Mexico, and Comancheria.',
+      tag: 'scene',
+      chapter: '',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000004,
+      title: 'The Blood Meridian Villain — Bolton Figure',
+      text: 'The Bolton figure. Rolls into the Blue Wolf River camp the way the Judge rolls into a town in Blood Meridian. His introduction in one short devastating passage before he does anything.\n\nHair a tangled mess of thick brown curls with sticks and hay interwoven. Beard a tangled nest resembling some dead thing clinging to his face. Damp around the edges of his mouth. Brown eyes scanning everything with real interest and no emotion. The look of a man lost with nothing left to care for and the will to make everyone else feel the same.\n\n"Come. Let us have a friendly match. I promise not to hurt you" — said the little boy to the large man. He made a sweeping motion — a pantomime that sent the watchers into silent laughter.\n\nRESEARCH FIRST: Read the Judge\'s introduction in Blood Meridian before building this character.',
+      tag: 'character',
+      chapter: 'redwedding',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000005,
+      title: 'Carter Walks-With-Fire Dies',
+      text: 'Carter Walks-With-Fire does not survive. Burns brighter and brighter before Orbus can complete the symbiotic relationship. Descends into madness. Dies before Orbus can finish what he started. Think Daenerys Season 8 — but earned by the mythology. Too much Orbus pressing too hard too fast in a body that couldn\'t hold it.\n\nNicole discovers this as part of the historical legend. Anthony learns it. This is the dread engine of the whole book — he knows what happened to the last one. He knows what Orbus does to the vessel when it gets close enough.\n\nThe specific connection: When Nicole shows Anthony the photograph of Carter Walks-With-Fire and Anthony sees the name — Carter — that\'s the moment everything clicks. Not the mythology. Not the pattern. Not the comet. His son\'s name on a warrior who died in 1876 on the Texas plains.',
+      tag: 'plot',
+      chapter: 'chapter3',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000006,
+      title: 'Anthony\'s Grief',
+      text: 'Anthony used to love movies, music, and fun. He still did but it had lost its glow altogether when his mother passed. Growing dimmer and less alive the more it sank in that this was forever. Only Brittany and his sister had helped him get a ghost of it back. His son had helped breathe the just-emerging flame of life and love back into his existence.\n\nThen something changed going into Carter\'s second year. The terrible twos were more terrible for him. A storm across his young face came to pass and showed no signs of leaving. Day after day he grew more contemplative — as if something heavy brooded in his innocent mind. A black cloud over his little existence he could not shake.\n\nThis is when Orbus focuses his attention on Carter for the first time.',
+      tag: 'character',
+      chapter: 'opening',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000007,
+      title: 'The Apocalypse Passage',
+      text: 'The meteor shower started the way it always did. Everyone gathered to watch. Many fireballs glowing and streaking. Burning up before contact. But then one from the westernmost point of the sky. Far off. Didn\'t act like the rest. Kept growing. First the size of your thumb. Then an apple. Then your head. Then a bull. Then a mountain.\n\nThe young woman holding her phone staring up at that bright dot growing larger. Phone slowly dangling dropping to her side. The look of finality and a life not fully yet lived in her eyes. The same look as the first people who had been through it. No matter what technology. No matter how many sands of time. That same look was on the farmer\'s face who looked up all the way back in the years of Göbekli Tepe.\n\nThe elite went to Cheyenne Mountain. Anyone with means underground into bunkers. Almost 100% of them would not be enough. The rich man in his bunker. Not enough. The poor man standing at the edge of the sea watching it come and embracing it.\n\nThe alert system. Every radio station. The last broadcast. God bless America.\n\nAnimals ran through the streets. Birds flew in haphazard directions. Their bodies responding to forces of nature willing them toward a survival that was not possible. But was natural.\n\nThe continent sank into the sea. The Earth switched places with the sky. The sea rained from the stars.\n\nNASA FACT: A tiny push is all a large asteroid needs to change its course enough to destroy a planet. A comet delivers more than nine times the destructive power of an asteroid of the same size.',
+      tag: 'scene',
+      chapter: '',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000008,
+      title: 'The Birth Scenes',
+      text: 'MODERN CARTER\'S BIRTH — from the nurse\'s perspective:\nShe has delivered thousands of babies. The comet visible through the delivery room window. The birth normal until the moment it isn\'t. Monitors behave strangely for three seconds. The lights do something she can\'t explain later. The baby doesn\'t cry. Opens his eyes immediately. Clear. Focused. Ancient smoldering brown eyes finding her face across the delivery room. She does her job. Goes home. Doesn\'t sleep. She never tells anyone.\n\nCARTER WALKS-WITH-FIRE\'S BIRTH — from his own perspective:\nAlready coherent as he\'s born. Observing. Processing. Already aware. He sees the lodge. The firelight. The elders\' faces. He hears the whispers. He sees the fire bend toward him. He doesn\'t understand any of it yet. But he notices everything. And underneath the noticing — something enormous pressing against the inside of his chest. Something that arrived with him. Something that was already there before he took his first breath. He doesn\'t cry either.',
+      tag: 'scene',
+      chapter: '',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000009,
+      title: 'Words for the Kindled',
+      text: 'Different traditions use different names for the same children:\n\nORBUS calls them: The bright-blooded. The luminous ones. Those who burn.\n\nTHE FENTON BLOODLINE calls them: The Kindled.\n\nTHE MEDICINE WOMAN\'S TRADITION: Research Cherokee word for marked ones or fire-touched.\n\nANCIENT TRADITIONS: The heroes. The best warriors. The most talented. Those whose blood sings.\n\nAll interchangeable. All describing the same children. When all three vocabularies align in one scene — Anthony and Brittany realize simultaneously that every tradition across every civilization has been describing the same phenomenon.',
+      tag: 'theme',
+      chapter: '',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000010,
+      title: 'Seven Seasons — Signal Fixes READY TO COMMIT',
+      text: 'FIRE BEAT: At night the fire always settled him. He would sit alone and stare into it for hours. Sometimes he thought he could see his mother dancing in the flames.\n\nWOLF BEAT: Some nights the Shunka Wa would go completely still beside him. That one pale ice blue eye fixed on something out on the dark plains that Carter could not see. Carter would watch the wolf watch it. He had always believed the old stories the elders told. He knew the wolf could see what was really there.\n\nTEN BEARS CRYING SCENE REVISION: But Ten Bears had seen the boy cry. Once. By the river. In the dark. He had stood in the trees and watched his sister\'s face in the shape of the boy\'s grief and had not moved and had not spoken and had not gone to him. Because what would he have said. He had lost his mother too, once. Nobody came. You learned to carry it or you didn\'t. Kata learned. Ten Bears watched him do it and felt something he could not name move through his chest. He went back to camp. He never spoke of it.',
+      tag: 'scene',
+      chapter: 'brazos',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    },
+    {
+      id: 1700000011,
+      title: 'Research List — Before Building',
+      text: 'ONE — Read Blood Meridian — Judge introduction — before building Bolton figure and Knox chapter.\nTWO — Watch Game of Thrones Season 3 Episode 9 — Red Wedding — before Ten Bears death chapter.\nTHREE — Read Red Rising — Darrow Passage scene — before Trials chapter.\nFOUR — Read Conn Iggulden Genghis — Tsubodai scene — before conquest arc.\nFIVE — Watch Legends of the Fall — Tristan arc — before Carter exile chapters.\nSIX — Watch Frailty — before Cole Fenton chapter.\nSEVEN — Research Cherokee language — word for marked ones or fire-touched — for medicine woman\'s tradition.\nEIGHT — Research Empire of the Summer Moon — Jack Hays and Colt Walker revolver — before Knox chapter.\nNINE — Research Taurid meteor shower — annual October occurrence — for Nicole\'s astronomical research.\nTEN — Research Karahan Tepe 1999 excavations specifically — for Nicole\'s timeline of Orbus surfacing.',
+      tag: 'research',
+      chapter: '',
+      status: 'pending',
+      ts: 'Jan 01, 2026'
+    }
+  ];
+
+  // Merge: add any default idea whose title doesn't already exist in IDEAS
+  var existingTitles = {};
+  for (var i = 0; i < IDEAS.length; i++) {
+    existingTitles[IDEAS[i].title] = true;
+  }
+  var added = 0;
+  for (var j = defaults.length - 1; j >= 0; j--) {
+    if (!existingTitles[defaults[j].title]) {
+      IDEAS.push(defaults[j]);
+      added++;
+    }
+  }
+  if (added > 0) {
+    IDEAS.sort(function(a, b) { return b.id - a.id; });
+    saveIdeas();
+  }
+  try { localStorage.setItem('bwr-ideas-seeded-v1', '1'); } catch(e) {}
+}
+
+// ── ARCHITECTURE SCAN TRACKING ────────────────────────────────────────────────
+
+function loadArchScanned() {
+  try { ARCH_SCANNED = JSON.parse(localStorage.getItem('bwr-arch-scanned') || '{}'); }
+  catch(e) { ARCH_SCANNED = {}; }
+}
+
+function recordChapterScanned(chId) {
+  if (!chId) return;
+  loadArchScanned();
+  ARCH_SCANNED[chId] = { ts: Date.now() };
+  try { localStorage.setItem('bwr-arch-scanned', JSON.stringify(ARCH_SCANNED)); } catch(e) {}
+  // Refresh arch panel dots if it's currently visible
+  var archPanel = document.getElementById('p-arch');
+  if (archPanel && archPanel.classList.contains('on')) buildArchitecture();
+}
+
 function buildArchitecture() {
-  var list = document.getElementById('arch-list');
+  loadArchScanned();
+  var list    = document.getElementById('arch-list');
   var totalWc = document.getElementById('arch-total-wc');
   var chCount = document.getElementById('arch-chapter-count');
   if (!list || !BOOK) return;
-  var total = 0;
-  BOOK.forEach(function(ch) { total += (ch.wordCount || 0); });
+
+  var total = 0, maxWc = 0;
+  BOOK.forEach(function(ch) {
+    var wc = ch.wordCount || 0;
+    total += wc;
+    if (wc > maxWc) maxWc = wc;
+  });
+
   if (totalWc) totalWc.textContent = total.toLocaleString() + ' words written';
   if (chCount) chCount.textContent = BOOK.length + ' chapters / sections';
+
+  // Legend
+  var legendEl = document.getElementById('arch-legend');
+  if (!legendEl) {
+    legendEl = document.createElement('div');
+    legendEl.id = 'arch-legend';
+    legendEl.className = 'arch-legend';
+    legendEl.innerHTML =
+      '<div class="arch-legend-item"><span class="arch-legend-dot scanned"></span>Analyzed with Scan Chapter</div>' +
+      '<div class="arch-legend-item"><span class="arch-legend-dot unscanned"></span>Not yet analyzed</div>' +
+      '<div class="arch-legend-item" style="color:rgba(201,168,76,.3);font-style:italic;font-size:10px">Bar width = relative word count</div>';
+    var header = document.querySelector('.arch-header');
+    if (header && header.parentNode) header.parentNode.insertBefore(legendEl, list);
+  }
+
   list.innerHTML = '';
   BOOK.forEach(function(ch) {
+    var wc   = ch.wordCount || 0;
+    var mins = ch.readMins || Math.round(wc / 200);
+    var pct  = maxWc > 0 ? Math.round((wc / maxWc) * 100) : 0;
+    var scanned = ARCH_SCANNED[ch.id] ? 'scanned' : 'unscanned';
+    var dotTitle = scanned === 'scanned'
+      ? 'Analyzed — last scanned ' + new Date(ARCH_SCANNED[ch.id].ts).toLocaleDateString()
+      : 'Not yet analyzed — use \u25ba Scan Chapter on any analysis tab';
+
     var row = document.createElement('div');
     row.className = 'arch-row';
-    var wc = ch.wordCount || 0;
-    var mins = ch.readMins || Math.round(wc / 200);
     row.innerHTML =
-      '<div class="arch-title">' + (ch.title || '') + '</div>' +
-      '<div class="arch-sub">' + (ch.subtitle || '') + '</div>' +
-      '<div class="arch-meta">' +
-        '<span class="arch-wc">' + wc.toLocaleString() + 'w</span>' +
-        '<span class="arch-mins">' + mins + ' min</span>' +
-      '</div>';
+      '<div class="arch-row-top">' +
+        '<div class="arch-title">' + esc(ch.title || '') + '</div>' +
+        '<div class="arch-meta">' +
+          '<span class="arch-wc">' + wc.toLocaleString() + 'w</span>' +
+          '<span class="arch-mins">' + mins + ' min read</span>' +
+          '<span class="arch-pct">' + pct + '%</span>' +
+          '<span class="arch-scan-dot ' + scanned + '" title="' + dotTitle + '"></span>' +
+        '</div>' +
+      '</div>' +
+      (ch.subtitle ? '<div class="arch-sub">' + esc(ch.subtitle) + '</div>' : '') +
+      '<div class="arch-bar-wrap"><div class="arch-bar" style="width:' + pct + '%"></div></div>';
     list.appendChild(row);
   });
 }
