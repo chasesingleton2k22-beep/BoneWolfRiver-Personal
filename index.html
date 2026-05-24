@@ -735,7 +735,6 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 /* Override tool-panel scroll on this panel only */
 #p-ideas{
   overflow:hidden!important;
-  display:flex!important;
   flex-direction:column!important;
   padding:24px 32px 0!important;
   gap:0!important}
@@ -1368,6 +1367,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (saved) for (var i = 0; i < BOOK.length; i++) {
       if (BOOK[i].id === saved) { showChapter(saved); break; }
     }
+  } catch(e) {}
 
   // ── New panel inits ──────────────────────────────
   var bPin = document.getElementById('btn-pin');
@@ -1386,11 +1386,13 @@ document.addEventListener('DOMContentLoaded', function() {
   populateIdeaChapters();
   buildArchitecture();
   loadIdeas();
+  // Migration: fix any seed ideas with invalid chapter refs
+  for (var _mi = 0; _mi < IDEAS.length; _mi++) {
+    if (IDEAS[_mi].chapter === 'redwedding') { IDEAS[_mi].chapter = ''; saveIdeas(); }
+  }
   seedDefaultIdeas();
   renderIdeas();
   initCompass();
-
-  } catch(e) {}
 });
 
 // ── PANEL SWITCHING ───────────────────────────────────────────────────────
@@ -2677,7 +2679,7 @@ function seedDefaultIdeas() {
       title: 'The Blood Meridian Villain — Bolton Figure',
       text: 'The Bolton figure. Rolls into the Blue Wolf River camp the way the Judge rolls into a town in Blood Meridian. His introduction in one short devastating passage before he does anything.\n\nHair a tangled mess of thick brown curls with sticks and hay interwoven. Beard a tangled nest resembling some dead thing clinging to his face. Damp around the edges of his mouth. Brown eyes scanning everything with real interest and no emotion. The look of a man lost with nothing left to care for and the will to make everyone else feel the same.\n\n"Come. Let us have a friendly match. I promise not to hurt you" — said the little boy to the large man. He made a sweeping motion — a pantomime that sent the watchers into silent laughter.\n\nRESEARCH FIRST: Read the Judge\'s introduction in Blood Meridian before building this character.',
       tag: 'character',
-      chapter: 'redwedding',
+      chapter: '',
       status: 'pending',
       ts: 'Jan 01, 2026'
     },
