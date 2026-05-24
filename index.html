@@ -252,19 +252,25 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 .btn-dim:hover{background:rgba(255,255,255,.04)}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .score-lbl{font-family:var(--font-h);font-size:11px;color:var(--gold-dim);letter-spacing:.14em}
-.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media(max-width:900px){.sig-grid{grid-template-columns:1fr 1fr}}
-.sig-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:13px 15px;border-radius:1px}
-.sig-card.yes{border-color:rgba(31,107,66,.7);background:rgba(31,107,66,.08)}
-.sig-card.no{border-color:rgba(138,31,48,.55);background:rgba(138,31,48,.07)}
-.sig-n{font-family:var(--font-h);font-size:9px;color:var(--gold-dim);letter-spacing:.2em;text-transform:uppercase;margin-bottom:3px}
-.sig-name{font-family:var(--font-h);font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px}
-.sig-card.yes .sig-name{color:#5dba8a}
-.sig-card.no .sig-name{color:#d97777}
-.sig-stat{font-size:12.5px;color:var(--cream-dim);font-style:italic}
-.sig-kw{margin-top:7px;font-size:11.5px;color:var(--gold-dim);line-height:1.55}
-.sig-kw span{color:var(--gold);font-weight:600}
-.sig-eg{margin-top:7px;font-size:11px;color:rgba(242,237,228,.45);font-style:italic;line-height:1.5;border-left:1px solid rgba(201,168,76,.2);padding-left:8px}
+.sig-summary{display:flex;align-items:center;gap:18px;padding:16px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.18);border-radius:2px;margin-bottom:14px}
+.sig-summary-count{font-family:var(--font-h);font-size:46px;line-height:1;color:var(--gold);min-width:64px;text-align:center;letter-spacing:-.02em}
+.sig-summary-count span{font-size:18px;color:var(--gold-dim);font-weight:normal}
+.sig-summary-info{flex:1}
+.sig-summary-label{font-family:var(--font-h);font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--cream);margin-bottom:5px}
+.sig-summary-chapter{font-size:11px;color:var(--cream-dim);font-style:italic;margin-bottom:6px}
+.sig-stack-bar{display:flex;gap:4px}
+.sig-stack-seg{height:3px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)}.sig-stack-seg.on{background:var(--gold)}
+.sig-present-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:9px;margin-bottom:12px}
+.sig-pcard{display:flex;border-radius:2px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.sig-pcard-accent{width:4px;flex-shrink:0;background:var(--accent-col,#c9a84c)}
+.sig-pcard-body{padding:12px 14px;flex:1;min-width:0}
+.sig-pcard-num{font-family:var(--font-h);font-size:9px;color:var(--gold-dim);letter-spacing:.25em;text-transform:uppercase;margin-bottom:4px}
+.sig-pcard-name{font-family:var(--font-h);font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--cream);margin-bottom:8px;line-height:1.3}
+.sig-pcard-kws{display:flex;flex-wrap:wrap;gap:5px}
+.sig-kw-pill{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.07);color:var(--gold-dim);letter-spacing:.04em;font-family:var(--font-h)}
+.sig-ghost-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 14px;background:rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.04);border-radius:2px}
+.sig-ghost-label{font-size:10px;color:rgba(242,237,228,.28);letter-spacing:.12em;text-transform:uppercase;font-family:var(--font-h)}
+.sig-ghost-chip{font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid rgba(255,255,255,.07);color:rgba(242,237,228,.22);font-family:var(--font-h);letter-spacing:.05em}
 .anno-wrap{border:1px solid rgba(201,168,76,.18);background:rgba(255,255,255,.03);padding:18px;border-radius:1px;max-height:260px;overflow-y:auto;font-size:14.5px;line-height:1.82;color:var(--cream);font-family:var(--font-b)}
 .anno-wrap::-webkit-scrollbar{width:3px}
 .legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
@@ -974,7 +980,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
       <div class="myth-item"><strong>The Sequence Is a Forecast</strong>Nicole has been reading 1&#8901;1&#8901;2&#8901;3&#8901;5&#8901;8&#8901;13 as history. It is a forecast. Not describing what happened &#8212; predicting what comes next. The intervals are the gaps between Orbus surfacing. They are getting shorter. He is getting stronger. The next number is 21. Carter is eighteen months old. The convergence happens when Carter is 21. Nicole alone at 2am flips the sequence. Treats it as forecast. Does the math forward. When the number settles she covers her mouth. She calls Anthony at four in the morning. &ldquo;I know when. I know exactly when.&rdquo; The rest of the story is the race.</div>
       <div class="myth-item"><strong>The Crown Appears</strong>In fire. In shadow. In blood drying in the dust. The light doing what it shouldn&#8217;t do.</div>
       <div class="myth-item"><strong>14 Names of Orbus</strong>Moloch. Lamashtu. Crom Cruach. Tezcatlipoca. The Burning One. Plus eight more across fourteen cultures. One face. One crown. One hunger. Nicole finds thirteen. The fourteenth is the name no culture ever learned &#8212; the name his brothers and his father used for him before the casting out. The name that predates all mythology. Nobody in thirteen thousand years has called him by it.</div>
-      <div class="myth-item"><strong>&#8220;I Was Not Always This.&#8221;</strong>Four words planned for Watching 2. The question lives forever after. The crack in the monster that makes him something more.</div>
+      <div class="myth-item"><strong>&#8220;I Was Not Always This.&#8221;</strong>Four words that carry thirteen thousand years. He was not always the madman on the corner. He was once one of thirteen. The grief of knowing that &#8212; of remembering it across thirteen thousand years of isolation and diminishment &#8212; is what the Bereft actually means. Not lonely. Not forgotten. Bereft of what he was. The crack in the monster that makes him something more.</div>
       <div class="myth-item"><strong>The &#352;&#250;&#331;ka Wa Sees Orbus</strong>One ice blue eye fixed on something Carter cannot see. He doesn&#8217;t know it&#8217;s Orbus. The reader does. The most important dramatic irony in the novel.</div>
       <div class="myth-item"><strong>Descent to Madness</strong>Those who carried the gift without temperance descended to madness. Every one. Mrs. Wetherbee. Always the same ending without control.</div>
     </div>
@@ -982,15 +988,16 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div class="ref-sec">
     <div class="ref-h">Orbus the Bereft &#8212; Complete Mythology</div>
     <div class="myth-grid">
-      <div class="myth-item ref-single"><strong>Origin</strong>Orbus came from beyond the Oort Cloud. A world of thirteen godlike beings ruled by one father. Twelve brothers. Orbus was the thirteenth &#8212; his nature was chaos. He sowed madness among his brothers. He rose up against his father and would have killed him. His brothers and father combined and cast him out. They sealed him inside a comet and sent him here.</div>
+      <div class="myth-item ref-single"><strong>Origin</strong>At the beginning there were thirteen godlike beings. One father. Twelve sons. Orbus was the thirteenth. His nature was chaos &#8212; not by choice but by what he was. He sowed madness among his brothers. He turned his chaos toward his father and would have killed him. His brothers and father combined and sealed him inside a comet and sent him here. He did not choose to come to Earth. He was thrown here.</div>
       <div class="myth-item ref-single"><strong>Arrival</strong>He arrived with the Younger Dryas comet impact approximately 12,900 years ago. The impact nearly destroyed Earth. Ended the ice age. Killed the megafauna. Destroyed civilizations that existed before recorded history. When he arrived he was still strong. He bent the survivors to his will. Demanded the blood of their brightest children.</div>
       <div class="myth-item ref-single"><strong>What He Is Now</strong>Weakened over thirteen thousand years. He hides in the seams of things. The edges of firelight. The dark between stars. He lies dormant for centuries and surfaces when the chosen one&#8217;s flame burns bright enough to pull him up.</div>
       <div class="myth-item ref-single"><strong>His Cycle</strong>When he surfaces he feeds on the Kindled &#8212; the bright-blooded &#8212; through the Fenton bloodline. Gets to functional strength. Then focuses entirely on the chosen one. Tries to inhabit them completely. Has failed twice. This is the third attempt.</div>
       <div class="myth-item ref-single"><strong>His Motive</strong>He believes if he inhabits the chosen one completely he can use their power to nudge a comet &#8212; NASA confirms a tiny push is all it takes &#8212; and the impact will thin the seams between this world and his father&#8217;s world enough for him to step through and go home. Whether Earth survives is not his concern.</div>
       <div class="myth-item ref-single"><strong>What the Legends Say</strong>The ancient traditions &#8212; including the medicine woman&#8217;s &#8212; say yes the comet thins the seams. But what steps through is not a god going home. It is something coming in. Orbus has never addressed this. He only knows what he knows.</div>
       <div class="myth-item ref-single"><strong>His Nature</strong>He is the Bereft. Not because he chose evil. Because thirteen thousand years of isolation and hunger and diminishment has made him monstrous. He was cast out because his nature was chaos. The isolation turned the chaos inward. He is the man on the street corner with newspapers taped to his body counting things in the air that nobody else can see. Completely certain. Completely alone. Completely lost. He was not always this.</div>
+      <div class="myth-item ref-single"><strong>The Delusion</strong>He has been sitting in the dark for thirteen thousand years telling himself a story. A reason. A purpose. He believes if he gets home his brothers and his father will be waiting. That the impact will thin the seams. That something will be on the other side. The reader gradually sees what Anthony and Nicole cannot yet see &#8212; the twelve gods are not waiting for him. The way home may not exist the way he believes it does. He does not consider this. He has never considered this. He only knows what he knows. And what he knows is the story he has been telling himself in the dark for thirteen thousand years.</div>
       <div class="myth-item ref-single"><strong>His Appearance</strong>Featureless. Plain. A face the eye cannot hold. Nothing to name, nothing to keep. Only the eyes are distinct &#8212; burning, half filled with sorrow, half filled with something older than hate. A crown of light appears above his head near the gifted. Not a symbol of power. A wound that never healed taking the shape of what he once thought he deserved. He is the king of madness and loneliness.</div>
-      <div class="myth-item ref-single"><strong>As He Feeds</strong>His featureless face flickers. Not becoming something. Just flickering like a candle in wind. In those flickers &#8212; faces. Young faces. Adolescents. Children. Even babies. The faces of everyone he has ever consumed passing across his featureless face like reflections on disturbed water. He is not haunted by them. They are simply part of what he is now.</div>
+      <div class="myth-item ref-single"><strong>As He Feeds</strong>His featureless face flickers. Not becoming something. Just flickering like a candle in wind. In those flickers &#8212; faces. Young faces. Adolescents. Children. Even babies. The faces of everyone he has ever consumed passing across his featureless face like reflections on disturbed water. He is not haunted by them. They are simply part of what he is now. Cole Fenton sees this when he is close enough. Sometimes in the flickering he sees faces he recognizes.</div>
       <div class="myth-item ref-single"><strong>Ancient Depictions</strong>The Urfa Man &#8212; oldest life-size statue ever found, 9000 BC, no mouth, black obsidian eyes. Found near G&#246;bekli Tepe. The survivors made a statue of him. The Sphinx &#8212; original form was a wolf, built during the wet Sahara period after his arrival, facing east. Pillar 43 at G&#246;bekli Tepe &#8212; the vulture stone &#8212; depicts the Younger Dryas comet impact date. Other pillars depict a featureless figure holding a child. The wolf stone depicts a wolf-man figure. In the ancient traditions he is sometimes called the Lonely Wolf &#8212; the figure that moves through the dark between the fires.</div>
     </div>
     <div class="ref-lede">The Two Tiers</div>
@@ -1007,15 +1014,27 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
     <div class="ref-lede">The Wolf Connection</div>
     <div class="myth-grid">
       <div class="myth-item ref-single"><strong>The &#352;&#250;&#331;ka Wa Watches</strong>The wolf doesn&#8217;t serve Orbus. The wolf watches Orbus. The wolf is the alarm system the bloodline developed against him across ten thousand years. Archie watching the empty armchair. The &#352;&#250;&#331;ka Wa going still on the plains. They see what humans can&#8217;t.</div>
+      <div class="myth-item ref-single"><strong>The Same Wolf Across Timelines</strong>Archie has one ice blue eye. The &#352;&#250;&#331;ka Wa has one ice blue eye. These are not descendants. This is the same animal across timelines &#8212; sustained through something the medicine woman&#8217;s tradition built into the wolf bond at its origin. The wolf is the oldest sentinel in the story. Older than the Book. Older than any of the Chosen. Older than the mythology the survivors built. When the wolf watches the empty armchair it is drawing on something deeper than instinct. It was made for exactly this.</div>
+      <div class="myth-item ref-single"><strong>The Isolation Rule</strong>Orbus cannot complete the possession while the wolf is present and watching. This is not incidental. The wolf bond was specifically built to prevent it. Everything the Fenton bloodline does is designed ultimately to separate Carter from Archie. Every scene where Archie is not in frame becomes tense in a completely new way once this rule is established. The reader knows. Carter does not.</div>
+      <div class="myth-item ref-single"><strong>The Oldest Depiction</strong>In the oldest legends &#8212; before any civilization had a name for him &#8212; Orbus is described as a giant wolf stalking the world alone in the dark between things. Not because he is a wolf. Because the survivors reached for the most powerful image they had for something vast, lonely, and moving through the dark. The Lonely Wolf. The Lost Wolf. Carter walking with the &#352;&#250;&#331;ka Wa is the inversion of this &#8212; the Chosen walks with the wolf while Orbus is the wolf walking alone.</div>
+    </div>
+  </div>
+
+  <div class="ref-sec">
+    <div class="ref-h">The Ghost River Connection &#8212; Seeded Mystery</div>
+    <div class="myth-grid">
+      <div class="myth-item ref-single"><strong>The Geographical Thread</strong>Mrs. Wetherbee drove the carriage into the Ghost River &#8212; the section of the Wolf River where the current disappears into the swamp. The Wolf River runs through Tennessee. Anthony and Brittany live in Chattanooga, Tennessee. The house is in the same river basin where a Wetherbee woman tried to drown four children with the name Orbus in her fist. The bloodline is not only ancestral. It is geographical.</div>
+      <div class="myth-item ref-single"><strong>The Seed Scene</strong>Carter on the back porch looking toward the dark beyond the yard &#8212; not in the direction of anything visible, just toward the south. Archie beside him. Neither moves for a long time. Anthony watches from inside the glass door. There is a creek. The creek feeds into a tributary that feeds into the Wolf River. And the Wolf River has a section the locals call the Ghost River for reasons nobody living can fully explain anymore.</div>
+      <div class="myth-item"><strong>Status</strong>Seeded mystery. Plant early. Payoff in Act 3 when the geography of the bloodline becomes clear &#8212; that Chattanooga is not accidental, and the house on Market Street is not the first thing in that basin to hold something old and watching.</div>
     </div>
   </div>
 
   <div class="ref-sec">
     <div class="ref-h">The Book &#8212; The Self-Writing Record</div>
     <div class="myth-grid">
-      <div class="myth-item ref-single"><strong>Origin</strong>Made by the medicine man at G&#246;bekli Tepe approximately 9600 BC. He was the most holy person his people had ever produced. He spent three days fashioning it from a fragment of the comet that brought Orbus &#8212; the impact debris, still faintly warm, humming at a frequency felt in the back teeth, animals unwilling to approach it. He wove his medicine into the binding using rituals that died with him. No living tradition knows what he did those three days.</div>
+      <div class="myth-item ref-single"><strong>Origin</strong>Made by the medicine man at G&#246;bekli Tepe approximately 9600 BC. He was the most holy person his people had ever produced. He spent three days fashioning it from a fragment of the comet that brought Orbus &#8212; black obsidian on one side, dried skin on the other, bound with sinew cord. The impact debris still faintly warm, humming at a frequency felt in the back teeth. Animals would not approach it. He wove his medicine into the binding using rituals that died with him. When it was complete he breathed white light from his body into the front cover and pressed his hands in. His skin burned and sizzled. He did not stop. No living tradition knows what he did those three days. Only what he made.</div>
       <div class="myth-item ref-single"><strong>What It Does</strong>The book writes itself. It records the chosen ones &#8212; their story, what happened to them, what Orbus did, what it cost &#8212; in the language of each era it records. Nobody writes in it. The entries simply appear. Each section in the language closest to the chosen one it describes.</div>
-      <div class="myth-item ref-single"><strong>How It Moves</strong>The book moves to the chosen one when the time comes. Nobody sends it. It finds its way. The same gravity that moves the chair toward Brittany. The same gravity that moves the two bloodlines toward each other.</div>
+      <div class="myth-item ref-single"><strong>How It Moves</strong>The book moves to the chosen one when the time comes. The medicine woman&#8217;s tradition &#8212; a line of medicine women stretching back to the survivors of the Younger Dryas &#8212; carries it forward. Grandmother to granddaughter. With specific instructions: when the comet burns in October, find where the fire is. Get there before the other one does. The hibachi chef is the current medicine woman in this line. She sent the book to the household after seeing Carter put his hands in the flame. She was recognizing, not discovering.</div>
       <div class="myth-item ref-single"><strong>How It Helps</strong>It shows the chosen one what came before. Every chosen one who ever lived. Their story already written. So they know they are not the first. So they know the pattern. So they know what Orbus is doing before he finishes doing it.</div>
       <div class="myth-item ref-single"><strong>Arrival</strong>The book arrived addressed to Carter. Carter is eighteen months old. The hibachi chef &#8212; a medicine woman whose tradition has known about the book for generations &#8212; found it and sent it to the household when she saw Carter put his hands in the flame and the crown appeared above his shadow. She knew the time had come.</div>
       <div class="myth-item ref-single"><strong>Contents</strong>Approximately thirteen sections. Each in a different language. The front section is G&#246;bekli Tepe proto-script &#8212; the oldest written language on Earth. Nicole eventually identifies it and gets partial translation through an archaeologist contact. Middle sections in various ancient and medieval languages. One section in archaic English that Anthony can barely parse &#8212; this is Michaela Marie&#8217;s section, the one he finds when he flips through at midnight. The last pages &#8212; mostly blank. In the bottom corner of the final page: Carter&#8217;s name and birthday. October 13 2024. Written in no hand that belongs to anyone.</div>
@@ -1025,7 +1044,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div class="ref-sec">
     <div class="ref-h">Ancient Sites &#8212; The Survivors&#8217; Monuments</div>
     <div class="myth-grid">
-      <div class="myth-item"><strong>G&#246;bekli Tepe &#8212; 9600&#8211;8200 BC</strong>Southeastern Turkey. The oldest temple ever found. Pre-dates any other megalithic site by 6,000 years. Deliberately buried by its builders. T-shaped pillars with animal carvings. Pillar 43 &#8212; the vulture stone &#8212; encodes the date of the Younger Dryas impact as a star map. The first written word found here means God. LIDAR has detected 15&#8211;20 additional structures beneath the hill not yet excavated.</div>
+      <div class="myth-item"><strong>G&#246;bekli Tepe &#8212; 9600&#8211;8200 BC</strong>Southeastern Turkey. The oldest temple ever found. Pre-dates any other megalithic site by 6,000 years. Deliberately buried by its builders. T-shaped pillars with animal carvings. Pillar 43 &#8212; the vulture stone &#8212; encodes the date of the Younger Dryas impact as a star map. The first written word found here means God. LIDAR has detected 15&#8211;20 additional structures beneath the hill not yet excavated. One pillar depicts a featureless figure holding a child. One pillar has a wolf carved into it. The survivors built this to warn whoever came after them.</div>
       <div class="myth-item"><strong>Karahan Tepe &#8212; Same Period</strong>45 kilometers east of G&#246;bekli Tepe. Sister site. 250 obelisks. A human face carved emerging from bedrock on a serpent-like neck. Deliberately buried. LIDAR revealing T-shaped pillars inside a ritual well. In 1999 during early excavations something was disturbed. The Fenton bloodline activity in Nicole&#8217;s research spikes noticeably in the early 2000s.</div>
       <div class="myth-item"><strong>The Urfa Man &#8212; 9000 BC</strong>Found near G&#246;bekli Tepe. Oldest life-size human statue ever found. No mouth. Eyes originally emphasized by black obsidian sunk into deep holes. The obsidian comes from a geological formation buried under the Younger Dryas impact debris. The survivors used a piece of what brought him here to make his eyes.</div>
       <div class="myth-item"><strong>The Sphinx &#8212; 10,000&#8211;12,000 BC</strong>Built during the wet Sahara period after the impact. Original form was a wolf &#8212; not a lion, not a human face. The head was recarved by later civilizations who found it and didn&#8217;t understand what they were looking at. Faces east. Watching the sky where the comet came from. Dr. Robert Schoch&#8217;s water erosion evidence dates it to this period.</div>
@@ -1042,7 +1061,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
       <div class="myth-item"><strong>The Judge&#8217;s Wife</strong>Brittany&#8217;s blood grandmother. Started seeing Orbus through proximity to the chair &#8212; unfiltered, no bloodline protection. Told the judge very calmly one night what she had seen. Michaela Marie. Britannia. The full history. Three days later killed herself in the sunroom in the chair.</div>
       <div class="myth-item"><strong>The Judge</strong>Cleared of wrongdoing. Deteriorated quietly. One morning walked into Prentice Cooper State Forest north of Chattanooga. Left his phone on the counter. Wallet on the table. Keys by the door. Father&#8217;s .38 revolver. His body was never found. House went through the estate. Sat on the market for years. Price dropped multiple times.</div>
       <div class="myth-item"><strong>The Realtor</strong>Called Brittany specifically. She never signed up for any list. Something off about him. She tries to describe his face afterward and can&#8217;t. Just the eyes. Something burning in them she files away as intensity.</div>
-      <div class="myth-item"><strong>Brittany as a Child</strong>Used to walk past the Victorian house on her way to school. Obsessed with it. Specifically the sunroom. Drew pictures of it over and over. Always the chair with the dragon heads. She had never been inside. Never seen the chair up close. Drew it exactly right every time.</div>
+      <div class="myth-item"><strong>Brittany as a Child</strong>Used to walk past the Victorian house on her way to school. Obsessed with it. Specifically the sunroom. Drew pictures of it over and over. Always the chair with the dragon heads. She had never been inside. Never seen the chair up close. Drew it exactly right every time. Orbus nudging her mind from childhood. Not forcing. Just pulling. The way gravity pulls.</div>
       <div class="myth-item"><strong>Moving In</strong>The chair was already there. In the sunroom. Exactly where she always drew it. She stood in the doorway for a long time. Didn&#8217;t tell Anthony.</div>
       <div class="myth-item"><strong>The Hidden Room</strong>During renovation they knock on a wall that sounds hollow. Open it up. Small room. No windows. Sealed from inside. Old wood smell. Something left behind by whoever sealed it. What&#8217;s inside is workshopped.</div>
     </div>
@@ -1066,7 +1085,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
       <div class="myth-item"><strong>Dark Ending</strong>Orbus burns away because he finally, briefly, was not alone. That is the only mercy available to something that broken.</div>
       <div class="myth-item"><strong>Light Ending</strong>Whatever Orbus was before the isolation surfaces for a single moment. The chaos freed becomes something else entirely.</div>
       <div class="myth-item ref-single"><strong>Final Image &#8212; Both Versions</strong>The Book closes itself. On the last page new text appears in the original hand. The same script as the very first page. Two words only: <em>He remembered.</em></div>
-      <div class="myth-item ref-single"><strong>When Anthony Believes &#8212; 60% Mark &#8212; Locked</strong>Not convinced by anyone. Not frightened into it. Anthony wakes at 3am with no reason &#8212; parental radar. Carter is gone. He finds him on the back porch in Brittany&#8217;s chair. Archie pressed against the chair leg, one ice blue eye open. Carter is four or five. Feet not reaching the floor. Sitting in the throne the way children sit in thrones &#8212; without self-consciousness. Like it is simply where he belongs. Anthony starts toward the door. Stops. Carter is talking. Full sentences. His own voice. But with the certainty of a child who has never once second-guessed himself. Anthony cannot make out the words. Just Carter&#8217;s profile. Moonlight finding him. The Wetherbee name burned into the back of the chair above his son&#8217;s head. Carter is speaking to whatever is in the yard. Then the Bone Calm still. The night shifts slightly &#8212; not a shape, not a sound, just the air changing. Carter nods. Like he received an answer. Then he turns and looks directly at Anthony through the glass. He knew Anthony was there the entire time. Carter says one sentence. In his own small four-year-old voice. Something from inside Anthony&#8217;s childhood. Something Anthony has never spoken aloud. Not to Brittany. Not to Nicole. Not to anyone. Something buried so completely he forgot the act of burying it. Something Carter has no way to know. Anthony slides down the glass door and sits on the kitchen floor with his back against it. Not going outside. Just sitting in the dark with his face in his hands. Not afraid. He has been bracing for frightening for years. His son is on the back porch having a conversation with something ancient in a thousand-year-old chair with a wolf at his feet. And it is the most natural thing Anthony has ever seen. Carter pads back inside. Stops in front of his father on the floor. Leans forward and puts his forehead against Anthony&#8217;s. Anthony puts his hand on the back of his son&#8217;s head. Neither of them says anything. [What Carter says is yours to find. Only you know what is locked in Anthony.]</div>
+      <div class="myth-item ref-single"><strong>When Anthony Believes &#8212; 60% Mark &#8212; Locked</strong>Not convinced by anyone. Not frightened into it. Anthony wakes at 3am with no reason &#8212; parental radar. Carter is gone. He finds him on the back porch in Brittany&#8217;s chair. Archie pressed against the chair leg, one ice blue eye open. Carter is four or five. Feet not reaching the floor. Sitting in the throne the way children sit in thrones &#8212; without self-consciousness. Like it is simply where he belongs. Anthony starts toward the door. Stops. Carter is talking. Full sentences. His own voice. But with the certainty of a child who has never once second-guessed himself. Anthony cannot make out the words. Just Carter&#8217;s profile. Moonlight finding him. The Wetherbee name burned into the back of the chair above his son&#8217;s head. Carter is speaking to whatever is in the yard. Then the Bone Calm still. The night shifts slightly &#8212; not a shape, not a sound, just the air changing. Carter nods. Like he received an answer. Then he turns and looks directly at Anthony through the glass. He knew Anthony was there the entire time. Carter says one sentence. In his own small four-year-old voice. Something from inside Anthony&#8217;s childhood. Something Anthony has never spoken aloud. Not to Brittany. Not to Nicole. Not to anyone. Something buried so completely he forgot the act of burying it. Something Carter has no way to know. Anthony slides down the glass door and sits on the kitchen floor with his back against it. Not going outside. Just sitting in the dark with his face in his hands. Not afraid. He has been bracing for frightening for years. His son is on the back porch having a conversation with something ancient in a thousand-year-old chair with a wolf at his feet. And it is the most natural thing Anthony has ever seen. Carter pads back inside. Stops in front of his father on the floor. Leans forward and puts his forehead against Anthony&#8217;s. Anthony puts his hand on the back of his son&#8217;s head. Neither of them says anything. The tears aren&#8217;t fear. They&#8217;re the specific grief of a man who spent his whole life not trusting inherited things finally understanding that the thing he built a wall against has been standing inside him this whole time. Carter didn&#8217;t get it from somewhere else. Carter got it from him. [What Carter says is yours to find. Only you know what is locked in Anthony.]</div>
       <div class="myth-item ref-single"><strong>The Emotional Center &#8212; Not The Mythology</strong>The scene where Anthony understands that Brittany has known, has been watching, has been protecting their entire marriage. A husband and wife in a kitchen at 3am with the rain coming down in Chattanooga and the Book on the table between them and thirteen thousand years of weight in the room.</div>
     </div>
   </div>
@@ -1087,13 +1106,27 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div class="ref-sec">
     <div class="ref-h">Still To Build</div>
     <table class="tbl"><thead><tr><th>Section</th><th>Placement</th><th>Notes</th></tr></thead><tbody>
+      <tr><td>The Ancient Family Watching the Sky</td><td>New Ch. &#8212; opens book</td><td>Pre-G&#246;bekli Tepe. Caramel-skinned man, mammoth coat. Family watches meteor shower. The comet that doesn&#8217;t burn up. Mountain of water at 450 mph. Silence on day three.</td></tr>
+      <tr><td>The G&#246;bekli Tepe Chapter</td><td>New Ch. &#8212; 9600 BC</td><td>Medicine man builds the Book by starlight. Three days. Obsidian and skin. Breathes light into cover. Skin burns. He holds on. Runs from the darkness behind the wolf stone.</td></tr>
+      <tr><td>Brittany Chapter One &#8212; The Drawings</td><td>Early modern timeline</td><td>Young Brittany walking past the Victorian house on her way to school. Drawing the chair over and over. Never been inside. Never seen it up close. Gets it exactly right every time.</td></tr>
+      <tr><td>Brittany Chapter Two &#8212; Her Mother&#8217;s Worst Night</td><td>Brittany age 8-9</td><td>Eyes wrong. Voice wrong. The prince from beyond the stars. Blinks back. Holds Brittany. Cries. Never speaks of it again.</td></tr>
+      <tr><td>Brittany Chapter Three &#8212; After</td><td>Brittany age 15</td><td>Mother&#8217;s death. Moving in with the judge and his wife. The house. The chair in the sunroom. Exactly where she always drew it.</td></tr>
+      <tr><td>Brittany Chapter Four &#8212; The Realtor</td><td>Before Anthony moves in</td><td>He called her specifically. She never signed up for any list. Something off about him. Can&#8217;t describe his face afterward. Just the eyes. Something burning in them.</td></tr>
       <tr><td>Brittany Back Porch Scene</td><td>Ch. 2 &#8212; before hibachi</td><td>Lightning crown above Carter&#8217;s head. Brittany sees it. Doesn&#8217;t tell Anthony.</td></tr>
       <tr><td>New Britannia Chapter &#8212; Eira</td><td>After Ch. 1</td><td>Orbus takes Eira through Cole Fenton ancestor. Britannia descends into grief.</td></tr>
       <tr><td>Cole Fenton Chapter</td><td>Between Ch. 4 and Trials</td><td>Cole on knees in dirt. Gary Oldman Dracula energy for Orbus&#8217;s voice.</td></tr>
       <tr><td>Black Hoof Scene</td><td>TBD</td><td>Scarecrow horror. Daughter&#8217;s head. Dog hanging from tree.</td></tr>
       <tr><td>Legends of the Fall Short Ch.</td><td>Between Ch. 4 and Trials</td><td>&#352;&#250;&#331;ka Wa sees Orbus. Voice on wind: &#8220;Go.&#8221;</td></tr>
+      <tr><td>Knox Bar Scene</td><td>1855&#8211;1858</td><td>Three men snake through the bar. Knox does not look up. Already sees them coming. Gets into bar fights when men call the Comanche savages. Doesn&#8217;t announce why.</td></tr>
+      <tr><td>Carter Walks-With-Fire Birth Scene</td><td>Historical timeline</td><td>His own perspective. Already coherent as he&#8217;s born. Observing. Processing. Sees the firelight. Sees the elders&#8217; faces. Sees the fire bend toward him. Doesn&#8217;t cry.</td></tr>
+      <tr><td>Modern Carter Birth Scene</td><td>Modern timeline</td><td>Nurse&#8217;s perspective. Comet visible through delivery room window. Monitors behave strangely three seconds. Baby doesn&#8217;t cry. Opens eyes immediately. Ancient smoldering brown eyes find her face. She doesn&#8217;t sleep that night.</td></tr>
       <tr><td>Ten Bears Death &#8212; Red Wedding</td><td>After Trial I</td><td>Code of truce broken. Carter loses everything.</td></tr>
+      <tr><td>Carter Exile &#8212; Wind At His Back</td><td>After Red Wedding</td><td>After Ten Bears. Carter alone on the plains. The wind. The wolf. The long way home that isn&#8217;t home anymore.</td></tr>
       <tr><td>Chapter Five &#8212; The Trials</td><td>After Red Wedding</td><td>Trial II: body, no weapons. Trial III: peyote, two boys, one knife, elders hidden.</td></tr>
+      <tr><td>The Asylum Visit</td><td>Act 2</td><td>Anthony or Nicole visiting whoever survived. What they find. What they can and can&#8217;t be told.</td></tr>
+      <tr><td>Nicole &#8212; Fibonacci Countdown</td><td>Act 2</td><td>2am. Alone. Flips the sequence. Treats it as forecast. Does math forward. Covers her mouth. Calls Anthony at 4am. I know when. I know exactly when.</td></tr>
+      <tr><td>Anthony on the Kitchen Floor</td><td>60% mark</td><td>3am. Carter on the back porch. The sentence. The kitchen floor. The forehead pressed to forehead. Neither says anything.</td></tr>
+      <tr><td>The Medicine Woman Confrontation</td><td>Act 2 &#8212; Brittany</td><td>Brittany watches her for three days. Gets out of the Mercedes. Catches her elbow. You don&#8217;t touch me. I saw the mark above your child. And he is chosen.</td></tr>
     </tbody></table>
   </div>
 </div>
@@ -1321,7 +1354,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   var bSigScan = document.getElementById('btn-sig-scan');
-  if (bSigScan) bSigScan.addEventListener('click', function() { scanCurrentChapter('sig-in'); });
+  if (bSigScan) bSigScan.addEventListener('click', function() {
+    scanCurrentChapter('sig-in');
+    var ch = document.querySelector('#reader .chapter.on');
+    var chTitle = '';
+    if (ch) {
+      var chId = ch.id.replace('ch-', '');
+      for (var _bi = 0; _bi < BOOK.length; _bi++) {
+        if (BOOK[_bi].id === chId) { chTitle = BOOK[_bi].title; break; }
+      }
+    }
+    runSignal(chTitle);
+  });
   var bMisScan = document.getElementById('btn-mis-scan');
   if (bMisScan) bMisScan.addEventListener('click', function() { scanCurrentChapter('mis-in'); });
 
@@ -1816,10 +1860,11 @@ function esc(s) {
 }
 
 // ── SIGNAL CHECKER ────────────────────────────────────────────────────────
-function runSignal() {
+function runSignal(chapterTitle) {
   var text = document.getElementById('sig-in').value.trim();
   if (!text) return;
   var lower = text.toLowerCase();
+  var SIG_ACCENT = {atmo:'#50a0ff',animal:'#c88228',calm:'#50be82',fire:'#ff641e',precision:'#aa5af0',recog:'#ffd732'};
   var results = [];
   for (var i = 0; i < SIGNALS.length; i++) {
     var sig = SIGNALS[i], found = [];
@@ -1832,18 +1877,37 @@ function runSignal() {
   for (var i = 0; i < results.length; i++) if (results[i].yes) yesCount++;
   var sc = document.getElementById('sig-score');
   if (sc) sc.textContent = yesCount + ' / 6 signals present';
-  var html = '<div class="sig-grid">';
-  for (var i = 0; i < results.length; i++) {
-    var r = results[i];
-    var icon = r.yes ? '&#10003; ' : '&#10007; ';
-    var kw = r.found.length > 0 ? '<div class="sig-kw">Found: <span>' + r.found.slice(0,5).join(', ') + '</span></div>' : '';
-    html += '<div class="sig-card ' + (r.yes ? 'yes' : 'no') + '">';
-    html += '<div class="sig-n">Signal ' + r.sig.num + '</div>';
-    html += '<div class="sig-name">' + icon + r.sig.name + '</div>';
-    html += '<div class="sig-stat">' + (r.yes ? r.found.length + ' match' + (r.found.length > 1 ? 'es' : '') + ' found' : 'Not detected') + '</div>';
-    html += kw + '<div class="sig-eg">' + esc(r.sig.example) + '</div></div>';
+  var LABELS = ['NO SIGNALS DETECTED','SINGLE TRACE','PARTIAL SIGNALS','HALF STACK','STRONG SIGNAL FIELD','NEAR-COMPLETE STACK','COMPLETE EVENT STACK'];
+  var segs = '';
+  for (var i = 0; i < 6; i++) segs += '<div class="sig-stack-seg' + (i < yesCount ? ' on' : '') + '"></div>';
+  var chHtml = chapterTitle ? '<div class="sig-summary-chapter">' + esc(chapterTitle) + '</div>' : '';
+  var html = '<div class="sig-summary">';
+  html += '<div class="sig-summary-count">' + yesCount + '<span>/6</span></div>';
+  html += '<div class="sig-summary-info"><div class="sig-summary-label">' + LABELS[yesCount] + '</div>' + chHtml + '<div class="sig-stack-bar">' + segs + '</div></div></div>';
+  var present = [], absent = [];
+  for (var i = 0; i < results.length; i++) { if (results[i].yes) present.push(results[i]); else absent.push(results[i]); }
+  if (present.length > 0) {
+    html += '<div class="sig-present-grid">';
+    for (var i = 0; i < present.length; i++) {
+      var r = present[i];
+      var accent = SIG_ACCENT[r.sig.id] || '#c9a84c';
+      var pills = '';
+      var kws = r.found.slice(0, 6);
+      for (var k = 0; k < kws.length; k++) pills += '<span class="sig-kw-pill">' + esc(kws[k]) + '</span>';
+      html += '<div class="sig-pcard" style="--accent-col:' + accent + '">';
+      html += '<div class="sig-pcard-accent"></div><div class="sig-pcard-body">';
+      html += '<div class="sig-pcard-num">SIGNAL ' + r.sig.num + '</div>';
+      html += '<div class="sig-pcard-name">' + esc(r.sig.name) + '</div>';
+      html += '<div class="sig-pcard-kws">' + pills + '</div>';
+      html += '</div></div>';
+    }
+    html += '</div>';
   }
-  html += '</div>';
+  if (absent.length > 0) {
+    html += '<div class="sig-ghost-row"><span class="sig-ghost-label">Not detected — </span>';
+    for (var i = 0; i < absent.length; i++) html += '<span class="sig-ghost-chip">' + esc(absent[i].sig.name) + '</span>';
+    html += '</div>';
+  }
   var re2 = document.getElementById('sig-results');
   if (re2) re2.innerHTML = html;
   var annotated = esc(text);
@@ -2765,6 +2829,119 @@ function seedDefaultIdeas() {
     saveIdeas();
   }
   try { localStorage.setItem('bwr-ideas-seeded-v1', '1'); } catch(e) {}
+
+  // ── V2 SEEDS ──────────────────────────────────────────────────
+  var doV2 = false;
+  try { doV2 = !localStorage.getItem('bwr-ideas-seeded-v2'); } catch(e) {}
+  if (doV2) {
+    var v2defaults = [
+      {
+        id: 1700000012,
+        title: 'The Ancient Family Watching the Sky',
+        text: 'New Chapter — Before Göbekli Tepe.\n\nThe man with caramel colored skin and tight dense hair. Saber-toothed necklace. Scar through his left eye. Mammoth coat. His wife and children dressed from the same mammoth — nothing went to waste. A hard life but the only life he knew. So for him it was the best life.\n\nThe family gathering to watch the annual meteor shower. One comet that doesn\'t burn up. Growing from thumb to apple to head to bull to mountain. Night turning to day. Animals running. He gathers his family and heads toward the valley.\n\nA mountain of water moving at 450 miles an hour. The continent sinking into the sea. The Earth switching places with the sky. On the third day when the waters recede only silence remains.',
+        tag: 'scene',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000013,
+        title: 'The Göbekli Tepe Chapter — Medicine Man Builds the Book',
+        text: 'New Chapter — Göbekli Tepe, 9600 BC.\n\nThe medicine man working by starlight for three days. The pillar with the vulture and the comet to his left — the one he just finished. The black obsidian fragment from the impact site smoldering in his hands — wrong warmth, smell of his own skin heating, he does not notice.\n\nThe book complete — obsidian one side, dried skin the other, bound with sinew cord. He breathes white light from his mouth and nostrils and presses it into the front cover. His skin burns and sizzles. He holds on. Then it is done.\n\nThe pillars around him. The older ones carved by the first ones who crawled out of the great destruction. To his right a movement — the stone with the wolf god of the stars vibrating. From behind it a black mass of moving darkness with burning eyes.\n\nHe runs. His sandals cutting dirt. Sand between his toes. He runs and does not look back. The book warm against his chest. It has been warm since he made it. It will be warm for twelve thousand years.',
+        tag: 'scene',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000014,
+        title: 'Nicole Discovers the Fibonacci Is a Countdown',
+        text: 'Nicole Chapter — Act 2.\n\n2am. Alone at the stable table. The sequence spread out in front of her. She has been reading it as history. She flips it. Treats it as a forecast. Does the math forward.\n\nWhen the number settles — 21 — she covers her mouth with her hand.\n\nCarter is eighteen months old. The convergence happens when Carter is 21.\n\nShe calls Anthony at four in the morning. He answers. She says: I know when. I know exactly when.\n\nThe rest of the story is the race.',
+        tag: 'scene',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000015,
+        title: 'Anthony on the Kitchen Floor',
+        text: 'New Scene — 60 Percent Mark.\n\nAnthony wakes at 3am. No reason. Parental radar. Carter gone. Finds him on the back porch in Brittany\'s chair. Archie pressed to the chair leg. Carter talking to the yard in full sentences. Goes still. Nods. Turns and looks directly at Anthony through the glass. He knew Anthony was there the entire time.\n\nSays one sentence — something from inside Anthony\'s childhood that nobody knows. Something buried so completely Anthony forgot the act of burying it.\n\nAnthony slides down the glass door and sits on the kitchen floor. Not afraid. The most natural thing he has ever seen. Carter pads back in and puts his forehead against his father\'s without a word. Anthony puts his hand on the back of his son\'s head. Neither says anything.\n\nThe tears aren\'t fear. They\'re the specific grief of a man who spent his whole life not trusting inherited things finally understanding that the thing he built a wall against has been standing inside him this whole time. Carter didn\'t get it from somewhere else. Carter got it from him.',
+        tag: 'scene',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000016,
+        title: 'Marie\'s Compartment Reveal',
+        text: 'Act 3.\n\nCarter lays his hand on the armrest of the Viking chair in the dark. The dragon\'s mouth under his palm clicks open. Not a mechanism. Just open. The way things open when they have been waiting for the right person.\n\nInside — something Britannia put there a thousand years ago for the third Chosen specifically. Not the Book. Something personal. A single line in her hand. Something the Book never says outright. What the ending requires Carter to know.\n\nIt has been there since a Norse hall in 900 AD. Whatever it contains is Chase\'s to find. It must be the most personal thing in the book.',
+        tag: 'scene',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000017,
+        title: 'Carter\'s Birthmark — Chapter Two — READY TO COMMIT',
+        text: 'Chapter Two — The Hibachi — READY TO COMMIT.\n\nAnthony stared over at his son sitting in the high chair at the hibachi grill slumped there almost resembling a medieval king overseeing his banquet. Food all over his mouth and on the table and in his lap. Anthony smiled. The boy was looking at him with a slight smile on his face as he shoved in chicken and steak. Brittany looking him over preparing for an immediate rescue if he started to forget how to chew.\n\nThere was a light birthmark above his left eye on the temple — light red almost pink in certain light. It had always looked more like a scar to Anthony than a birthmark. Strangely like a scar. But it had been there since birth.\n\nCONNECTION: In the Brazos River chapter, Blood On His Claws throws a stone at Carter Walks-With-Fire\'s temple. Carter goes down instantly. Modern Carter was born with the mark of that moment. The body remembers across lifetimes.',
+        tag: 'scene',
+        chapter: 'chapter2',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000018,
+        title: 'The Tunguska Fact for Nicole',
+        text: 'Nicole Chapter.\n\nThe Tunguska event — 1908 Siberia. A fragment only 200 feet wide. It flattened over 800 square miles of forest. If that same event had happened over Nashville or Atlanta it would have decimated the entire city and everything for 20 miles out.\n\nNicole uses this to explain to Anthony what even a small fragment does. Then she tells him what a full comet impact does. Then she tells him about the one that\'s coming.\n\nNASA confirmed: a tiny push is all a large asteroid needs to change its course enough to destroy a planet. A comet delivers more than nine times the destructive power of an asteroid of the same size.',
+        tag: 'research',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000019,
+        title: 'The Real 2025 Comet — For Nicole',
+        text: 'Nicole Chapter.\n\nComet C/2025 A6 Lemmon — this year\'s brightest comet. Around October 13 it passed close to a bright star in the constellation Ophiuchus. It passed about 56 million miles from Earth. An icy relic that won\'t return until the next millennium.\n\nNicole maps this against the bloodline events. October 13. The same date as both Carters\' birthdays. The same date the comet always comes.\n\nThe pattern isn\'t mathematics. It\'s the sky.',
+        tag: 'research',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000020,
+        title: 'Cole Fenton Sees Ghosts — Scene Notes',
+        text: 'Cole Fenton Chapter.\n\nCole starts seeing shadows at the edge of vision. Not haunting him — residue. The burned-out traces of the children. He sees them in mirrors. Small shapes. The suggestion of a face. He thinks it is the cost of the holy work. That you carry what you do. He accepts it.\n\nBut they are getting more frequent. And lately one of them has been looking back at him.',
+        tag: 'scene',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      },
+      {
+        id: 1700000021,
+        title: 'Research — New Items (Göbekli / Neolithic / Prentice Cooper)',
+        text: 'NEW RESEARCH — Not yet in main list:\n\nONE — Research Göbekli Tepe proto-script symbols — before building the Book\'s description in Nicole\'s chapter.\n\nTWO — Research what pre-pottery Neolithic people would have called a bound object made from skin and stone — before finalizing the Book\'s physical description in the Göbekli Tepe chapter.\n\nTHREE — Research Prentice Cooper State Forest Chattanooga — for the judge walking into the woods scene. Trail network. What it looks like. What it sounds like. Where a man would go to not come back.',
+        tag: 'research',
+        chapter: '',
+        status: 'pending',
+        ts: 'May 24, 2026'
+      }
+    ];
+
+    var existingTitlesV2 = {};
+    for (var i = 0; i < IDEAS.length; i++) existingTitlesV2[IDEAS[i].title] = true;
+    var addedV2 = 0;
+    for (var j = v2defaults.length - 1; j >= 0; j--) {
+      if (!existingTitlesV2[v2defaults[j].title]) {
+        IDEAS.push(v2defaults[j]);
+        addedV2++;
+      }
+    }
+    if (addedV2 > 0) {
+      IDEAS.sort(function(a, b) { return b.id - a.id; });
+      saveIdeas();
+    }
+    try { localStorage.setItem('bwr-ideas-seeded-v2', '1'); } catch(e) {}
+  }
 }
 
 // ── ARCHITECTURE SCAN TRACKING ────────────────────────────────────────────────
