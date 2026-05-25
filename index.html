@@ -42,6 +42,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 .tab.on{color:var(--gold);border-bottom-color:var(--gold)}
 .tab .rn{font-size:8px;color:var(--gold-dim);letter-spacing:.12em}
 
+/* ── READING / AUTHOR MODE GATES ──────────────────────────────────────────── */
+.tab.author-tab{display:none}
+body.author-mode .tab.author-tab{display:flex}
+#btn-mis-hl{display:none}
+body.author-mode #btn-mis-hl{display:inline-block}
+
 /* APP */
 #app{position:fixed;top:50px;bottom:0;left:0;right:0}
 .panel{display:none;width:100%;height:100%;position:relative}
@@ -183,8 +189,23 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
   font-size:12px;color:var(--gold-dim);letter-spacing:.1em}
 
 /* CHAPTERS — FIXED: removed opacity transition (display:none prevents it from firing) */
-.chapter{display:none;max-width:620px;margin:0 auto 80px;padding:0 36px}
+.chapter{display:none;max-width:620px;margin:0 auto 80px;padding:0 36px;position:relative}
 .chapter.on{display:block}
+/* XIII — ghost mythology number haunting each chapter */
+.chapter::before{content:'XIII';position:absolute;top:44px;right:-8px;
+  font-family:var(--font-h);font-size:108px;line-height:1;letter-spacing:.12em;
+  color:rgba(201,168,76,.03);pointer-events:none;z-index:0;user-select:none;
+  text-transform:uppercase}
+/* Drop cap — first letter of each chapter opening */
+.ch-first-para::first-letter{
+  font-family:var(--font-h);font-size:4.1em;line-height:.76;
+  float:left;margin:.06em .11em 0 0;color:var(--gold);
+  text-shadow:0 0 22px rgba(201,168,76,.3)}
+/* Orbus present — dividers shift to ember-red, header carries faint heat */
+.chapter.has-orbus .pv{color:rgba(210,85,35,.65);
+  text-shadow:0 0 14px rgba(200,65,20,.35);letter-spacing:.55em}
+.chapter.has-orbus .ch-hdr{
+  background:radial-gradient(ellipse at center,rgba(120,30,10,.07) 0%,transparent 72%)}
 .ch-hdr{text-align:center;margin-bottom:44px;padding-bottom:28px;
   border-bottom:1px solid rgba(201,168,76,.18)}
 .ch-num{font-family:var(--font-h);font-size:9px;color:var(--gold-dim);
@@ -222,16 +243,22 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 
 /* AUTHOR MODE edit styles */
 #reader.edit-mode p[contenteditable="true"],
+#reader.edit-mode .ch-title[contenteditable="true"],
+#reader.edit-mode .ch-sub[contenteditable="true"],
 #reader.edit-mode .ch-epi[contenteditable="true"],
 #reader.edit-mode .ea[contenteditable="true"]{
   outline:1px dashed rgba(201,168,76,.18);border-radius:2px;
   padding:2px 5px;margin:2px -5px;cursor:text;
   transition:outline-color .15s,background .15s}
 #reader.edit-mode p[contenteditable="true"]:hover,
+#reader.edit-mode .ch-title[contenteditable="true"]:hover,
+#reader.edit-mode .ch-sub[contenteditable="true"]:hover,
 #reader.edit-mode .ch-epi[contenteditable="true"]:hover,
 #reader.edit-mode .ea[contenteditable="true"]:hover{
   outline-color:rgba(201,168,76,.3);background:rgba(201,168,76,.02)}
 #reader.edit-mode p[contenteditable="true"]:focus,
+#reader.edit-mode .ch-title[contenteditable="true"]:focus,
+#reader.edit-mode .ch-sub[contenteditable="true"]:focus,
 #reader.edit-mode .ch-epi[contenteditable="true"]:focus,
 #reader.edit-mode .ea[contenteditable="true"]:focus{
   outline:1px solid rgba(201,168,76,.5)!important;
@@ -244,6 +271,50 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 .add-para-btn:hover{color:var(--gold);border-color:var(--gold-dim);background:rgba(201,168,76,.04)}
 #reader.edit-mode .add-para-btn{display:block}
 .new-para-placeholder{color:rgba(242,237,228,.25)!important;font-style:italic}
+
+/* ── WAVE 2: DELETE / SCENE BREAK / NEW CHAPTER ─────────────────────────── */
+/* Floating delete button — absolutely positioned within .chapter */
+.ch-del-float{position:absolute;right:-28px;width:20px;height:20px;border-radius:50%;
+  background:rgba(12,4,14,.82);border:1px solid transparent;
+  color:transparent;font-size:10px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .1s,color .1s,border-color .1s;z-index:10}
+.ch-del-float.vis{opacity:1;pointer-events:auto;
+  color:rgba(180,60,60,.55);border-color:rgba(138,31,48,.32)}
+.ch-del-float.vis:hover{color:#e05555;border-color:rgba(180,60,60,.6);
+  background:rgba(138,31,48,.14)!important}
+/* New Chapter Modal */
+#ncm{position:fixed;inset:0;z-index:900;background:rgba(6,14,25,.88);
+  display:none;align-items:center;justify-content:center}
+#ncm.show{display:flex}
+.ncm-box{background:var(--navy-mid);border:1px solid rgba(201,168,76,.3);
+  padding:32px;width:440px;max-width:92vw;
+  box-shadow:0 0 60px rgba(0,0,0,.65),0 0 120px rgba(0,0,0,.3)}
+.ncm-title{font-family:var(--font-h);font-size:15px;color:var(--gold);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;
+  border-bottom:1px solid rgba(201,168,76,.18);padding-bottom:14px}
+.ncm-field{margin-bottom:14px}
+.ncm-field label{display:block;font-family:var(--font-h);font-size:8.5px;
+  color:var(--gold-dim);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
+.ncm-field input[type="text"]{width:100%;background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,168,76,.22);color:var(--cream);
+  font-family:var(--font-b);font-size:15px;padding:9px 12px;
+  outline:none;transition:border-color .15s;border-radius:0}
+.ncm-field input[type="text"]:focus{border-color:var(--gold)}
+.ncm-field input::placeholder{color:var(--cream-dim);opacity:.35}
+.ncm-check{display:flex;align-items:center;gap:10px;margin-bottom:10px;
+  cursor:pointer;font-family:var(--font-b);font-size:13.5px;color:var(--cream-dim)}
+.ncm-check input[type="checkbox"]{accent-color:var(--gold);width:14px;height:14px;cursor:pointer}
+.ncm-hint{font-family:var(--font-b);font-size:11.5px;color:rgba(184,175,157,.32);
+  font-style:italic;margin-top:14px;line-height:1.6}
+.ncm-btns{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+.ncm-btn{font-family:var(--font-h);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--cream-dim);
+  padding:8px 20px;cursor:pointer;transition:all .15s}
+.ncm-btn:hover{color:var(--gold);border-color:var(--gold)}
+.ncm-btn.primary{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.07)}
+.ncm-btn.primary:hover{background:rgba(201,168,76,.14)}
+.sb-item.is-new .sb-time{color:rgba(201,168,76,.5);font-style:italic}
 
 /* Prev/Next nav */
 .ch-nav{display:flex;justify-content:space-between;align-items:center;
@@ -843,13 +914,13 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   <div class="brand"><span class="crown" id="crown-btn">&#9819;</span>The Bone Wolf River</div>
   <div class="tabs">
     <button class="tab on" data-panel="p-read"><span class="rn">I</span>Reading Experience</button>
-    <button class="tab" data-panel="p-signal"><span class="rn">II</span>Signal Bible</button>
+    <button class="tab author-tab" data-panel="p-signal"><span class="rn">II</span>Signal Bible</button>
     <button class="tab" data-panel="p-chars"><span class="rn">III</span>Characters &amp; Timeline</button>
-    <button class="tab" data-panel="p-mistakes"><span class="rn">IV</span>Mistake Finder</button>
-    <button class="tab" data-panel="p-ideas"><span class="rn">V</span>Ideas Board</button>
-    <button class="tab" data-panel="p-compass"><span class="rn">VI</span>Story Compass</button>
-    <button class="tab" data-panel="p-voice"><span class="rn">VII</span>Voice Check</button>
-    <button class="tab" data-panel="p-arch"><span class="rn">VIII</span>Architecture</button>
+    <button class="tab author-tab" data-panel="p-mistakes"><span class="rn">IV</span>Mistake Finder</button>
+    <button class="tab author-tab" data-panel="p-ideas"><span class="rn">V</span>Ideas Board</button>
+    <button class="tab author-tab" data-panel="p-compass"><span class="rn">VI</span>Story Compass</button>
+    <button class="tab author-tab" data-panel="p-voice"><span class="rn">VII</span>Voice Check</button>
+    <button class="tab author-tab" data-panel="p-arch"><span class="rn">VIII</span>Architecture</button>
   </div>
 </nav>
 <div id="app">
@@ -883,9 +954,11 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
     <div id="read-progress"></div>
     <div id="edit-bar">
       <button class="edit-bar-btn" id="btn-add-para">+ Add Paragraph</button>
+      <button class="edit-bar-btn" id="btn-scene-break">&#247; Scene Break</button>
+      <button class="edit-bar-btn" id="btn-new-chapter">&#xFF0B; New Chapter</button>
       <button class="edit-bar-btn" id="btn-revert">&#8617; Revert Chapter</button>
       <button class="edit-bar-btn dl" id="btn-download">&#8595; Download Updated HTML</button>
-      <span class="edit-bar-msg">&#9998; Click any text — including chapter quotes — to edit. Saves automatically in your browser.</span>
+      <span class="edit-bar-msg">&#9998; Click any text to edit &bull; hover paragraph + right edge to delete</span>
       <span id="save-indicator">&#10003; Saved</span>
     </div>
     <div class="hero">
@@ -1357,6 +1430,8 @@ function triggerOrbusOverlay() {
 var authorMode = false;
 var mistakeHlActive = false;
 var EDITS = {};
+var NEW_CHAPTERS = [];
+var DELETED = {};
 function loadEdits() { try { EDITS = JSON.parse(localStorage.getItem('bwr-edits') || '{}'); } catch(e) { EDITS = {}; } }
 function getEdit(key) { return EDITS.hasOwnProperty(key) ? EDITS[key] : null; }
 function persistEdits() { try { localStorage.setItem('bwr-edits', JSON.stringify(EDITS)); } catch(e) {} }
@@ -1372,6 +1447,8 @@ function flashSaved() {
 // ── DOMContentLoaded ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   loadEdits();
+  loadNewChapters();
+  loadDeleted();
 
   // Crown easter egg
   var crownEl = document.getElementById('crown-btn');
@@ -1434,6 +1511,11 @@ document.addEventListener('DOMContentLoaded', function() {
       for (var _bi = 0; _bi < BOOK.length; _bi++) {
         if (BOOK[_bi].id === chId) { chTitle = BOOK[_bi].title; break; }
       }
+      if (!chTitle) {
+        for (var _nci = 0; _nci < NEW_CHAPTERS.length; _nci++) {
+          if (NEW_CHAPTERS[_nci].id === chId) { chTitle = NEW_CHAPTERS[_nci].title; break; }
+        }
+      }
     }
     runSignal(chTitle);
   });
@@ -1447,6 +1529,11 @@ document.addEventListener('DOMContentLoaded', function() {
       for (var _bi2 = 0; _bi2 < BOOK.length; _bi2++) {
         if (BOOK[_bi2].id === chId) { chTitle = BOOK[_bi2].title; break; }
       }
+      if (!chTitle) {
+        for (var _nci2 = 0; _nci2 < NEW_CHAPTERS.length; _nci2++) {
+          if (NEW_CHAPTERS[_nci2].id === chId) { chTitle = NEW_CHAPTERS[_nci2].title; break; }
+        }
+      }
     }
     runMistake(chTitle);
   });
@@ -1454,10 +1541,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // Edit bar buttons
   var bAdd = document.getElementById('btn-add-para');
   if (bAdd) bAdd.addEventListener('click', addParagraph);
+  var bSB = document.getElementById('btn-scene-break');
+  if (bSB) bSB.addEventListener('click', addSceneBreak);
+  var bNC = document.getElementById('btn-new-chapter');
+  if (bNC) bNC.addEventListener('click', openNewChapterModal);
   var bRev = document.getElementById('btn-revert');
   if (bRev) bRev.addEventListener('click', revertChapter);
   var bDl = document.getElementById('btn-download');
   if (bDl) bDl.addEventListener('click', downloadUpdated);
+
+  // Modal: close on Escape or backdrop click; Enter to submit
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNewChapterModal(); });
+  var ncmEl = document.getElementById('ncm');
+  if (ncmEl) ncmEl.addEventListener('click', function(e) { if (e.target === ncmEl) closeNewChapterModal(); });
+  ['ncm-label','ncm-ttl','ncm-sub'].forEach(function(id) {
+    var inp = document.getElementById(id);
+    if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); createNewChapter(); } });
+  });
 
   // Tool buttons
   var bSig = document.getElementById('btn-sig');
@@ -1501,11 +1601,13 @@ document.addEventListener('DOMContentLoaded', function() {
   buildReader();
   updateSidebarDots();
 
-  // Restore last chapter
+  // Restore last chapter (check BOOK + new user chapters)
   try {
     var saved = localStorage.getItem('bwr-chapter');
-    if (saved) for (var i = 0; i < BOOK.length; i++) {
-      if (BOOK[i].id === saved) { showChapter(saved); break; }
+    if (saved) {
+      var found = false;
+      for (var i = 0; i < BOOK.length; i++) { if (BOOK[i].id === saved) { showChapter(saved); found = true; break; } }
+      if (!found) { for (var i = 0; i < NEW_CHAPTERS.length; i++) { if (NEW_CHAPTERS[i].id === saved) { showChapter(saved); break; } } }
     }
   } catch(e) {}
 
@@ -1529,6 +1631,11 @@ document.addEventListener('DOMContentLoaded', function() {
       var chId = ch.id.replace('ch-', '');
       for (var _bi3 = 0; _bi3 < BOOK.length; _bi3++) {
         if (BOOK[_bi3].id === chId) { chTitle = BOOK[_bi3].title; break; }
+      }
+      if (!chTitle) {
+        for (var _nci3 = 0; _nci3 < NEW_CHAPTERS.length; _nci3++) {
+          if (NEW_CHAPTERS[_nci3].id === chId) { chTitle = NEW_CHAPTERS[_nci3].title; break; }
+        }
       }
     }
     runVoiceCheck(chTitle);
@@ -1580,6 +1687,7 @@ function toggleAuthorMode() {
   var savedScroll = reader ? reader.scrollTop : 0;
 
   if (authorMode) {
+    document.body.classList.add('author-mode');
     reader.classList.add('edit-mode');
     if (btn) { btn.classList.add('on'); btn.innerHTML = '\u2714 Reading Mode'; }
     if (bar) bar.classList.add('show');
@@ -1589,12 +1697,26 @@ function toggleAuthorMode() {
     // Re-apply highlights so they show on the now-editable paragraphs
     if (mistakeHlActive) setTimeout(applyMistakeHighlights, 30);
   } else {
+    document.body.classList.remove('author-mode');
     reader.classList.remove('edit-mode');
     if (btn) { btn.classList.remove('on'); btn.innerHTML = '\u270e Author Mode'; }
     if (bar) bar.classList.remove('show');
     // Remove contenteditable from all paragraphs and header fields
-    var editables = document.querySelectorAll('#chapters [contenteditable="true"]');
+    var editables = document.querySelectorAll('#reader [contenteditable="true"]');
     for (var i = 0; i < editables.length; i++) editables[i].contentEditable = 'false';
+    // Remove delete floats from all chapters
+    var allChs = document.querySelectorAll('.chapter');
+    for (var dx = 0; dx < allChs.length; dx++) removeDeleteFloat(allChs[dx]);
+    // If current panel is author-only, fall back to the reading panel
+    var authorPanels = ['p-signal','p-mistakes','p-ideas','p-compass','p-voice','p-arch'];
+    var activePanel = document.querySelector('.panel.on');
+    if (activePanel && authorPanels.indexOf(activePanel.id) >= 0) {
+      showPanel('p-read');
+      var allTabs = document.querySelectorAll('.tab');
+      for (var ti = 0; ti < allTabs.length; ti++) allTabs[ti].classList.remove('on');
+      var readTab = document.querySelector('[data-panel="p-read"]');
+      if (readTab) readTab.classList.add('on');
+    }
     // Restore scroll (edit-bar hiding shifts layout back)
     if (reader) reader.scrollTop = savedScroll;
     // Re-apply highlights on the now-plain paragraphs
@@ -1603,6 +1725,11 @@ function toggleAuthorMode() {
 }
 
 function enableEditingInChapter() {
+  // Remove delete float from any non-active chapters
+  var allChs = document.querySelectorAll('.chapter');
+  for (var x = 0; x < allChs.length; x++) {
+    if (!allChs[x].classList.contains('on')) removeDeleteFloat(allChs[x]);
+  }
   var ch = document.querySelector('.chapter.on');
   if (!ch) return;
   // Make body paragraphs editable
@@ -1617,10 +1744,10 @@ function enableEditingInChapter() {
       wireAutoSave(el);
     }
   }
-  // Also make epigraph and attribution editable (div.ch-epi, span.ea)
-  var headers = ch.querySelectorAll('.ch-epi, .ea');
-  for (var j = 0; j < headers.length; j++) {
-    var he = headers[j];
+  // Also make title, subtitle, epigraph and attribution editable
+  var metaFields = ch.querySelectorAll('.ch-title, .ch-sub, .ch-epi, .ea');
+  for (var j = 0; j < metaFields.length; j++) {
+    var he = metaFields[j];
     if (!he.getAttribute('data-ekey')) continue;
     he.contentEditable = 'true';
     he.setAttribute('spellcheck', 'true');
@@ -1629,6 +1756,8 @@ function enableEditingInChapter() {
       wireAutoSave(he);
     }
   }
+  // Attach floating delete button to this chapter
+  addDeleteFloat(ch);
 }
 
 function wireAutoSave(el) {
@@ -1672,6 +1801,245 @@ function addParagraph() {
   ch.insertBefore(newEl, addBtn || navDiv);
   newEl.focus();
   flashSaved();
+  if (authorMode) setTimeout(function() { addDeleteFloat(ch); }, 20);
+}
+
+// ── NEW CHAPTER MANAGEMENT ────────────────────────────────────────────────
+function loadNewChapters() {
+  try { var r = localStorage.getItem('bwr-new-chapters'); if (r) NEW_CHAPTERS = JSON.parse(r); } catch(e) { NEW_CHAPTERS = []; }
+}
+function saveNewChapters() {
+  try { localStorage.setItem('bwr-new-chapters', JSON.stringify(NEW_CHAPTERS)); } catch(e) {}
+}
+function loadDeleted() {
+  try { var r = localStorage.getItem('bwr-deleted'); if (r) DELETED = JSON.parse(r); } catch(e) { DELETED = {}; }
+}
+function saveDeleted() {
+  try { localStorage.setItem('bwr-deleted', JSON.stringify(DELETED)); } catch(e) {}
+}
+
+function openNewChapterModal() {
+  var m = document.getElementById('ncm');
+  if (!m) return;
+  document.getElementById('ncm-label').value = '';
+  document.getElementById('ncm-ttl').value = '';
+  document.getElementById('ncm-sub').value = '';
+  document.getElementById('ncm-watch').checked = false;
+  document.getElementById('ncm-orbus').checked = false;
+  m.classList.add('show');
+  setTimeout(function() { var el = document.getElementById('ncm-label'); if (el) el.focus(); }, 60);
+}
+function closeNewChapterModal() {
+  var m = document.getElementById('ncm'); if (m) m.classList.remove('show');
+}
+function createNewChapter() {
+  var label    = (document.getElementById('ncm-label').value || '').trim() || 'New Chapter';
+  var ttl      = (document.getElementById('ncm-ttl').value  || '').trim() || 'Untitled';
+  var sub      = (document.getElementById('ncm-sub').value  || '').trim();
+  var isWatch  = document.getElementById('ncm-watch').checked;
+  var hasOrbus = document.getElementById('ncm-orbus').checked;
+  var id       = 'nc-' + Date.now();
+  var subtitle = sub ? ttl + ' — ' + sub : ttl;
+  var ch = { id: id, title: label, subtitle: subtitle,
+             type: isWatch ? 'watching' : 'main', epi: '', epi_attr: '',
+             hasOrbus: hasOrbus, isNew: true, readMins: 0, paras: [] };
+  NEW_CHAPTERS.push(ch);
+  saveNewChapters();
+  closeNewChapterModal();
+  appendNewChapterToReader(ch);
+  showChapter(id);
+  if (authorMode) setTimeout(function() { enableEditingInChapter(); }, 80);
+}
+
+function appendNewChapterToReader(ch) {
+  var sbLinks = document.getElementById('sb-links');
+  var chapDiv = document.getElementById('chapters');
+  if (!sbLinks || !chapDiv) return;
+  var isWatch = ch.type === 'watching';
+
+  // Sidebar
+  var a = document.createElement('a');
+  a.className = 'sb-item is-new' + (isWatch ? ' wt' : '');
+  a.href = '#'; a.setAttribute('data-chid', ch.id);
+  var ts_ = document.createElement('span'); ts_.className = 'sb-title'; ts_.textContent = ch.title; a.appendChild(ts_);
+  var ss_ = document.createElement('span'); ss_.className = 'sb-sub'; ss_.textContent = ch.subtitle; a.appendChild(ss_);
+  var ms_ = document.createElement('div'); ms_.className = 'sb-meta';
+  var tm_ = document.createElement('span'); tm_.className = 'sb-time'; tm_.textContent = 'new'; ms_.appendChild(tm_);
+  if (ch.hasOrbus) { var fl_ = document.createElement('span'); fl_.className = 'orbus-flame'; fl_.textContent = '🔥'; ms_.appendChild(fl_); }
+  a.appendChild(ms_);
+  (function(cid) { a.addEventListener('click', function(e) { e.preventDefault(); showChapter(cid); }); })(ch.id);
+  sbLinks.appendChild(a);
+
+  // Chapter div
+  var div = document.createElement('div');
+  div.id = 'ch-' + ch.id;
+  div.className = 'chapter' + (isWatch ? ' wt' : '') + (ch.hasOrbus ? ' has-orbus' : '');
+
+  // Header
+  var hdr = document.createElement('div'); hdr.className = 'ch-hdr';
+  var numEl = document.createElement('span'); numEl.className = 'ch-num'; numEl.textContent = ch.title; hdr.appendChild(numEl);
+  var sp = ch.subtitle.split('—');
+  var tt = sp[0].trim();
+  var st = sp.length > 1 ? sp.slice(1).join('—').trim() : '';
+  var titleKey = ch.id + ':title', savedTitle = getEdit(titleKey);
+  var te = document.createElement('div'); te.className = 'ch-title';
+  te.textContent = savedTitle !== null ? savedTitle : tt;
+  te.setAttribute('data-ekey', titleKey);
+  if (savedTitle !== null) te.classList.add('para-edited');
+  hdr.appendChild(te);
+  if (st) {
+    var subtKey = ch.id + ':subtitle', savedSub = getEdit(subtKey);
+    var se = document.createElement('div'); se.className = 'ch-sub';
+    se.textContent = savedSub !== null ? savedSub : st;
+    se.setAttribute('data-ekey', subtKey);
+    if (savedSub !== null) se.classList.add('para-edited');
+    hdr.appendChild(se);
+  }
+  div.appendChild(hdr);
+
+  // Restore saved paragraphs (new: and div: keys)
+  var orderedKeys = [];
+  for (var k in EDITS) {
+    if ((k.indexOf('new:' + ch.id + ':') === 0 || k.indexOf('div:' + ch.id + ':') === 0) && (EDITS[k] || k.indexOf('div:') === 0)) {
+      orderedKeys.push(k);
+    }
+  }
+  orderedKeys.sort();
+  for (var ki = 0; ki < orderedKeys.length; ki++) {
+    var k = orderedKeys[ki]; var ne = document.createElement('p');
+    if (k.indexOf('div:') === 0) {
+      ne.className = 'pv'; ne.textContent = '✶     ✶     ✶';
+    } else {
+      ne.className = 'pb'; ne.textContent = EDITS[k]; ne.classList.add('para-edited');
+    }
+    ne.setAttribute('data-ekey', k); div.appendChild(ne);
+  }
+  var fbEl = div.querySelector('.pb,.pp');
+  if (fbEl) fbEl.classList.add('ch-first-para');
+
+  // Add para button
+  var addBtn = document.createElement('button');
+  addBtn.className = 'add-para-btn'; addBtn.textContent = '+ Add Paragraph';
+  addBtn.style.display = 'none';
+  (function(cid, d) { addBtn.addEventListener('click', function() {
+    var newEl = document.createElement('p'); newEl.className = 'pb';
+    newEl.contentEditable = 'true'; newEl.setAttribute('spellcheck', 'true');
+    var k2 = 'new:' + cid + ':' + Date.now();
+    newEl.setAttribute('data-ekey', k2); newEl.dataset.saveWired = '1';
+    wireAutoSave(newEl); d.insertBefore(newEl, d.querySelector('.ch-nav')); newEl.focus();
+    if (authorMode) setTimeout(function() { addDeleteFloat(d); }, 20);
+  }); })(ch.id, div);
+  div.appendChild(addBtn);
+
+  var navDiv = document.createElement('div'); navDiv.className = 'ch-nav';
+  navDiv.appendChild(document.createElement('span'));
+  navDiv.appendChild(document.createElement('span'));
+  div.appendChild(navDiv);
+  chapDiv.appendChild(div);
+}
+
+// ── SCENE BREAK ───────────────────────────────────────────────────────────
+function addSceneBreak() {
+  var ch = document.querySelector('.chapter.on');
+  if (!ch) return;
+  var chId = ch.id.replace('ch-', '');
+  var k = 'div:' + chId + ':' + Date.now();
+  var divEl = document.createElement('p');
+  divEl.className = 'pv'; divEl.textContent = '✶     ✶     ✶';
+  divEl.setAttribute('data-ekey', k);
+  var active = document.activeElement;
+  var insertAfter = (active && active.tagName === 'P' && ch.contains(active)) ? active : null;
+  var addBtn = ch.querySelector('.add-para-btn');
+  var navDiv = ch.querySelector('.ch-nav');
+  if (insertAfter) {
+    insertAfter.parentNode.insertBefore(divEl, insertAfter.nextSibling);
+  } else {
+    ch.insertBefore(divEl, addBtn || navDiv);
+  }
+  EDITS[k] = '__DIVIDER__'; persistEdits();
+  flashSaved();
+  // Refresh delete float to include the new divider
+  if (authorMode) setTimeout(function() { addDeleteFloat(ch); }, 20);
+}
+
+// ── DELETE FLOAT ──────────────────────────────────────────────────────────
+function addDeleteFloat(ch) {
+  removeDeleteFloat(ch);
+  if (!ch) return;
+  var btn = document.createElement('button');
+  btn.className = 'ch-del-float'; btn.type = 'button';
+  btn.textContent = '✕'; btn.title = 'Delete paragraph';
+  ch.appendChild(btn);
+
+  var hoveredPara = null;
+  var leaveTimer = null;
+
+  function positionAt(p) {
+    btn.style.top = (p.offsetTop + p.offsetHeight / 2 - 10) + 'px';
+    btn.classList.add('vis');
+    hoveredPara = p;
+  }
+
+  function scheduleHide() {
+    leaveTimer = setTimeout(function() { btn.classList.remove('vis'); hoveredPara = null; }, 90);
+  }
+
+  var paras = ch.querySelectorAll('p');
+  for (var i = 0; i < paras.length; i++) {
+    (function(p) {
+      p.addEventListener('mouseenter', function() { clearTimeout(leaveTimer); positionAt(p); });
+      p.addEventListener('mouseleave', function(e) { if (e.relatedTarget !== btn) scheduleHide(); });
+    })(paras[i]);
+  }
+  btn.addEventListener('mouseenter', function() { clearTimeout(leaveTimer); });
+  btn.addEventListener('mouseleave', scheduleHide);
+  btn.addEventListener('click', function() {
+    if (!hoveredPara) return;
+    if (!confirm('Delete this paragraph?')) return;
+    var ekey = hoveredPara.getAttribute('data-ekey');
+    var target = hoveredPara;
+    btn.classList.remove('vis'); hoveredPara = null;
+    if (ekey) {
+      if (ekey.indexOf('new:') === 0 || ekey.indexOf('div:') === 0) {
+        delete EDITS[ekey]; persistEdits();
+      } else {
+        DELETED[ekey] = true; saveDeleted();
+        if (EDITS.hasOwnProperty(ekey)) { delete EDITS[ekey]; persistEdits(); }
+      }
+    }
+    target.parentNode.removeChild(target);
+    updateSidebarDots();
+    setTimeout(function() { addDeleteFloat(ch); }, 20);
+  });
+}
+
+function removeDeleteFloat(ch) {
+  if (!ch) return;
+  var btns = ch.querySelectorAll('.ch-del-float');
+  for (var i = 0; i < btns.length; i++) { if (btns[i].parentNode) btns[i].parentNode.removeChild(btns[i]); }
+}
+
+// ── DOM PARA EXTRACTION (for download) ───────────────────────────────────
+function extractParasFromDOM(chEl) {
+  var paras = chEl.querySelectorAll('p');
+  var result = [];
+  for (var j = 0; j < paras.length; j++) {
+    var pe = paras[j];
+    var txt = pe.textContent.trim();
+    if (!txt) continue;
+    if (pe.classList.contains('pv')) {
+      result.push({ type: 'divider', text: '✶     ✶     ✶' });
+    } else if (pe.classList.contains('pw')) {
+      result.push({ type: 'watching_hdr', text: txt });
+    } else if (pe.classList.contains('pq')) {
+      result.push({ type: 'quote_block', text: txt });
+    } else if (pe.classList.contains('pi')) {
+      result.push({ type: 'italic', text: txt });
+    } else {
+      result.push({ type: 'body', text: txt });
+    }
+  }
+  return result;
 }
 
 // ── REVERT CHAPTER ────────────────────────────────────────────────────────
@@ -1693,32 +2061,55 @@ function revertChapter() {
 
 // ── DOWNLOAD UPDATED HTML ─────────────────────────────────────────────────
 function downloadUpdated() {
-  // Build updated BOOK with all edits applied
   var updatedBook = JSON.parse(JSON.stringify(BOOK));
 
+  // Apply metadata edits (title/subtitle/epi/epi_attr) from EDITS
   for (var key in EDITS) {
     var txt = EDITS[key];
-    if (!txt) continue;
-    // New paragraph: key = "new:{chId}:{timestamp}"
-    if (key.indexOf('new:') === 0) {
-      var parts = key.split(':');
-      var chId = parts[1];
-      for (var i = 0; i < updatedBook.length; i++) {
-        if (updatedBook[i].id === chId) { updatedBook[i].paras.push({ type: 'body', text: txt }); break; }
-      }
-    } else {
-      // Existing paragraph: key = "{chId}:{paraIndex}"
-      var colon = key.lastIndexOf(':');
-      var chId = key.slice(0, colon);
-      var pidx = parseInt(key.slice(colon + 1));
-      if (isNaN(pidx)) continue;
-      for (var i = 0; i < updatedBook.length; i++) {
-        if (updatedBook[i].id === chId && pidx < updatedBook[i].paras.length) {
-          updatedBook[i].paras[pidx].text = txt;
-          break;
+    if (!txt || txt === '__DIVIDER__') continue;
+    if (key.indexOf('new:') === 0 || key.indexOf('div:') === 0) continue;
+    var colon = key.lastIndexOf(':');
+    var chId = key.slice(0, colon);
+    var suffix = key.slice(colon + 1);
+    if (!isNaN(parseInt(suffix))) continue; // para edits captured by DOM scan
+    if (suffix !== 'title' && suffix !== 'subtitle' && suffix !== 'epi' && suffix !== 'epi_attr') continue;
+    for (var i = 0; i < updatedBook.length; i++) {
+      if (updatedBook[i].id === chId) {
+        if (suffix === 'epi') { updatedBook[i].epi = txt; }
+        else if (suffix === 'epi_attr') { updatedBook[i].epi_attr = txt; }
+        else if (suffix === 'title') {
+          var sp2 = updatedBook[i].subtitle.split('—');
+          var rest = sp2.length > 1 ? ' — ' + sp2.slice(1).join('—').trim() : '';
+          updatedBook[i].subtitle = txt + rest;
+        } else if (suffix === 'subtitle') {
+          var sp2 = updatedBook[i].subtitle.split('—');
+          updatedBook[i].subtitle = sp2[0].trim() + ' — ' + txt;
         }
+        break;
       }
     }
+  }
+
+  // Rebuild paras from DOM for all original chapters (captures edits, inserts, deletes, scene breaks)
+  for (var i = 0; i < updatedBook.length; i++) {
+    var chEl = document.getElementById('ch-' + updatedBook[i].id);
+    if (chEl) updatedBook[i].paras = extractParasFromDOM(chEl);
+  }
+
+  // Append new user-created chapters
+  for (var i = 0; i < NEW_CHAPTERS.length; i++) {
+    var nch = JSON.parse(JSON.stringify(NEW_CHAPTERS[i]));
+    var chEl = document.getElementById('ch-' + nch.id);
+    if (chEl) {
+      nch.paras = extractParasFromDOM(chEl);
+      var stl = getEdit(nch.id + ':title'), ssb = getEdit(nch.id + ':subtitle');
+      var sepi = getEdit(nch.id + ':epi'),  satt = getEdit(nch.id + ':epi_attr');
+      if (stl !== null) { var sp2 = nch.subtitle.split('—'); var rest = sp2.length > 1 ? ' — ' + sp2.slice(1).join('—').trim() : ''; nch.subtitle = stl + rest; }
+      if (ssb !== null) { var sp2 = nch.subtitle.split('—'); nch.subtitle = sp2[0].trim() + ' — ' + ssb; }
+      if (sepi !== null) nch.epi = sepi;
+      if (satt !== null) nch.epi_attr = satt;
+    }
+    updatedBook.push(nch);
   }
 
   var newJson = '/* BOOK_DATA_START */ ' + JSON.stringify(updatedBook) + ' /* BOOK_DATA_END */';
@@ -1819,7 +2210,7 @@ function buildReader() {
     // Chapter div
     var div = document.createElement('div');
     div.id = 'ch-' + ch.id;
-    div.className = 'chapter' + (isWatch ? ' wt' : '') + (isFirst ? ' on' : '');
+    div.className = 'chapter' + (isWatch ? ' wt' : '') + (ch.hasOrbus ? ' has-orbus' : '') + (isFirst ? ' on' : '');
 
     // Header
     var hdr = document.createElement('div'); hdr.className = 'ch-hdr';
@@ -1827,8 +2218,20 @@ function buildReader() {
     var sp = ch.subtitle.split('—');
     var tt = sp[0].trim();
     var st = sp.length > 1 ? sp.slice(1).join('—').trim() : '';
-    var te = document.createElement('div'); te.className = 'ch-title'; te.textContent = tt; hdr.appendChild(te);
-    if (st) { var se = document.createElement('div'); se.className = 'ch-sub'; se.textContent = st; hdr.appendChild(se); }
+    var titleKey = ch.id + ':title', savedTitle = getEdit(titleKey);
+    var te = document.createElement('div'); te.className = 'ch-title';
+    te.textContent = savedTitle !== null ? savedTitle : tt;
+    te.setAttribute('data-ekey', titleKey);
+    if (savedTitle !== null) te.classList.add('para-edited');
+    hdr.appendChild(te);
+    if (st) {
+      var subtKey = ch.id + ':subtitle', savedSub = getEdit(subtKey);
+      var se = document.createElement('div'); se.className = 'ch-sub';
+      se.textContent = savedSub !== null ? savedSub : st;
+      se.setAttribute('data-ekey', subtKey);
+      if (savedSub !== null) se.classList.add('para-edited');
+      hdr.appendChild(se);
+    }
     if (ch.epi) {
       var ee = document.createElement('div'); ee.className = 'ch-epi';
       var epiKey = ch.id + ':epi';
@@ -1856,6 +2259,10 @@ function buildReader() {
       var el = document.createElement('p');
       var txt = p.text;
       var ekey = ch.id + ':' + j;
+
+      // Skip deleted paragraphs
+      if (DELETED[ekey]) continue;
+
       el.setAttribute('data-ekey', ekey);
 
       // Load any saved edit
@@ -1881,20 +2288,30 @@ function buildReader() {
       div.appendChild(el);
     }
 
-    // Load saved new paragraphs
+    // Load saved new paragraphs and scene breaks (appended; position restored on download)
     try {
-      var addedKey = 'new:' + ch.id;
+      var orderedNewKeys = [];
       for (var k in EDITS) {
-        if (k.indexOf('new:' + ch.id + ':') === 0 && EDITS[k]) {
-          var ne = document.createElement('p');
-          ne.className = 'pb';
-          ne.textContent = EDITS[k];
-          ne.setAttribute('data-ekey', k);
-          ne.classList.add('para-edited');
-          div.appendChild(ne);
+        if (k.indexOf('new:' + ch.id + ':') === 0 && EDITS[k]) orderedNewKeys.push(k);
+        else if (k.indexOf('div:' + ch.id + ':') === 0) orderedNewKeys.push(k);
+      }
+      orderedNewKeys.sort();
+      for (var ki2 = 0; ki2 < orderedNewKeys.length; ki2++) {
+        var k = orderedNewKeys[ki2];
+        var ne = document.createElement('p');
+        if (k.indexOf('div:') === 0) {
+          ne.className = 'pv'; ne.textContent = '✶     ✶     ✶';
+        } else {
+          ne.className = 'pb'; ne.textContent = EDITS[k]; ne.classList.add('para-edited');
         }
+        ne.setAttribute('data-ekey', k);
+        div.appendChild(ne);
       }
     } catch(e2) {}
+
+    // Mark first body paragraph for drop cap
+    var firstBodyEl = div.querySelector('.pb, .pp');
+    if (firstBodyEl) firstBodyEl.classList.add('ch-first-para');
 
     // Add paragraph button
     var addBtn = document.createElement('button');
@@ -1931,6 +2348,11 @@ function buildReader() {
     }
     div.appendChild(navDiv);
     chapDiv.appendChild(div);
+  }
+
+  // Build new user-created chapters
+  for (var nc = 0; nc < NEW_CHAPTERS.length; nc++) {
+    appendNewChapterToReader(NEW_CHAPTERS[nc]);
   }
 
   if (BOOK.length > 0) showChapter(BOOK[0].id);
@@ -3480,6 +3902,32 @@ async function generateCompassSummary() {
 }
 
 </script>
+
+<!-- ── NEW CHAPTER MODAL ───────────────────────────────────────────────── -->
+<div id="ncm" role="dialog" aria-modal="true">
+  <div class="ncm-box">
+    <div class="ncm-title">&#xFF0B; New Chapter</div>
+    <div class="ncm-field">
+      <label for="ncm-label">Chapter Label</label>
+      <input type="text" id="ncm-label" placeholder="e.g. Chapter XIV" autocomplete="off">
+    </div>
+    <div class="ncm-field">
+      <label for="ncm-ttl">Title</label>
+      <input type="text" id="ncm-ttl" placeholder="The Pull" autocomplete="off">
+    </div>
+    <div class="ncm-field">
+      <label for="ncm-sub">Subtitle <span style="opacity:.4;font-style:italic;text-transform:none;letter-spacing:0;font-size:8px">(optional)</span></label>
+      <input type="text" id="ncm-sub" placeholder="A Kingdom of Small Gods" autocomplete="off">
+    </div>
+    <label class="ncm-check"><input type="checkbox" id="ncm-watch"> Watch Tower chapter (italic style)</label>
+    <label class="ncm-check"><input type="checkbox" id="ncm-orbus"> &#x1F525; Orbus appears</label>
+    <p class="ncm-hint">Saved in this browser. Use Download Updated HTML to bake it into your file permanently.</p>
+    <div class="ncm-btns">
+      <button class="ncm-btn" onclick="closeNewChapterModal()">Cancel</button>
+      <button class="ncm-btn primary" id="ncm-create-btn" onclick="createNewChapter()">Create Chapter</button>
+    </div>
+  </div>
+</div>
 
 <script>
 if ('serviceWorker' in navigator) {
