@@ -268,11 +268,7 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
   letter-spacing:.3em;text-transform:uppercase;text-align:center;margin:28px 0 14px}
 .chapter.wt .pb,.chapter.wt .pi{color:rgba(242,237,228,.82)}
 .chapter.wt .pb+.pb{text-indent:1.75em}
-/* Reading glow — active paragraph */
-.pb.reading,.pd.reading,.pp.reading,.pi.reading,.pq.reading{
-  text-shadow:0 0 28px rgba(201,168,76,.18),0 0 8px rgba(201,168,76,.08);
-  transition:text-shadow .4s ease}
-.pb,.pd,.pp,.pi,.pq{transition:text-shadow .6s ease}
+/* Reading glow — see Aesthetic Enhancements block below */
 .search-hit{background:rgba(201,168,76,.18);border-radius:2px;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
 
 /* AUTHOR MODE edit styles */
@@ -957,61 +953,151 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 
 /* ── LORE WINGS ─────────────────────────────────────────────────────────── */
 .reader-wing{position:fixed;top:60px;bottom:0;display:none;flex-direction:column;
-  justify-content:center;gap:18px;pointer-events:none;z-index:2;overflow:hidden;
-  padding:0 20px}
+  justify-content:center;gap:14px;pointer-events:none;z-index:2;overflow:hidden;
+  padding:0 22px}
 .reader-wing.visible{display:flex}
-@keyframes wing-breathe{0%,100%{opacity:.8}50%{opacity:1}}
-#wing-left{animation:wing-breathe 14s ease-in-out infinite}
-#wing-right{animation:wing-breathe 14s ease-in-out 7s infinite}
-.wing-lore{font-family:var(--font-h);font-size:7px;letter-spacing:.3em;
-  text-transform:uppercase;color:rgba(201,168,76,.2);text-align:center;
-  line-height:2;white-space:nowrap}
-.wing-lore.accent{color:rgba(201,168,76,.36);font-size:8px;letter-spacing:.25em}
-.wing-lore.lg{font-size:22px;letter-spacing:.22em;color:rgba(201,168,76,.07);line-height:1}
-.wing-lore.personal{color:rgba(201,168,76,.42);font-size:8px;letter-spacing:.32em;font-weight:600}
-.wing-lore.italic{font-style:italic;font-family:var(--font-b);font-size:10px;
-  color:rgba(201,168,76,.22);letter-spacing:.06em;text-transform:none;font-weight:300}
-.wing-divider{width:24px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.18),transparent);margin:4px auto}
-.wing-comet{font-size:14px;color:rgba(201,168,76,.15);text-align:center;letter-spacing:.12em}
-/* ── AESTHETIC ENHANCEMENTS ─────────────────────────────────────────────── */
+@keyframes wing-breathe{
+  0%{opacity:.55;filter:brightness(.9)}
+  50%{opacity:1;filter:brightness(1.15)}
+  100%{opacity:.55;filter:brightness(.9)}}
+#wing-left{animation:wing-breathe 12s ease-in-out infinite}
+#wing-right{animation:wing-breathe 12s ease-in-out 6s infinite}
+.wing-lore{font-family:var(--font-h);font-size:8px;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(201,168,76,.78);text-align:center;
+  line-height:2;white-space:nowrap;
+  text-shadow:0 0 14px rgba(201,168,76,.4)}
+.wing-lore.accent{color:rgba(232,201,106,.95);font-size:9px;letter-spacing:.22em;
+  text-shadow:0 0 18px rgba(201,168,76,.6),0 0 40px rgba(201,168,76,.2)}
+.wing-lore.lg{font-size:32px;letter-spacing:.22em;color:rgba(201,168,76,.45);line-height:1;
+  text-shadow:0 0 28px rgba(201,168,76,.5),0 0 60px rgba(201,168,76,.18)}
+.wing-lore.personal{color:rgba(255,230,130,1);font-size:9px;letter-spacing:.3em;font-weight:700;
+  text-shadow:0 0 20px rgba(201,168,76,.7),0 0 50px rgba(201,168,76,.25)}
+.wing-lore.italic{font-style:italic;font-family:var(--font-b);font-size:11px;
+  color:rgba(232,210,160,.82);letter-spacing:.05em;text-transform:none;font-weight:300;
+  text-shadow:0 0 12px rgba(201,168,76,.35)}
+.wing-divider{width:32px;height:1px;
+  background:linear-gradient(to right,transparent,rgba(201,168,76,.55),transparent);
+  margin:2px auto;
+  box-shadow:0 0 6px rgba(201,168,76,.25)}
+.wing-comet{font-size:18px;color:rgba(255,230,150,.85);text-align:center;letter-spacing:.12em;
+  text-shadow:0 0 16px rgba(201,168,76,.7),0 0 40px rgba(201,168,76,.3)}
+/* ── AESTHETIC ENHANCEMENTS — THE BEREFT ────────────────────────────────── */
+
+/* ── THE BEREFT: Reading column feels like aged parchment-stone ─────────── */
+/* The book described: glass-like stone cover, pages like grandfather's skin,
+   gold/silver/black script etched with ancient patience */
+
+/* Chapter body — the 'page' area feels slightly warmer, like aged paper */
+/* No border-left/right here — ::after handles the decorative edge line */
+.chapter{
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201,168,76,.02) 15%,
+    rgba(201,168,76,.025) 50%,
+    rgba(201,168,76,.02) 85%,
+    transparent 100%
+  )}
+
+/* Chapter ghost XIII — deeply visible, carved into stone */
+.chapter::before{
+  font-size:130px;
+  color:rgba(201,168,76,.065)!important;
+  text-shadow:0 0 80px rgba(201,168,76,.08)}
+
+/* Hero parchment warmth */
+.hero{
+  background:radial-gradient(ellipse at center,rgba(201,168,76,.045) 0%,transparent 70%)}
+
 /* Scene break ember pulse */
 @keyframes ember-pulse{0%,100%{opacity:.55;text-shadow:none}
-  50%{opacity:.85;text-shadow:0 0 10px rgba(201,168,76,.28),0 0 24px rgba(201,168,76,.1)}}
-.pv{animation:ember-pulse 6s ease-in-out infinite}
-.chapter.has-orbus .pv{animation:ember-pulse 3.8s ease-in-out infinite;
-  text-shadow:0 0 14px rgba(200,65,20,.35)}
+  50%{opacity:.9;text-shadow:0 0 14px rgba(201,168,76,.5),0 0 30px rgba(201,168,76,.18)}}
+.pv{animation:ember-pulse 5s ease-in-out infinite}
+.chapter.has-orbus .pv{animation:ember-pulse 3.2s ease-in-out infinite;
+  text-shadow:0 0 18px rgba(200,65,20,.5)}
+
 /* Chapter arrival animation */
-@keyframes ch-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.chapter.on{animation:ch-arrive .45s ease-out}
+@keyframes ch-arrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.chapter.on{animation:ch-arrive .55s ease-out}
+
 /* Reading area bottom vignette */
-#p-read::after{content:'';position:absolute;bottom:0;left:210px;right:0;height:90px;
+#p-read::after{content:'';position:absolute;bottom:0;left:210px;right:0;height:110px;
   background:linear-gradient(to top,var(--navy-dark) 0%,transparent 100%);
   pointer-events:none;z-index:8}
 body.wide-mode #p-read::after{left:0}
-/* Enhanced reading glow */
+
+/* ── THE BEREFT: Reading glow — unmissable amber lantern effect ──────────── */
+/* Passage glow — illuminates the full visible reading zone (multiple paragraphs at once) */
 .pb.reading,.pd.reading,.pp.reading,.pi.reading,.pq.reading{
-  text-shadow:0 0 32px rgba(201,168,76,.26),0 0 10px rgba(201,168,76,.12);
-  color:rgba(242,237,228,1);transition:text-shadow .5s ease,color .5s ease}
-.pb,.pd,.pp,.pi,.pq{color:var(--cream);transition:text-shadow .7s ease,color .7s ease}
-/* Orbus chapter — ember glow bleeds into chapter ghost number */
-.chapter.has-orbus::before{color:rgba(200,65,20,.045)}
-/* XIII ghost — slightly more present */
-.chapter::before{color:rgba(201,168,76,.04)!important}
-/* Progress bar — ember glow */
-#read-progress{background:linear-gradient(to right,rgba(201,168,76,.5),var(--gold));
-  box-shadow:0 0 8px rgba(201,168,76,.3),0 0 20px rgba(201,168,76,.12);height:2px}
+  color:rgba(255,248,230,1);
+  background:rgba(201,168,76,.07);
+  text-shadow:0 0 28px rgba(201,168,76,.55),0 0 9px rgba(201,168,76,.3),0 0 50px rgba(201,168,76,.12);
+  transition:background .55s ease,color .55s ease,text-shadow .55s ease}
+.pb,.pd,.pp,.pi,.pq{color:var(--cream);
+  background:transparent;
+  transition:background .7s ease,color .7s ease,text-shadow .7s ease}
+
+/* Drop cap — gold etching, Bereft script */
+.ch-first-para::first-letter{
+  font-family:var(--font-h);font-size:4.5em;line-height:.74;
+  float:left;margin:.05em .12em 0 0;color:var(--gold);
+  text-shadow:0 0 28px rgba(201,168,76,.55),0 0 60px rgba(201,168,76,.2)}
+
+/* Orbus chapter — ember glow bleeds into ghost number */
+.chapter.has-orbus::before{color:rgba(200,65,20,.07)!important;
+  text-shadow:0 0 80px rgba(200,65,20,.1)}
+.chapter.has-orbus .ch-hdr{
+  background:radial-gradient(ellipse at center,rgba(140,30,10,.09) 0%,transparent 70%)}
+
+/* Progress bar — living ember */
+#read-progress{
+  background:linear-gradient(to right,rgba(180,120,30,.8),var(--gold),rgba(232,201,106,1));
+  box-shadow:0 0 12px rgba(201,168,76,.5),0 0 30px rgba(201,168,76,.2);
+  height:3px}
+
 /* Sidebar chapter links — hover glow */
-.sb-item:hover .sb-title{text-shadow:0 0 14px rgba(201,168,76,.35)}
+.sb-item:hover .sb-title{text-shadow:0 0 16px rgba(201,168,76,.5)}
+.sb-item.on .sb-title{text-shadow:0 0 20px rgba(201,168,76,.4)}
+
 /* Crown pulse — more alive */
-@keyframes pulse{0%,100%{opacity:.55;transform:scale(1);text-shadow:none}
-  50%{opacity:1;transform:scale(1.1);text-shadow:0 0 18px rgba(201,168,76,.5)}}
-/* chapter-header decoration line */
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1);text-shadow:none}
+  50%{opacity:1;transform:scale(1.12);text-shadow:0 0 22px rgba(201,168,76,.65),0 0 45px rgba(201,168,76,.2)}}
+
+/* Chapter header — stone-carved center ornament */
 .ch-hdr{position:relative}
-.ch-hdr::after{content:'&#9679;';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
-  font-size:5px;color:rgba(201,168,76,.4);line-height:0;letter-spacing:0;background:var(--navy-dark);
-  padding:0 8px}
-/* Wide-mode sidebar hide fix */
-body.wide-mode #p-read::after{left:0}
+.ch-hdr::after{content:'·';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);
+  font-size:14px;color:rgba(201,168,76,.55);line-height:0;letter-spacing:0;
+  background:var(--navy-dark);padding:0 10px;
+  text-shadow:0 0 8px rgba(201,168,76,.4)}
+
+/* Chapter title — engraved gold */
+.ch-title{text-shadow:0 0 22px rgba(201,168,76,.2)}
+
+/* Hero title glow — deeper */
+.hero-title{text-shadow:0 0 50px rgba(201,168,76,.45),0 0 100px rgba(201,168,76,.15)}
+
+/* Nav border — ember line */
+#nav{border-bottom-color:rgba(201,168,76,.45);
+  box-shadow:0 1px 20px rgba(201,168,76,.1)}
+
+/* The Bereft: gold nav border shimmer */
+@keyframes nav-shimmer{0%,100%{border-bottom-color:rgba(201,168,76,.35)}
+  50%{border-bottom-color:rgba(201,168,76,.6)}}
+#nav{animation:nav-shimmer 8s ease-in-out infinite}
+
+/* Reading column — left edge etching line */
+.chapter::after{content:'';position:absolute;left:-1px;top:20px;bottom:20px;
+  width:1px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,.22),rgba(201,168,76,.12),transparent);
+  pointer-events:none}
+
+/* Stars — brighter, more numerous feel (use filter:brightness so twinkle animation is unaffected) */
+.star-sm{filter:brightness(1.5) drop-shadow(0 0 1px rgba(255,255,255,.3))}
+.star-md{filter:brightness(1.4) drop-shadow(0 0 2px rgba(255,255,255,.35))}
+.star-lg{filter:brightness(1.3) drop-shadow(0 0 3px rgba(255,255,255,.45))}
+.star-ext{filter:brightness(1.55)}
+
+/* Panel ambient stars — more present */
+.panel::before{filter:brightness(1.8);opacity:.14}
 
 /* ── EXPORT / IMPORT BUTTONS ─────────────────────────────────────────────── */
 .edit-bar-btn.sync{color:rgba(130,200,130,.8);border-color:rgba(130,200,130,.35)}
@@ -1896,24 +1982,33 @@ function bootApp() {
   // Progress bar + reading glow
   var reader = document.getElementById('reader');
   var _lastReadingPara = null;
-  if (reader) reader.addEventListener('scroll', function() {
+
+  // Reading glow helper — illuminates the full passage currently in the reading zone
+  // Zone = 10% to 70% down the reader viewport (covers several paragraphs at once)
+  function updateReadingGlow() {
+    if (!reader) return;
     var max = reader.scrollHeight - reader.clientHeight;
     var bar = document.getElementById('read-progress');
     if (bar) bar.style.width = (max > 0 ? (reader.scrollTop / max * 100).toFixed(1) : 0) + '%';
-    // Reading glow — highlight nearest paragraph to 40% down the viewport
-    var paras = reader.querySelectorAll('.pb,.pd,.pp,.pi,.pq');
-    var center = reader.scrollTop + reader.clientHeight * 0.4;
-    var closest = null, closestDist = Infinity;
+    var paras = reader.querySelectorAll('.chapter.on .pb,.chapter.on .pd,.chapter.on .pp,.chapter.on .pi,.chapter.on .pq');
+    if (!paras.length) return;
+    var readerRect = reader.getBoundingClientRect();
+    var zoneTop    = readerRect.top + readerRect.height * 0.10;
+    var zoneBottom = readerRect.top + readerRect.height * 0.72;
     for (var _rp = 0; _rp < paras.length; _rp++) {
-      var dist = Math.abs(paras[_rp].offsetTop - center);
-      if (dist < closestDist) { closestDist = dist; closest = paras[_rp]; }
+      var pRect = paras[_rp].getBoundingClientRect();
+      var paraCenter = pRect.top + pRect.height * 0.5;
+      if (paraCenter >= zoneTop && paraCenter <= zoneBottom) {
+        paras[_rp].classList.add('reading');
+      } else {
+        paras[_rp].classList.remove('reading');
+      }
     }
-    if (closest !== _lastReadingPara) {
-      if (_lastReadingPara) _lastReadingPara.classList.remove('reading');
-      if (closest) closest.classList.add('reading');
-      _lastReadingPara = closest;
-    }
-  });
+  }
+
+  if (reader) reader.addEventListener('scroll', updateReadingGlow);
+  // Expose so showChapter can trigger it after switching
+  window._updateReadingGlow = updateReadingGlow;
 
   buildReader();
   updateSidebarDots();
@@ -3017,6 +3112,10 @@ function showChapter(id) {
   var link = document.querySelector('[data-chid="' + id + '"]');
   if (link) { link.classList.add('on'); link.scrollIntoView({ block: 'nearest' }); }
   try { localStorage.setItem('bwr-chapter', id); } catch(e) {}
+  // Clear all stale reading glow (multiple paragraphs can be active now)
+  var oldReadings = document.querySelectorAll('.pb.reading,.pd.reading,.pp.reading,.pi.reading,.pq.reading');
+  for (var _or = 0; _or < oldReadings.length; _or++) oldReadings[_or].classList.remove('reading');
+  if (window._updateReadingGlow) setTimeout(window._updateReadingGlow, 60);
   // If in author mode, wire up editing for new chapter
   if (authorMode) setTimeout(enableEditingInChapter, 50);
   if (mistakeHlActive) { clearMistakeHighlights(); setTimeout(applyMistakeHighlights, 80); }
