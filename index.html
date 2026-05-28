@@ -954,11 +954,122 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
   letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:5px}
 .ref-single{
   grid-column:1/-1}
+
+/* ── LORE WINGS ─────────────────────────────────────────────────────────── */
+.reader-wing{position:fixed;top:60px;bottom:0;display:none;flex-direction:column;
+  justify-content:center;gap:18px;pointer-events:none;z-index:2;overflow:hidden;
+  padding:0 20px}
+.reader-wing.visible{display:flex}
+@keyframes wing-breathe{0%,100%{opacity:.8}50%{opacity:1}}
+#wing-left{animation:wing-breathe 14s ease-in-out infinite}
+#wing-right{animation:wing-breathe 14s ease-in-out 7s infinite}
+.wing-lore{font-family:var(--font-h);font-size:7px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(201,168,76,.2);text-align:center;
+  line-height:2;white-space:nowrap}
+.wing-lore.accent{color:rgba(201,168,76,.36);font-size:8px;letter-spacing:.25em}
+.wing-lore.lg{font-size:22px;letter-spacing:.22em;color:rgba(201,168,76,.07);line-height:1}
+.wing-lore.personal{color:rgba(201,168,76,.42);font-size:8px;letter-spacing:.32em;font-weight:600}
+.wing-lore.italic{font-style:italic;font-family:var(--font-b);font-size:10px;
+  color:rgba(201,168,76,.22);letter-spacing:.06em;text-transform:none;font-weight:300}
+.wing-divider{width:24px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.18),transparent);margin:4px auto}
+.wing-comet{font-size:14px;color:rgba(201,168,76,.15);text-align:center;letter-spacing:.12em}
+/* ── AESTHETIC ENHANCEMENTS ─────────────────────────────────────────────── */
+/* Scene break ember pulse */
+@keyframes ember-pulse{0%,100%{opacity:.55;text-shadow:none}
+  50%{opacity:.85;text-shadow:0 0 10px rgba(201,168,76,.28),0 0 24px rgba(201,168,76,.1)}}
+.pv{animation:ember-pulse 6s ease-in-out infinite}
+.chapter.has-orbus .pv{animation:ember-pulse 3.8s ease-in-out infinite;
+  text-shadow:0 0 14px rgba(200,65,20,.35)}
+/* Chapter arrival animation */
+@keyframes ch-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chapter.on{animation:ch-arrive .45s ease-out}
+/* Reading area bottom vignette */
+#p-read::after{content:'';position:absolute;bottom:0;left:210px;right:0;height:90px;
+  background:linear-gradient(to top,var(--navy-dark) 0%,transparent 100%);
+  pointer-events:none;z-index:8}
+body.wide-mode #p-read::after{left:0}
+/* Enhanced reading glow */
+.pb.reading,.pd.reading,.pp.reading,.pi.reading,.pq.reading{
+  text-shadow:0 0 32px rgba(201,168,76,.26),0 0 10px rgba(201,168,76,.12);
+  color:rgba(242,237,228,1);transition:text-shadow .5s ease,color .5s ease}
+.pb,.pd,.pp,.pi,.pq{color:var(--cream);transition:text-shadow .7s ease,color .7s ease}
+/* Orbus chapter — ember glow bleeds into chapter ghost number */
+.chapter.has-orbus::before{color:rgba(200,65,20,.045)}
+/* XIII ghost — slightly more present */
+.chapter::before{color:rgba(201,168,76,.04)!important}
+/* Progress bar — ember glow */
+#read-progress{background:linear-gradient(to right,rgba(201,168,76,.5),var(--gold));
+  box-shadow:0 0 8px rgba(201,168,76,.3),0 0 20px rgba(201,168,76,.12);height:2px}
+/* Sidebar chapter links — hover glow */
+.sb-item:hover .sb-title{text-shadow:0 0 14px rgba(201,168,76,.35)}
+/* Crown pulse — more alive */
+@keyframes pulse{0%,100%{opacity:.55;transform:scale(1);text-shadow:none}
+  50%{opacity:1;transform:scale(1.1);text-shadow:0 0 18px rgba(201,168,76,.5)}}
+/* chapter-header decoration line */
+.ch-hdr{position:relative}
+.ch-hdr::after{content:'&#9679;';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
+  font-size:5px;color:rgba(201,168,76,.4);line-height:0;letter-spacing:0;background:var(--navy-dark);
+  padding:0 8px}
+/* Wide-mode sidebar hide fix */
+body.wide-mode #p-read::after{left:0}
+
+/* ── EXPORT / IMPORT BUTTONS ─────────────────────────────────────────────── */
+.edit-bar-btn.sync{color:rgba(130,200,130,.8);border-color:rgba(130,200,130,.35)}
+.edit-bar-btn.sync:hover{color:rgba(160,230,160,.95);border-color:rgba(130,200,130,.65);background:rgba(130,200,130,.07)}
+
+/* ── NEW CHAPTER TEXTAREA ───────────────────────────────────────────────── */
+.ncm-body-area{width:100%;min-height:160px;max-height:340px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(201,168,76,.22);
+  border-radius:0;color:var(--cream);font-family:var(--font-b);font-size:14px;
+  line-height:1.7;padding:12px 14px;resize:vertical;outline:none;
+  transition:border-color .15s;box-sizing:border-box}
+.ncm-body-area:focus{border-color:rgba(201,168,76,.5)}
+.ncm-body-area::placeholder{color:var(--cream-dim);opacity:.3;font-style:italic}
+.ncm-box{max-height:92vh;overflow-y:auto}
+
 </style>
 </head>
-
-</head>
 <body>
+
+<!-- ── LORE WINGS ─────────────────────────────────────────────────────── -->
+<div id="wing-left" class="reader-wing">
+  <div class="wing-lore personal">For Carter</div>
+  <div class="wing-lore personal">October &middot; XIII &middot; MMXXIV</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore accent">Carter Walks</div>
+  <div class="wing-lore accent">With Eternity</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore">The Burning One</div>
+  <div class="wing-lore italic">"made most in the father's image"</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore">Thirteen Thousand</div>
+  <div class="wing-lore">Years Alone</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore">The Father&rsquo;s Hand</div>
+  <div class="wing-lore">Left in the World</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore">Shunka Wa</div>
+  <div class="wing-lore">The Sent One</div>
+</div>
+<div id="wing-right" class="reader-wing">
+  <div class="wing-lore lg">XIII</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore accent">I Am the Forsaken</div>
+  <div class="wing-lore">I Was Banished</div>
+  <div class="wing-lore">For What I Am</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore">I Live in the Shadows</div>
+  <div class="wing-lore">Between the Flames</div>
+  <div class="wing-lore">Between Streetlights</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore italic">"black smoke came down on me"</div>
+  <div class="wing-divider"></div>
+  <div class="wing-comet">&#9732;</div>
+  <div class="wing-divider"></div>
+  <div class="wing-lore">Heller&rsquo;s Syndrome</div>
+  <div class="wing-lore">Thirteen Cases</div>
+  <div class="wing-lore">Seven States</div>
+</div>
 
 <nav id="nav">
   <div class="brand"><span class="crown" id="crown-btn">&#9819;</span>The Bone Wolf River</div>
@@ -1010,6 +1121,9 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
       <button class="edit-bar-btn" id="btn-replace">&#8644; Replace Chapter</button>
       <button class="edit-bar-btn" id="btn-revert">&#8617; Revert Chapter</button>
       <button class="edit-bar-btn dl" id="btn-download">&#8595; Download Updated HTML</button>
+      <button class="edit-bar-btn sync" id="btn-export" title="Export all your edits &amp; chapters to a file">&#8679; Export Data</button>
+      <button class="edit-bar-btn sync" id="btn-import" title="Import edits &amp; chapters from a file">&#8681; Import Data</button>
+      <input type="file" id="import-file-input" accept=".json" style="display:none">
       <span class="edit-bar-msg">&#9998; Click any text to edit &bull; hover paragraph + right edge to delete</span>
       <span id="save-indicator">&#10003; Saved</span>
     </div>
@@ -1491,6 +1605,133 @@ function loadEdits() { try { EDITS = JSON.parse(localStorage.getItem('bwr-edits'
 function getEdit(key) { return EDITS.hasOwnProperty(key) ? EDITS[key] : null; }
 function persistEdits() { try { localStorage.setItem('bwr-edits', JSON.stringify(EDITS)); } catch(e) {} }
 
+// ── EXPORT / IMPORT DATA ─────────────────────────────────────────────────
+function exportData() {
+  var compassData = [];
+  try { compassData = JSON.parse(localStorage.getItem('bwr-compass-personal') || '[]'); } catch(e) {}
+  var archData = {};
+  try { archData = JSON.parse(localStorage.getItem('bwr-arch-scanned') || '{}'); } catch(e) {}
+
+  // Count what's being exported for the summary
+  var editCount = Object.keys(EDITS).length;
+  var newChCount = NEW_CHAPTERS.length;
+  var ideaCount = IDEAS.length;
+  var compassCount = compassData.filter(function(t) { return t && t.answer && t.answer.trim(); }).length;
+  var deletedCount = Object.keys(DELETED).length;
+
+  var summary = [
+    'Ready to export your Bone Wolf River data:\n',
+    '  ✓ ' + newChCount + ' new chapter' + (newChCount !== 1 ? 's' : '') + ' you’ve written',
+    '  ✓ ' + editCount + ' text edit' + (editCount !== 1 ? 's' : '') + ' (rewrites, corrections)',
+    ideaCount  ? '  ✓ ' + ideaCount  + ' idea' + (ideaCount !== 1 ? 's' : '') + ' on the Ideas Board' : null,
+    compassCount ? '  ✓ ' + compassCount + ' Story Compass answer' + (compassCount !== 1 ? 's' : '') : null,
+    deletedCount ? '  ✓ ' + deletedCount + ' deleted paragraph record' + (deletedCount !== 1 ? 's' : '') : null,
+    '\nThis file works as a backup AND as a transfer\nto your other laptop. Download it?'
+  ].filter(Boolean).join('\n');
+
+  if (!confirm(summary)) return;
+
+  var payload = {
+    version: 1,
+    exported: new Date().toISOString(),
+    edits: EDITS,
+    newChapters: NEW_CHAPTERS,
+    deleted: DELETED,
+    chapterOrder: CHAPTER_ORDER,
+    ideas: IDEAS,
+    compass: compassData,
+    archScanned: archData
+  };
+  var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  var d = new Date();
+  a.download = 'bwr-data-' + d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0') + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function importData(file) {
+  if (!file) return;
+  var fr = new FileReader();
+  fr.onload = function(e) {
+    try {
+      var d = JSON.parse(e.target.result);
+      if (!d || d.version !== 1) { alert('This does not look like a valid Bone Wolf River export file.'); return; }
+
+      // Show what's in the file before importing
+      var nc = (d.newChapters || []).length;
+      var ec = Object.keys(d.edits || {}).length;
+      var ic = (d.ideas || []).length;
+      var ts = d.exported ? new Date(d.exported).toLocaleString() : 'unknown date';
+      var cc = (d.compass || []).filter(function(t) { return t && t.answer && t.answer.trim(); }).length;
+
+      var msg = [
+        'Import this data?\n',
+        'File exported: ' + ts + '\n',
+        'Contains:',
+        '  ✓ ' + nc + ' new chapter' + (nc !== 1 ? 's' : ''),
+        '  ✓ ' + ec + ' text edit' + (ec !== 1 ? 's' : ''),
+        ic ? '  ✓ ' + ic + ' idea' + (ic !== 1 ? 's' : '') : null,
+        cc ? '  ✓ ' + cc + ' Story Compass answer' + (cc !== 1 ? 's' : '') : null,
+        '\nWARNING: This will REPLACE everything currently\non this device. This cannot be undone.'
+      ].filter(Boolean).join('\n');
+
+      if (!confirm(msg)) return;
+
+      // Write to localStorage, then reload so everything is clean
+      localStorage.setItem('bwr-edits',            JSON.stringify(d.edits        || {}));
+      localStorage.setItem('bwr-new-chapters',     JSON.stringify(d.newChapters  || []));
+      localStorage.setItem('bwr-deleted',          JSON.stringify(d.deleted      || {}));
+      localStorage.setItem('bwr-chapter-order',    JSON.stringify(d.chapterOrder || []));
+      localStorage.setItem('bwr-ideas',            JSON.stringify(d.ideas        || []));
+      if (d.compass)     localStorage.setItem('bwr-compass-personal', JSON.stringify(d.compass));
+      if (d.archScanned) localStorage.setItem('bwr-arch-scanned',     JSON.stringify(d.archScanned));
+      // Reload the page — cleanest way to rebuild everything correctly
+      location.reload();
+    } catch(err) {
+      alert('Could not read the file. Make sure it is a valid Bone Wolf River export (.json).');
+    }
+  };
+  fr.readAsText(file);
+}
+
+// ── LORE WING POSITIONING ────────────────────────────────────────────────
+function positionWings() {
+  var wl = document.getElementById('wing-left');
+  var wr = document.getElementById('wing-right');
+  var reader = document.getElementById('reader');
+  if (!wl || !wr || !reader) return;
+  var rRect = reader.getBoundingClientRect();
+  // Text column is max 620px, centered in reader
+  var textW = Math.min(620, rRect.width);
+  var centerX = rRect.left + rRect.width / 2;
+  var textLeft  = centerX - textW / 2;
+  var textRight = centerX + textW / 2;
+  var gap = 28;
+  var minWingW = 90;
+  // Left wing
+  var lwRight = textLeft - gap;
+  var lwLeft  = rRect.left + 4;
+  if (lwRight - lwLeft >= minWingW) {
+    wl.style.left  = lwLeft + 'px';
+    wl.style.right = (window.innerWidth - lwRight) + 'px';
+    wl.classList.add('visible');
+  } else {
+    wl.classList.remove('visible');
+  }
+  // Right wing
+  var rwLeft  = textRight + gap;
+  var rwRight = rRect.right - 4;
+  if (rwRight - rwLeft >= minWingW) {
+    wr.style.left  = rwLeft + 'px';
+    wr.style.right = (window.innerWidth - rwRight) + 'px';
+    wr.classList.add('visible');
+  } else {
+    wr.classList.remove('visible');
+  }
+}
+
 function flashSaved() {
   var el = document.getElementById('save-indicator');
   if (!el) return;
@@ -1499,8 +1740,8 @@ function flashSaved() {
   el._t = setTimeout(function() { el.style.opacity = '0'; }, 1500);
 }
 
-// ── DOMContentLoaded ──────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
+// ── BOOT ─────────────────────────────────────────────────────────────────
+function bootApp() {
   loadEdits();
   loadNewChapters();
   loadDeleted();
@@ -1614,7 +1855,14 @@ document.addEventListener('DOMContentLoaded', function() {
   if (bRev) bRev.addEventListener('click', revertChapter);
   var bDl = document.getElementById('btn-download');
   if (bDl) bDl.addEventListener('click', downloadUpdated);
-
+  var bExp = document.getElementById('btn-export');
+  if (bExp) bExp.addEventListener('click', exportData);
+  var bImp = document.getElementById('btn-import');
+  var impFile = document.getElementById('import-file-input');
+  if (bImp && impFile) {
+    bImp.addEventListener('click', function() { impFile.click(); });
+    impFile.addEventListener('change', function() { if (impFile.files[0]) { importData(impFile.files[0]); impFile.value = ''; } });
+  }
   // Modals: close on Escape or backdrop click
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') { closeNewChapterModal(); closeReplaceModal(); }
@@ -1669,6 +1917,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   buildReader();
   updateSidebarDots();
+  setTimeout(positionWings, 80);
+  window.addEventListener('resize', positionWings);
 
   // Restore last chapter (check BOOK + new user chapters)
   try {
@@ -1720,6 +1970,11 @@ document.addEventListener('DOMContentLoaded', function() {
   seedDefaultIdeas();
   renderIdeas();
   initCompass();
+}
+
+// ── DOMContentLoaded ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  bootApp();
 });
 
 // ── PANEL SWITCHING ───────────────────────────────────────────────────────
@@ -1728,6 +1983,15 @@ function showPanel(id) {
   for (var i = 0; i < panels.length; i++) panels[i].classList.remove('on');
   var p = document.getElementById(id);
   if (p) p.classList.add('on');
+  // Wings only show on reading panel
+  var wl = document.getElementById('wing-left');
+  var wr = document.getElementById('wing-right');
+  if (id === 'p-read') {
+    setTimeout(positionWings, 50);
+  } else {
+    if (wl) wl.classList.remove('visible');
+    if (wr) wr.classList.remove('visible');
+  }
 }
 
 // ── WIDE MODE ─────────────────────────────────────────────────────────────
@@ -1738,11 +2002,14 @@ function toggleWide() {
   var btn = document.getElementById('btn-wide');
   if (wideMode) {
     sb.style.display = 'none';
+    document.body.classList.add('wide-mode');
     if (btn) { btn.style.left = '0'; btn.textContent = '►'; btn.title = 'Show sidebar'; }
   } else {
     sb.style.display = '';
+    document.body.classList.remove('wide-mode');
     if (btn) { btn.style.left = '210px'; btn.textContent = '◄'; btn.title = 'Hide sidebar'; }
   }
+  setTimeout(positionWings, 50);
 }
 
 // ── AUTHOR MODE ───────────────────────────────────────────────────────────
@@ -2089,6 +2356,7 @@ function openNewChapterModal() {
   document.getElementById('ncm-label').value = '';
   document.getElementById('ncm-ttl').value = '';
   document.getElementById('ncm-sub').value = '';
+  document.getElementById('ncm-body').value = '';
   document.getElementById('ncm-watch').checked = false;
   document.getElementById('ncm-orbus').checked = false;
   m.classList.add('show');
@@ -2101,6 +2369,7 @@ function createNewChapter() {
   var label    = (document.getElementById('ncm-label').value || '').trim() || 'New Chapter';
   var ttl      = (document.getElementById('ncm-ttl').value  || '').trim() || 'Untitled';
   var sub      = (document.getElementById('ncm-sub').value  || '').trim();
+  var bodyRaw  = (document.getElementById('ncm-body').value || '').trim();
   var isWatch  = document.getElementById('ncm-watch').checked;
   var hasOrbus = document.getElementById('ncm-orbus').checked;
   var id       = 'nc-' + Date.now();
@@ -2108,11 +2377,24 @@ function createNewChapter() {
   var ch = { id: id, title: label, subtitle: subtitle,
              type: isWatch ? 'watching' : 'main', epi: '', epi_attr: '',
              hasOrbus: hasOrbus, isNew: true, readMins: 0, paras: [] };
+  // Parse body text into paragraphs and save to EDITS
+  if (bodyRaw) {
+    var paras = bodyRaw.split(/\n\s*\n/);
+    var baseTs = Date.now();
+    for (var pi = 0; pi < paras.length; pi++) {
+      var txt = paras[pi].replace(/\n/g, ' ').trim();
+      if (!txt) continue;
+      var k = 'new:' + id + ':' + (baseTs + pi);
+      EDITS[k] = txt;
+    }
+    persistEdits();
+  }
   NEW_CHAPTERS.push(ch);
   saveNewChapters();
   closeNewChapterModal();
   appendNewChapterToReader(ch);
   showChapter(id);
+  populateIdeaChapters();
   if (authorMode) setTimeout(function() { enableEditingInChapter(); }, 80);
 }
 
@@ -2489,8 +2771,9 @@ function downloadUpdated() {
 
 // ── SIDEBAR EDIT DOTS ─────────────────────────────────────────────────────
 function updateSidebarDots() {
-  for (var i = 0; i < BOOK.length; i++) {
-    var chId = BOOK[i].id;
+  var allChs = BOOK.concat(NEW_CHAPTERS);
+  for (var i = 0; i < allChs.length; i++) {
+    var chId = allChs[i].id;
     var hasEdits = false;
     for (var k in EDITS) {
       if (k.indexOf(chId + ':') === 0 || k.indexOf(':' + chId + ':') >= 0) { hasEdits = true; break; }
@@ -3539,7 +3822,8 @@ function populateIdeaChapters() {
   var sel = document.getElementById('idea-chapter');
   if (!sel) return;
   sel.innerHTML = '<option value="">No chapter</option>';
-  BOOK.forEach(function(ch) {
+  var allChs = BOOK.concat(NEW_CHAPTERS);
+  allChs.forEach(function(ch) {
     var opt = document.createElement('option');
     opt.value = ch.id;
     opt.textContent = ch.title;
@@ -4277,6 +4561,10 @@ async function generateCompassSummary() {
       <label for="ncm-sub">Subtitle <span style="opacity:.4;font-style:italic;text-transform:none;letter-spacing:0;font-size:8px">(optional)</span></label>
       <input type="text" id="ncm-sub" placeholder="A Kingdom of Small Gods" autocomplete="off">
     </div>
+    <div class="ncm-field">
+      <label for="ncm-body">Chapter Text <span style="opacity:.4;font-style:italic;text-transform:none;letter-spacing:0;font-size:8px">(optional — paste your text, blank line between paragraphs)</span></label>
+      <textarea id="ncm-body" class="ncm-body-area" placeholder="Paste your chapter here&#8230;&#10;&#10;Blank line between paragraphs = paragraph break.&#10;&#10;You can also paste text after creating the chapter."></textarea>
+    </div>
     <label class="ncm-check"><input type="checkbox" id="ncm-watch"> Watch Tower chapter (italic style)</label>
     <label class="ncm-check"><input type="checkbox" id="ncm-orbus"> &#x1F525; Orbus appears</label>
     <p class="ncm-hint">Saved in this browser. Use Download Updated HTML to bake it into your file permanently.</p>
@@ -4298,6 +4586,7 @@ async function generateCompassSummary() {
     </div>
   </div>
 </div>
+
 
 <script>
 if ('serviceWorker' in navigator) {
