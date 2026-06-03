@@ -31,6 +31,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 #btn-update{margin:auto 12px auto 0;padding:0 11px;height:28px;background:none;border:1px solid rgba(201,168,76,.3);color:rgba(201,168,76,.6);font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;white-space:nowrap;flex-shrink:0}
 #btn-update:hover{border-color:rgba(201,168,76,.7);color:rgba(201,168,76,1)}
 #btn-update:active{background:rgba(201,168,76,.1)}
+#btn-manuscript{margin:auto 8px auto 0;padding:0 11px;height:28px;background:none;border:1px solid rgba(201,168,76,.3);color:rgba(201,168,76,.6);font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;white-space:nowrap;flex-shrink:0;text-decoration:none;display:flex;align-items:center}
+#btn-manuscript:hover{border-color:rgba(201,168,76,.7);color:rgba(201,168,76,1)}
 .brand{padding:0 18px;display:flex;align-items:center;gap:9px;
   font-family:var(--font-h);font-size:12px;letter-spacing:.14em;color:var(--gold);
   border-right:1px solid rgba(201,168,76,.25);white-space:nowrap;text-transform:uppercase}
@@ -1170,6 +1172,7 @@ body.wide-mode #p-read::after{left:0}
     <button class="tab author-tab" data-panel="p-voice"><span class="rn">VII</span>Voice Check</button>
     <button class="tab author-tab" data-panel="p-arch"><span class="rn">VIII</span>Architecture</button>
   </div>
+  <a id="btn-manuscript" href="./BoneWolfRiver_Manuscript.docx" download="BoneWolfRiver_Manuscript.docx">&#8595; Manuscript</a>
   <button id="btn-update" onclick="forceUpdate()" title="Get latest updates">&#8635; Update</button>
 </nav>
 <div id="app">
