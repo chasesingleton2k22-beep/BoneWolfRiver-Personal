@@ -220,6 +220,8 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
   letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
 .hero-author{font-family:var(--font-b);font-size:16px;color:var(--cream-dim);
   font-style:italic;margin-bottom:20px}
+.hero-theme{font-family:var(--font-b);font-size:13px;font-style:italic;color:rgba(201,168,76,.45);text-align:center;max-width:480px;margin:18px auto 0;line-height:1.7}
+.hero-theme-rule{width:60px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.35),transparent);margin:14px auto 0}
 .hero-stats{font-family:var(--font-h);font-size:9px;color:rgba(201,168,76,.4);
   letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px}
 #bwr-footer{position:fixed;bottom:0;left:0;right:0;z-index:50;text-align:center;font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,168,76,.55);padding:7px 20px;pointer-events:none;background:linear-gradient(to top,rgba(10,12,20,.9) 0%,transparent 100%);}
@@ -719,6 +721,9 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:600px){.bp-grid{grid-template-columns:1fr}}
 .bp-item{background:rgba(255,255,255,.03);border:1px solid rgba(140,100,220,.2);border-radius:3px;padding:14px 16px}
+
+.echo-section-label{font-family:var(--font-h);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.4);margin:22px 0 10px;padding-top:16px;border-top:1px solid rgba(201,168,76,.1)}
+.echo-rule-banner{font-family:var(--font-h);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:rgba(220,60,60,.65);border:1px solid rgba(220,60,60,.25);border-radius:2px;padding:2px 7px;display:inline-block;margin-top:4px}
 .bp-item.tbd{border-color:rgba(201,168,76,.15);opacity:.7}
 .bp-pair{font-family:var(--font-h);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(140,100,220,.8);margin-bottom:6px}
 .bp-echo{font-size:12px;color:var(--cream);line-height:1.65}
@@ -943,6 +948,31 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 .arch-arc-title{font-family:var(--font-h);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:6px}
 .arch-arc-sub{font-family:var(--font-h);font-size:8px;letter-spacing:.12em;color:rgba(201,168,76,.3);font-style:italic;margin-bottom:18px}
 .arch-arc-grid{display:flex;flex-direction:column;gap:10px}
+.mt-table{width:100%;border-collapse:collapse;margin-top:6px}
+.mt-table th{font-family:var(--font-h);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(201,168,76,.5);padding:6px 10px;text-align:left;border-bottom:1px solid rgba(201,168,76,.15)}
+.mt-table td{padding:9px 10px;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px;color:var(--cream-dim);line-height:1.5}
+.mt-table tr:last-child td{border-bottom:none}
+.mt-table tr:hover td{background:rgba(255,255,255,.02)}
+.mt-mystery{color:var(--cream);font-weight:400}
+.mt-badge{display:inline-block;font-family:var(--font-h);font-size:7px;letter-spacing:.1em;
+  text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap}
+.mt-badge.seeded{background:rgba(201,168,76,.12);color:rgba(201,168,76,.85);border:1px solid rgba(201,168,76,.3)}
+.mt-badge.watered{background:rgba(80,140,200,.12);color:rgba(100,160,220,.85);border:1px solid rgba(80,140,200,.3)}
+.mt-badge.paid{background:rgba(93,186,138,.12);color:rgba(93,186,138,.9);border:1px solid rgba(93,186,138,.3)}
+.mt-badge.orphaned{background:rgba(220,60,60,.12);color:rgba(220,80,80,.9);border:1px solid rgba(220,60,60,.3)}
+.mt-badge.review{background:rgba(220,160,50,.1);color:rgba(220,160,50,.85);border:1px solid rgba(220,160,50,.3)}
+.mt-filter-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.mt-legend{font-family:var(--font-h);font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(201,168,76,.35);font-style:italic;margin-bottom:10px}
+.arch-act-label{font-family:var(--font-h);font-size:8px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(201,168,76,.55);margin:22px 0 10px;padding:8px 0 8px;
+  border-top:1px solid rgba(201,168,76,.2);border-bottom:1px solid rgba(201,168,76,.1)}
+.arch-arc-row.watching-row{border-color:rgba(200,50,50,.2);background:rgba(200,50,50,.04)}
+.arch-arc-ch.watching{color:rgba(200,80,50,.7)}
+.arch-rl{font-size:11px;color:var(--cream-dim);line-height:1.6}
+.arch-rl strong{color:rgba(201,168,76,.8);font-family:var(--font-h);font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:3px}
 .arch-arc-row{background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.14);border-radius:3px;padding:12px 16px;display:grid;grid-template-columns:140px 1fr auto;gap:12px;align-items:start}
 @media(max-width:600px){.arch-arc-row{grid-template-columns:1fr}}
 .arch-arc-ch{font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,168,76,.6)}
@@ -1308,6 +1338,8 @@ body.wide-mode #p-read::after{left:0}
           My soul has grown deep like the rivers.&#8221;
           <span class="attr">&#8212; Langston Hughes</span>
         </div>
+        <div class="hero-theme-rule"></div>
+        <div class="hero-theme">This story is about what a father passes to his son without knowing it.</div>
       </div>
     </div>
     <div id="chapters"></div>
@@ -1342,7 +1374,7 @@ body.wide-mode #p-read::after{left:0}
 <div id="p-chars" class="panel tool-panel">
   <div class="ref-sec">
     <div class="tool-h">Character &amp; World Reference</div>
-    <div class="tool-d">Eye colors, relationships, timeline, mythology rules, and the Still-To-Build map.</div>
+    <div class="tool-d">Eye colors, relationships, timeline, mythology rules, symbolism, culture guide, bloodline echoes, casting board, character profiles.</div>
   </div>
   <div class="ref-sec">
     <div class="ref-h">Eye Colors &#8212; Critical Details</div>
@@ -1680,6 +1712,47 @@ body.wide-mode #p-read::after{left:0}
     </div>
   </div>
   <div class="ref-sec">
+    <div class="ref-h">The Wolf River People &#8212; Culture Guide</div>
+    <div class="ref-lede">Comanche-modeled. Made yours. Use this when writing every Texas chapter.</div>
+    <div class="myth-grid">
+
+      <div class="myth-item"><strong>The Moon System</strong>
+        Raids ride under the Wolf Moon. Duel day every other Wolf Moon &#8212; already locked. Thirteen moons in the year. <strong>The thirteenth moon is the one the elders do not name.</strong> This is where the thirteen lands in the culture: the unnamed moon, the one that doesn&#8217;t belong.
+      </div>
+
+      <div class="myth-item"><strong>Food &amp; Economy</strong>
+        Buffalo everything &#8212; meat fresh and dried, pemmican (pounded meat, fat, wild plums), marrow cracked from the long bones (<em>use the BONE imagery here &#8212; this is where the title lives in the culture</em>), tongue as the delicacy, hides as wealth. Pecans and wild plums along the river bottoms. Honey raided from deadfall hives. Mesquite beans pounded to meal. Horses as currency, status, and in the hardest winters, food. Captured cattle driven home.
+      </div>
+
+      <div class="myth-item"><strong>Horse Culture</strong>
+        The finest light cavalry on earth. Boys ride before they walk well. A man&#8217;s herd is his bank. <strong>Kata&#8217;s horsemanship should be one more thing that arrives unnaturally complete</strong> &#8212; another gift that needs no origin he can name. The reader feels it as the same force as the knife and the stillness.
+      </div>
+
+      <div class="myth-item"><strong>War Practices</strong>
+        Raids south for horses and captives. Captives adopted or traded &#8212; Kata&#8217;s adoption is period-true. Smoke signals. Sign language between nations. The travois. Shields of layered buffalo hide that stopped arrows cold. Your warlord/chief/Blood Wolf system maps cleanly onto the real band structure: civil chiefs and war chiefs, war leaders earning followings raid by raid.
+      </div>
+
+      <div class="myth-item ref-single"><strong>The Naming Taboo &#8212; THE BEST FREE GIFT THE CULTURE OFFERS</strong>
+        The Comanche did not speak the names of the dead. <strong>Use this.</strong><br><br>
+        After the Brazos, no one in the camp says Roxy&#8217;s name. Not once. The absence is the presence.<br><br>
+        In 2026, the presence in the house protecting Carter is <em>never named aloud either.</em> The same taboo, honored across two centuries by people who never met. That is an echo &#8212; add it to the Echo Map. It is the quietest thing in the book and it will stop certain readers cold.
+      </div>
+
+      <div class="myth-item"><strong>The Land &#8212; The Llano Estacado</strong>
+        The Staked Plains. Red dirt, caprock, playa lakes, grass to the horizon. The hardest country on the continent, and they owned it. Every Texas chapter should breathe this land &#8212; the specific weight of sky, the red clay that stains everything, the distances that make a man feel either free or erased depending on what he&#8217;s carrying.
+      </div>
+
+      <div class="myth-item"><strong>The River &#8212; Brazos de Dios</strong>
+        The Brazos. Speak its true name once across the Texas arc: <em>Brazos de Dios</em> &#8212; the Arms of God. Historical fact. Let the name land without comment. The reader who knows Spanish will feel it. The reader who doesn&#8217;t will feel something anyway.
+      </div>
+
+      <div class="myth-item"><strong>Kata&#8217;s Gifts &#8212; What Arrives Unnaturally Complete</strong>
+        Each gift compounds. Knife &#8212; the blade moves through his hands like it was born there. Horsemanship &#8212; complete before it should be. The stillness in the Wolf Circle &#8212; not learned. The Bone Calm, though he has no name for it. Stack these across the Texas chapters without pointing at their source. The reader assembles it. <em>Ten Bears assembles it differently and loves him anyway.</em>
+      </div>
+
+    </div>
+  </div>
+  <div class="ref-sec">
     <div class="ref-h">Still To Build</div>
     <table class="tbl"><thead><tr><th>Section</th><th>Placement</th><th>Notes</th></tr></thead><tbody>
       <tr><td>The Ancient Family Watching the Sky</td><td>New Ch. &#8212; opens book</td><td>Pre-G&#246;bekli Tepe. Caramel-skinned man, mammoth coat. Family watches meteor shower. The comet that doesn&#8217;t burn up. Mountain of water at 450 mph. Silence on day three.</td></tr>
@@ -1789,7 +1862,7 @@ body.wide-mode #p-read::after{left:0}
 <div id="p-compass" class="panel tool-panel">
   <div>
     <div class="tool-h">Story Compass</div>
-    <div class="tool-d">The open questions that drive the novel forward. Each thread is a promise to the reader. Notes save automatically.</div>
+    <div class="tool-d">The open questions that drive the novel forward. Bloodline Parallels, Echo Map, and 20 Rulings below &#8212; type your ruling, save, persists.</div>
   </div>
   <div class="cmp-api-row">
     <span class="cmp-api-label">AI Features</span>
@@ -1833,6 +1906,92 @@ body.wide-mode #p-read::after{left:0}
         <div class="bp-pair">Fenton Ancestor &#8594; Cole Fenton</div>
         <div class="bp-echo">Physical marker <em>TBD</em> &#8212; something slightly wrong, a feature that reads as almost-right. Not yet decided. Pending ruling in Open Questions. <span class="bp-rule-tag">Under Review</span></div>
       </div>
+
+
+    <div class="echo-section-label">Gesture Echoes</div>
+    <div class="bp-grid">
+
+      <div class="bp-item">
+        <div class="bp-pair">Kata&#8217;s chin &#8594; Carter&#8217;s stillness</div>
+        <div class="bp-echo">Kata&#8217;s chin never dips (Ch 5). Carter&#8217;s &#8220;already decided&#8221; stillness at the stove &#8212; the locked kitchen lines. Same spine, two centuries. Neither of them learned it. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+      <div class="bp-item">
+        <div class="bp-pair">Ten Bears&#8217; staff &#8594; Anthony&#8217;s object</div>
+        <div class="bp-echo">Ten Bears idly twisting his staff in the dirt (Ch 5). Anthony idly doing the same with some object in a present-day scene &#8212; one beat, never remarked. The gesture crosses the bloodline without anyone naming it. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+      <div class="bp-item">
+        <div class="bp-pair">Kata wipes the blade &#8594; Carter&#8217;s finality</div>
+        <div class="bp-echo">Kata wiping the blade and putting it away in one clean motion (Ch 11). Carter performing some small task with the same eerie economy &#8212; a toddler putting a toy down with finality. Same motion, two bodies, two centuries. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+    </div>
+
+    <div class="echo-section-label">Sound Echoes</div>
+    <div class="bp-grid">
+
+      <div class="bp-item" style="grid-column:1/-1;border-color:rgba(201,168,76,.35)">
+        <div class="bp-pair">The Hummed Melody &#8212; THE SINGLE CREEPIEST ECHO AVAILABLE</div>
+        <div class="bp-echo">Roxy hums it at the Brazos before she dies (Ch 3). Brittany hums it in the kitchen in 2026, never having heard it (kitchen scene or Ch 22&#8211;23). <strong>No one comments.</strong> Music crossing the bloodline without explanation. Write the melody once as a described sound &#8212; place it in both chapters. The reader who catches it will go cold and not be able to explain why. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+    </div>
+
+    <div class="echo-section-label">Language Echoes</div>
+    <div class="bp-grid">
+
+      <div class="bp-item" style="grid-column:1/-1">
+        <div class="bp-pair">The Weather Sentence &#8212; word for word</div>
+        <div class="bp-echo">One weather sentence, repeated verbatim in a Texas chapter and a present-day chapter. Identical. Deliberate. The kind of thing a re-reader finds and goes cold. <strong>Write the sentence once. Place it twice.</strong> The re-reader gets paid. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+    </div>
+
+    <div class="echo-section-label">Animal Echoes</div>
+    <div class="bp-grid">
+
+      <div class="bp-item" style="grid-column:1/-1">
+        <div class="bp-pair">&#352;&#250;&#331;ka Wa &#8594; Archie &#8594; Britannia&#8217;s hound</div>
+        <div class="bp-echo">The wolf-line watches the chosen across every century. &#352;&#250;&#331;ka Wa (Texas). Archie (2026). Give Britannia a hound in Ch 8 &#8212; she needs one. Archie arrives <em>first</em> at the threshold (Ch 23&#8211;24) &#8212; the wolf always knows before the people do. The ice blue eye is the father&#8217;s color running through the animal line. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+    </div>
+
+    <div class="echo-section-label">Mark Echoes</div>
+    <div class="bp-grid">
+
+      <div class="bp-item" style="grid-column:1/-1">
+        <div class="bp-pair">Kata&#8217;s wound &#8594; Carter&#8217;s birthmark</div>
+        <div class="bp-echo">A wound Kata takes in Texas &#8212; specific location. A faint birthmark on modern Carter in the same spot. Mentioned once each. <strong>Never connected aloud.</strong> The reader who re-reads Ch 3 after Ch 2 feels something they cannot name. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+    </div>
+
+    <div class="echo-section-label">Object Echoes</div>
+    <div class="bp-grid">
+
+      <div class="bp-item">
+        <div class="bp-pair">The Dragon Chair</div>
+        <div class="bp-echo">Denmark 852 AD &#8594; Chattanooga 2026. Already locked. The compartment inside it (Ruling 5) is the chair&#8217;s second act. The carved face in the meltglass shard is the reader&#8217;s reward for noticing. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+      <div class="bp-item tbd">
+        <div class="bp-pair">Toad vine &#8594; Carter&#8217;s something green</div>
+        <div class="bp-echo">The toad vine winds through the Texas chapters (Kata). Something green Carter carries or winds around his hand &#8212; TBD per your standing note that the vine winds back in. What form does it take in 2026? <span class="echo-rule-banner">Under Ruling</span></div>
+      </div>
+
+    </div>
+
+    <div class="echo-section-label">The Naming Taboo Echo</div>
+    <div class="bp-grid">
+
+      <div class="bp-item" style="grid-column:1/-1;border-color:rgba(140,100,220,.35)">
+        <div class="bp-pair">After the Brazos, no one says Roxy&#8217;s name &#8594; In 2026, the presence is never named aloud</div>
+        <div class="bp-echo">The Wolf River People did not speak the names of the dead. After the Brazos raid, no character in the Texas chapters ever says Roxy&#8217;s name again. In 2026, the presence in the house protecting Carter is never named aloud either. The same taboo, honored across two centuries by people who never met. This is the echo that hides in plain sight &#8212; add it to the list of things the re-reader finds and goes cold. <span class="echo-rule-banner">Never point at it</span></div>
+      </div>
+
+    </div>
 
     </div>
   </div>
@@ -1883,6 +2042,138 @@ body.wide-mode #p-read::after{left:0}
       <textarea class="oq-ruling" id="oq-ruling-4" placeholder="Type your ruling here&hellip;"></textarea>
       <button class="oq-save-btn" onclick="saveRuling(4)">Save Ruling</button>
       <span class="oq-saved-tag" id="oq-saved-4">&#10003; Saved</span>
+    </div>
+
+    <div style="font-family:var(--font-h);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.35);margin:20px 0 10px;padding-top:16px;border-top:1px solid rgba(201,168,76,.1)">Part Three &#8212; Structural Rulings</div>
+
+    <div class="oq-item" id="oq-5">
+      <div class="oq-label">RULING 5 &#8212; THE COMPARTMENT</div>
+      <div class="oq-conflict"><em>What is hidden inside the dragon chair?</em><br>Recommended: a meltglass shard carved with Carter&#8217;s face &#8212; made in 852 AD. Seeded in Ch 8 (Denmark). Paid in Ch 17 (present day, when the compartment opens). The carving and the children&#8217;s drawings are the same prophecy across twelve centuries.</div>
+      <textarea class="oq-ruling" id="oq-ruling-5" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(5)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-5">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-6">
+      <div class="oq-label">RULING 6 &#8212; DEATH TIMING</div>
+      <div class="oq-conflict"><em>When does the body die after the taking?</em><br>Recommended: thirteen days after the TAKING &#8212; not the drawing. The forensic day-13 pattern is Nicole&#8217;s break (Ch 19). The crown on the roof of the mouth, if kept, is a brand found at autopsy &#8212; not the cause of death. It survives the re-lock cleanly.</div>
+      <textarea class="oq-ruling" id="oq-ruling-6" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(6)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-6">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-7">
+      <div class="oq-label">RULING 7 &#8212; THE RIVER NAME</div>
+      <div class="oq-conflict"><em>What is the title?</em><br>Keep the Brazos. Speak its true name once: <em>Brazos de Dios</em> &#8212; the Arms of God. Historical fact. THE BONE WOLF RIVER is not geography &#8212; it is the threshold itself, the border where Orbus lives. Option: a surviving child whispered the name to Charlotte decades ago. The title becomes the mythology.</div>
+      <textarea class="oq-ruling" id="oq-ruling-7" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(7)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-7">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-8">
+      <div class="oq-label">RULING 8 &#8212; TRIBE NAME</div>
+      <div class="oq-conflict"><em>What do we call them?</em><br>Outsiders: the Wolf River People (your prose already calls them &#8220;the people of the river&#8221;). Endonym options: the Isana &#8212; from the Comanche word <em>isa</em>, wolf. Alternatives: the Moon Wolf People; the River Wolf Nation.</div>
+      <textarea class="oq-ruling" id="oq-ruling-8" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(8)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-8">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-9">
+      <div class="oq-label">RULING 9 &#8212; DELIVERY MECHANISM</div>
+      <div class="oq-conflict"><em>How do the keepers know where to deliver the Book?</em><br>Recommended: the keepers follow the wolf with the ice blue eye &#8212; the father&#8217;s color. The October 13 sky (Taurid meteor shower) tells them WHEN &#8212; vessel years the fire burns wrong. The wolf shows them WHO. The founder never read the Book; it does not write for keepers. It writes only near its chosen.</div>
+      <textarea class="oq-ruling" id="oq-ruling-9" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(9)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-9">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-10">
+      <div class="oq-label">RULING 10 &#8212; FENTON REVEAL LADDER</div>
+      <div class="oq-conflict"><em>How does the reader learn the Fenton legacy?</em><br>Step 1 &#8212; Ch 19: Nicole realizes there were two killers across sixty years &#8212; too long for one man. Step 2 &#8212; Ch 13: Cole&#8217;s lantern memory &#8212; his father teaching him the duty, passed down like a trade (reading order puts this first; the reader knows before Nicole does). Step 3 &#8212; Ch 20: five hundred years of service confirmed. Spain. The full depth.</div>
+      <textarea class="oq-ruling" id="oq-ruling-10" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(10)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-10">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item review" id="oq-11">
+      <div class="oq-label review">RULING 11 &#8212; WHY ORBUS FAILED</div>
+      <div class="oq-conflict"><em>Why didn&#8217;t Orbus win in 852 AD or 1876?</em><br>Each historical arc must end with the specific mechanism of failure.<br><strong>Britannia:</strong> Lost by death on her own terms, or hidden by the first keeper.<br><strong>Kata:</strong> Orbus hollowed him too well &#8212; an empty vessel cannot be deputed. He needs the fire INTACT. His own method defeated him in 1876. If this is the rule, it explains why Cole has never been sent at Carter directly &#8212; he must protect the flame until the moment of deputing. Test this against everything. If it holds, it is load-bearing.</div>
+      <textarea class="oq-ruling" id="oq-ruling-11" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(11)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-11">&#10003; Saved</span>
+    </div>
+
+    <div style="font-family:var(--font-h);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.35);margin:20px 0 10px;padding-top:16px;border-top:1px solid rgba(201,168,76,.1)">Part Five &#8212; Questions You Haven&#8217;t Asked Yet</div>
+
+    <div class="oq-item" id="oq-12">
+      <div class="oq-label open">Q1 &#8212; WHY DOES ORBUS HUNT THE CHOSEN?</div>
+      <div class="oq-conflict"><em>If he can feed on anyone, why the chosen specifically?</em><br>Answer: the takings are survival. The chosen are the DOOR &#8212; they carry a piece of the father, the only key that fits the lock on Orbus&#8217;s condition. He is not hunting food when he hunts Carter. He is hunting the key to his throne. <strong>One sentence that locks it:</strong> the takings keep him alive; the chosen set him free.</div>
+      <textarea class="oq-ruling" id="oq-ruling-12" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(12)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-12">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-13">
+      <div class="oq-label open">Q2 &#8212; WHY DOES THE FATHER ALLOW THIS?</div>
+      <div class="oq-conflict"><em>If the father loves the bloodline, why doesn&#8217;t he stop Orbus?</em><br>Answer: the same law that chains Orbus binds the father. Direct intervention is the one thing he cannot do. The meltglass, the Book, the keepers, the wolf &#8212; these ARE his intervention, threaded through the loophole. One line in The Keeper carries it: <em>he could not reach in, so he reached through.</em></div>
+      <textarea class="oq-ruling" id="oq-ruling-13" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(13)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-13">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-14">
+      <div class="oq-label open">Q3 &#8212; WHAT DOES IT COST CARTER?</div>
+      <div class="oq-conflict"><em>The ending cannot be free or it will feel free.</em><br>Recommended: Carter CARRIES him. The taking is containment, not destruction &#8212; a child becomes the cage. &#8220;He remembered&#8221; gains its second meaning: the father remembered his son, and Carter will remember everything Orbus is, all his life. That is the weight the dedication carries. [RULING NEEDED]</div>
+      <textarea class="oq-ruling" id="oq-ruling-14" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(14)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-14">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-15">
+      <div class="oq-label open">Q4 &#8212; WHY DIDN&#8217;T ORBUS WIN IN 852 OR 1876?</div>
+      <div class="oq-conflict"><em>The reader WILL ask. Each historical arc must end with the mechanism of failure.</em><br>Direction: an empty vessel cannot be deputed. Orbus needs the fire INTACT. He hollowed Kata too well and lost him. His own method defeated him. If this is the rule &#8212; it explains everything about his modern approach. He protects Carter&#8217;s flame this time until the last possible moment. [RULING NEEDED]</div>
+      <textarea class="oq-ruling" id="oq-ruling-15" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(15)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-15">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-16">
+      <div class="oq-label open">Q5 &#8212; WHAT HAS ORBUS PROMISED THE FENTONS?</div>
+      <div class="oq-conflict"><em>Cole needs a why with teeth.</em><br>Options: (A) Spared bloodline &#8212; the Fentons keep their fire when he reigns. (B) A place beside the throne. (C) Pure Frailty-style holy certainty &#8212; they believe they are God&#8217;s hand and have never once understood whom they serve. Option C is the most horrifying and the most literary. [RULING NEEDED]</div>
+      <textarea class="oq-ruling" id="oq-ruling-16" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(16)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-16">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-17">
+      <div class="oq-label open">Q6 &#8212; WHAT DOES BRITTANY DO AT THE ENDING?</div>
+      <div class="oq-conflict"><em>The Wetherbee women are receptive &#8212; that gift must act, not just know.</em><br>She is the one who holds the door. Her line has been the protective bloodline for centuries (Ch 20 proves it). At the threshold she does what Wetherbee women have always done. Define the action when you write Ch 24 &#8212; but she cannot be a spectator. [RULING NEEDED]</div>
+      <textarea class="oq-ruling" id="oq-ruling-17" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(17)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-17">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-18">
+      <div class="oq-label open">Q7 &#8212; WHAT DOES THE BOOK WRITE?</div>
+      <div class="oq-conflict"><em>The Book is the scoreboard of the war. The reader should SEE it write &#8212; not just hear about it.</em><br>Schedule its 4&#8211;5 writing moments: it writes when Orbus feeds (a page darkens), when a vessel is born, when the misread breaks. Decide the exact moments and place them before writing the present-day chapters.</div>
+      <textarea class="oq-ruling" id="oq-ruling-18" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(18)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-18">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-19">
+      <div class="oq-label open">Q8 &#8212; WHO ELSE ARCHIVED BESIDES CHARLOTTE?</div>
+      <div class="oq-conflict"><em>Forty years of Charlotte implies others before her.</em><br>Seed ONE more archivist: a digitized monastery ledger from 1480s Spain &#8212; the same crown drawn in a margin, surfacing in Nicole&#8217;s research (Ch 19). One image. The reader&#8217;s stomach drops: someone has always been keeping the records, and never once understood them.</div>
+      <textarea class="oq-ruling" id="oq-ruling-19" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(19)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-19">&#10003; Saved</span>
+    </div>
+
+    <div class="oq-item" id="oq-20">
+      <div class="oq-label open">Q9 &#8212; WHAT IS COLE&#8217;S ENDING?</div>
+      <div class="oq-conflict"><em>The instrument&#8217;s fate at the threshold.</em><br>Option A: Orbus discards Cole when he no longer needs him. Option B: Carter&#8217;s taking severs every thread Orbus holds &#8212; and Cole, emptied of the certainty that organized his whole life, is left HUMAN in the house with the family of the child he came for. Option B is colder. Decide before Ch 22&#8211;24 are written. [RULING NEEDED]</div>
+      <textarea class="oq-ruling" id="oq-ruling-20" placeholder="Type your ruling here&hellip;"></textarea>
+      <button class="oq-save-btn" onclick="saveRuling(20)">Save Ruling</button>
+      <span class="oq-saved-tag" id="oq-saved-20">&#10003; Saved</span>
     </div>
   </div>
 </div>
@@ -1978,6 +2269,196 @@ body.wide-mode #p-read::after{left:0}
     </div>
   </div>
 
+  <div class="arch-arc-section" style="margin-top:24px">
+    <div class="arch-arc-title">The 25-Chapter Structure</div>
+    <div class="arch-arc-sub">The braid: present day is the spine (15 chapters). Texas is the muscle (8). Denmark and Spain are the deep roots (1 each). The reader never goes more than two chapters without touching the present-day family. Reader Learns &amp; Reader Feels per chapter &#8212; open any chapter, know exactly what it must deliver by its last line.</div>
+    <div class="arch-arc-grid" style="grid-template-columns:150px 1fr auto">
+    <div class="arch-act-label">Act I &#8212; The Gathering (Ch 1&#8211;8) &nbsp;&#183;&nbsp; The reader falls in love with what is about to be threatened</div>
+      <div class="arch-arc-row watching-row">
+        <div class="arch-arc-ch watching">The Watching</div>
+        <div class="arch-rl" style="font-style:italic;color:rgba(200,80,50,.7)">Before Ch 1 &#8212; The Carter Watching (locked). &#8220;The sun rises in the west and sets in the east when the mountains blow in the wind like leaves.&#8221; Do not move from its locked position.</div>
+        <div class="arch-arc-status concept" style="border-color:rgba(200,50,50,.3);color:rgba(200,80,50,.7)">Interstitial</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 1 <span style="font-weight:300;opacity:.6">(Present day, Chattanooga)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>A family. A strange ancient book. Something has begun. Ends: &#8220;Then he turned the page.&#8221;<strong style="margin-top:6px">Feels</strong>Warmth with a splinter of wrong in it.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 2 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Carter is marked. Someone in the world already knows. Fire behaves unnaturally. Ends: &#8220;And then something falls.&#8221;<strong style="margin-top:6px">Feels</strong>The first real chill inside a warm family scene.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row watching-row">
+        <div class="arch-arc-ch watching">The Watching</div>
+        <div class="arch-rl" style="font-style:italic;color:rgba(200,80,50,.7)">Before Ch 3 &#8212; Orbus watching 1842. Locked entry: short, the boy and the wolf.</div>
+        <div class="arch-arc-status concept" style="border-color:rgba(200,50,50,.3);color:rgba(200,80,50,.7)">Interstitial</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 3 <span style="font-weight:300;opacity:.6">(Texas, 1842)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>This has happened before. The bloodline runs deep. A mother died for this child.<strong style="margin-top:6px">Feels</strong>Grief. And the first understanding of scope.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 4 <span style="font-weight:300;opacity:.6">(Present day, Corpus Christi)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The threat is physical and local. Anthony&#8217;s world has a crack in it.<strong style="margin-top:6px">Feels</strong>Dread entering the domestic.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 5 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Who Ten Bears is. The warlord system. That something about this boy frightens holy men.<strong style="margin-top:6px">Feels</strong>The weight of a found father choosing a dangerous son.</div>
+        <div class="arch-arc-status drafted">Drafted</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 6 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The instrument. The method &#8212; brought to the edge, left alive, the fire gone.<strong style="margin-top:6px">Feels</strong>Cold. The horror of a process, not a monster.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 7 <span style="font-weight:300;opacity:.6">(Present day, Chattanooga)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>What Anthony is (seeded through Brittany&#8217;s mother&#8217;s resistance, never described). That Brittany&#8217;s bloodline has a cost. The Wetherbee women pay.<strong style="margin-top:6px">Feels</strong>Love and unease braided.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 8 <span style="font-weight:300;opacity:.6">(Denmark, 852 AD)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>1,200 years ago, the same hunt. THE COMPARTMENT SEEDED: something hidden in the dragon chair. The chair the reader has already seen in Chattanooga was hers.<strong style="margin-top:6px">Feels</strong>Vertigo &#8212; time collapsing. The furniture is a witness.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+    <div class="arch-act-label">Act II &#8212; The Deepening (Ch 9&#8211;17) &nbsp;&#183;&nbsp; Every mystery gets watered. The reader starts assembling.</div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 9 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Kata is becoming something. Ten Bears knows it and loves him anyway. The question of the father planted in Kata &#8212; unanswered. The toad vine appears.<strong style="margin-top:6px">Feels</strong>The pleasure of watching a gift unfold, undercut by what the reader knows is coming.</div>
+        <div class="arch-arc-status drafted">Drafted</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 10 <span style="font-weight:300;opacity:.6">(Present day, Houston)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The drawings span forty years. Charlotte archived something she never understood. The name has power.<strong style="margin-top:6px">Feels</strong>The scariest quiet in the book so far.</div>
+        <div class="arch-arc-status drafted">Partial</div>
+      </div>
+      <div class="arch-arc-row watching-row">
+        <div class="arch-arc-ch watching">The Watching</div>
+        <div class="arch-rl" style="font-style:italic;color:rgba(200,80,50,.7)">Before Ch 11 &#8212; Short. Orbus watching a boy speak to a wolf.</div>
+        <div class="arch-arc-status concept" style="border-color:rgba(200,50,50,.3);color:rgba(200,80,50,.7)">Interstitial</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 11 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The camp now knows what Ten Bears knew. The crown &#8212; the reader connects it to the comet&#8217;s signature and Nicole&#8217;s records.<strong style="margin-top:6px">Feels</strong>Awe with terror under it.</div>
+        <div class="arch-arc-status written">Written</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 12 <span style="font-weight:300;opacity:.6">(Present day / mythic)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The other side of the war. The father never abandoned the bloodline &#8212; he works through it because that is the only door the law leaves him. The delivery mechanism revealed.<strong style="margin-top:6px">Feels</strong>Hope, for the first time, with a price tag on it.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 13 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Cole was made, not born. His father was the killer of Charlotte&#8217;s era. The service is generational. Fenton reveal step two.<strong style="margin-top:6px">Feels</strong>Horror complicated by pity &#8212; then horror at the pity.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 14 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The found father is gone. What Kata builds now, he builds out of loss. The band forms in the ash &#8212; Wind At His Back kneels first.<strong style="margin-top:6px">Feels</strong>The first heartbreak of the Texas arc. The point of no return.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 15 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>It is all real and Anthony knows it now. &#8220;Carter says something from Anthony&#8217;s childhood.&#8221; THE 60% MARK.<strong style="margin-top:6px">Feels</strong>The floor giving way, and a father standing anyway.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row watching-row">
+        <div class="arch-arc-ch watching">The Watching</div>
+        <div class="arch-rl" style="font-style:italic;color:rgba(200,80,50,.7)">Before Ch 16 &#8212; Orbus on the Wetherbee woman. His hand in it.</div>
+        <div class="arch-arc-status concept" style="border-color:rgba(200,50,50,.3);color:rgba(200,80,50,.7)">Interstitial</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 16 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Orbus has been pushing everything from Kata so the vessel arrives at the convergence empty. The Wetherbee and chosen lines have touched before &#8212; and Orbus tore it apart.<strong style="margin-top:6px">Feels</strong>Fury and grief. And the terrible shape of the plan.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 17 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The meltglass shard &#8212; a child&#8217;s face carved in 852 AD. It is Carter&#8217;s face. The Knox photograph pay-off: Anthony alone with it, quiet recognition he cannot name.<strong style="margin-top:6px">Feels</strong>Chills. The reader who flips back to Ch 8 gets paid.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+    <div class="arch-act-label">Act III &#8212; The Convergence (Ch 18&#8211;25) &nbsp;&#183;&nbsp; Every line bends toward one house in Chattanooga.</div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 18 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Knox does not know his son is alive. What broke him. The reader sees the man whole before the fight.<strong style="margin-top:6px">Feels</strong>Dread shaped like sympathy.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 19 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Deaths on day thirteen, sixty years, across states. Too long for one man &#8212; there were two. The name Fenton surfaces. Nicole&#8217;s break.<strong style="margin-top:6px">Feels</strong>The investigation snapping into focus &#8212; too late.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 20 <span style="font-weight:300;opacity:.6">(Spain, 1480s)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The Inquisition prior. The Wetherbee healer burned. Orbus descends through the smoke. Five hundred years of service. The Fentons hunt Wetherbee women &#8212; feed AND prune in one motion. PINNED &#8212; do not move.<strong style="margin-top:6px">Feels</strong>The book&#8217;s history going bottomless under their feet.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 21 <span style="font-weight:300;opacity:.6">(Texas)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Knox and Kata meet. The fight. How close Orbus came before. What stopped him. [Ruling 11 answers the mechanism.]<strong style="margin-top:6px">Feels</strong>The Texas arc&#8217;s full payment &#8212; and terror, because the same play runs in Chattanooga right now.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 22 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>There is no more distance. It is at the door. Brittany&#8217;s Wetherbee inheritance activates.<strong style="margin-top:6px">Feels</strong>Act-three engine at full burn.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 23 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The dead of this bloodline do not leave their posts. Roxy&#8217;s presence protecting Carter. Archie reacts first. Every seeded protection arriving at once.<strong style="margin-top:6px">Feels</strong>Every seeded protection arriving at once.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row watching-row">
+        <div class="arch-arc-ch watching">The Watching</div>
+        <div class="arch-rl" style="font-style:italic;color:rgba(200,80,50,.7)">Before Ch 24 &#8212; The final Watching. Consider the locked prophecy line placed per its standing rule.</div>
+        <div class="arch-arc-status concept" style="border-color:rgba(200,50,50,.3);color:rgba(200,80,50,.7)">Interstitial</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 24 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>The misread breaks: at the threshold, Orbus finally sees the drawings were never Carter Walks-With-Fire. One beat of recognition before the ending.<strong style="margin-top:6px">Feels</strong>The inhale before the final page.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+      <div class="arch-arc-row">
+        <div class="arch-arc-ch">Ch 25 <span style="font-weight:300;opacity:.6">(Present day)</span></div>
+        <div class="arch-rl"><strong>Learns</strong>Presence, not combat. The door swung the other way. Carter carries him. &#8220;He remembered.&#8221; gains its second meaning.<strong style="margin-top:6px">Feels</strong>Awe. And then they read the dedication page again and cannot speak.</div>
+        <div class="arch-arc-status concept">Concept</div>
+      </div>
+    </div>
+  </div>
+  <div class="arch-arc-section" style="margin-top:24px">
+    <div class="arch-arc-title">Mystery Tracker</div>
+    <div class="arch-arc-sub">Every mystery is a promise to the reader. Seeded = planted. Watered = fed across chapters. Paid = delivered. Orphaned = seeded but never paid &#8212; the red filter is the whole value of this tool.</div>
+    <div class="mt-legend">&#9679; Seeded &nbsp;&nbsp; &#9679; Watered &nbsp;&nbsp; &#9679; Paid Off &nbsp;&nbsp; &#9679; Under Review &nbsp;&nbsp; &#9679; Orphaned &#8212; loose thread</div>
+    <table class="mt-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Mystery / Promise</th>
+          <th style="width:20%">Seeded</th>
+          <th style="width:20%">Watered</th>
+          <th style="width:30%">Paid Off</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr><td class="mt-mystery">The Compartment — what is hidden in the dragon chair<br><span style="font-size:10px;opacity:.5;font-style:italic">Ruling 5 governs contents</span></td><td><span class="mt-badge seeded">Ch 8 (Denmark)</span></td><td><span class="mt-badge watered">Ch 12, 17</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 17 — paid</span> Meltglass shard. Carter&#8217;s face. 852 AD.</span></td></tr>
+      <tr><td class="mt-mystery">The Drawings — children drawing Carter&#8217;s face before death</td><td><span class="mt-badge seeded">Ch 10 (Charlotte)</span></td><td><span class="mt-badge watered">Ch 13, 19</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 24 — paid</span> The misread breaks. Orbus sees the face is Carter, not CWWF.</span></td></tr>
+      <tr><td class="mt-mystery">The Day-13 Pattern — victims dying exactly thirteen days after the taking<br><span style="font-size:10px;opacity:.5;font-style:italic">Ruling 6: 13 days after the TAKING, not the drawing</span></td><td><span class="mt-badge seeded">Ch 6 (Cole Fenton)</span></td><td><span class="mt-badge watered">Ch 10, 13</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 19 — paid</span> Nicole&#8217;s forensic break. The name Fenton surfaces.</span></td></tr>
+      <tr><td class="mt-mystery">The Hummed Melody — music crossing the bloodline without explanation<br><span style="font-size:10px;opacity:.5;font-style:italic">Write once, place twice. The single creepiest echo available.</span></td><td><span class="mt-badge seeded">Ch 3 (Roxy, dying)</span></td><td><span class="mt-badge watered">&#8212;</span></td><td><span class="mt-badge seeded"><span class="mt-badge seeded">Ch 22&#8211;23 — place here</span> Brittany hums it in the kitchen. Never having heard it. No one comments.</span></td></tr>
+      <tr><td class="mt-mystery">The Weather Sentence — one sentence, word-for-word in TX and present-day<br><span style="font-size:10px;opacity:.5;font-style:italic">Has not been written yet</span></td><td><span class="mt-badge seeded">TBD (Texas chapter)</span></td><td><span class="mt-badge watered">&#8212;</span></td><td><span class="mt-badge orphaned"><span class="mt-badge orphaned">Unplaced</span> Write the sentence once. Place it in a Texas chapter and a present-day chapter. The re-reader goes cold.</span></td></tr>
+      <tr><td class="mt-mystery">The Fenton Reveal Ladder — the generational service<br><span style="font-size:10px;opacity:.5;font-style:italic">Reveal order: Ch 13 → Ch 19 → Ch 20</span></td><td><span class="mt-badge seeded">Ch 6 (the method)</span></td><td><span class="mt-badge watered">Ch 13 (lantern memory)</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 20 — paid</span> Five hundred years. Spain. The full depth.</span></td></tr>
+      <tr><td class="mt-mystery">The Crown on the Roof of the Mouth — brand found at autopsy<br><span style="font-size:10px;opacity:.5;font-style:italic">Ruling 2 must resolve before Ch 19 is written</span></td><td><span class="mt-badge seeded">Ch 6</span></td><td><span class="mt-badge watered">Ch 19</span></td><td><span class="mt-badge review"><span class="mt-badge review">Under Review</span> If death is slow (13 days), the crown survives re-lock as a brand, not cause of death.</span></td></tr>
+      <tr><td class="mt-mystery">The Misread — Orbus believes the drawings show Carter Walks-With-Fire</td><td><span class="mt-badge seeded">Ch 10 (drawings)</span></td><td><span class="mt-badge watered">Ch 11, 13, ongoing</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 24 — paid</span> One beat of recognition. Orbus has been reading his own doom as his own prophecy.</span></td></tr>
+      <tr><td class="mt-mystery">Roxy&#8217;s Unspoken Name — the naming taboo<br><span style="font-size:10px;opacity:.5;font-style:italic">The absence is the presence. Never break it.</span></td><td><span class="mt-badge seeded">Ch 3 (Roxy dies)</span></td><td><span class="mt-badge watered">Every TX chapter after</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 23 — present</span> The presence protecting Carter is never named aloud either. Same taboo, two centuries.</span></td></tr>
+      <tr><td class="mt-mystery">The Knox Photograph — Anthony&#8217;s quiet recognition<br><span style="font-size:10px;opacity:.5;font-style:italic">The hair: Knox straight, Anthony wavy with blonde patch</span></td><td><span class="mt-badge seeded">Ch 3 (Knox introduced)</span></td><td><span class="mt-badge watered">Ch 18 (Knox described)</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 17 — paid</span> Note: placed before Ch 18 in reading order. The echo fires on whichever the reader hits second.</span></td></tr>
+      <tr><td class="mt-mystery">The Carved Face — meltglass shard in the dragon chair</td><td><span class="mt-badge seeded">Ch 8 (compartment seeded)</span></td><td><span class="mt-badge watered">&#8212;</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 17 — paid</span> The face carved in 852 AD is Carter&#8217;s face. The children&#8217;s drawings and the carving are the same prophecy.</span></td></tr>
+      <tr><td class="mt-mystery">The Bone Wolf River — what the title actually means<br><span style="font-size:10px;opacity:.5;font-style:italic">Ruling 7 governs the delivery</span></td><td><span class="mt-badge seeded">Title + Ch 3</span></td><td><span class="mt-badge watered">Ch 12, 21</span></td><td><span class="mt-badge seeded"><span class="mt-badge seeded">Ch 19 — suggested</span> The threshold itself. The border where Orbus lives. Option: a surviving child whispered the name to Charlotte.</span></td></tr>
+      <tr><td class="mt-mystery">The Book — what it writes and when<br><span style="font-size:10px;opacity:.5;font-style:italic">Q7 from Part Five governs placement</span></td><td><span class="mt-badge seeded">Ch 1 (arrives)</span></td><td><span class="mt-badge watered">Ch 8, 12</span></td><td><span class="mt-badge seeded"><span class="mt-badge seeded">Schedule 4&#8211;5 moments</span> Writes when Orbus feeds (a page darkens), when a vessel is born, when the misread breaks. The scoreboard of the war.</span></td></tr>
+      <tr><td class="mt-mystery">Why Orbus Failed Before — 852 and 1876<br><span style="font-size:10px;opacity:.5;font-style:italic">Ruling 11 governs the exact mechanism</span></td><td><span class="mt-badge seeded">Ch 8, Ch 3</span></td><td><span class="mt-badge watered">Ch 11, 18</span></td><td><span class="mt-badge paid"><span class="mt-badge paid">Ch 8 &amp; 21 — paid</span> Empty vessel cannot be deputed. He hollowed Kata too well. His own method defeated him.</span></td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 </div><!-- /app -->
 <script>
@@ -8021,6 +8502,30 @@ async function generateCompassSummary() {
 </div>
 
 
+<script>
+function saveRuling(n){
+  var ta=document.getElementById('oq-ruling-'+n);
+  var tg=document.getElementById('oq-saved-'+n);
+  if(!ta)return;
+  try{localStorage.setItem('bwr-oq-ruling-'+n,ta.value);}catch(e){}
+  var it=document.getElementById('oq-'+n);
+  if(it&&ta.value.trim())it.classList.add('resolved');
+  if(tg){tg.classList.add('show');setTimeout(function(){tg.classList.remove('show');},2000);}
+}
+function loadRulings(){
+  for(var i=1;i<=20;i++){
+    var v='';
+    try{v=localStorage.getItem('bwr-oq-ruling-'+i)||'';}catch(e){}
+    var ta=document.getElementById('oq-ruling-'+i);
+    if(ta&&v){
+      ta.value=v;
+      var it=document.getElementById('oq-'+i);
+      if(it)it.classList.add('resolved');
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){loadRulings();});
+</script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
