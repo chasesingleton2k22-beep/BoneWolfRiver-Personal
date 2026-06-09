@@ -28,9 +28,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
 #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:50px;
   background:var(--navy-dark);border-bottom:1px solid rgba(201,168,76,.3);
   display:flex;align-items:stretch}
-#btn-update{margin:auto 12px auto 0;padding:0 11px;height:28px;background:none;border:1px solid rgba(201,168,76,.3);color:rgba(201,168,76,.6);font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;white-space:nowrap;flex-shrink:0}
-#btn-update:hover{border-color:rgba(201,168,76,.7);color:rgba(201,168,76,1)}
-#btn-update:active{background:rgba(201,168,76,.1)}
+#btn-update{position:fixed;bottom:22px;right:16px;z-index:300;padding:0 14px;height:34px;background:rgba(10,14,26,.92);border:1px solid rgba(201,168,76,.4);color:rgba(201,168,76,.75);font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:17px;white-space:nowrap;box-shadow:0 2px 12px rgba(0,0,0,.4);backdrop-filter:blur(4px)}
+#btn-update:hover{border-color:rgba(201,168,76,.9);color:rgba(201,168,76,1);box-shadow:0 2px 18px rgba(201,168,76,.2)}
+#btn-update:active{background:rgba(201,168,76,.12)}
 #btn-manuscript{margin:auto 8px auto 0;padding:0 11px;height:28px;background:none;border:1px solid rgba(201,168,76,.3);color:rgba(201,168,76,.6);font-family:var(--font-h);font-size:8px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;white-space:nowrap;flex-shrink:0;text-decoration:none;display:flex;align-items:center}
 #btn-manuscript:hover{border-color:rgba(201,168,76,.7);color:rgba(201,168,76,1)}
 .brand{padding:0 18px;display:flex;align-items:center;gap:9px;
@@ -449,6 +449,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 .tl-desc{font-size:13px;color:var(--cream-dim);line-height:1.6;font-style:italic}
 .myth-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media(max-width:800px){.myth-grid{grid-template-columns:1fr}}
+@media(max-width:600px){#btn-manuscript{display:none}}
 .myth-item{background:rgba(255,255,255,.03);border-left:2px solid var(--gold-dim);padding:11px 13px;font-size:13.5px;color:var(--cream);line-height:1.6}
 .myth-item strong{color:var(--gold);font-family:var(--font-h);font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:3px}
 .fib-wrap{padding:18px 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
@@ -1274,7 +1275,6 @@ body.wide-mode #p-read::after{left:0}
     <button class="tab author-tab" data-panel="p-arch"><span class="rn">VIII</span>Architecture</button>
   </div>
   <a id="btn-manuscript" href="./BoneWolfRiver_Audiobook_FINAL.docx" download="BoneWolfRiver_Audiobook_FINAL.docx">&#8595; Manuscript</a>
-  <button id="btn-update" onclick="forceUpdate()" title="Get latest updates">&#8635; Update</button>
 </nav>
 <div id="app">
 
@@ -8533,6 +8533,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+<button id="btn-update" onclick="forceUpdate()" title="Get latest updates">&#8635; Update</button>
 <div id="bwr-footer">&#169; 2026 Chase Anthony Ricci Singleton &nbsp;&middot;&nbsp; <em>The Bone Wolf River</em>&#8482; &nbsp;&middot;&nbsp; All rights reserved. Unpublished manuscript.</div>
 </body>
 </html>

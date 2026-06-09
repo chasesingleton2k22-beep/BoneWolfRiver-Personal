@@ -1,4 +1,4 @@
-const CACHE = 'bwr-personal-v74';
+const CACHE = 'bwr-personal-v75';
 const ASSETS = ['./', './index.html', './cover.svg', './manifest.json'];
 
 self.addEventListener('install', e => {
