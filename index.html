@@ -1116,6 +1116,24 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 /* Hero parchment warmth */
 .hero{
   background:radial-gradient(ellipse at center,rgba(201,168,76,.045) 0%,transparent 70%)}
+.hero-bg-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 38%;
+  filter:brightness(.38) saturate(.75);z-index:0}
+.hero-bg-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to bottom,
+      rgba(6,14,25,.55) 0%,
+      rgba(6,14,25,0)   25%,
+      rgba(6,14,25,0)   60%,
+      rgba(6,14,25,.75) 90%,
+      var(--navy-dark)  100%),
+    linear-gradient(to right,
+      rgba(6,14,25,.5) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(6,14,25,.5) 100%)}
 
 /* Scene break ember pulse */
 @keyframes ember-pulse{0%,100%{opacity:.55;text-shadow:none}
@@ -1155,7 +1173,117 @@ body.wide-mode #p-read::after{left:0}
 .chapter.has-orbus::before{color:rgba(200,65,20,.07)!important;
   text-shadow:0 0 80px rgba(200,65,20,.1)}
 .chapter.has-orbus .ch-hdr{
-  background:radial-gradient(ellipse at center,rgba(140,30,10,.09) 0%,transparent 70%)}
+  background:radial-gradient(ellipse at center,rgba(140,30,10,.09) 0%,transparent 70%);
+  margin-top:-28px;position:relative;z-index:1}
+
+/* Chapter Three (The Shed) — portrait banner */
+.ch-shed-banner{
+  margin:0 -36px 0;
+  width:calc(100% + 72px);
+  height:380px;
+  overflow:hidden;
+  position:relative;
+  flex-shrink:0}
+.ch-shed-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 15%;
+  display:block;
+  filter:brightness(.72) saturate(.82)}
+.ch-shed-banner::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,
+      rgba(6,14,25,.3)   0%,
+      rgba(6,14,25,0)    20%,
+      rgba(6,14,25,0)    50%,
+      rgba(6,14,25,.92)  88%,
+      var(--navy-dark)   100%),
+    linear-gradient(to right,
+      rgba(6,14,25,.5) 0%,
+      transparent 18%,
+      transparent 82%,
+      rgba(6,14,25,.5) 100%)}
+
+/* Brazos chapter — river banner with title */
+.ch-brazos-banner{
+  margin:0 -36px 0;
+  width:calc(100% + 72px);
+  height:380px;
+  overflow:hidden;
+  position:relative;
+  flex-shrink:0}
+.ch-brazos-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 45%;
+  display:block;
+  filter:brightness(.78) saturate(.9)}
+.ch-brazos-banner::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,
+      rgba(6,14,25,.3)   0%,
+      rgba(6,14,25,0)    20%,
+      rgba(6,14,25,0)    48%,
+      rgba(6,14,25,.9)   88%,
+      var(--navy-dark)   100%),
+    linear-gradient(to right,
+      rgba(6,14,25,.5) 0%,
+      transparent 18%,
+      transparent 82%,
+      rgba(6,14,25,.5) 100%)}
+.ch-brazos-label{
+  position:absolute;
+  bottom:42px;left:0;right:0;
+  text-align:center;
+  z-index:2;
+  pointer-events:none}
+.ch-brazos-label span{
+  font-family:var(--font-h);
+  font-size:11px;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  color:rgba(201,168,76,.72);
+  text-shadow:0 0 18px rgba(201,168,76,.4)}
+
+/* Orbus chapter — full-bleed atmospheric banner */
+.ch-orbus-banner{
+  margin:0 -36px 0;
+  width:calc(100% + 72px);
+  height:360px;
+  overflow:hidden;
+  position:relative;
+  flex-shrink:0}
+.ch-orbus-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 28%;
+  display:block;
+  filter:brightness(.82) saturate(.88)}
+.ch-orbus-banner::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,
+      rgba(6,14,25,.22)  0%,
+      rgba(6,14,25,0)    18%,
+      rgba(6,14,25,0)    50%,
+      rgba(6,14,25,.88)  88%,
+      var(--navy-dark)   100%),
+    linear-gradient(to right,
+      rgba(6,14,25,.45)  0%,
+      transparent        18%,
+      transparent        82%,
+      rgba(6,14,25,.45) 100%)}
 
 /* Progress bar — living ember */
 #read-progress{
@@ -1321,6 +1449,8 @@ body.wide-mode #p-read::after{left:0}
     </div>
     <div class="hero">
       <div class="hero-bg">
+        <img class="hero-bg-img" src="./opening.jpg" alt="">
+        <div class="hero-bg-overlay"></div>
         <div class="star-sm"></div>
         <div class="star-md"></div>
         <div class="star-lg"></div>
@@ -4246,6 +4376,28 @@ function appendNewChapterToReader(ch) {
 
   }
 
+  (function() {
+    var bannerMap = {
+      chapter1: {img:'./chapter1.jpg'},
+      chapter2: {img:'./chapter2.jpg'},
+      chapter3: {img:'./shed.jpg'},
+      chapter4: {img:'./chapter4.jpg'},
+      chapter5: {img:'./chapter5.jpg'},
+      brazos:   {img:'./brazos.jpg', label:'Arms of God River'}
+    };
+    var entry = bannerMap[ch.id] || (ch.hasOrbus ? {img:'./orbus.jpg'} : null);
+    if (entry) {
+      var bnr = document.createElement('div'); bnr.className = 'ch-orbus-banner';
+      var bim = document.createElement('img'); bim.src = entry.img; bim.alt = '';
+      bnr.appendChild(bim);
+      if (entry.label) {
+        var blb = document.createElement('div'); blb.className = 'ch-brazos-label';
+        var bsp = document.createElement('span'); bsp.textContent = entry.label;
+        blb.appendChild(bsp); bnr.appendChild(blb);
+      }
+      div.appendChild(bnr);
+    }
+  })();
   div.appendChild(hdr);
 
 
@@ -5128,6 +5280,28 @@ function buildReader() {
 
     }
 
+    (function() {
+      var bannerMap = {
+        chapter1: {img:'./chapter1.jpg'},
+        chapter2: {img:'./chapter2.jpg'},
+        chapter3: {img:'./shed.jpg'},
+        chapter4: {img:'./chapter4.jpg'},
+        chapter5: {img:'./chapter5.jpg'},
+        brazos:   {img:'./brazos.jpg', label:'Arms of God River'}
+      };
+      var entry = bannerMap[ch.id] || (ch.hasOrbus ? {img:'./orbus.jpg'} : null);
+      if (entry) {
+        var bnr = document.createElement('div'); bnr.className = 'ch-orbus-banner';
+        var bim = document.createElement('img'); bim.src = entry.img; bim.alt = '';
+        bnr.appendChild(bim);
+        if (entry.label) {
+          var blb = document.createElement('div'); blb.className = 'ch-brazos-label';
+          var bsp = document.createElement('span'); bsp.textContent = entry.label;
+          blb.appendChild(bsp); bnr.appendChild(blb);
+        }
+        div.appendChild(bnr);
+      }
+    })();
     div.appendChild(hdr);
 
 
