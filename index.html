@@ -388,24 +388,24 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
 .tool-d{font-size:14.5px;color:var(--cream-dim);font-style:italic;line-height:1.6}
 /* ── CHARACTER ARCS TAB ───────────────────────────────────────────────────── */
 .arcs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:8px}
-.arc-card{background:rgba(11,24,41,.7);border:1px solid rgba(201,168,76,.22);border-radius:2px;overflow:hidden}
-.arc-card-header{display:flex;align-items:center;gap:16px;padding:20px 20px 14px}
-.arc-portrait{width:72px;height:96px;border:1px solid rgba(201,168,76,.35);border-radius:1px;
-  object-fit:cover;cursor:pointer;flex-shrink:0;background:rgba(201,168,76,.06);
-  display:flex;align-items:center;justify-content:center;font-size:10px;
-  color:var(--gold-dim);letter-spacing:.08em;text-align:center;line-height:1.4}
-.arc-portrait img{width:100%;height:100%;object-fit:cover;display:block}
-.arc-card-title{flex:1}
-.arc-char-name{font-family:var(--font-h);font-size:15px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
-.arc-char-years{font-size:11px;color:var(--gold-dim);letter-spacing:.1em;margin-top:3px}
-.arc-char-desc{font-size:12.5px;color:var(--cream-dim);line-height:1.5;margin-top:5px}
+.arc-card{background:rgba(11,24,41,.7);border:1px solid rgba(201,168,76,.22);border-radius:2px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,.45)}
+.arc-card-header{display:flex;flex-direction:column;gap:0;padding:0}
+.arc-portrait{width:100%;height:230px;border:none;border-bottom:1px solid rgba(201,168,76,.2);border-radius:0;
+  cursor:pointer;background:rgba(201,168,76,.06);
+  display:block;overflow:hidden;position:relative}
+.arc-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;transition:transform .4s ease}
+.arc-portrait:hover img{transform:scale(1.03)}
+.arc-card-title{padding:16px 20px 14px;border-bottom:1px solid rgba(201,168,76,.12)}
+.arc-char-name{font-family:var(--font-h);font-size:16px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.arc-char-years{font-size:11px;color:var(--gold-dim);letter-spacing:.1em;margin-top:4px}
+.arc-char-desc{font-size:13px;color:var(--cream-dim);line-height:1.55;margin-top:7px;padding-bottom:4px}
 .arc-phases{padding:0 0 8px}
-.arc-phase{border-top:1px solid rgba(201,168,76,.12)}
-.arc-phase-btn{width:100%;background:none;border:none;text-align:left;
-  padding:11px 20px;cursor:pointer;display:flex;align-items:center;gap:10px;
-  color:var(--cream-dim);transition:background .15s}
+.arc-phase{border-top:1px solid rgba(201,168,76,.1)}
+.arc-phase-btn{width:100%;background:none;border:none;border-left:2px solid transparent;text-align:left;
+  padding:11px 20px 11px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;
+  color:var(--cream-dim);transition:background .15s,border-color .15s}
 .arc-phase-btn:hover{background:rgba(201,168,76,.04)}
-.arc-phase-btn.open{color:var(--cream)}
+.arc-phase-btn.open{color:var(--cream);border-left-color:var(--gold);background:rgba(201,168,76,.05)}
 .arc-phase-label{font-family:var(--font-h);font-size:9px;letter-spacing:.18em;
   text-transform:uppercase;color:var(--gold-dim);min-width:90px}
 .arc-phase-title{font-size:13px;flex:1}
@@ -429,6 +429,15 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
 .arc-ver-text{font-size:13px;color:var(--cream-dim);line-height:1.65}
 .arc-rec{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.3);border-radius:1px;padding:12px 16px;margin-top:14px;font-size:13px;color:var(--cream);line-height:1.65}
 .arc-rec strong{color:var(--gold)}
+.arc-scratchpad-wrap{border-top:1px solid rgba(201,168,76,.1);padding:14px 20px 16px}
+.arc-scratchpad-label{font-family:var(--font-h);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:7px}
+.arc-scratchpad{width:100%;min-height:72px;background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.18);
+  color:var(--cream);font-family:var(--font-b);font-size:13.5px;line-height:1.65;
+  padding:10px 12px;resize:vertical;outline:none;border-radius:1px;transition:border-color .15s}
+.arc-scratchpad:focus{border-color:rgba(201,168,76,.45)}
+.arc-scratchpad::placeholder{color:var(--cream-dim);opacity:.35}
+.arc-scratchpad-saved{font-family:var(--font-h);font-size:7.5px;letter-spacing:.12em;color:#5dba8a;
+  opacity:0;transition:opacity .3s;display:inline-block;margin-left:8px;text-transform:uppercase}
 .arc-fullscreen-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(6,14,25,.96);
   align-items:center;justify-content:center;cursor:pointer}
 .arc-fullscreen-overlay.on{display:flex}
@@ -1174,7 +1183,7 @@ table.tbl tr:hover td{background:rgba(201,168,76,.035)}
 .hero-bg-img{
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;object-position:center 38%;
-  filter:brightness(.38) saturate(.75);z-index:0}
+  filter:brightness(.82) saturate(.88);z-index:0}
 .hero-bg-overlay{
   position:absolute;inset:0;z-index:1;
   background:
@@ -1312,7 +1321,7 @@ body.wide-mode #p-read::after{left:0}
 .ch-orbus-banner{
   margin:0 -36px 0;
   width:calc(100% + 72px);
-  height:360px;
+  height:min(520px,58vh);
   overflow:hidden;
   position:relative;
   flex-shrink:0}
@@ -1499,13 +1508,8 @@ body.wide-mode #p-read::after{left:0}
     </div>
     <div class="hero">
       <div class="hero-bg">
-        <img class="hero-bg-img" src="./opening.jpg" alt="">
+        <img class="hero-bg-img" src="./orbus-modern.jpg" alt="">
         <div class="hero-bg-overlay"></div>
-        <div class="star-sm"></div>
-        <div class="star-md"></div>
-        <div class="star-lg"></div>
-        <div class="star-ext"></div>
-        <div class="comet-el"></div>
       </div>
       <div class="hero-inner">
         <span class="hero-crown">&#9819;</span>
@@ -1966,6 +1970,12 @@ body.wide-mode #p-read::after{left:0}
     <div class="tool-d">The Carter Walks-With-Fire era &mdash; Texas Plains, 1842&ndash;1876. Phase-by-phase arc maps for all four pillars. Portraits, structural questions, and version options for the final confrontation.</div>
   </div>
 
+  <!-- THE MAP -->
+  <div style="margin-bottom:28px;cursor:pointer;border:1px solid rgba(201,168,76,.25);border-radius:2px;overflow:hidden;position:relative;" onclick="arcFullscreen(this)">
+    <img src="./arcmap.jpg" alt="The Territory" style="width:100%;display:block;max-height:520px;object-fit:cover;object-position:center top;">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:linear-gradient(transparent,rgba(6,14,25,.92));font-family:var(--font-h);font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;">The Territory &mdash; Texas Plains, 1842&ndash;1876 &nbsp;&nbsp;&#x2922; tap to expand</div>
+  </div>
+
   <div class="arcs-layout">
     <!-- LEFT: character arc cards -->
     <div>
@@ -2093,6 +2103,7 @@ body.wide-mode #p-read::after{left:0}
                 <span class="arc-phase-arrow">&#9658;</span>
               </button>
               <div class="arc-phase-body">
+                <div style="margin-bottom:14px;border-radius:1px;overflow:hidden;cursor:pointer;" onclick="arcFullscreen(this)"><img src="./confrontation.jpg" alt="The Confrontation" style="width:100%;display:block;border:1px solid rgba(201,168,76,.2);"></div>
                 <strong>Age 34.</strong> Knox arrives at the Brazos. He has been hunting an unnamed enemy for thirty years without realizing who he was hunting.<br><br>
                 <strong>The confrontation:</strong> Father and son face each other at last. Neither knows for sure who the other is until the wolf &mdash; Archie&#8217;s ancestor &mdash; stands between them and refuses to move. Knox sees the crescent moon birthmark on Kata&#8217;s brow and knows.<br><br>
                 <em>See Version Options in the sidebar for the four possible endings to this confrontation.</em><br><br>
@@ -2101,6 +2112,10 @@ body.wide-mode #p-read::after{left:0}
             </div>
 
           </div><!-- /arc-phases -->
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-carter">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="carter" placeholder="Working notes, locked decisions, open questions for Carter&#8230;" rows="4"></textarea>
+          </div>
         </div><!-- /arc-card carter -->
 
         <!-- ═══ TEN BEARS ═══ -->
@@ -2157,6 +2172,10 @@ body.wide-mode #p-read::after{left:0}
               <div class="arc-phase-body">Dies on the battlefield of the Battle of the Bastards watching Kata defeat Blood On His Claws. His last words are not heard by anyone but Carter.</div>
             </div>
           </div>
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-tenbears">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="tenbears" placeholder="Working notes for Ten Bears&#8230;" rows="4"></textarea>
+          </div>
         </div><!-- /arc-card ten bears -->
 
         <!-- ═══ BLOOD ON HIS CLAWS ═══ -->
@@ -2204,6 +2223,10 @@ body.wide-mode #p-read::after{left:0}
               </button>
               <div class="arc-phase-body">Calls the council and reveals what he did. Loses the Battle of the Bastards. Dies by Carter&#8217;s hand. The red brands on his cheeks the last thing he sees as the True Wolf stands over him.</div>
             </div>
+          </div>
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-blood">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="blood" placeholder="Working notes for Blood On His Claws&#8230;" rows="4"></textarea>
           </div>
         </div><!-- /arc-card blood -->
 
@@ -2261,6 +2284,10 @@ body.wide-mode #p-read::after{left:0}
               <div class="arc-phase-body">Witness to the confrontation with Knox. The man who carries the story of Carter forward into the historical record after 1876. Wind In His Hair is the last living man who remembers Carter Walks-With-Fire as a person rather than a legend.</div>
             </div>
           </div>
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-wind">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="wind" placeholder="Working notes for Wind At His Back&#8230;" rows="4"></textarea>
+          </div>
         </div><!-- /arc-card wind -->
 
         <!-- ═══ ROXY ═══ -->
@@ -2301,6 +2328,10 @@ body.wide-mode #p-read::after{left:0}
               <div class="arc-phase-body">Roxy does not appear again in the arc after 1846 &mdash; except once. In Phase Six of Carter&rsquo;s arc, the night before the confrontation with Knox, Carter sees his mother in a dream and does not recognize her face.<br><br>That detail is the arc&rsquo;s most devastating quiet line. He was four years old when she died. Thirty years later, the True Wolf &mdash; the most feared man in his nation &mdash; cannot remember what his mother looked like.</div>
             </div>
           </div>
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-roxy">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="roxy" placeholder="Working notes for Roxy&#8230;" rows="4"></textarea>
+          </div>
         </div><!-- /arc-card roxy -->
 
         <!-- ═══ KNOX ═══ -->
@@ -2340,6 +2371,10 @@ body.wide-mode #p-read::after{left:0}
               </button>
               <div class="arc-phase-body">Arrives at the Brazos following stories of a half-white war chief. The wolf stands between them and refuses to move. Knox sees the crescent moon birthmark on Kata&rsquo;s brow and knows.<br><br>What happens next depends on which version is chosen &mdash; see Version Options in the sidebar. In all versions, Knox&rsquo;s death or survival in this scene is the wound that modern Carter inherits without knowing its name.</div>
             </div>
+          </div>
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-knox">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="knox" placeholder="Working notes for Knox&#8230;" rows="4"></textarea>
           </div>
         </div><!-- /arc-card knox -->
 
@@ -2443,18 +2478,7 @@ body.wide-mode #p-read::after{left:0}
         <option value="pinned-from-chat">Pinned from Chat</option>
       </select>
       <select id="idea-chapter" class="idea-tag-sel" style="flex:1;min-width:120px">
-        <option value="">Any Chapter</option>
-        <option value="opening">Opening Page</option>
-        <option value="watching1">The Watching I</option>
-        <option value="chapter1">Chapter One</option>
-        <option value="chapter2">Chapter Two</option>
-        <option value="chapter3">Chapter Three</option>
-        <option value="watching2">The Watching II</option>
-        <option value="brazos">The Brazos River</option>
-        <option value="chapter4">Chapter Four</option>
-        <option value="chapter5">Chapter Five</option>
-        <option value="scary">Scary Chapter</option>
-        <option value="redwedding">Red Wedding Scene</option>
+        <option value="">No chapter</option>
       </select>
       <select id="idea-status" class="idea-status-sel">
         <option value="pending">Pending</option>
@@ -3458,6 +3482,23 @@ function bootApp() {
 
   loadChapterOrder();
 
+  // Update hero stats dynamically
+  (function() {
+    var allChs = BOOK.concat(NEW_CHAPTERS || []);
+    var totalWords = 0;
+    allChs.forEach(function(ch) {
+      var arr = ch.paras || ch.body || [];
+      arr.forEach(function(p) {
+        var t = typeof p === 'string' ? p : (p.text || '');
+        totalWords += t.split(/\s+/).filter(Boolean).length;
+      });
+    });
+    var totalMins = Math.max(1, Math.round(totalWords / 238));
+    var sections = allChs.length;
+    var statsEl = document.querySelector('.hero-stats');
+    if (statsEl) statsEl.textContent = totalWords.toLocaleString() + ' words · ' + totalMins + ' min read · ' + sections + ' sections';
+  })();
+
 
 
   // Crown easter egg
@@ -3535,6 +3576,9 @@ function bootApp() {
   // Assign ref keys and restore any saved ref edits (must run after loadEdits)
 
   assignRefKeys();
+
+  // Wire arc card scratchpads
+  bootArcScratchpads();
 
 
 
@@ -4878,13 +4922,16 @@ function appendNewChapterToReader(ch) {
 
   (function() {
     var bannerMap = {
-      chapter1:      {img:'./chapter1.jpg'},
+      opening:       {img:'./opening.jpg'},
+        chapter1:      {img:'./chapter1.jpg'},
       chapter2:      {img:'./chapter2.jpg'},
       chapter3:      {img:'./shed.jpg'},
-      'cole-fenton': {img:'./chapter4.jpg'},
+      'cole-fenton': {img:'./cole-fenton.jpg'},
+        'watching-taking': {img:'./fenton.jpg'},
       brittany:      {img:'./chapter5.jpg'},
       brazos:        {img:'./brazos.jpg', label:'Arms of God River'},
-      charlotte:     {img:'./charlotte.jpg'}
+      charlotte:     {img:'./charlotte.jpg'},
+      chapter4:      {img:'./chapter6.jpg'}
     };
     var entry = bannerMap[ch.id] || (ch.hasOrbus ? {img:'./orbus.jpg'} : null);
     if (entry) {
@@ -5681,7 +5728,9 @@ function buildReader() {
 
     var ms_ = document.createElement('div'); ms_.className = 'sb-meta';
 
-    var tm_ = document.createElement('span'); tm_.className = 'sb-time'; tm_.textContent = ch.readMins + ' min'; ms_.appendChild(tm_);
+    var _mins = ch.readMins;
+    if (!_mins) { var _paras = ch.body || ch.paras || []; var _text = _paras.map(function(p){ return typeof p === 'string' ? p : (p.text || ''); }).join(' '); var _words = _text.split(/\s+/).filter(Boolean).length; _mins = Math.max(1, Math.round(_words / 238)); }
+    var tm_ = document.createElement('span'); tm_.className = 'sb-time'; tm_.textContent = _mins + ' min'; ms_.appendChild(tm_);
 
     if (ch.hasOrbus) { var fl_ = document.createElement('span'); fl_.className = 'orbus-flame'; fl_.title = 'Orbus appears'; fl_.textContent = '🔥'; ms_.appendChild(fl_); }
 
@@ -5783,13 +5832,16 @@ function buildReader() {
 
     (function() {
       var bannerMap = {
+        opening:       {img:'./opening.jpg'},
         chapter1:      {img:'./chapter1.jpg'},
         chapter2:      {img:'./chapter2.jpg'},
         chapter3:      {img:'./shed.jpg'},
-        'cole-fenton': {img:'./chapter4.jpg'},
+        'cole-fenton': {img:'./cole-fenton.jpg'},
+        'watching-taking': {img:'./fenton.jpg'},
         brittany:      {img:'./chapter5.jpg'},
         brazos:        {img:'./brazos.jpg', label:'Arms of God River'},
-        charlotte:     {img:'./charlotte.jpg'}
+        charlotte:     {img:'./charlotte.jpg'},
+        chapter4:      {img:'./chapter6.jpg'}
       };
       var entry = bannerMap[ch.id] || (ch.hasOrbus ? {img:'./orbus.jpg'} : null);
       if (entry) {
@@ -9171,9 +9223,12 @@ function downloadCurrentChapter() {
       if (txt) lines.push(txt + '\n');
     }
   } else {
-    // Fallback to BOOK data
-    for (var j = 0; j < ch.body.length; j++) {
-      lines.push(ch.body[j] + '\n');
+    // Fallback to BOOK data — handle both body:[string] and paras:[{type,text}]
+    var fallbackParas = ch.paras || ch.body || [];
+    for (var j = 0; j < fallbackParas.length; j++) {
+      var fp = fallbackParas[j];
+      var ft = typeof fp === 'string' ? fp : (fp.text || '');
+      if (ft) lines.push(ft + '\n');
     }
   }
 
@@ -9222,6 +9277,31 @@ function arcFullscreen(el) {
   ov.addEventListener('click', function() { ov.classList.remove('on'); });
   document.body.appendChild(ov);
 })();
+
+function bootArcScratchpads() {
+  var pads = document.querySelectorAll('.arc-scratchpad');
+  for (var i = 0; i < pads.length; i++) {
+    (function(pad) {
+      var arcId = pad.getAttribute('data-arcid');
+      var storeKey = 'arc-notes:' + arcId;
+      var savedEl = document.getElementById('arc-saved-' + arcId);
+      // Load saved content
+      try { var saved = localStorage.getItem(storeKey); if (saved !== null) pad.value = saved; } catch(e) {}
+      // Wire auto-save with debounce
+      var timer;
+      pad.addEventListener('input', function() {
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+          try { localStorage.setItem(storeKey, pad.value); } catch(e) {}
+          if (savedEl) {
+            savedEl.style.opacity = '1';
+            setTimeout(function() { savedEl.style.opacity = '0'; }, 1800);
+          }
+        }, 600);
+      });
+    })(pads[i]);
+  }
+}
 
 
 
