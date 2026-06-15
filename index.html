@@ -1254,7 +1254,7 @@ body.wide-mode #p-read::after{left:0}
   object-fit:cover;
   object-position:center 15%;
   display:block;
-  filter:brightness(.72) saturate(.82)}
+  filter:brightness(1.05) saturate(.9)}
 .ch-shed-banner::after{
   content:'';
   position:absolute;
@@ -1286,7 +1286,7 @@ body.wide-mode #p-read::after{left:0}
   object-fit:cover;
   object-position:center 45%;
   display:block;
-  filter:brightness(.78) saturate(.9)}
+  filter:brightness(1.05) saturate(.9)}
 .ch-brazos-banner::after{
   content:'';
   position:absolute;
@@ -1331,7 +1331,7 @@ body.wide-mode #p-read::after{left:0}
   object-fit:cover;
   object-position:center 28%;
   display:block;
-  filter:brightness(.82) saturate(.88)}
+  filter:brightness(1.05) saturate(.9)}
 .ch-orbus-banner::after{
   content:'';
   position:absolute;
@@ -9277,6 +9277,25 @@ function arcFullscreen(el) {
   ov.addEventListener('click', function() { ov.classList.remove('on'); });
   document.body.appendChild(ov);
 })();
+
+function forceUpdate() {
+  var btn = document.getElementById('btn-update');
+  if (btn) { btn.textContent = 'Clearing…'; btn.disabled = true; }
+  Promise.resolve()
+    .then(function() {
+      if (!('serviceWorker' in navigator)) return;
+      return navigator.serviceWorker.getRegistrations().then(function(regs) {
+        return Promise.all(regs.map(function(r) { return r.unregister(); }));
+      });
+    })
+    .then(function() {
+      return caches.keys().then(function(keys) {
+        return Promise.all(keys.map(function(k) { return caches.delete(k); }));
+      });
+    })
+    .then(function() { location.reload(true); })
+    .catch(function() { location.reload(true); });
+}
 
 function bootArcScratchpads() {
   var pads = document.querySelectorAll('.arc-scratchpad');
