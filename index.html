@@ -386,6 +386,20 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
 .tool-panel::-webkit-scrollbar-thumb{background:var(--gold-dim)}
 .tool-h{font-family:var(--font-h);font-size:20px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
 .tool-d{font-size:14.5px;color:var(--cream-dim);font-style:italic;line-height:1.6}
+/* ── MAP & LANDSCAPE TAB ──────────────────────────────────────────────────── */
+.map-hero{position:relative;width:100%;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,.3);box-shadow:0 12px 48px rgba(0,0,0,.6);cursor:pointer;margin-bottom:4px}
+.map-hero img{width:100%;height:auto;display:block;max-height:80vh;object-fit:cover;transition:transform .5s ease}
+.map-hero:hover img{transform:scale(1.015)}
+.map-label{position:absolute;display:flex;align-items:center;gap:7px;font-family:var(--font-h);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-shadow:0 0 10px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,1);pointer-events:none;white-space:nowrap}
+.map-label em{font-family:var(--font-b);font-style:italic;text-transform:none;letter-spacing:0;color:var(--cream);font-size:11.5px;opacity:.85}
+.map-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px 2px rgba(201,168,76,.8),0 0 0 2px rgba(0,0,0,.6);flex-shrink:0}
+.map-hero-caption{position:absolute;bottom:0;left:0;right:0;padding:10px 16px;background:linear-gradient(transparent,rgba(6,14,25,.92));font-family:var(--font-h);font-size:9px;letter-spacing:.12em;color:var(--gold-dim);text-transform:uppercase;text-align:center}
+.map-prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.map-prompt-card{background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.18);border-radius:1px;padding:14px;cursor:pointer;transition:border-color .15s,background .15s}
+.map-prompt-card:hover{border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.05)}
+.map-prompt-title{font-family:var(--font-h);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.map-prompt-copy{font-size:8px;letter-spacing:.1em;color:var(--gold-dim);opacity:.6;text-transform:uppercase}
+.map-prompt-text{font-size:12.5px;line-height:1.6;color:var(--cream-dim)}
 /* ── CHARACTER ARCS TAB ───────────────────────────────────────────────────── */
 .arcs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:8px}
 .arc-card{background:rgba(11,24,41,.7);border:1px solid rgba(201,168,76,.22);border-radius:2px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,.45)}
@@ -1467,6 +1481,7 @@ body.wide-mode #p-read::after{left:0}
     <button class="tab author-tab" data-panel="p-arch"><span class="rn">VIII</span>Architecture</button>
     <button class="tab" data-panel="p-arcs"><span class="rn">IX</span>Character Arcs</button>
     <button class="tab author-tab" data-panel="p-craft"><span class="rn">X</span>Craft Rules</button>
+    <button class="tab author-tab" data-panel="p-map"><span class="rn">XI</span>Map &amp; Landscape</button>
   </div>
   <a id="btn-manuscript" href="./BoneWolfRiver_Audiobook_FINAL.docx" download="BoneWolfRiver_Audiobook_FINAL.docx">&#8595; Manuscript</a>
 </nav>
@@ -2378,7 +2393,9 @@ body.wide-mode #p-read::after{left:0}
         <!-- ═══ STONE IN HIS HEART ═══ -->
         <div class="arc-card">
           <div class="arc-card-header">
-            <div class="arc-portrait" id="portrait-stoneinhisheart" style="display:flex;align-items:center;justify-content:center;color:var(--cream-dim);font-family:var(--font-h);font-size:10px;letter-spacing:.15em;text-transform:uppercase;opacity:.4">No portrait yet</div>
+            <div class="arc-portrait" id="portrait-stoneinhisheart" onclick="arcFullscreen(this)">
+              <img src="./stoneinhisheart.jpg" alt="Stone In His Heart">
+            </div>
             <div class="arc-card-title">
               <div class="arc-char-name">Stone In His Heart</div>
               <div class="arc-char-years">Blood Wolf &mdash; 19 years old, 12 braids, 11 kills</div>
@@ -2430,7 +2447,9 @@ body.wide-mode #p-read::after{left:0}
         <!-- ═══ SPOTTED HORSE ═══ -->
         <div class="arc-card">
           <div class="arc-card-header">
-            <div class="arc-portrait" id="portrait-spottedhorse" style="display:flex;align-items:center;justify-content:center;color:var(--cream-dim);font-family:var(--font-h);font-size:10px;letter-spacing:.15em;text-transform:uppercase;opacity:.4">No portrait yet</div>
+            <div class="arc-portrait" id="portrait-spottedhorse" onclick="arcFullscreen(this)">
+              <img src="./spottedhorse.jpg" alt="Spotted Horse">
+            </div>
             <div class="arc-card-title">
               <div class="arc-char-name">Spotted Horse</div>
               <div class="arc-char-years">Official Wolf Circle initiator, under-16 bracket &mdash; undefeated</div>
@@ -2558,6 +2577,34 @@ body.wide-mode #p-read::after{left:0}
             <textarea class="arc-scratchpad" data-arcid="knox" placeholder="Working notes for Knox&#8230;" rows="4"></textarea>
           </div>
         </div><!-- /arc-card knox -->
+
+        <!-- ═══ LOVE INTEREST (Wetherbee woman) ═══ -->
+        <div class="arc-card">
+          <div class="arc-card-header">
+            <div class="arc-portrait" id="portrait-loveinterest" onclick="arcFullscreen(this)">
+              <img src="./loveinterest.jpg" alt="Carter's love interest">
+            </div>
+            <div class="arc-card-title">
+              <div class="arc-char-name">Carter&#8217;s Love Interest</div>
+              <div class="arc-char-years">Wetherbee woman &mdash; The Nation phase</div>
+              <div class="arc-char-desc">Eyes like rain. Carter&#8217;s only love &mdash; briefly written, dies in childbirth alongside their child.</div>
+            </div>
+          </div>
+          <div class="arc-phases">
+            <div class="arc-phase">
+              <button class="arc-phase-btn" onclick="arcToggle(this)">
+                <span class="arc-phase-label">Open</span>
+                <span class="arc-phase-title">Not Yet Written</span>
+                <span class="arc-phase-arrow">&#9658;</span>
+              </button>
+              <div class="arc-phase-body">Belongs somewhere in Carter&#8217;s Legends of the Fall / Nation phase &mdash; placement and her specific scene are not yet written. Wetherbee blood &mdash; a near-miss with the bloodline that runs through the modern timeline. No content invented here; this card exists to hold her portrait until the scene is drafted.</div>
+            </div>
+          </div>
+          <div class="arc-scratchpad-wrap">
+            <div class="arc-scratchpad-label">Notes &amp; Decisions<span class="arc-scratchpad-saved" id="arc-saved-loveinterest">&#10003; Saved</span></div>
+            <textarea class="arc-scratchpad" data-arcid="loveinterest" placeholder="Working notes for Carter&#8217;s love interest&#8230;" rows="4"></textarea>
+          </div>
+        </div><!-- /arc-card loveinterest -->
 
       </div><!-- /arcs-grid -->
 
@@ -2855,6 +2902,182 @@ body.wide-mode #p-read::after{left:0}
 
   <div id="craft-no-results" class="empty" style="display:none">No rules match that filter.</div>
 </div><!-- /p-craft -->
+
+<div id="p-map" class="panel tool-panel">
+  <div>
+    <div class="tool-h">Map &amp; Landscape</div>
+    <div class="tool-d">The world from the source in the mountains to the unknowable distance. Grounded in real Texas terrain &mdash; Big Bend high desert to Piney Woods lowland. Built for writing and for Midjourney.</div>
+  </div>
+
+  <div class="map-hero" onclick="arcFullscreen(this)">
+    <img src="./fullmap.jpg" alt="The Bone Wolf River — Full Map">
+    <div class="map-label" style="top:6%;left:6%"><span class="map-dot"></span>The Black Forest <em>(Night Clan)</em></div>
+    <div class="map-label" style="top:22%;left:16%"><span class="map-dot"></span>The Eternal Forest <em>(the Wolves)</em></div>
+    <div class="map-label" style="top:36%;left:44%"><span class="map-dot"></span>The Prayer Spot <em>(the Source)</em></div>
+    <div class="map-label" style="top:48%;left:62%"><span class="map-dot"></span>The People of the Horse</div>
+    <div class="map-label" style="top:60%;left:50%"><span class="map-dot"></span>The Wind Runners</div>
+    <div class="map-label" style="top:72%;left:46%"><span class="map-dot"></span>The Blade Dancers</div>
+    <div class="map-label" style="top:85%;left:30%"><span class="map-dot"></span>The Man Eaters</div>
+    <div class="map-hero-caption">Tap to view full size &middot; clan positions approximate, pending final placement (see Open Questions)</div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">How the World Is Arranged</div>
+    <div class="arc-char-desc" style="margin-bottom:14px">The Bone Wolf River is the spine of everything &mdash; born high in volcanic desert mountains (Big Bend country), running down through canyons, across plains, into deep forest lowlands, and on past the edge of anything the People have ever mapped. <strong>Locked rule:</strong> the river is real and specific everywhere the story travels. At its far end it simply trails into the unknown &mdash; no one has ever followed it to its mouth. Never state where it ends.</div>
+    <div class="arc-phases">
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Source to Distance &mdash; Clan Arrangement</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">
+          <strong>The Black Forest</strong> (Night Clan) &mdash; furthest of all, beyond a band of dense forest, near the high cold origin country, only sometimes glimpsed.<br><br>
+          <strong>&darr; a band of dense, deep forest separates them &darr;</strong><br><br>
+          <strong>The Eternal Forest + The Prayer Spot</strong> (the Wolves) &mdash; second-furthest, at the river&#8217;s mountain source, close enough to sometimes catch glimpses through the trees of the Night Clan&#8217;s world beyond.<br><br>
+          <strong>&darr; the river descends out of the mountains &darr;</strong><br><br>
+          <strong>The Plains and the Other Clans</strong> &mdash; the People of the Horse, the Wind Runners, the Blade Dancers, and the Man Eaters, spread down the length of the river across open country and river-bottom land.<br><br>
+          <strong>&darr; the river runs on, into deep forest lowlands, and past the edge of the known world &darr;</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Named Places</div>
+    <div class="arc-phases">
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Prayer Spot (the Source)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Where the river opens out of the mountain rock. High desert &mdash; pale stone, volcanic ridges the color of old ash and rust, water shockingly clear and cold. The most sacred ground in the world of the People &mdash; where they pray to the father, where Roxy brought Carter, where the wolf-dog found him on his fifth birthday. When Carter Walks-With-Fire begins to be taken by Orbus, he stops coming here &mdash; the distance he keeps from this spot is the measure of how far gone he is.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Eternal Forest</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Surrounding and below the Prayer Spot, home of the Wolves clan. Named for its agelessness &mdash; trees old beyond counting, believed older than the People themselves. Green shadow, cold water, ancient timber, in stark contrast to the desert around the mountains.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Black Forest</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Beyond a band of dense, near-impassable forest from the Eternal Forest. Home of the Night Clan &mdash; the oldest clan, said to predate the great destruction. Darker, older, wrong in a way other clans feel but can&#8217;t name. Comes out only at night. From the Eternal Forest&#8217;s edges, the Wolves sometimes catch glimpses through the trees of fires, figures, or smoke. Nobody from the Wolves goes in.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Gathering Ground &mdash; OPEN placement</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Where the clans convene for trials, ceremonies, and councils. Logically somewhere along the river accessible to most clans &mdash; likely the plains below the mountains, neutral middle ground. This is where Carter&#8217;s trials take place, witnessed by warriors and elders from multiple clans. <strong>OPEN:</strong> annual, seasonal (tied to a bloom or season), or occasion-called &mdash; not decided.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Brazos Homestead (1845&ndash;1854)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Knox and Roxy&#8217;s homestead. Lower country, the borderland between white settlements and the People&#8217;s territory. Nine years of a real working home before the raid destroys it. River-bottom land, workable soil &mdash; the kind of place a man could build something and believe it would last.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Raid / The Clearing (1854)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Where Roxy dies and Carter is taken. The clearing where Blood On His Claws runs his game with the arrow and the tree line.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Trials &amp; Wolf Circles (at the Gathering Ground)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Trial One &mdash; the initiation, the Spotted Horse duel, the shadow on the stone. Trial Two &mdash; the fire maze. Trial Three &mdash; the wolves, told partly through a scout&#8217;s eyes. The Wolf Circles held at gatherings are where Carter fights Spotted Horse, and later forces Stone In His Heart to yield.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Ten Bears&#8217; Murder (the false ceremony hut)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">A hut at whatever location the promotion ceremony is staged. Private, away from witnesses by design.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Unification Battlefield &amp; The Bonfire &mdash; OPEN placement</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Where the Blood On His Claws confrontation and the god-of-war-in-the-field moment happen, plus the bonfire and dance that night.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Knox&#8217;s Path East</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">After the confrontation, Knox drifts east &mdash; out of the river country, across the long middle of the continent, toward Chattanooga. On foot and horse, by years and miles, NOT by the river. This is the human thread that carries the bloodline east, not a waterway.</div></div>
+    </div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Landscape Field Guide &mdash; By Region &amp; Month</div>
+    <div class="arc-char-desc" style="margin-bottom:14px">Read before a scene set in that place and season. All flora is real to these Texas regions.</div>
+    <div class="arc-phases">
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region One &mdash; The Mountain Source (Big Bend high desert)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">The Wolves, the Prayer Spot, the Eternal Forest&#8217;s upper edge. Volcanic mountains the color of ash, rust, and old bone. Pale stone, canyons fifteen hundred feet deep, the clear cold river a green ribbon through parched rock. Lechuguilla and dagger-leaved agave on the slopes; true pine/oak/madrone forest in the cool heights.<br><br>
+          <strong>Jan&ndash;Feb:</strong> Big Bend bluebonnet (tallest of all bluebonnets) begins early, sometimes January; by February whole hillsides go blue &mdash; &#8220;blue spilled from the sky.&#8221; Bicolor mustard carpets the desert floor, sweet-scented, first true sign of spring.<br>
+          <strong>Feb&ndash;Mar:</strong> Ocotillo throws flaming scarlet tips up to twenty feet &mdash; &#8220;candles from a candelabra.&#8221; Texas mountain laurel blooms purple, smelling of grape, March into May.<br>
+          <strong>Mar&ndash;Jun:</strong> Ocotillo continues, feeding migrating hummingbirds. Orange Mexican poppies, red firewheels, purple wooly locoweed; purple verbena and pink globe mallow line the arroyos; lemon-yellow desert marigold in the dry washes.<br>
+          <strong>Summer:</strong> Barrel cacti crown magenta and lavender. Lechuguilla&#8217;s tall yellow blooms. Yellow esperanza bells swarmed by bees. Faxon yucca raises white blooms; rare pink-flowered yuccas in the best years.<br><br>
+          <strong>Writing note:</strong> the sacred high country. Blue bluebonnets and scarlet ocotillo against pale volcanic rock is the signature palette of the Prayer Spot in spring &mdash; the father&#8217;s country wears blue and flame.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Two &mdash; The Descending Canyons &amp; River Bends</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Where the river leaves the mountains. Canyon walls rising sheer, water green and fast in the narrows; gravel bars and reed beds where it opens. Cottonwoods and willows crowd the banks &mdash; first real riverside trees.<br><br>
+          <strong>Spring:</strong> Cottonwood and willow leafing bright green. Desert willow blooms pink and lavender, May into autumn. February especially &mdash; canyons can turn golden with tens of thousands of blooms.<br>
+          <strong>Autumn:</strong> Cottonwoods turn gold &mdash; the one reliable blaze of fall color in this country.<br><br>
+          <strong>Writing note:</strong> travel country, connective tissue between source and plains. Gold cottonwoods on green water is the autumn image; bright new leaf and pink desert willow is the spring one.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Three &mdash; The Plains (open river country)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">The People of the Horse, the Wind Runners, the Gathering Ground. Wide grassland to the horizon, the river a line of trees crossing it. The bloodlands, the killing plains &mdash; grama and buffalo grass silvering in the wind, big sky, a column of riders seen long before heard.<br><br>
+          <strong>Mar&ndash;Apr:</strong> Plains bluebonnets and Indian paintbrush peak &mdash; blue and scarlet running together, &#8220;fields of indigo.&#8221; Indian blanket/firewheel follows.<br>
+          <strong>Late spring:</strong> Antelope-horns milkweed draws migrating monarchs north &mdash; orange over blue and red. Black-eyed Susans, coreopsis.<br>
+          <strong>Summer:</strong> Grass goes tall and silver-green, then gold. Heat shimmer. Sunflowers at the field edges.<br>
+          <strong>Autumn:</strong> Grass cures to gold and amber, runs like a sea in the wind. Big bluestem turning copper.<br><br>
+          <strong>Writing note:</strong> where the trials and gatherings happen, where cavalry rides down on Carter in the field, where the god of war comes over him. A spring battle happens over blue and scarlet flowers; a late-summer one over gold grass and heat shimmer. Let the flowers be beautiful and the blood fall on them anyway &mdash; the McCarthy engine.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Four &mdash; The Ugly Country (salt and badlands)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">A hard, blighted swath the river passes through &mdash; cracked salt flats white and blinding, dry lake beds, alkali ground where almost nothing grows. Creosote scrub and tar bush. Heat enough in the stones to cook flesh; lizards keep to the shade. Bone-white salt, black volcanic rubble, a silence so complete a man can hear his own blood moving.<br><br>
+          <strong>Even here:</strong> after rare rain, creosote releases the smell people call the smell of the desert itself; even salt flats can throw a brief shocking bloom &mdash; but mostly this is country that takes and gives nothing back.<br><br>
+          <strong>Writing note:</strong> the place for the hardest scenes &mdash; a crossing that costs something, a death, a stretch where Orbus feels close. When the moral temperature of a scene is at its worst, set it here.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Five &mdash; The Deep Forest Lowlands (Piney Woods register)</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Far down the river, and also in the old forests at the fringes of the world (the Eternal and Black Forests share this character). Towering pines, bottomland hardwoods, thick humid air, Spanish moss, bald cypress out of black-water swamp. Slow water under moss-draped trees, leaf litter, muddy bottoms. The most biodiverse country in the book&#8217;s world &mdash; and the oldest-feeling.<br><br>
+          <strong>Mar&ndash;Apr:</strong> Flowering dogwood bursts white and rosy-pink beneath the pines &mdash; one of the first signs of spring. Eastern redbud throws pink-purple the same weeks.<br>
+          <strong>Spring&ndash;summer:</strong> Magnolia in the streamside stands. Ferns and sphagnum moss in the bogs. Orchids, pitcher plants, sundews in the wettest ground.<br>
+          <strong>Autumn:</strong> American beautyberry hangs heavy clusters of brilliant purple fruit. Sweetgum turning red and gold.<br><br>
+          <strong>Writing note:</strong> the Eternal Forest and Black Forest both draw on this deep-timber character even sitting high near the mountains &mdash; ancient pockets of it, fed by the young river and something else. White dogwood in green shadow is the Eternal Forest in spring. The Black Forest is this same timber gone wrong &mdash; darker, mossier, blacker water, deeper silence, smoke rising somewhere in the trees.</div></div>
+    </div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Midjourney Prompts</div>
+    <div class="arc-char-desc" style="margin-bottom:14px">Style anchor matches the existing app imagery: dark, warm firelight, chiaroscuro, painterly, cinematic, grounded &mdash; the register of Blood Meridian and The Revenant, never fantasy-game-bright. Click any prompt to copy it.</div>
+    <div class="map-prompt-grid">
+      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="A wide clear cold river opening out of pale volcanic mountain rock the color of ash and rust, hillsides blanketed in tall blue bluebonnets, scarlet ocotillo blooms on tall whip-like branches, clear green water over stone, dawn light, sacred and still, painterly, cinematic, dark warm tones, Blood Meridian register, no people">
+        <div class="map-prompt-title">The Prayer Spot <span class="map-prompt-copy">Copy</span></div>
+        <div class="map-prompt-text">A wide clear cold river opening out of pale volcanic mountain rock the color of ash and rust, hillsides blanketed in tall blue bluebonnets, scarlet ocotillo blooms on tall whip-like branches, clear green water over stone, dawn light, sacred and still, painterly, cinematic, dark warm tones, Blood Meridian register, no people</div>
+      </div>
+      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Ancient towering forest of immense old trees at the foot of desert mountains, a clear young river running through green shadow, white flowering dogwood glowing in the understory, shafts of pale light, moss, deep timeless stillness, painterly, chiaroscuro, cinematic, dark and reverent">
+        <div class="map-prompt-title">The Eternal Forest <span class="map-prompt-copy">Copy</span></div>
+        <div class="map-prompt-text">Ancient towering forest of immense old trees at the foot of desert mountains, a clear young river running through green shadow, white flowering dogwood glowing in the understory, shafts of pale light, moss, deep timeless stillness, painterly, chiaroscuro, cinematic, dark and reverent</div>
+      </div>
+      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="A dark ancient forest of black timber and heavy Spanish moss, black still water, faint distant firelight and thin smoke rising between the trees at night, oppressive and wrong, cold blue moonlight through the canopy, painterly horror register, chiaroscuro, ominous, no clear figures">
+        <div class="map-prompt-title">The Black Forest <span class="map-prompt-copy">Copy</span></div>
+        <div class="map-prompt-text">A dark ancient forest of black timber and heavy Spanish moss, black still water, faint distant firelight and thin smoke rising between the trees at night, oppressive and wrong, cold blue moonlight through the canopy, painterly horror register, chiaroscuro, ominous, no clear figures</div>
+      </div>
+      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Endless rolling grassland under an enormous sky, a line of trees marking a river crossing the distance, fields of blue bluebonnets and scarlet Indian paintbrush in spring, a faint column of riders far off on the horizon trailing dust, golden light, painterly, cinematic, vast and lonely, Blood Meridian register">
+        <div class="map-prompt-title">The Plains / Bloodlands <span class="map-prompt-copy">Copy</span></div>
+        <div class="map-prompt-text">Endless rolling grassland under an enormous sky, a line of trees marking a river crossing the distance, fields of blue bluebonnets and scarlet Indian paintbrush in spring, a faint column of riders far off on the horizon trailing dust, golden light, painterly, cinematic, vast and lonely, Blood Meridian register</div>
+      </div>
+      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Blinding white cracked salt flat under a hard pale sky, black volcanic rubble, twisted creosote scrub, heat shimmer on the distance, bone-dry and merciless, a single set of tracks crossing it, painterly, desolate, cinematic, high contrast, no relief">
+        <div class="map-prompt-title">The Salt / Ugly Country <span class="map-prompt-copy">Copy</span></div>
+        <div class="map-prompt-text">Blinding white cracked salt flat under a hard pale sky, black volcanic rubble, twisted creosote scrub, heat shimmer on the distance, bone-dry and merciless, a single set of tracks crossing it, painterly, desolate, cinematic, high contrast, no relief</div>
+      </div>
+      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Antique hand-drawn map on aged parchment, a single great river born high in volcanic desert mountains and winding down through canyons, across vast grassland plains, through a blighted white salt flat, and into deep dark pine forest before trailing off into uncharted blank parchment at the edge; ancient forest marked near the mountain source, a darker forbidding forest beyond it; small clan settlements marked along the river's length; muted sepia and indigo ink, weathered edges, compass rose, mysterious and old, cartographic, no text labels, cinematic lighting">
+        <div class="map-prompt-title">The Full Map <span class="map-prompt-copy">Copy</span></div>
+        <div class="map-prompt-text">Antique hand-drawn map on aged parchment, a single great river born high in volcanic desert mountains and winding down through canyons, across vast grassland plains, through a blighted white salt flat, and into deep dark pine forest before trailing off into uncharted blank parchment at the edge; ancient forest marked near the mountain source, a darker forbidding forest beyond it; small clan settlements marked along the river's length; muted sepia and indigo ink, weathered edges, compass rose, mysterious and old, cartographic, no text labels, cinematic lighting</div>
+      </div>
+    </div>
+    <div id="map-prompt-copied" style="display:none;margin-top:10px;font-family:var(--font-h);font-size:8px;letter-spacing:.12em;color:#5dba8a;text-transform:uppercase">&#10003; Copied to clipboard</div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Real Texas Folklore &amp; Texture (period-checked, 1840s&ndash;1870s)</div>
+    <div class="arc-phases">
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Bone Fields (period-correct) &mdash; CAUTION on skull piles</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">By the 1830s, the Comanche and allies were sustainably harvesting roughly 280,000 bison a year &mdash; herds in Carter&#8217;s lifetime are still vast and living, not yet the post-1870s mass-extermination landscape. What DOES belong: natural bone fields from winter kills, river-crossing drownings, and hunting drives &mdash; ground pale with old bone half-sunk in the grass, from the ordinary violence of the herd&#8217;s own life and death, not atrocity. A bone field crossed on a long ride is period-accurate and eerie without invented horror.<br><br>
+          <strong>CAUTION:</strong> the famous mountain-of-skulls photographs (Michigan Carbon Works, 1892, and similar) are an 1880s&ndash;90s railroad-commerce phenomenon, decades after this story&#8217;s timeline ends. Do NOT describe a deliberate, man-made mountain of skulls in the Carter Walks-With-Fire chapters &mdash; historically wrong for the period.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Phantom Herd of Palo Duro Canyon</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Real Texas legend, strikingly close to the locked timeline: the actual Battle of Palo Duro Canyon (September 28, 1874) saw the U.S. Army capture over 1,400 horses from Comanche, Kiowa, and Apache bands and destroy roughly 1,000 of them, breaking the bands&#8217; ability to keep living free. Legend holds a phantom herd still thunders along the canyon rim on moonlit nights, evading final capture. Sits almost exactly inside the unification/campaign years and the real Red River War (both near 1874) &mdash; usable as a haunting echo, or something an old scout/witness references having seen.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Enchanted Rock &mdash; Spirits in the Stone</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Real, attested Comanche and Tonkawa belief tied to an actual granite dome in the Texas Hill Country &mdash; spirits reside in the mountain itself, with reports of mysterious blue lights at its base. Useful less as a named location and more as PRECEDENT: real evidence that a high place inhabited by something old and watching is native to this region&#8217;s actual belief systems. Legitimizes the Black Forest / Night Clan&#8217;s &#8220;spirits in the old stone&#8221; quality and the Prayer Spot&#8217;s sacredness as more than invention.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">La Llorona / The Weeping Woman Along the Water</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Real, deeply rooted regional legend &mdash; a ghostly woman in a long dress who walks riverbanks crying for children she lost; sometimes read by folklorists as a mourning figure for the loss of indigenous ways of life after conquest. Uncomfortably close to Roxy already &mdash; worth naming rather than avoiding. If a side character (settler, soldier, scout) hears something crying along the Bone Wolf River at night and thinks of this old story without knowing what actually happened nearby, that&#8217;s a chilling, period-appropriate beat requiring zero new invented mythology.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Ghost Lights in the Deep Timber</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Real, recurring Texas folklore motif (the Light of Saratoga in the Big Thicket and similar) &mdash; an inexplicable light appearing and vanishing on a dark road or in deep forest at night, never explained. Strong, low-cost atmosphere for the Eternal Forest or the edges of the Black Forest &mdash; seen once, at a distance, never chased down, never explained on the page.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">The Working Principle</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Every piece of real folklore here is meant to be used the way the book already uses its own mythology &mdash; felt, glimpsed, mentioned in passing, never fully explained or chased to ground on the page. None of it needs to be confirmed as connected to Orbus or the bloodline. Some of it can simply be true and strange and sit beside the main story the way real ghost stories sit beside real history.</div></div>
+    </div>
+  </div>
+
+  <div class="arc-questions" style="margin-top:0">
+    <div class="arc-q-title">Open Questions &mdash; Map &amp; Landscape</div>
+    <div class="arc-q-item"><span class="arc-q-num">1</span><span>Whether gatherings are annual, seasonal, or occasion-called.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">2</span><span>Exact placement of the unification battlefield/bonfire.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">3</span><span>Which specific clans sit where among the plains (Horse, Wind Runners, Blade Dancers, Man Eaters) &mdash; order along the river.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">4</span><span>The Man Eaters&#8217; nature (ritual vs. something stranger).</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">5</span><span>The Night Clan&#8217;s smoke god &mdash; Orbus himself, or one of the other twelve Oort Cloud entities.</span></div>
+  </div>
+</div><!-- /p-map -->
 
 <div id="p-mistakes" class="panel tool-panel">
   <div>
@@ -9669,6 +9892,33 @@ function arcToggle(btn) {
   var isOpen = btn.classList.contains('open');
   btn.classList.toggle('open', !isOpen);
   body.classList.toggle('open', !isOpen);
+}
+
+function copyMapPrompt(card) {
+  var text = card.getAttribute('data-prompt');
+  var done = function() {
+    var note = document.getElementById('map-prompt-copied');
+    if (note) {
+      note.style.display = 'block';
+      clearTimeout(card._copyTimer);
+      card._copyTimer = setTimeout(function() { note.style.display = 'none'; }, 1800);
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(function() {
+      var ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+      done();
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+    done();
+  }
 }
 
 function craftFilter(q) {
