@@ -393,6 +393,9 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
 .map-hero img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease}
 .map-hero:hover img{transform:scale(1.015)}
 .map-hero-caption{position:absolute;bottom:0;left:0;right:0;padding:10px 16px;background:linear-gradient(transparent,rgba(6,14,25,.92));font-family:var(--font-h);font-size:9px;letter-spacing:.12em;color:var(--gold-dim);text-transform:uppercase;text-align:center}
+.map-label{position:absolute;display:flex;align-items:center;gap:7px;font-family:var(--font-h);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-shadow:0 0 10px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,1);pointer-events:none;white-space:nowrap}
+.map-label em{font-family:var(--font-b);font-style:italic;text-transform:none;letter-spacing:0;color:var(--cream);font-size:11.5px;opacity:.85}
+.map-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px 2px rgba(201,168,76,.8),0 0 0 2px rgba(0,0,0,.6);flex-shrink:0}
 /* ── CHARACTER ARCS TAB ───────────────────────────────────────────────────── */
 .arcs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:8px}
 .arc-card{background:rgba(11,24,41,.7);border:1px solid rgba(201,168,76,.22);border-radius:2px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,.45)}
@@ -1475,6 +1478,7 @@ body.wide-mode #p-read::after{left:0}
     <button class="tab" data-panel="p-arcs"><span class="rn">IX</span>Character Arcs</button>
     <button class="tab author-tab" data-panel="p-craft"><span class="rn">X</span>Craft Rules</button>
     <button class="tab author-tab" data-panel="p-map"><span class="rn">XI</span>Map &amp; Landscape</button>
+    <button class="tab author-tab" data-panel="p-myth"><span class="rn">XII</span>Mythology &amp; Tellings</button>
   </div>
   <a id="btn-manuscript" href="./BoneWolfRiver_Audiobook_FINAL.docx" download="BoneWolfRiver_Audiobook_FINAL.docx">&#8595; Manuscript</a>
 </nav>
@@ -2904,6 +2908,9 @@ body.wide-mode #p-read::after{left:0}
 
   <div class="map-hero" onclick="arcFullscreen(this)">
     <img src="./fullmap.jpg" alt="The Bone Wolf River — Full Map">
+    <div class="map-label" style="top:19%;left:46%"><span class="map-dot"></span>The Prayer Spot <em>(the Source)</em></div>
+    <div class="map-label" style="top:33%;left:18%"><span class="map-dot"></span>The Eternal Forest <em>(the Wolves)</em></div>
+    <div class="map-label" style="top:37%;left:64%"><span class="map-dot"></span>The Black Forest <em>(Night Clan)</em></div>
     <div class="map-hero-caption">Tap to view full size &middot; the Bloodlands camps shown are the four plains clans (Horse, Wind Runners, Blade Dancers, Man Eaters) &mdash; exact order along the river still open, see Open Questions</div>
   </div>
 
@@ -3042,6 +3049,73 @@ body.wide-mode #p-read::after{left:0}
     <div class="arc-q-item"><span class="arc-q-num">5</span><span>The Night Clan&#8217;s smoke god &mdash; Orbus himself, or one of the other twelve Oort Cloud entities.</span></div>
   </div>
 </div><!-- /p-map -->
+
+<div id="p-myth" class="panel tool-panel">
+  <div>
+    <div class="tool-h">Mythology &amp; Tellings</div>
+    <div class="tool-d">Who tells what, in what order, to whom &mdash; and what they don&#8217;t know they&#8217;re revealing. Tracked separately from plot structure because this is its own engine: the slow assembly of cosmic truth across multiple ignorant tellers, never fully assembled by any single character on the page.</div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">What This Map Is For</div>
+    <div class="arc-char-desc">No single teller below ever says the full truth. Each one holds one piece, believes their piece is complete in itself (folklore, caution, legend, ancestral law), and has no awareness of the other three tellings happening in other times and places to other people. <strong>The reader is the only one who ever gets to hold all four pieces at once.</strong> That is the intended structure &mdash; do not write a scene where any in-world character assembles the full picture by hearing more than one of these tellings directly, unless Chase explicitly decides a specific character (most likely Nicole, given her arc) is meant to be the first to connect multiple tellings.</div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">The Four Tellings, In Order</div>
+    <div class="arc-phases">
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Telling One &mdash; Michelle Marie, to young Britannia</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">
+          <strong>What she reveals:</strong> the gift, lightly. The cost, lightly. Her own Norse-rooted religious framework &mdash; a god her tradition believes hunts and devours gifted children, doing exactly what Orbus does, though she does not use his name and does not know she is describing a real, specific, currently-active entity rather than old-country folklore.<br><br>
+          <strong>Locked dialogue:</strong><br>
+          <em>&#8220;Watch the fire, my dear. The flame never lies. It may go out altogether, or it may seem to call you into it.&#8221;</em><br>
+          <em>&#8220;And what should I do when I see it?&#8221;</em><br>
+          <em>&#8220;Turn your mind to still water. Get yourself calm to your bones. All you can do is fight to keep your head above the tide until it washes away.&#8221;</em><br><br>
+          <strong>What she does not know:</strong> that the Norse fragment she is passing down is not a metaphor for the gift&#8217;s danger in general, but a specific cultural memory of Orbus himself, garbled across generations into &#8220;an old god from the stories.&#8221; She believes she is teaching her granddaughter caution and discipline. She does not know she is the first domino in a chain of tellings that will eventually let someone assemble the full truth.
+        </div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Telling Two &mdash; The Keeper, to [recipient TBD &mdash; likely Anthony]</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">
+          <strong>What she reveals:</strong> the deeper layer. Real Native American mythological framing of the same entity, with Orbus&#8217;s actual name used directly (unlike Marie, who never names him). The comet/asteroid impact itself, told as real cosmic history rather than folklore. The aftermath &mdash; Orbus feeding upon the world &mdash; touched on LIGHTLY, not at length.<br><br>
+          <strong>NEEDS TRIMMING, not building further:</strong> Chase has explicitly noted this section went too far into detail in earlier drafts and needs to be pulled back.<br><br>
+          <strong>OPEN QUESTION:</strong> her exact relationship to the listener, and how much she herself understands versus how much she is simply relaying inherited knowledge, is not yet settled. Confirm whether the Keeper fully understands what she&#8217;s saying or is, like Marie, passing down something she believes is sacred story rather than literal recent history.
+        </div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Telling Three &mdash; The Big Bend Tour Guide, to a tour group incl. Nicole &amp; Santiago</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">
+          <strong>What she reveals:</strong> serious, dedicated mythology specifically about Carter Walks-With-Fire / Katawa &mdash; building him into legend for the reader before he ever appears on the page in his own chapters.<br><br>
+          <strong>Locked language, reproduce closely:</strong><br>
+          <em>&#8220;It was said he took counsel with shadows and showed up on the fields of war with a giant white wolf beside him, and cut through [the land/the West &mdash; exact word choice still open] with terrible menace. He brought strategy, and a new way of war, to the clans &mdash; and indeed to the world.&#8221;</em><br><br>
+          <strong>The new detail (added this session):</strong> beyond the facial resemblance already established, the guide mentions Katawa&#8217;s birth &mdash; born under a comet, on October 13th. This is the SECOND thing that clicks for Nicole in this scene, layered on the facial resemblance: not just &#8220;this dead warrior&#8217;s face looks like my nephew,&#8221; but &#8220;this dead warrior was born on the exact date my nephew was born, under the exact phenomenon that has been recurring throughout everything she&#8217;s been quietly piecing together.&#8221; The scene should show this clicking happen in real time, in front of strangers, while Nicole holds her reaction in check.<br><br>
+          <strong>What she does not know:</strong> anything about Orbus, the bloodline, or why any of this matters. She believes she is delivering quirky, evocative tour-guide folklore. She has no idea she has just handed a stranger on her tour two independent, devastating confirmations in one breath.
+        </div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Telling Four &mdash; The Elder (the Eldest Speaker), at the bonfire, to the camp generally</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">
+          Carter is among the listeners, not singled out. <strong>THE DENSEST AND MOST CONCENTRATED TELLING.</strong> Per standing instruction elsewhere in this project, build as a McCarthy/judge-style monologue device (Craft Rule 27) &mdash; sweeping, certain, delivered with broad gestures, looking to each person around the fire, NOT a tidy lecture. The density should feel like myth accumulating, not information being delivered.<br><br>
+          <strong>Full list of what he reveals in this telling:</strong>
+          <ul>
+            <li>The Great Bear as part of the father, walking the eternal woods &mdash; establishing the bear&#8217;s mythological status in-world even though (per correction) the bear is in fact a real surviving Ice Age species, not a supernatural manifestation; the People believe it sacred and tied to the father, which is the People&#8217;s own incomplete/mythologized understanding of a real, rare, surviving animal.</li>
+            <li>A small piece of Orbus mythology &mdash; the shadows, the Night People (the People of the Dark / Night Clan) &mdash; woven in lightly, not as full exposition.</li>
+            <li>The clans generally, and clan mythology &mdash; the broader cosmology and identity of each clan; exact content TBD pending further clan-building still in progress.</li>
+            <li>The greatest heroes of the trials &mdash; likely where earlier comparative-mythology material (Fenrir, Ammit, the Mesoamerican hungry-god fragment, &#8220;all of them were him&#8221;) lives, alongside in-world heroic legend.</li>
+            <li>The belief that white blood is inferior, and the great war to come, and the great wars that were &mdash; the racial-superiority ideology already established as a structural element of this world, plus historical/prophetic framing of past and future conflict.</li>
+          </ul>
+          <strong>What he does not know:</strong> he believes everything he says is settled ancestral truth. He has no idea any of it is happening in real time, in his own camp, to a child sitting in his own firelight.
+        </div></div>
+
+    </div>
+  </div>
+
+  <div class="arc-questions" style="margin-top:0">
+    <div class="arc-q-title">Open Questions &mdash; Mythology &amp; Tellings</div>
+    <div class="arc-q-item"><span class="arc-q-num">1</span><span>Confirm the Keeper&#8217;s exact recipient (assumed Anthony, not yet locked).</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">2</span><span>Confirm how much the Keeper&#8217;s section needs trimming &mdash; noted as having &#8220;gone too far&#8221; in earlier drafts, but the exact content to cut isn&#8217;t specified.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">3</span><span>Confirm exact wording for &#8220;cut through [the land/America]&#8221; in Telling Three.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">4</span><span>Build out the clan-mythology content referenced in Telling Four once the broader clan-building work (Map &amp; Landscape, Character Arcs) is further along.</span></div>
+  </div>
+</div><!-- /p-myth -->
 
 <div id="p-mistakes" class="panel tool-panel">
   <div>
