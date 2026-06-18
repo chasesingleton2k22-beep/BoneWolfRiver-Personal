@@ -38,9 +38,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;
   border-right:1px solid rgba(201,168,76,.25);white-space:nowrap;text-transform:uppercase}
 .brand .crown{font-size:18px;animation:pulse 3s ease-in-out infinite;cursor:pointer;user-select:none}
 @keyframes pulse{0%,100%{opacity:.65;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-.tabs{display:flex;flex:1}
-.tab{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
-  font-family:var(--font-h);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+.tabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:thin}
+.tabs::-webkit-scrollbar{height:3px}
+.tabs::-webkit-scrollbar-thumb{background:var(--gold-dim)}
+.tab{flex:0 0 auto;min-width:88px;padding:0 10px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
+  font-family:var(--font-h);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;
   color:var(--cream-dim);cursor:pointer;border:none;background:none;
   border-bottom:2px solid transparent;transition:all .18s}
 .tab:hover{color:var(--gold);background:rgba(201,168,76,.04)}
@@ -387,19 +389,10 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
 .tool-h{font-family:var(--font-h);font-size:20px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
 .tool-d{font-size:14.5px;color:var(--cream-dim);font-style:italic;line-height:1.6}
 /* ── MAP & LANDSCAPE TAB ──────────────────────────────────────────────────── */
-.map-hero{position:relative;width:100%;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,.3);box-shadow:0 12px 48px rgba(0,0,0,.6);cursor:pointer;margin-bottom:4px}
-.map-hero img{width:100%;height:auto;display:block;max-height:80vh;object-fit:cover;transition:transform .5s ease}
+.map-hero{position:relative;width:100%;aspect-ratio:1497/2000;max-height:80vh;flex-shrink:0;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,.3);box-shadow:0 12px 48px rgba(0,0,0,.6);cursor:pointer;margin-bottom:4px}
+.map-hero img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease}
 .map-hero:hover img{transform:scale(1.015)}
-.map-label{position:absolute;display:flex;align-items:center;gap:7px;font-family:var(--font-h);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-shadow:0 0 10px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,1);pointer-events:none;white-space:nowrap}
-.map-label em{font-family:var(--font-b);font-style:italic;text-transform:none;letter-spacing:0;color:var(--cream);font-size:11.5px;opacity:.85}
-.map-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px 2px rgba(201,168,76,.8),0 0 0 2px rgba(0,0,0,.6);flex-shrink:0}
 .map-hero-caption{position:absolute;bottom:0;left:0;right:0;padding:10px 16px;background:linear-gradient(transparent,rgba(6,14,25,.92));font-family:var(--font-h);font-size:9px;letter-spacing:.12em;color:var(--gold-dim);text-transform:uppercase;text-align:center}
-.map-prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.map-prompt-card{background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.18);border-radius:1px;padding:14px;cursor:pointer;transition:border-color .15s,background .15s}
-.map-prompt-card:hover{border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.05)}
-.map-prompt-title{font-family:var(--font-h);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.map-prompt-copy{font-size:8px;letter-spacing:.1em;color:var(--gold-dim);opacity:.6;text-transform:uppercase}
-.map-prompt-text{font-size:12.5px;line-height:1.6;color:var(--cream-dim)}
 /* ── CHARACTER ARCS TAB ───────────────────────────────────────────────────── */
 .arcs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:8px}
 .arc-card{background:rgba(11,24,41,.7);border:1px solid rgba(201,168,76,.22);border-radius:2px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,.45)}
@@ -2911,14 +2904,7 @@ body.wide-mode #p-read::after{left:0}
 
   <div class="map-hero" onclick="arcFullscreen(this)">
     <img src="./fullmap.jpg" alt="The Bone Wolf River — Full Map">
-    <div class="map-label" style="top:6%;left:6%"><span class="map-dot"></span>The Black Forest <em>(Night Clan)</em></div>
-    <div class="map-label" style="top:22%;left:16%"><span class="map-dot"></span>The Eternal Forest <em>(the Wolves)</em></div>
-    <div class="map-label" style="top:36%;left:44%"><span class="map-dot"></span>The Prayer Spot <em>(the Source)</em></div>
-    <div class="map-label" style="top:48%;left:62%"><span class="map-dot"></span>The People of the Horse</div>
-    <div class="map-label" style="top:60%;left:50%"><span class="map-dot"></span>The Wind Runners</div>
-    <div class="map-label" style="top:72%;left:46%"><span class="map-dot"></span>The Blade Dancers</div>
-    <div class="map-label" style="top:85%;left:30%"><span class="map-dot"></span>The Man Eaters</div>
-    <div class="map-hero-caption">Tap to view full size &middot; clan positions approximate, pending final placement (see Open Questions)</div>
+    <div class="map-hero-caption">Tap to view full size &middot; the Bloodlands camps shown are the four plains clans (Horse, Wind Runners, Blade Dancers, Man Eaters) &mdash; exact order along the river still open, see Open Questions</div>
   </div>
 
   <div class="craft-group">
@@ -2979,6 +2965,8 @@ body.wide-mode #p-read::after{left:0}
     <div class="arc-phases">
       <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region One &mdash; The Mountain Source (Big Bend high desert)</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">The Wolves, the Prayer Spot, the Eternal Forest&#8217;s upper edge. Volcanic mountains the color of ash, rust, and old bone. Pale stone, canyons fifteen hundred feet deep, the clear cold river a green ribbon through parched rock. Lechuguilla and dagger-leaved agave on the slopes; true pine/oak/madrone forest in the cool heights.<br><br>
+          <em>The mountains stood up out of the desert floor like something not yet finished, the rock the color of dried blood and old ash, and turkey vultures rode the thermals above the canyons all the day long on wings that never beat, black shapes tracing slow circles over something already decided. At dusk the great horned owls came on without sound, and a man might stand in the dark and not know one had passed within a hand&#8217;s breadth of his skull until he heard, far off, the small thing it had taken. Ravens kept to the rimrock and spoke to one another in a tongue that sounded like men arguing over the dead. Mountain lions moved through the high country, rarely seen and never forgotten by those who saw them; javelina rooted in the lechuguilla at first light, and the black-tailed rattlesnake lay coiled in the cool of the rock through the heat of the day, patient as the stone itself.</em><br><br>
+          <strong>Creatures:</strong> golden eagle, common raven, great horned owl, turkey vulture, canyon wren (its falling song like something giving up), mountain lion, black bear, javelina, gray fox, black-tailed rattlesnake.<br><br>
           <strong>Jan&ndash;Feb:</strong> Big Bend bluebonnet (tallest of all bluebonnets) begins early, sometimes January; by February whole hillsides go blue &mdash; &#8220;blue spilled from the sky.&#8221; Bicolor mustard carpets the desert floor, sweet-scented, first true sign of spring.<br>
           <strong>Feb&ndash;Mar:</strong> Ocotillo throws flaming scarlet tips up to twenty feet &mdash; &#8220;candles from a candelabra.&#8221; Texas mountain laurel blooms purple, smelling of grape, March into May.<br>
           <strong>Mar&ndash;Jun:</strong> Ocotillo continues, feeding migrating hummingbirds. Orange Mexican poppies, red firewheels, purple wooly locoweed; purple verbena and pink globe mallow line the arroyos; lemon-yellow desert marigold in the dry washes.<br>
@@ -2987,12 +2975,16 @@ body.wide-mode #p-read::after{left:0}
 
       <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Two &mdash; The Descending Canyons &amp; River Bends</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Where the river leaves the mountains. Canyon walls rising sheer, water green and fast in the narrows; gravel bars and reed beds where it opens. Cottonwoods and willows crowd the banks &mdash; first real riverside trees.<br><br>
+          <em>Belted kingfishers worked the green water in the narrows, falling on minnows like something flung down from above, and great blue herons stood the gravel bars so still they might have been carved there, waiting on the river the way a debt waits on a man. Beaver still cut sign in the willow in those years, and otter ran the deeper pools before either was trapped down to memory and a story told at fires. Cliff swallows built their mud cells under the canyon overhangs in their hundreds, and at evening came out all together in a black weave against the sky, as if the canyon itself had exhaled them.</em><br><br>
+          <strong>Creatures:</strong> belted kingfisher, great blue heron, cliff swallow, golden eagle overhead, beaver, river otter, bobcat.<br><br>
           <strong>Spring:</strong> Cottonwood and willow leafing bright green. Desert willow blooms pink and lavender, May into autumn. February especially &mdash; canyons can turn golden with tens of thousands of blooms.<br>
           <strong>Autumn:</strong> Cottonwoods turn gold &mdash; the one reliable blaze of fall color in this country.<br><br>
           <strong>Writing note:</strong> travel country, connective tissue between source and plains. Gold cottonwoods on green water is the autumn image; bright new leaf and pink desert willow is the spring one.</div></div>
 
       <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Three &mdash; The Plains (open river country)</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">The People of the Horse, the Wind Runners, the Gathering Ground. Wide grassland to the horizon, the river a line of trees crossing it. The bloodlands, the killing plains &mdash; grama and buffalo grass silvering in the wind, big sky, a column of riders seen long before heard.<br><br>
+          <em>The grass ran to the edge of the world in every direction and the wind never stopped moving through it, and far off a man could mark the passing of riders by the dust before he heard the horses, and hear the horses before he saw a single face among them. Red-tailed hawks hung over the grass on wings that barely moved, marking what stirred below with an attention that had no mercy in it and no malice either, only the patience of something that has never once gone hungry for long. Turkey vultures came from nowhere within the hour of any large death and circled until the question of what had been found there was answered to their satisfaction. At first light the prairie chickens boomed in the grass, a sound like a far-off drum, like the land&#8217;s own pulse, and by midmorning it was gone as if it had never been. Burrowing owls watched from the mouths of the prairie-dog towns with eyes that did not blink, and nighthawks at dusk fell out of the sky in long diving rushes and pulled up with a sound like a bowstring loosed. Bison moved in herds that took the better part of a day to pass a fixed point, and the wolves that ran at a careful distance from them were grey and patient as the grass itself.</em><br><br>
+          <strong>Creatures:</strong> red-tailed hawk, ferruginous hawk, turkey vulture, prairie chicken (the dawn boom), burrowing owl, common nighthawk, scissor-tailed flycatcher, bison, pronghorn, gray wolf, coyote.<br><br>
           <strong>Mar&ndash;Apr:</strong> Plains bluebonnets and Indian paintbrush peak &mdash; blue and scarlet running together, &#8220;fields of indigo.&#8221; Indian blanket/firewheel follows.<br>
           <strong>Late spring:</strong> Antelope-horns milkweed draws migrating monarchs north &mdash; orange over blue and red. Black-eyed Susans, coreopsis.<br>
           <strong>Summer:</strong> Grass goes tall and silver-green, then gold. Heat shimmer. Sunflowers at the field edges.<br>
@@ -3001,48 +2993,20 @@ body.wide-mode #p-read::after{left:0}
 
       <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Four &mdash; The Ugly Country (salt and badlands)</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">A hard, blighted swath the river passes through &mdash; cracked salt flats white and blinding, dry lake beds, alkali ground where almost nothing grows. Creosote scrub and tar bush. Heat enough in the stones to cook flesh; lizards keep to the shade. Bone-white salt, black volcanic rubble, a silence so complete a man can hear his own blood moving.<br><br>
+          <em>Nothing sang in that country and nothing answered if it had. No bird crossed the salt by day, as if even the carrion-eaters knew there was nothing here worth the waiting for. Only the heat moved, and the heat moved everything, the horizon swimming until a tree or a rider might be mistaken for the other and both might be neither. At night the only sound was a man&#8217;s own blood in his ears, and if a raven crossed over, high up and silent, making for somewhere with a reason to be, that itself was an event a man would remember and wonder at later, the way he might wonder at a single word spoken aloud in an empty church. What lived there lived beneath the surface of it or inside the rock itself &mdash; scorpion, horned lizard, the rattlesnake coiled in what little shade the creosote gave &mdash; and showed itself to no one who did not go looking with his hands.</em><br><br>
+          <strong>Creatures:</strong> scorpion, Texas horned lizard, western diamondback rattlesnake, the occasional raven passing high overhead &mdash; otherwise, by design, almost nothing. The absence is the point.<br><br>
           <strong>Even here:</strong> after rare rain, creosote releases the smell people call the smell of the desert itself; even salt flats can throw a brief shocking bloom &mdash; but mostly this is country that takes and gives nothing back.<br><br>
           <strong>Writing note:</strong> the place for the hardest scenes &mdash; a crossing that costs something, a death, a stretch where Orbus feels close. When the moral temperature of a scene is at its worst, set it here.</div></div>
 
       <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Region Five &mdash; The Deep Forest Lowlands (Piney Woods register)</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Far down the river, and also in the old forests at the fringes of the world (the Eternal and Black Forests share this character). Towering pines, bottomland hardwoods, thick humid air, Spanish moss, bald cypress out of black-water swamp. Slow water under moss-draped trees, leaf litter, muddy bottoms. The most biodiverse country in the book&#8217;s world &mdash; and the oldest-feeling.<br><br>
+          <em>Deep in that timber the barred owls called to each other across the dark in a voice that lonely men have mistaken for words, and whip-poor-wills set up their endless chanting at dusk until a man almost ceased to hear it at all, and only noticed the silence after, when it stopped all at once for no reason he could name. Pileated woodpeckers worked the dead pines with a hammering that carried far through the wet air, a sound like something knocking to be let out rather than in. Alligators lay in the black water of the sloughs like shapes the water itself had decided to keep. Red wolves and panthers were already going scarce in this country even then, seen mostly as a print left in the mud or a call answered by nothing, more rumor than animal &mdash; the way the Black Forest itself was more rumor than place to the People who lived in sight of it.</em><br><br>
+          <strong>Creatures:</strong> barred owl, whip-poor-will, pileated woodpecker, American alligator, red wolf (already scarce), panther/cougar, water moccasin.<br><br>
           <strong>Mar&ndash;Apr:</strong> Flowering dogwood bursts white and rosy-pink beneath the pines &mdash; one of the first signs of spring. Eastern redbud throws pink-purple the same weeks.<br>
           <strong>Spring&ndash;summer:</strong> Magnolia in the streamside stands. Ferns and sphagnum moss in the bogs. Orchids, pitcher plants, sundews in the wettest ground.<br>
           <strong>Autumn:</strong> American beautyberry hangs heavy clusters of brilliant purple fruit. Sweetgum turning red and gold.<br><br>
           <strong>Writing note:</strong> the Eternal Forest and Black Forest both draw on this deep-timber character even sitting high near the mountains &mdash; ancient pockets of it, fed by the young river and something else. White dogwood in green shadow is the Eternal Forest in spring. The Black Forest is this same timber gone wrong &mdash; darker, mossier, blacker water, deeper silence, smoke rising somewhere in the trees.</div></div>
     </div>
-  </div>
-
-  <div class="craft-group">
-    <div class="arc-q-title">Midjourney Prompts</div>
-    <div class="arc-char-desc" style="margin-bottom:14px">Style anchor matches the existing app imagery: dark, warm firelight, chiaroscuro, painterly, cinematic, grounded &mdash; the register of Blood Meridian and The Revenant, never fantasy-game-bright. Click any prompt to copy it.</div>
-    <div class="map-prompt-grid">
-      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="A wide clear cold river opening out of pale volcanic mountain rock the color of ash and rust, hillsides blanketed in tall blue bluebonnets, scarlet ocotillo blooms on tall whip-like branches, clear green water over stone, dawn light, sacred and still, painterly, cinematic, dark warm tones, Blood Meridian register, no people">
-        <div class="map-prompt-title">The Prayer Spot <span class="map-prompt-copy">Copy</span></div>
-        <div class="map-prompt-text">A wide clear cold river opening out of pale volcanic mountain rock the color of ash and rust, hillsides blanketed in tall blue bluebonnets, scarlet ocotillo blooms on tall whip-like branches, clear green water over stone, dawn light, sacred and still, painterly, cinematic, dark warm tones, Blood Meridian register, no people</div>
-      </div>
-      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Ancient towering forest of immense old trees at the foot of desert mountains, a clear young river running through green shadow, white flowering dogwood glowing in the understory, shafts of pale light, moss, deep timeless stillness, painterly, chiaroscuro, cinematic, dark and reverent">
-        <div class="map-prompt-title">The Eternal Forest <span class="map-prompt-copy">Copy</span></div>
-        <div class="map-prompt-text">Ancient towering forest of immense old trees at the foot of desert mountains, a clear young river running through green shadow, white flowering dogwood glowing in the understory, shafts of pale light, moss, deep timeless stillness, painterly, chiaroscuro, cinematic, dark and reverent</div>
-      </div>
-      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="A dark ancient forest of black timber and heavy Spanish moss, black still water, faint distant firelight and thin smoke rising between the trees at night, oppressive and wrong, cold blue moonlight through the canopy, painterly horror register, chiaroscuro, ominous, no clear figures">
-        <div class="map-prompt-title">The Black Forest <span class="map-prompt-copy">Copy</span></div>
-        <div class="map-prompt-text">A dark ancient forest of black timber and heavy Spanish moss, black still water, faint distant firelight and thin smoke rising between the trees at night, oppressive and wrong, cold blue moonlight through the canopy, painterly horror register, chiaroscuro, ominous, no clear figures</div>
-      </div>
-      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Endless rolling grassland under an enormous sky, a line of trees marking a river crossing the distance, fields of blue bluebonnets and scarlet Indian paintbrush in spring, a faint column of riders far off on the horizon trailing dust, golden light, painterly, cinematic, vast and lonely, Blood Meridian register">
-        <div class="map-prompt-title">The Plains / Bloodlands <span class="map-prompt-copy">Copy</span></div>
-        <div class="map-prompt-text">Endless rolling grassland under an enormous sky, a line of trees marking a river crossing the distance, fields of blue bluebonnets and scarlet Indian paintbrush in spring, a faint column of riders far off on the horizon trailing dust, golden light, painterly, cinematic, vast and lonely, Blood Meridian register</div>
-      </div>
-      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Blinding white cracked salt flat under a hard pale sky, black volcanic rubble, twisted creosote scrub, heat shimmer on the distance, bone-dry and merciless, a single set of tracks crossing it, painterly, desolate, cinematic, high contrast, no relief">
-        <div class="map-prompt-title">The Salt / Ugly Country <span class="map-prompt-copy">Copy</span></div>
-        <div class="map-prompt-text">Blinding white cracked salt flat under a hard pale sky, black volcanic rubble, twisted creosote scrub, heat shimmer on the distance, bone-dry and merciless, a single set of tracks crossing it, painterly, desolate, cinematic, high contrast, no relief</div>
-      </div>
-      <div class="map-prompt-card" onclick="copyMapPrompt(this)" data-prompt="Antique hand-drawn map on aged parchment, a single great river born high in volcanic desert mountains and winding down through canyons, across vast grassland plains, through a blighted white salt flat, and into deep dark pine forest before trailing off into uncharted blank parchment at the edge; ancient forest marked near the mountain source, a darker forbidding forest beyond it; small clan settlements marked along the river's length; muted sepia and indigo ink, weathered edges, compass rose, mysterious and old, cartographic, no text labels, cinematic lighting">
-        <div class="map-prompt-title">The Full Map <span class="map-prompt-copy">Copy</span></div>
-        <div class="map-prompt-text">Antique hand-drawn map on aged parchment, a single great river born high in volcanic desert mountains and winding down through canyons, across vast grassland plains, through a blighted white salt flat, and into deep dark pine forest before trailing off into uncharted blank parchment at the edge; ancient forest marked near the mountain source, a darker forbidding forest beyond it; small clan settlements marked along the river's length; muted sepia and indigo ink, weathered edges, compass rose, mysterious and old, cartographic, no text labels, cinematic lighting</div>
-      </div>
-    </div>
-    <div id="map-prompt-copied" style="display:none;margin-top:10px;font-family:var(--font-h);font-size:8px;letter-spacing:.12em;color:#5dba8a;text-transform:uppercase">&#10003; Copied to clipboard</div>
   </div>
 
   <div class="craft-group">
@@ -9892,33 +9856,6 @@ function arcToggle(btn) {
   var isOpen = btn.classList.contains('open');
   btn.classList.toggle('open', !isOpen);
   body.classList.toggle('open', !isOpen);
-}
-
-function copyMapPrompt(card) {
-  var text = card.getAttribute('data-prompt');
-  var done = function() {
-    var note = document.getElementById('map-prompt-copied');
-    if (note) {
-      note.style.display = 'block';
-      clearTimeout(card._copyTimer);
-      card._copyTimer = setTimeout(function() { note.style.display = 'none'; }, 1800);
-    }
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done).catch(function() {
-      var ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); } catch(e) {}
-      document.body.removeChild(ta);
-      done();
-    });
-  } else {
-    var ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); } catch(e) {}
-    document.body.removeChild(ta);
-    done();
-  }
 }
 
 function craftFilter(q) {
