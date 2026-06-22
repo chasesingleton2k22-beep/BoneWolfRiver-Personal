@@ -419,6 +419,11 @@ body.author-mode .sb-item:hover .sb-first-btn{display:inline-block}
 .arc-phase-label{font-family:var(--font-h);font-size:9px;letter-spacing:.18em;
   text-transform:uppercase;color:var(--gold-dim);min-width:90px}
 .arc-phase-title{font-size:13px;flex:1}
+.craft-era-badge{font-family:var(--font-h);font-size:7px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:8px;margin-left:8px;flex-shrink:0;white-space:nowrap}
+.craft-era-badge.era-all{background:rgba(201,168,76,.15);color:var(--gold-dim)}
+.craft-era-badge.era-hist{background:rgba(122,184,122,.15);color:#7ab87a}
+.craft-era-badge.era-frontier{background:rgba(201,140,76,.18);color:#d4a05a}
+.craft-era-badge.era-modern{background:rgba(106,160,201,.18);color:#7aa8d8}
 .arc-phase-arrow{font-size:9px;color:var(--gold-dim);transition:transform .2s;margin-left:auto}
 .arc-phase-btn.open .arc-phase-arrow{transform:rotate(90deg);color:var(--gold)}
 .arc-phase-body{display:none;padding:0 20px 16px;font-size:13.5px;color:var(--cream-dim);line-height:1.75}
@@ -1606,7 +1611,7 @@ body.wide-mode #p-read::after{left:0}
       <tr><td>Marie</td><td>852 AD</td><td>Elder, keeper of the secret</td><td>Turned away from the gift in her youth. Waited for &#8220;there she is.&#8221;</td></tr>
       <tr><td>Carter Walks-With-Fire</td><td>1846</td><td>Historical vessel</td><td>Born Oct 13, 1846. United Blue Wolf nation. Orbus in both photos, 165 years apart.</td></tr>
       <tr><td>Kata / Carter (1854)</td><td>1854</td><td>Young Carter (same soul arc)</td><td>&#8220;The white man&#8217;s orphan.&#8221; Half Wolf. Raised by Ten Bears. Crown in blood.</td></tr>
-      <tr><td>Roxy / Rochaki</td><td>1854</td><td>Carter&#8217;s mother</td><td>Blue Wolf People. Died taking arrow for Carter. &#8220;Burn bright, my fire.&#8221;</td></tr>
+      <tr><td>Roxy / Rochaki (&#8220;Rock In Her Fist&#8221;)</td><td>1854</td><td>Carter&#8217;s mother</td><td>Blue Wolf People. Roxy to Knox and the reader; Rochaki &mdash; Rock In Her Fist &mdash; to the Indians who knew her first. Died taking arrow for Carter. &#8220;Burn bright, my fire.&#8221;</td></tr>
       <tr><td>Ten Bears</td><td>1854+</td><td>Blue Wolf chief, adoptive elder</td><td>13 braids. Patience = survival. Will die at Red Wedding event.</td></tr>
       <tr><td>Wind At His Back</td><td>1854+</td><td>Blood On His Claws&#8217; son &#8594; Carter&#8217;s first sworn wolf</td><td>Friend from Trial One, well before Ten Bears&#8217; death &mdash; no rival period. Lacks his father&#8217;s killer instinct. Brother to Stone In His Heart.</td></tr>
       <tr><td>Stone In His Heart</td><td>1855+</td><td>Blood On His Claws&#8217; son &mdash; antagonist</td><td>Nineteen, twelve braids, eleven kills. Never let an opponent yield until Carter. Rumored, on his father&#8217;s order, one of Ten Bears&#8217; two killers.</td></tr>
@@ -2120,7 +2125,7 @@ body.wide-mode #p-read::after{left:0}
                 <span class="arc-phase-arrow">&#9658;</span>
               </button>
               <div class="arc-phase-body">
-                With Ten Bears dead and Blood On His Claws in power, Carter is driven into exile. The Wolves are built from nothing &mdash; Wind At His Back, already Carter&#8217;s close friend since Trial One, swears the oath that opens this phase and becomes his first follower. The built-in rift: Carter&#8217;s real goal is killing Blood On His Claws &mdash; who is Wind&#8217;s own blood father.<br><br>
+                With Ten Bears dead and Blood On His Claws in power, Carter is driven into exile. Not a new clan from nothing &mdash; he rebuilds the Bear Clan, the 13th clan destroyed at the dawn of history by Orbus himself, the same People of the Father Bear Ten Bears claims distant descendancy from. Wind At His Back, already Carter&#8217;s close friend since Trial One, swears the oath that opens this phase and becomes his first follower. The built-in rift: Carter&#8217;s real goal is killing Blood On His Claws &mdash; who is Wind&#8217;s own blood father.<br><br>
                 A Genghis-style rise follows &mdash; Carter building power from outcast to conqueror. Knox the Ranger&#8217;s thread interleaves through this stretch, still hunting an enemy he cannot name.<br><br>
                 <strong>Open:</strong> Killing Blood On His Claws is Carter&#8217;s unresolved goal driving this back half of the arc &mdash; not something settled in Ten Bears&#8217; lifetime.
               </div>
@@ -2492,9 +2497,9 @@ body.wide-mode #p-read::after{left:0}
               <img src="./roxy.jpg" alt="Roxy">
             </div>
             <div class="arc-card-title">
-              <div class="arc-char-name">Roxy</div>
+              <div class="arc-char-name">Roxy <em style="font-size:13px;opacity:.7">&mdash; Rochaki / Rock In Her Fist</em></div>
               <div class="arc-char-years">Comanche mother &mdash; died 1854</div>
-              <div class="arc-char-desc">Carter&rsquo;s mother. Knox&rsquo;s wife. The woman whose death sets the entire arc in motion. Everything that follows &mdash; every war, every wound, every choice Carter makes &mdash; begins with the moment she hid her son in a cabinet and chose not to run.</div>
+              <div class="arc-char-desc">Carter&rsquo;s mother. Knox&rsquo;s wife. <strong>Roxy</strong> is the name Knox uses, and the name the reader knows her by. <strong>Rochaki</strong> &mdash; &#8220;Rock In Her Fist&#8221; in English &mdash; is her real, clan-given name, used only by the Indians who knew her before Knox. The woman whose death sets the entire arc in motion. Everything that follows &mdash; every war, every wound, every choice Carter makes &mdash; begins with the moment she hid her son in a cabinet and chose not to run.</div>
             </div>
           </div>
           <div class="arc-phases">
@@ -2630,7 +2635,7 @@ body.wide-mode #p-read::after{left:0}
       <!-- The Clans -->
       <div style="margin-top:24px;background:rgba(11,24,41,.7);border:1px solid rgba(201,168,76,.22);border-radius:2px;padding:20px">
         <div class="arc-q-title">The Clans &mdash; The People of the Bone Wolf River</div>
-        <div class="arc-char-desc" style="margin-bottom:16px">Not a formal nation name &mdash; a geographic/ancestral identity. The river runs from Texas through Oklahoma and further south, giving life to all the clans living along it. Beyond the six named clans below, other uncounted clans are said to live further out in the forest, never fully mapped even by the People of the Bone Wolf River themselves.</div>
+        <div class="arc-char-desc" style="margin-bottom:16px">Not a formal nation name &mdash; a geographic/ancestral identity. The river runs from Texas through Oklahoma and further south, giving life to all the clans living along it. <strong>Thirteen clans total:</strong> twelve standing Bone River Clans, plus a 13th &mdash; the Bear Clan &mdash; destroyed at the dawn of history and later rebuilt by Carter himself. Six of the twelve are named below; the rest are open. Beyond the thirteen, other uncounted clans are said to live further out in the forest, never fully mapped even by the People of the Bone Wolf River themselves.</div>
         <div class="arc-phases">
           <div class="arc-phase">
             <button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">1. The Wolves</span><span class="arc-phase-arrow">&#9658;</span></button>
@@ -2657,9 +2662,17 @@ body.wide-mode #p-read::after{left:0}
             <div class="arc-phase-body">The oldest clan, said to trace its roots to before the comet impact &mdash; &#8220;the great destruction&#8221; &mdash; itself. Only comes out at night. Worships a &#8220;smoke god from beyond the stars.&#8221; Rumored to sacrifice children. Rarely seen; only sometimes appears at gatherings.<br><br><strong>OPEN QUESTION, explicitly unresolved:</strong> is this smoke god secretly Orbus himself, worshipped under a different name by people who don&#8217;t fully understand what they&#8217;re worshipping &mdash; or one of the other twelve original Oort Cloud entities, distinct from Orbus? Both options stand.</div>
           </div>
           <div class="arc-phase">
+            <button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">13th &mdash; The Bear Clan / People of the Father Bear (destroyed, later rebuilt)</span><span class="arc-phase-arrow">&#9658;</span></button>
+            <div class="arc-phase-body">So great in number as to shame the stars, so talented as to challenge the gods themselves &mdash; the People of the Father Bear were destroyed at the dawn of history by the Burning One (Orbus), their light too bright for him to leave alone. Ten Bears claims distant descendancy from this clan. The mythical white Great Bear that guards the Eternal Forest to this day is bound up in their memory. <strong>This is the clan Carter rebuilds after Ten Bears&#8217; murder</strong> &mdash; his Outcast &amp; Conquest years aren&#8217;t just &#8220;the Wolves reborn,&#8221; they&#8217;re the revival of an annihilated people.</div>
+          </div>
+          <div class="arc-phase">
+            <button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Remaining Six Clans &mdash; OPEN</span><span class="arc-phase-arrow">&#9658;</span></button>
+            <div class="arc-phase-body">Six of the twelve standing Bone River Clans are not yet named or built. Do not invent them &mdash; flagged open until Chase locks them.</div>
+          </div>
+          <div class="arc-phase">
             <button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Gathering Structure &amp; the Elder</span><span class="arc-phase-arrow">&#9658;</span></button>
             <div class="arc-phase-body">Clans convene periodically (annual, seasonal, or event-triggered &mdash; not finalized) for trials, ceremonies, and major decisions. The Trial sequence in Carter&#8217;s arc takes place at one such gathering, witnessed by warriors and elders from multiple clans &mdash; not just his home clan &mdash; meaning word of what happened travels back to clans not present.<br><br>
-              <strong>The Elder / Judge-Device figure</strong> (cross-reference Craft Rule 27): speaks at nightly bonfires, braiding cosmic mythology (the comet, &#8220;the darkness that spread upon the earth after the great destruction,&#8221; &#8220;a blinding light from the stars that burnt it away&#8221;) together with the camp&#8217;s unexamined racial ideology &mdash; belief in Wolf/Comanche-pattern superiority over white blood in every physical and martial discipline. Likely the same elder who witnesses the shadow/mark event during Trial One and confronts Carter after Trial Three about the wolves. No name yet &mdash; placeholder title: <strong>the Eldest Speaker</strong>, pending a real name.</div>
+              <strong>Speaks Like The Stars</strong> (cross-reference Craft Rule 27): the supreme medicine man of the Council of Elders and Ten Bears&#8217; own mentor &mdash; Ten Bears quietly hopes to one day take his place, though he knows he could never tell a story the way the old man does. Speaks at nightly bonfires, braiding cosmic mythology (the comet, &#8220;the darkness that spread upon the earth after the great destruction,&#8221; &#8220;a blinding light from the stars that burnt it away&#8221;) together with the camp&#8217;s unexamined racial ideology &mdash; belief in Wolf/Comanche-pattern superiority over white blood in every physical and martial discipline. Performs knowingly &mdash; quick with his maple staff, a rib-cracking cough, dreamy-voiced when speaking prophecy, looking into the flames rather than at the listener. His face goes wrong (the smile that grows past itself) when Orbus is near. Likely the same elder who witnesses the shadow/mark event during Trial One and confronts Carter after Trial Three about the wolves.</div>
           </div>
         </div>
       </div>
@@ -2716,33 +2729,53 @@ body.wide-mode #p-read::after{left:0}
     <div class="tool-h">Craft Rules</div>
     <div class="tool-d">The McCarthy / Blood Meridian register &mdash; read before every chapter. Reference only; not wired into Mistake Finder yet.</div>
   </div>
-  <input type="text" id="craft-filter" class="paste" style="min-height:auto;padding:10px 14px" placeholder="Filter rules&#8230; (e.g. &#8220;violence&#8221;, &#8220;weather&#8221;, &#8220;dialogue&#8221;)" oninput="craftFilter(this.value)" autocomplete="off">
+  <div class="row" style="margin-bottom:0">
+    <input type="text" id="craft-filter" class="paste" style="min-height:auto;padding:10px 14px;flex:1" placeholder="Filter rules&#8230; (e.g. &#8220;violence&#8221;, &#8220;weather&#8221;, &#8220;dialogue&#8221;)" oninput="craftFilter(this.value)" autocomplete="off">
+    <select id="craft-era-filter" class="idea-tag-sel" onchange="craftFilter(document.getElementById('craft-filter').value)" style="flex-shrink:0">
+      <option value="">All chapters</option>
+      <option value="era-all">Universal &mdash; any chapter</option>
+      <option value="era-hist">Historical register (Frontier + 852 AD)</option>
+      <option value="era-frontier">Frontier / Texas only</option>
+      <option value="era-modern">Modern (2026) only</option>
+    </select>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Chapter Compliance Check</div>
+    <div class="arc-char-desc" style="margin-bottom:12px">Paste a chapter or passage. This is pattern-matching, not judgment &mdash; it flags hard violations (&#8220;looked at,&#8221; hedge words) and surfaces which rules are worth checking by hand based on keywords in your text. It cannot tell you if you actually followed a rule well, only where to look.</div>
+    <textarea id="craft-check-in" class="paste" placeholder="Paste a chapter or passage to check&#8230;" style="min-height:140px"></textarea>
+    <div class="row">
+      <button class="btn" onclick="checkCraftCompliance()">Check Chapter</button>
+      <button class="btn btn-dim" onclick="document.getElementById('craft-check-in').value='';document.getElementById('craft-check-results').innerHTML='';">Clear</button>
+    </div>
+    <div id="craft-check-results"></div>
+  </div>
 
   <div class="craft-group">
     <div class="arc-q-title">Register &amp; Sentence-Level Rules</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">1. The Variation Principle</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">1. The Variation Principle</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Never the same noun twice for the same thing in close proximity &mdash; vary words for people, groups, the dead, time, violence.<br><br><strong>Groups:</strong> souls, hands, riders, the company, the congregation, that gathering, the host, the assembled, the multitude, the column, the procession, the camp, the nation, the silent.<br><strong>Single person:</strong> the rider, that figure, the one, he who, this man, the stranger, the witness, that soul, the elder.<br><strong>Violence/killing:</strong> fell, went down, was taken, was undone, ceased, was ended, met his end, went still, was claimed, was finished, came apart, was unmade.<br><strong>Time passing:</strong> in that hour, by the time, before the light failed, as the dark came on, when the sun stood at its height, ere long, presently, in the after.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">2. Archaic Prepositions &amp; Constructions</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">2. Archaic Prepositions &amp; Constructions</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Use sparingly but deliberately &mdash; one or two per page, not every sentence. Overuse turns gravity into parody.<br><br>&#8220;about&#8221; for &#8220;around&#8221; &middot; &#8220;without&#8221; meaning outside of &middot; &#8220;ere&#8221; for &#8220;before&#8221; &middot; &#8220;whence&#8221; for &#8220;from where&#8221; &middot; &#8220;save&#8221; for &#8220;except&#8221; &middot; &#8220;did&#8221; + verb for emphasis (&#8220;He did not speak. He did wait.&#8221;) &middot; &#8220;that&#8221; for &#8220;so that&#8221;.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">3. Old Testament Prepositional Stacking</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">3. Old Testament Prepositional Stacking</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Stack clauses the way Old Testament genealogies stack clauses &mdash; accumulating weight through repetition of structure, not new information.<br><br><em>&#8220;And the riders came on, and the dust rose up behind them, and the horses&#8217; breath smoked in the cold, and none among them spoke.&#8221;</em><br><br>Use for arrival, gathering dread, ceremony. Never for fast action &mdash; it slows the reader on purpose.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">4. The Plain Statement After Violence</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">4. The Plain Statement After Violence</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">After any act of violence, drop into flat, unadorned statement. No metaphor, no elevated language &mdash; the contrast is the device.<br><br><em>&#8220;The knife went into him and he sat down in the dirt and that was all.&#8221;</em><br><br>Do not follow violence with more violence-description or metaphor stacking. Land the blow, go flat and short. The quiet after is louder than more noise would be.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">5. Polysyndeton / The &#8220;And&#8221; Chain</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">5. Polysyndeton / The &#8220;And&#8221; Chain</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Join clauses with &#8220;and&#8221; instead of commas or subordinating conjunctions &mdash; relentless, biblical, unstoppable.<br><br><em>&#8220;And he rose and he took up the blade and he went out into the dark and the wolf went with him and neither of them looked back.&#8221;</em><br><br>Use for: rising action, momentum toward an inevitable event, ceremony, fate closing in. Avoid for: quiet domestic scenes, anything that needs to breathe.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">6. Sense Before Sight Entering Dark Spaces</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">6. Sense Before Sight Entering Dark Spaces</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Entering darkness, fog, smoke, or any obscured space: give smell or sound BEFORE sight. Order &mdash; smell, sound, vague shape, full sight, detail. Never skip straight to visual detail.<br><br><em>&#8220;Smoke first. Then the low murmur of a camp that did not know yet that it had visitors. Then, after a moment, the shapes of the lodges resolving out of the dark.&#8221;</em></div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">7. Sound Arriving Before Its Source</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">7. Sound Arriving Before Its Source</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">A sound is heard before the thing making it is seen or understood &mdash; builds dread without exposition.<br><br><em>&#8220;A sound came from the treeline, low and sustained, and it was a long moment before any among them understood it for a man&#8217;s voice.&#8221;</em><br><br>Use constantly for the wolf, for Orbus&#8217;s approach, for any threat.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">15. Dialogue Tag Principle</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">15. Dialogue Tag Principle</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Tags carry who spoke AND how they inhabit the words: pondered, allowed, offered, considered. Invert verb-before-name for weight &mdash; &#8220;pondered Blood On His Claws&#8221; not &#8220;Blood On His Claws pondered.&#8221; Use neutral &#8220;said&#8221; when neutral is correct; a loaded verb when the character&#8217;s relationship to their own words matters.</div></div>
     </div>
   </div>
@@ -2750,16 +2783,16 @@ body.wide-mode #p-read::after{left:0}
   <div class="craft-group">
     <div class="arc-q-title">Character &amp; Body Rules</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">10. Character Description Rule</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">10. Character Description Rule</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Every character introduced gets: (1) a PAST wound or mark on the body, described from inside it &mdash; not &#8220;he had a scar&#8221; but the texture of what it cost him; (2) a FUTURE hint woven in &mdash; &#8220;dead within the month,&#8221; &#8220;never see this face again,&#8221; &#8220;that scar would outlast the war.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">11. Body Presence Rule</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">11. Body Presence Rule</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Before finishing any scene, confirm: what is this person doing with their body right now? Where are their hands? What did they just set down? Where are their eyes? How are they sitting? Every person in a scene needs at least one physical gesture, placement, or stillness &mdash; even if they don&#8217;t speak.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">12. Word Choice Rule</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">12. Word Choice Rule</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Never &#8220;looked at&#8221; when a stronger verb exists: regarded, studied, considered, watched, fixed his eyes on, held his gaze on.<br><br><em>Not:</em> &#8220;He looked at the knife for a long moment.&#8221;<br><em>Instead:</em> &#8220;He studied the knife for a long moment.&#8221; or &#8220;He fixed his eyes on the knife and did not move.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">14. The Overwriting Check (Chase&#8217;s specific habit)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">14. The Overwriting Check (Chase&#8217;s specific habit)</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">The known tendency: hitting the moment and then adding one line too many. After any emotionally or mythically loaded line, stop &mdash; don&#8217;t explain the image, don&#8217;t reinforce the feeling a second way. Self-check: did I just say this twice in two different ways? If yes, cut the second one.</div></div>
     </div>
   </div>
@@ -2767,22 +2800,22 @@ body.wide-mode #p-read::after{left:0}
   <div class="craft-group">
     <div class="arc-q-title">Scene-Level Rules</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">8. The Sidebar Vignette Technique</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">8. The Sidebar Vignette Technique</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Periodically break from the main scene for a short, self-contained image or story that seems unrelated but deepens the world. Use 1&ndash;2 per chapter MAXIMUM. Never explain themselves, never connect overtly to the plot &mdash; their job is atmosphere and scale.<br><br>Example: a warband&#8217;s aftermath glimpsed on the trail and ridden past without comment. A burned homestead that isn&#8217;t Knox&#8217;s. A stranger at a fire who speaks once and is never named again.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">9. The Tobin Principle (Secondhand Legend)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">9. The Tobin Principle (Secondhand Legend)</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Direct scenes show what a character does; secondhand testimony makes a character into legend. McCarthy&#8217;s Tobin tells the kid about the judge around the judge&#8217;s own direct scenes &mdash; the judge is terrifying ON the page, mythic because of what Tobin says OFF it.<br><br><strong>For this book:</strong> a recurring secondary witness (old scout/tracker) who tells newer warriors what he&#8217;s seen Katawa do, 3&ndash;4 times across the Carter chapters, always at a fire, always to someone who wasn&#8217;t there. Half reverence, half warning. One defining physical detail, one defining piece of history &mdash; no full arc needed.<br><br><em>&#8220;I seen him walk out of that fire myself. Skin clean. Not a mark on him. You don&#8217;t believe me, you ask anybody who was there that night.&#8221;</em><br><br>Consider the same device for Cole Fenton&#8217;s bloodline.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">13. Weather As Tone</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">13. Weather As Tone</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Dark scenes get dark sky description. Good or neutral scenes get clean sky. Weather always mirrors the scene&#8217;s moral temperature &mdash; never describe sky neutrally when the scene has weight.<br><br><em>Dark beat:</em> &#8220;The sky over the camp had gone the color of a bruise, and no star showed through it.&#8221;<br><em>Good/neutral beat:</em> &#8220;The morning came up clean and blue and without complaint.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">16. The Threshold Engine</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">16. The Threshold Engine</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">For high-stakes turning points &mdash; death, defeat, transformation &mdash; structure in four beats:<br><br>1. <strong>Real damage first.</strong> Something actually breaks &mdash; the body, a weapon, a plan. Not symbolic, literal.<br>2. <strong>A vision or memory at the threshold.</strong> While hurt or overwhelmed, the character drifts &mdash; sees someone they love, a past moment, a voice.<br>3. <strong>A corruption or twist arriving through the most sacred thing they carry.</strong> The vision turns wrong &mdash; the loved voice says something it never would, the safe memory curdles.<br>4. <strong>Return changed.</strong> They come back, but not clean &mdash; costly or ambiguous, never a clean triumph.<br><br><strong>Worked example (already in the book):</strong> the Wolf Circle duel in Chapter Six. (1) Spotted Horse&#8217;s blow lands &mdash; real damage. (2) Kata staggers toward the circle&#8217;s edge, near death. (3) Roxy&#8217;s voice arrives &mdash; twisted by Orbus, saying &#8220;Burn bright, my fire&#8230; they all shall burn,&#8221; the most sacred voice he has, corrupted. (4) He gives way and wins &mdash; but costly: an innocent boy loses an eye, and something in Kata has been used by something else.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">17. Connective Tissue Is Never Wasted Space</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">17. Connective Tissue Is Never Wasted Space</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Every transition &mdash; a ride, a walk, a drive &mdash; is an opportunity, not dead space. Before writing any travel passage, pick ONE job for it:<br><br>&middot; <strong>Character revelation through small action</strong> &mdash; how someone packs a bag, holds the reins, tells you who they are.<br>&middot; <strong>A tension beat disguised as nothing</strong> &mdash; two people talking about the weather while something unsaid sits between them.<br>&middot; <strong>The thing two people haven&#8217;t said yet</strong> &mdash; silence doing the work dialogue would normally do.<br>&middot; <strong>Mythology delivered as sensation</strong> &mdash; the world&#8217;s history felt in passing (a burned-out homestead glimpsed, not explained) rather than info-dumped.<br><br><em>Weak (dead space):</em> &#8220;They rode for three days. The land was flat and dry.&#8221;<br><em>Working (tension beat disguised as nothing):</em> &#8220;They rode three days and spoke only of the horses. Neither one said her name. By the second night the not-saying-it had become its own kind of company.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">22. The Leaning-Present-Tense Trick</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">22. The Leaning-Present-Tense Trick</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">For a STATE of the world (terrain, ruins, settled objects) rather than a one-time action, switch to present tense even inside past-tense narration &mdash; gives a timeless, ongoing, landscape-fact quality.<br><br>&#8220;A ladder yet leans against the side of the house&#8221; (not &#8220;had been leaned&#8221;). &#8220;A fence runs along the property line&#8221; (not &#8220;ran&#8221;). &#8220;The river bends hard to the east just past the ridge.&#8221;<br><br>People act in past tense. The land simply IS, in present tense, even in a past-tense scene.</div></div>
     </div>
   </div>
@@ -2790,22 +2823,22 @@ body.wide-mode #p-read::after{left:0}
   <div class="craft-group">
     <div class="arc-q-title">Phrase Banks</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">18. The Land Taking Someone</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">18. The Land Taking Someone</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">&#8220;Lost in the woods&#8221; is never just lost &mdash; the land is an agent that takes and does not negotiate.<br><br>The land took him and asked nothing in return, for it required nothing. &middot; He went into the trees and the trees did not give him back. &middot; Swallowed up entire, and no treaty nor ransom nor prayer would call him forth again. &middot; The land closed over him the way water closes over a stone, without ceremony.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">19. Naming the Plains</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">19. Naming the Plains</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Rotate &mdash; never the same one twice in close proximity, same rule as &#8220;souls.&#8221;<br><br>the bloodlands &middot; that country of blood &middot; the killing plains &middot; the wide bloodletting country &middot; that red and ungovernable country &middot; the plains that drank what was given them &middot; the bloodground.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">20. Heat and Harsh Terrain</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">20. Heat and Harsh Terrain</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Stones lay about that would blister a man&#8217;s palm to touch them. &middot; The rock face held the day&#8217;s heat long after the sun had gone, and a hand laid upon it came away as if from a stove. &middot; Heat enough in those stones to scorch flesh, and the lizards knew it and kept to the shade. &middot; The ground itself seemed to simmer, and what grew there grew sparse and bitter for it.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">21. Placement / Embeddedness</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">21. Placement / Embeddedness</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Instead of &#8220;placed&#8221; or &#8220;housed&#8221; &mdash; words implying friction, weight, permanence: lodged, seated, set, wedged, sunk, driven, bedded, fast (archaic &mdash; &#8220;the door was fast in its frame&#8221;).<br><br>The stone was seated deep in the riverbed. &middot; The blade was wedged between two ribs. &middot; The post was sunk deep into the clay. &middot; The old bones were bedded in the silt.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">23. The Risen Moon / Personified Landscape</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">23. The Risen Moon / Personified Landscape</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Personify shadows, light, and landscape with judgment-laden words, implying origin or intention without stating anything supernatural outright.<br><br>&#8220;A full moon rose over the neighborhood, and the shadows of the spires sat stark and grim, reaching out from the darkness from which they came.&#8221; Alternate, more biblical: &#8220;Out of the dark that bore them.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">24. Silence Through Absence</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">24. Silence Through Absence</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Never just &#8220;it was quiet&#8221; &mdash; describe silence through the specific things that are NOT making noise.<br><br>The plains lay silent, and no bird nor wolf nor man gave voice to break it. &middot; Not even the wind moved through that country, as if it too had agreed to keep its peace. &middot; A silence so complete a man could hear his own blood moving (escalation device &mdash; use right before something terrible happens).</div></div>
     </div>
   </div>
@@ -2813,34 +2846,34 @@ body.wide-mode #p-read::after{left:0}
   <div class="craft-group">
     <div class="arc-q-title">Voice &amp; Structure &mdash; McCarthy / GRRM Extensions</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">25. Objective Camera &mdash; Never Name the Feeling</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">25. Objective Camera &mdash; Never Name the Feeling</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">McCarthy almost never states what a character feels. Show the gesture, the stillness, the thing the hands do &mdash; never write &#8220;she felt a wave of grief.&#8221; If the body presence rule (11) is followed correctly, naming the emotion becomes redundant and should be cut.<br><br><em>Not:</em> &#8220;He felt a cold dread settle over him.&#8221;<br><em>Instead:</em> &#8220;His hand stopped on the latch. He did not open the door.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">26. Deep Time / Geological-Biblical Scale</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">26. Deep Time / Geological-Biblical Scale</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Zoom a moment out against the age of stone, the indifference of stars, things older than men. Use sparingly, at the heaviest beats &mdash; this is a high-value tool given Orbus is literally ancient and cosmic in origin.<br><br><em>&#8220;The stars overhead did not care, had not cared in all the long turning of the world, and would not begin now.&#8221;</em></div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">27. The Discursive Monologue (Judge Device)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">27. The Discursive Monologue (Judge Device)</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Periodically let one character deliver a long, unsettling, philosophically loaded speech that reframes the book&#8217;s morality &mdash; McCarthy&#8217;s judge in <em>Blood Meridian</em>. Orbus and Blood On His Claws are the natural vessels for this in this book. Use rarely &mdash; 1&ndash;2 times across the whole manuscript, never as small talk.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">28. Anatomically Precise Violence</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">28. Anatomically Precise Violence</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Be exact about where the blade goes, what organ, what angle &mdash; not impressionistic. This is the strike itself, distinct from rule 4 (the flat statement that follows it).<br><br><em>Not:</em> &#8220;The knife appeared in his neck.&#8221;<br><em>Instead:</em> &#8220;The blade went in below the jaw and found the artery and did not need to go any further.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">29. Non-Cathartic Endings</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">29. Non-Cathartic Endings</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Resist clean emotional resolution at chapter and arc endings. No tears-and-closure unless the moment has earned ambiguity instead. The reader should often be left with weight, not relief.<br><br><em>Cathartic (avoid):</em> &#8220;He wept for his mother, and in that release he finally let her go, and walked forward lighter than he had in years.&#8221;<br><em>Non-cathartic (use instead):</em> &#8220;He did not weep. He stood over the grave a while longer than he meant to, then turned and walked back the way he&#8217;d come, and nothing in him felt any different at all.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">30. Locked POV Discipline</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">30. Locked POV Discipline</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">A chapter never knows more than its POV character knows &mdash; GRRM&#8217;s rule. With this book braiding modern Carter, historical Carter, Ten Bears, and others, no chapter should reveal information, motive, or fact that its POV character has no way of knowing yet.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">31. The Sympathetic-Then-Dark Villain</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">31. The Sympathetic-Then-Dark Villain</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Give antagonists real ability and real, understandable ambition before &mdash; or instead of &mdash; making them monstrous. Blood On His Claws already follows this (see his Character Arcs card); extract it here as a reusable rule for future antagonists.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">32. Prophecy That Misleads Through Precision</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">32. Prophecy That Misleads Through Precision</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">GRRM&#8217;s prophecies mislead by being technically true, not by being vague. Write the line so it is 100% accurate once you know the answer &mdash; but the reader (and the character) should naturally assume it means something else first.<br><br><strong>Worked example (already in the book):</strong> Orbus calls Carter &#8220;my herald, my promise.&#8221; Read at face value, this sounds like Carter is Orbus&#8217;s champion &mdash; something to fear. The technically-true reading, recontextualized later, could instead mean Carter is the herald of Orbus&#8217;s ending, the promise of his defeat. Same words, opposite meaning, both fully supported by the text.<br><br><em>How to write one:</em> decide the real, final meaning first. Then write the line so a reader assumes the obvious-but-wrong meaning, using words exact enough that you never have to retcon or contradict it later.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">33. Sudden, Unprotected Character Death</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">33. Sudden, Unprotected Character Death</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">No plot armor, no slow-motion sendoff. Named characters can die mid-scene, without warning. Relevant directly to Ten Bears&#8217; murder &mdash; resist over-narrating it into a Big Sad Moment. Let it be sudden and brutal, the grief processed after, not during.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">34. The Distant Chekhov&#8217;s Gun</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">34. The Distant Chekhov&#8217;s Gun</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Plant a detail chapters &mdash; or eras &mdash; ahead of its payoff. This book is structurally built for it: objects, melodies, and images crossing from 1854 to 2026 (see the Echo Map in Story Compass). Treat every cross-era echo as a standing structural tool, not a one-off device.</div></div>
     </div>
   </div>
@@ -2848,13 +2881,13 @@ body.wide-mode #p-read::after{left:0}
   <div class="craft-group">
     <div class="arc-q-title">Phrase Banks II &amp; Frontier Register</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">35. Phrase Bank: Blood Spilling / Life Leaving</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">35. Phrase Bank: Blood Spilling / Life Leaving</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Chase&#8217;s locked line: <em>&#8220;The blood spilled down in thick ropes, mixing with the grass and the dirt, sinking down into the darkness where his life had gone.&#8221;</em><br><br>Variants for rotation (never the same one twice in close proximity): &#8220;Blood ran from him in ropes, dark as it left the light, and the ground took it the way it takes rain.&#8221; &middot; &#8220;What life was in him went out through the wound in a slow red cord, and the earth drank it without ceremony.&#8221; &middot; &#8220;The ground beneath him went dark and stayed dark, and that darkness was the truest map of where his life had gone.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">36. The Catalog / Litany Technique</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">36. The Catalog / Litany Technique</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Let a single sentence become a list &mdash; weapons, gear, names, wounds, the dead &mdash; building scope and dread through accumulation rather than detail. Different from the Variation Principle (rule 1, which avoids repetition); this is about density, piling specifics into one sweep.<br><br><em>&#8220;They carried knives and hatchets and a shotgun with no stock and a saber gone to rust at the hilt, and rope, and a dead man&#8217;s boots that fit no one among them.&#8221;</em><br><br>Use for: war parties assembling, raid aftermath, an inventory of loss. Cap at one per chapter &mdash; heavy device, repeats poorly.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">37. GRRM Character Development Notes</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">37. GRRM Character Development Notes</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Character logic, not sentence-level craft &mdash; use when building or revising a character.<br><br>1. <strong>No villain in his own mind.</strong> Every character, Cole Fenton included, needs internal justification that makes sense from inside his own head.<br>2. <strong>Plant before payoff, quietly.</strong> A small detail dropped early without emphasis, paying off chapters later. The reader shouldn&#8217;t clock it on first pass.<br>3. <strong>One contradicting trait per major character.</strong> A trait that cuts against the archetype &mdash; the warrior gentle with children, the elder petty about something small.<br>4. <strong>Cost without warning.</strong> The hardest losses land harder with no foreshadowing dirge, no lingering goodbye scene. Roxy&#8217;s death already does this well &mdash; protect that instinct elsewhere.<br>5. <strong>Every POV character wants something the plot isn&#8217;t about.</strong> Give side characters a private want that has nothing to do with Orbus or the bloodline.</div></div>
     </div>
   </div>
@@ -2862,38 +2895,132 @@ body.wide-mode #p-read::after{left:0}
   <div class="craft-group">
     <div class="arc-q-title">Texas Frontier Phrase &amp; Word Banks</div>
     <div class="arc-phases">
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">38. Phrase Bank: Rivers / Water Moving Through Land</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">38. Phrase Bank: Rivers / Water Moving Through Land</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Chase&#8217;s locked line: <em>&#8220;The river braided into the land and shone like woven metal.&#8221;</em><br><br>Variants: &#8220;A river threaded the valley like a vein of silver run under the skin of the earth.&#8221; &middot; &#8220;The water cut through the land in a long, patient argument, and the land had lost that argument long before any man came to watch.&#8221; &middot; &#8220;Water moved through that country the way a scar moves through skin &mdash; old, settled, never quite forgotten.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">39. Word Bank: A Predatory People / Predation Violence</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">39. Word Bank: A Predatory People / Predation Violence</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Chase&#8217;s locked word: <strong>predacious</strong> &mdash; same meaning as predatory, less common, more texture. Also: rapacious, ravening, wolfish, feral, voracious, marauding, ravenous. Heavy words &mdash; reserve for moments establishing a group&#8217;s nature, not repeated description.<br><br>&#8220;They moved on the company the way wolves move on a wounded herd &mdash; patient, certain, in no hurry to be wrong.&#8221; &middot; &#8220;A predacious people, who took what they wanted and called it neither sin nor sport, only Tuesday.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">40. Archaic Word Swaps (Period Vocabulary, 1840s&ndash;1870s)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">40. Archaic Word Swaps (Period Vocabulary, 1840s&ndash;1870s)</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Vary &mdash; don&#8217;t make every &#8220;yes&#8221; an &#8220;aye.&#8221; Overuse of any one swap is its own anachronism.<br><br>yes&rarr;aye (sometimes) &middot; further/over there&rarr;yonder &middot; right now&rarr;directly &middot; maybe&rarr;it may be/happen (dialect, sparing) &middot; a lot&rarr;a great many &middot; nothing&rarr;nary a thing &middot; always&rarr;ever and always &middot; drunk&rarr;in his cups &middot; tired&rarr;wearied/spent &middot; afraid&rarr;took fright &middot; okay&rarr;it will do &middot; crazy&rarr;not right in the head.<br><br><strong>Seldom-heard words</strong> &mdash; use once, maybe twice in the WHOLE manuscript: anent, betimes, apace, of a sudden, leastways, wherefore, hither/thither. A rare word used once is a strike; used five times it&#8217;s a tic.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">41. Adjective Bank: Fire, Sun, Moon, Light, Dark</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">41. Adjective Bank: Fire, Sun, Moon, Light, Dark</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Rotate &mdash; same rule as &#8220;souls,&#8221; never the same noun-adjective pairing twice in close proximity.<br><br><strong>Fire:</strong> sullen, hungry, restless, patient, spiteful, low and watchful, indifferent, sulking.<br><strong>Sun:</strong> malevolent, indifferent, merciless, pitiless, baleful, a slow and patient violence, white and unblinking.<br><strong>Moon:</strong> Chase&#8217;s locked line &mdash; &#8220;a pale and milky giant&#8217;s eye.&#8221; Also: cold, watchful, indifferent, a blind white eye, a wound healed over in the sky.<br><strong>Light:</strong> reluctant, grudging, thin, suspicious, the color of an old bruise, unwilling.<br><strong>Dark:</strong> patient, hungry, settled, ancient, a thing with intent, unhurried.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">42. Habitual Action Marker</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">42. Habitual Action Marker</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Chase&#8217;s locked phrase: <strong>as was their practice</strong>. Variants: as he was known to do &middot; as had become his custom &middot; as was his way &middot; as he always had, and always would.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">43. Personification: Stationary Objects Wear Their Features</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">43. Personification: Stationary Objects Wear Their Features</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Houses wear windows. Mountains wear contours. Apply &#8220;wear&#8221; to anything fixed in place that carries a feature rather than simply having one.<br><br>&#8220;The mountain wore its contours the way an old man wears the lines in his face &mdash; earned, not chosen.&#8221; &middot; &#8220;The barn wore its missing door like a wound that had stopped hurting a long time ago.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">44. Emerging From the Netherworlds / Out of Darkness</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">44. Emerging From the Netherworlds / Out of Darkness</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">For anything coming out of obscured dark with otherworldly weight. Pairs with rule 6 (sense before sight).<br><br>out of the nether dark &middot; out of whatever country the dark keeps for itself &middot; out of the place beneath the world &middot; as if the dark had birthed it whole and was only now letting it go.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">45. Rumors of Light and Dark (Dawn / Dusk)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">45. Rumors of Light and Dark (Dawn / Dusk)</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Chase&#8217;s locked line: <em>&#8220;there were rumors of light arising on the horizon.&#8221;</em><br><br>Use &#8220;rumor&#8221; framing for the threshold between day and night &mdash; the light or dark hasn&#8217;t arrived yet, only word of it has. &#8220;A rumor of dark gathered in the east before the dark itself had the nerve to follow.&#8221; &middot; &#8220;Word of morning reached the camp before morning did.&#8221;</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">46. Aftermath / Mutilation Imagery (HEAVY)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">46. Aftermath / Mutilation Imagery (HEAVY)</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">One per massacre at most. The register for the worst of what the company, or Orbus&#8217;s instruments, leave behind. Pair with rule 4 (plain statement after violence) &mdash; do not stack more imagery after a line this heavy. Land it and move.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">47. Violence Becoming General (Massacre Escalation)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">47. Violence Becoming General (Massacre Escalation)</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Chase&#8217;s locked passage: <em>&#8220;The violence became general. Men, women, and children alike were slaughtered where they stood. They came through hacking at the dying and cutting the throats of those who begged for mercy.&#8221;</em><br><br>Use for the moment a raid stops being a fight and becomes extermination. &#8220;Became general&#8221; is the hinge phrase &mdash; marks the turn from combat to massacre.</div></div>
 
-      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">48. Gesture As Directive (Eyes, Brow, Chin)</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">48. Gesture As Directive (Eyes, Brow, Chin)</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">Real people redirect attention and give orders without speaking, using the actual instrument &mdash; an eyebrow, the cut of the eyes, a chin lift &mdash; as the verb of the gesture. Never write &#8220;he motioned&#8221; or &#8220;he gestured&#8221; &mdash; show the muscle and let the reader supply the rest.<br><br>Chase&#8217;s found line: <em>&#8220;He raised an eyebrow and swung his eyes toward the front of the table.&#8221;</em><br><br>More: &#8220;A flick of his eyes toward the door was all the order he gave.&#8221; &middot; &#8220;Spotted Horse&#8217;s chin came up an inch. That was all the men needed.&#8221;</div></div>
+    </div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Voice, Imagery &amp; Vocabulary Banks</div>
+    <div class="arc-phases">
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">49. Verb Before Name</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Not just dialogue tags (see rule 15) &mdash; apply to any action verb. Instead of &#8220;Blood On His Claws said with a smile,&#8221; write &#8220;Smiled Blood On His Claws.&#8221; The verb carries the action; the name arrives after. Apply to stood, turned, watched, spat, growled.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">50. The Elongate Adjective</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Use words as adjectives that grammar says they shouldn&#8217;t be: &#8220;advanced elongate before them.&#8221; One per chapter maximum &mdash; any more becomes a tic. Candidates: prone, elongate, supine, pendulous, canted.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">51. Time Rendered As Weight</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Never say it was a long time. Stack it: &#8220;Days of begging. Days of theft. Days of riding where there rode no soul save he.&#8221; Use for Katawa&#8217;s trials, Ten Bears&#8217; years, the Fenton line, the Keeper&#8217;s generations.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">52. The Destiny Hint &mdash; Narrator&#8217;s Irony</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">In narration, hint at what&#8217;s coming: &#8220;If he gave thanks to God for what had happened, he was ill-timed in his gratitude, for destiny was not done with him yet.&#8221; The narrator knows the future; the character doesn&#8217;t. Use sparingly &mdash; three or four times in the whole book. More than that becomes a tic.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">53. The Return Description Technique</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Describe a landscape once, then return a few sentences later with a changed detail &mdash; movement, light, weather, sound. First pass establishes the place; second pass makes it alive. Example: describe the lake, then later &mdash; wind ruffling it in streaks of silver. A strength to protect, never cut.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">54. The Further Dim</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Instead of dark or shadowy, push into something spatial: &#8220;The further dim of the house.&#8221; &#8220;The slow dark beyond the fire.&#8221; Darkness as depth, not just description.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">55. Shadow As Prophecy And Presence</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Shadows reach, lurk, and foreshadow: &#8220;Like tentacles to bind them to the darkness yet to come.&#8221; The shadow isn&#8217;t just where light isn&#8217;t &mdash; it&#8217;s what&#8217;s waiting. Use for Katawa&#8217;s shadow acting before he does, the wolf&#8217;s shadow appearing before the wolf, Speaks Like The Stars&#8217; shadows reaching toward the boy.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">56. Soft Light Advancing</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Light moves up surfaces with intention: &#8220;Soft light advanced up the barrels of the guns and the harness of the horses.&#8221; Light as something traveling toward you. Use at dawn, firelight, lantern glow.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">57. Lightning Shaping The Landscape</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Lightning doesn&#8217;t just flash &mdash; it shapes and reveals: &#8220;The lightning shaped out the distant mountains.&#8221; &#8220;Brief flashes sketched the valley in palest indigo.&#8221; Light as a revealing force, not mere illumination.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">58. Rings In The Water</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">When a character watches rings spread in still water, the beauty is not lost on them. Use before or after violence &mdash; the perfect geometry of rings against chaos.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">59. Meadow Pocketed With Flowers</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">For a meadow with scattered flowers: pocketed. &#8220;The meadow was pocketed with small yellow flowers.&#8221; Pocketed implies the land gathered them &mdash; it holds them.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">60. The Dust Cloud Check</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Characters traveling in open country periodically stop, turn, and scan the horizon behind them for dust clouds. Someone is following, or isn&#8217;t &mdash; the check itself is dread. Use for all Texas travel scenes, Knox&#8217;s journey east, AND Cole in 2026 checking his mirrors on long highway drives. Same instinct, two centuries apart &mdash; a locked cross-timeline echo.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">61. The Passage Of Night To Morning</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Walk through the night rather than jumping it: the fire dies, the blackened ring smokes, the night deepens and creeps, people leave one by one. Then: &#8220;as the dawn shaped the black mountains of the east, the last of them rose and went home.&#8221; Dawn shapes things out of darkness &mdash; use that verb: shaped.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">62. The Bear Testing Air</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">A bear tests the air with its nose, then returns to the far side of the river. Use for the Great Bear specifically, and for any ancient, deliberate thing pausing to read its environment before deciding. The test, the pause, then movement.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">63. Mystical People Noticing &mdash; The Physical Tell</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">When a gifted character notices something extraordinary about Carter/Katawa, show it physically rather than stating recognition. The body knows before the mind names it: an old man watching too long, eyes that don&#8217;t move on, a hand that stops mid-gesture. Seed early and let it accumulate across chapters.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">64. Killers vs. Non-Killers After Violence</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Real killers do something completely natural after killing &mdash; adjust grip, wipe the blade, look at the sky, sit and eat. The body knows this work and returns to itself without drama. Non-killers react unnaturally &mdash; shake, go too still, laugh at the wrong moment, look at their hands like they belong to someone else. One of the most powerful tools in war/frontier fiction. Never miss this distinction after a killing scene.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">65. How They Take It &mdash; Always Show The Grip</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Never say someone took or carried something without showing HOW. What did the hands do, how did they hold it. &#8220;She cupped the coins like a baby bird.&#8221; &#8220;He took the knife by the blade, not the handle.&#8221; The grip tells you who the person is &mdash; always show it.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">66. No Interruptive Hedge Words In Action/Landscape Prose</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Cut from action and landscape prose: it seemed, of course, perhaps, almost, as if &mdash; qualifiers that hedge and slow. Keep these ONLY in character interiority where doubt is the actual point of the line.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">67. The Wolf Circle Rules</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Submit &mdash; lay down and stay down, still as a whooped dog &mdash; and walk away alive but without honor, unable to look any warrior directly in the eye for a full season. Or die. Duels have a TIME LIMIT and can end in a draw. The timekeeper is a regular Wolf Person, never a slave. When time is up: one loud call, officiators step in.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">68. The Initiation Gauntlet (jumped-in, distinct from the Wolf Circle)</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Ninety seconds. Three young wolves on the initiate at once. Fall once, let back up. Fall twice, let back up. Fall a third time, no longer an option for clan entry. The three testing the initiate decide if they want him in &mdash; outsiders face three who have no built-in reason to pass them. Slaves who survive become warriors; slaves who don&#8217;t have no other use and no other life. <strong>Relationship to the Spotted Horse Wolf Circle duel (Trial One) not yet reconciled</strong> &mdash; flagged for Chase&#8217;s ruling.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">69. World Rules &mdash; Dwellings, Time, Tracking, Horses</span><span class="craft-era-badge era-frontier">FRONTIER</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body"><strong>Dwellings:</strong> tipi only &mdash; never lodge, hut, or cabin. Cone-shaped, buffalo-hide, smoke hole at top, fire pit at center, no separate rooms. The medicine tipi is larger, used for tribal meetings, breaks down and moves in under an hour.<br><br>
+          <strong>Time:</strong> sun-height only in Texas/plains chapters, never clocks or numbered hours &mdash; &#8220;two hours high,&#8221; &#8220;past its peak by the width of a hand.&#8221;<br><br>
+          <strong>Tracking:</strong> bent-sapling trail marker trees; moss on the north-facing side of trees as a natural compass (river-bottom scenes, not open plains); sun shadows and stars for direction; game trails toward water at dawn, away at dusk; prevailing winds from the southwest; Scorpius hangs low on the southern horizon in Texas summers.<br><br>
+          <strong>Horses:</strong> currency and status &mdash; two hundred horses is rich. Boys ride before they walk well. Horses are hooded before raids (and in Llano Estacado sandstorms) so they can&#8217;t see fire and can&#8217;t panic. Urging a horse: goaded. A frightened horse: it started.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">70. The Dead Are Not Named</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">The clans do not speak the names of their dead. Locked cross-timeline echo: after the Brazos raid, no one says the dead woman&#8217;s name aloud; in 2026, the presence protecting Carter in the house is never named either. Same taboo, two centuries, people who never met.</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">71. Color Vocabulary Bank</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">adobe (white) &middot; sable (black, heraldic) &middot; cinereous (ash gray, dead fire) &middot; ocherous (yellow-brown earth, dried blood in dirt) &middot; vermillion (deep red, better than &#8220;red&#8221; almost always) &middot; incarnadine (blood red with flesh undertone, heavier) &middot; tallow (pale yellowish white, candle fat, old skin) &middot; nacreous (pearl white, faint iridescence) &middot; dun (flat gray-brown, dead grass, dried hide) &middot; hoary (white-gray from age, frost, old hair) &middot; lurid (garish, unsettling light, fire that disturbs) &middot; pallid (pale, washed out, sickly).</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">72. Fire &amp; Light Vocabulary Bank</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body"><strong>Fire:</strong> malevolent (fire with intent) &middot; conflagration (a fire that became larger than itself) &middot; guttering (flame about to die &mdash; use for a victim&#8217;s fire going out) &middot; tallow light (candlelight as material, not glow).<br><br>
+          <strong>Light:</strong> sprent (scattered, sprinkled &mdash; &#8220;the sky lay sprent with stars&#8221;) &middot; planewise (flat, horizontal plane of light spreading) &middot; flushed (light moving across a surface like blood in skin) &middot; the declining sun (sun going down as an action, not a state).</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">73. Sky, Weather &amp; Geography Vocabulary Bank</span><span class="craft-era-badge era-hist">HISTORICAL</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body"><strong>Sky/weather:</strong> faultless sky (clear, clean, morally charged) &middot; dry lightning (thunder without rain) &middot; the drum of rain &middot; polar moon (cold, distant, indifferent) &middot; the drifting star (the sun in motion).<br><br>
+          <strong>Landscape:</strong> stitched (precise movement or geography worked into land &mdash; &#8220;he stitched his footfalls,&#8221; &#8220;the river was stitched into the land&#8221;) &middot; crags (rocky outcroppings where birds are) &middot; pocketed (meadow with flowers gathered in it) &middot; the star-studded reaches of the galaxy (for the fullest night sky).<br><br>
+          <strong>Movement/death:</strong> goaded (urged an animal forward) &middot; it started (an animal frightened) &middot; conjoined by threads of an uncertain destiny (riding toward danger together &mdash; reserved for the Knox/Katawa convergence) &middot; path/road ended in ashes (death or failed journey) &middot; the father as my judge (oath, sworn statement) &middot; destiny was not done with him yet (narrator&#8217;s future hint).</div></div>
+
+      <div class="arc-phase craft-rule"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">74. Character Voice Locks</span><span class="craft-era-badge era-all">ALL ERAS</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body"><strong>Ten Bears:</strong> strip every line until only bone is left, no qualifiers. One-liners read like scripture (&#8220;In this life, paths that choose you&#8221;). Thirteen braids, meaty hands, silver hair to his legs, built like a pit bull, proud and loving. Modeled on Donald. Internal: patient revenge, black moods, planning.<br><br>
+          <strong>Speaks Like The Stars:</strong> performs, and knows he&#8217;s performing. Quick as a snake with his maple staff. Rib-cracking cough. Spits in the flames. Dreamy-voiced for prophecy, looking at the flames, not the listener. Already knows more than he&#8217;s said. Face goes wrong (the smile that grows past itself) when Orbus is near.<br><br>
+          <strong>Katawa:</strong> still as stone, chin never dips, doesn&#8217;t look down. Eyes go somewhere the body hasn&#8217;t followed. The wolf beside him is always still too, both watching. Picks up skills not taught or practiced &mdash; born into it. After the Wolf Circle: wipes the blade in one clean motion, already finished before his feet stop moving.<br><br>
+          <strong>Blood On His Claws:</strong> teeth don&#8217;t move when he growls through them. Dips his head to point, never gestures with his hands. Lawful in the letter of everything, evil in the spirit of it.<br><br>
+          <strong>Cole Fenton:</strong> frailty register, the certainty of a man who believes he serves God. Calls Orbus &#8220;the Burning One,&#8221; &#8220;the Lord,&#8221; &#8220;the God of his fathers&#8221; &mdash; all the same in his skull. Doesn&#8217;t know he&#8217;s wrong; that&#8217;s the horror. After kills: natural, calm, the body knows this work.<br><br>
+          <strong>Nicole:</strong> True Detective S1 register. Investigator, addict brain &mdash; the photograph is a dark addiction, these are problems that need solutions, she goes anyway. Southern, educated. Name from the past: Stevie &mdash; only Charlotte ever called her that.</div></div>
     </div>
   </div>
 
@@ -3091,7 +3218,7 @@ body.wide-mode #p-read::after{left:0}
           <strong>What she does not know:</strong> anything about Orbus, the bloodline, or why any of this matters. She believes she is delivering quirky, evocative tour-guide folklore. She has no idea she has just handed a stranger on her tour two independent, devastating confirmations in one breath.
         </div></div>
 
-      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Telling Four &mdash; The Elder (the Eldest Speaker), at the bonfire, to the camp generally</span><span class="arc-phase-arrow">&#9658;</span></button>
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Telling Four &mdash; Speaks Like The Stars, at the bonfire, to the camp generally</span><span class="arc-phase-arrow">&#9658;</span></button>
         <div class="arc-phase-body">
           Carter is among the listeners, not singled out. <strong>THE DENSEST AND MOST CONCENTRATED TELLING.</strong> Per standing instruction elsewhere in this project, build as a McCarthy/judge-style monologue device (Craft Rule 27) &mdash; sweeping, certain, delivered with broad gestures, looking to each person around the fire, NOT a tidy lecture. The density should feel like myth accumulating, not information being delivered.<br><br>
           <strong>Full list of what he reveals in this telling:</strong>
@@ -3108,12 +3235,61 @@ body.wide-mode #p-read::after{left:0}
     </div>
   </div>
 
+  <div class="craft-group">
+    <div class="arc-q-title">Mythology Locks &mdash; Non-Negotiable</div>
+    <div class="arc-char-desc" style="margin-bottom:14px">Correct Chase if he contradicts these.</div>
+    <div class="arc-phases">
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H1. The Taking &mdash; One Mechanic, No Exceptions</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Orbus feeds only at the threshold between life and death &mdash; that is the realm he lives in. Cole Fenton&#8217;s ONLY job: bring the victim to the edge, then leave. The victim survives, but the fire is gone; the body runs on empty and dies over weeks or months. No partial taking, no two outcomes, one mechanic. Correct Chase if he suggests partial taking.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H2. The Drawings</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">During the feeding, children glimpse both Orbus AND the promised one (modern Carter). They draw Carter&#8217;s face compulsively in the window before death &mdash; drawing the one who will STOP Orbus. One child died with the crayon still in their hand. Orbus sees the drawings and misreads them: he thinks they show Carter Walks-With-Fire (they look alike) and believes it&#8217;s prophecy of his own victory. He is wrong, and never mentions it &mdash; not once.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H3. Fire &amp; Smoke Requirement</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Orbus requires fire and smoke to manifest physically. In 1842, every tipi already has a fire &mdash; invisible as a clue. In 2026, a fire at a taking site IS an anomaly Nicole can find. Cole or his ancestors must ensure fire is present.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H4. Orbus Power Scaling</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Without a vessel: influence only &mdash; faces changing, voice on the wind, atmospheric pressure. With a vessel (fully deputed chosen): physical form, unlimited taking, exponential growth. That scaling is the stakes of the entire book.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H5. The Orbus Misread &mdash; Dramatic Irony</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Orbus has been reading his own doom as his own prophecy for 13,000 years &mdash; the children draw the one who stops him, and he thinks they draw the one who will be his door. This irony breaks one beat before the ending, in Chapter 24, at the threshold, when Orbus finally sees it for what it is. One beat of recognition, then Carter takes him.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H6 &amp; H7. Locked Names &amp; Oaths</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body"><strong>&#8220;The father as my judge&#8221;</strong> &mdash; locked oath phrase, used as a sworn statement. Not explained, not footnoted, just used.<br><br><strong>&#8220;The Burning One&#8221;</strong> &mdash; Speaks Like The Stars&#8217; name for Orbus (&#8220;the burning one did seek to consume it&#8221;). Consistent epithet throughout the Texas arc.</div></div>
+
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">H8. October 13</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">The date of the comet&#8217;s fall. The date of the vessels&#8217; births. Orbus&#8217;s fingerprint on time &mdash; every October 13 matters. The Taurid meteor shower is real astronomy: Earth passes through the comet&#8217;s debris trail every October.</div></div>
+    </div>
+  </div>
+
   <div class="arc-questions" style="margin-top:0">
     <div class="arc-q-title">Open Questions &mdash; Mythology &amp; Tellings</div>
     <div class="arc-q-item"><span class="arc-q-num">1</span><span>Confirm the Keeper&#8217;s exact recipient (assumed Anthony, not yet locked).</span></div>
     <div class="arc-q-item"><span class="arc-q-num">2</span><span>Confirm how much the Keeper&#8217;s section needs trimming &mdash; noted as having &#8220;gone too far&#8221; in earlier drafts, but the exact content to cut isn&#8217;t specified.</span></div>
     <div class="arc-q-item"><span class="arc-q-num">3</span><span>Confirm exact wording for &#8220;cut through [the land/America]&#8221; in Telling Three.</span></div>
     <div class="arc-q-item"><span class="arc-q-num">4</span><span>Build out the clan-mythology content referenced in Telling Four once the broader clan-building work (Map &amp; Landscape, Character Arcs) is further along.</span></div>
+  </div>
+
+  <div class="arc-questions">
+    <div class="arc-q-title">Open Plot Questions &mdash; Need Chase &amp; Brittany&#8217;s Ruling</div>
+    <div class="arc-q-item"><span class="arc-q-num">1</span><span>How does the reader learn the full Taking mechanic? Nicole gets the WHAT through evidence; historical timelines get the WHY through experience. No character ever explains it directly &mdash; which character carries the final revelation, and how do they come to know it?</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">2</span><span>The Fenton physical marker &mdash; Cole Fenton and his ancestors share a physical marker across generations. What is it? Something slightly wrong, a feature that reads correct at a glance and wrong on the second look. Not yet decided.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">3</span><span>What does Brittany do at the ending? She cannot be a spectator &mdash; the Wetherbee women have been the protective bloodline for centuries. She acts. How? Decide before writing Ch 22&ndash;24.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">4</span><span>Three missing sub-stories the book still needs (Blood Meridian sidebar technique) &mdash; not yet identified.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">5</span><span>Missing &#8220;cool mechanism&#8221; scenes: Cole doing something with dangerous competence (tracking/planning/outmaneuvering across decades and states); Katawa doing multiple extraordinary things beyond the Wolf Circle; Brittany doing something specific and physical with her gift.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">6</span><span>The Knox chapter &mdash; a degradation arc (finger-cutting, degenerate acts) interrupted by an old war buddy who physically restrains him; Knox breaks and gets put on the right path. Also a horse-sneaking scene, context TBD. &#8220;Conjoined by threads of an uncertain destiny&#8221; reserved for the Knox/Katawa convergence chapter.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">7</span><span>The honey-skin girl glimpsed in the captive column &mdash; is she Wetherbee-bloodline? Does that complicate or deepen her death at Blood On His Claws&#8217; hands? Unresolved.</span></div>
+    <div class="arc-q-item"><span class="arc-q-num">8</span><span>The compartment in the dragon chair &mdash; recommended: a shard of the father&#8217;s meltglass carved with Carter&#8217;s face in 852 AD, seeded in Ch 8, paid in Ch 17. Not yet locked.</span></div>
+  </div>
+
+  <div class="craft-group">
+    <div class="arc-q-title">Casting Board</div>
+    <div class="arc-phases">
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Locked</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Cole Fenton &mdash; Robert Pattinson<br>Knox &mdash; Viggo Mortensen</div></div>
+      <div class="arc-phase"><button class="arc-phase-btn" onclick="arcToggle(this)"><span class="arc-phase-title">Proposed &mdash; not yet approved</span><span class="arc-phase-arrow">&#9658;</span></button>
+        <div class="arc-phase-body">Anthony &mdash; Idris Elba<br>Brittany &mdash; Ana de Armas<br>Nicole &mdash; Zoe Saldana<br>Ten Bears &mdash; Graham Greene<br>Charlotte &mdash; Kathy Bates<br>Cortez &mdash; Benicio del Toro<br>Wind At His Back &mdash; Martin Sensmeier</div></div>
+    </div>
   </div>
 </div><!-- /p-myth -->
 
@@ -9932,14 +10108,95 @@ function arcToggle(btn) {
   body.classList.toggle('open', !isOpen);
 }
 
+function checkCraftCompliance() {
+  var text = document.getElementById('craft-check-in').value;
+  var res = document.getElementById('craft-check-results');
+  if (!text.trim()) { res.innerHTML = '<div class="empty">Paste a passage first.</div>'; return; }
+  var lower = text.toLowerCase();
+
+  function count(re) { var m = text.match(re); return m ? m.length : 0; }
+  function any(words) { return words.some(function(w) { return lower.indexOf(w) !== -1; }); }
+
+  var cards = [];
+
+  // Hard violations — these are near-zero-exception rules
+  var lookedAt = count(/\blooked at\b/gi);
+  cards.push({
+    bad: lookedAt > 0,
+    label: 'Rule 12 — "Looked At"',
+    desc: 'Zero exceptions: regarded / studied / watched / fixed his eyes on / held his gaze on.',
+    finds: lookedAt > 0 ? lookedAt + ' instance(s) found.' : 'None found — clean.'
+  });
+
+  var hedges = ['it seemed', 'of course', 'perhaps', 'almost ', 'as if'];
+  var hedgeHits = hedges.filter(function(h) { return lower.indexOf(h) !== -1; });
+  cards.push({
+    bad: hedgeHits.length > 0,
+    label: 'Rule 66 — Hedge Words',
+    desc: 'Cut from action/landscape prose: it seemed, of course, perhaps, almost, as if. Keep only in interiority where doubt is the point.',
+    finds: hedgeHits.length ? 'Found: ' + hedgeHits.join(', ') + ' — verify each is inside a character\'s doubt, not narration.' : 'None found — clean.'
+  });
+
+  // Soft suggestions — keyword-triggered, surfaced for manual review
+  var suggestions = [];
+  if (any(['knife', 'blood', 'killed', 'struck', 'blow', 'arrow', 'throat', 'wound', 'stab'])) {
+    suggestions.push('Violence detected — check Rule 4 (plain statement after), Rule 28 (anatomically precise), Rule 64 (killer vs. non-killer reaction), Rule 47 (violence becoming general, if a massacre).');
+  }
+  if (any(['dark', 'night', 'shadow', 'dim ', 'pitch black'])) {
+    suggestions.push('Darkness/night detected — check Rule 6 (sense before sight), Rule 44 (emerging from the netherworlds), Rule 54 (the further dim).');
+  }
+  if (any(['heard', 'sound', 'voice', 'noise'])) {
+    suggestions.push('Sound cue detected — check Rule 7 (sound arrives before its source).');
+  }
+  if (lower.indexOf('"') !== -1 || lower.indexOf('“') !== -1) {
+    suggestions.push('Dialogue detected — check Rule 15 (dialogue tag principle) and Rule 49 (verb before name).');
+  }
+  if (any(['rode', 'ride', 'riding', 'walked', 'drove', 'journey', 'miles'])) {
+    suggestions.push('Travel/transition detected — check Rule 17 (connective tissue) and Rule 60 (the dust cloud check).');
+  }
+  if (any(['sky', 'cloud', 'sun', 'moon', 'rain', 'wind'])) {
+    suggestions.push('Weather/sky present — check Rule 13 (does it mirror this scene\'s moral temperature?).');
+  } else {
+    suggestions.push('No sky/weather language found at all — if this scene carries emotional weight, Rule 13 says it should.');
+  }
+  if (any(['felt', 'feeling', 'emotion'])) {
+    suggestions.push('Internal feeling stated directly — check Rule 25 (objective camera: show the gesture, don\'t name the feeling).');
+  }
+  if (!any(['hand', 'hands', 'fingers', 'grip', 'gripped', 'held', 'clutch'])) {
+    suggestions.push('No hand/grip language found — Rule 3/11 (body presence) and Rule 65 (always show the grip) want at least one physical gesture per scene.');
+  }
+
+  cards.push({
+    bad: suggestions.length > 0,
+    label: 'Rules Worth Checking By Hand',
+    desc: 'Based on keywords in your text — these are not violations, just where to look.',
+    finds: suggestions.length ? suggestions.join('<br>') : 'No specific triggers found.'
+  });
+
+  var html = '<div class="mis-grid">';
+  cards.forEach(function(c) {
+    html += '<div class="mis-card ' + (c.bad ? 'bad' : 'ok') + '">';
+    html += '<div class="mis-lbl">' + c.label + '</div>';
+    html += '<div class="mis-desc">' + c.desc + '</div>';
+    html += '<div class="mis-finds">' + c.finds + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  res.innerHTML = html;
+}
+
 function craftFilter(q) {
   q = q.trim().toLowerCase();
+  var eraSel = document.getElementById('craft-era-filter');
+  var era = eraSel ? eraSel.value : '';
   var items = document.querySelectorAll('.craft-rule');
   var groups = document.querySelectorAll('.craft-group');
   var anyVisible = false;
   items.forEach(function(item) {
     var text = item.textContent.toLowerCase();
-    var match = !q || text.indexOf(q) !== -1;
+    var textMatch = !q || text.indexOf(q) !== -1;
+    var eraMatch = !era || item.querySelector('.craft-era-badge.' + era) !== null;
+    var match = textMatch && eraMatch;
     item.style.display = match ? '' : 'none';
     if (match) anyVisible = true;
   });
